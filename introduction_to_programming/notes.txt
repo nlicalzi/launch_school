@@ -1,0 +1,22 @@
+Introduction to Programming (Ruby) Notes
+
+Instance vs. Class Methods
+    - Class methods are called directly from the class, and shown in the official docs as ::(class_method)
+        - e.g. new in String.new("blue")
+    - Instance methods are applied to instances of the class, and shown in the official docs as #(instance_method)
+        - e.g. split in "world wide web".split
+
+Inheritance
+    - All classes and subclasses come from a "parent", for something like String the parent is `Object`, whose methods are also available to strings
+    - Some classes have other modules available to them, or "Included Modules"
+        - Ex. String has `Comparable` available to it, so "cat".between?("ant", "zebra") resolves to True
+
+Vocab:
+    - Domain-specific language (DSL): contrast w/ general-purpose language (like Ruby or Python) (ex. HTML, SQL, regex, Excel scripting)
+    - Application Programming Interface (API): can either refer to programmatic web access (ex. Twitter API) or documentation (ex. Ruby Array API)
+    - RubyGems / Gems: Collection of Ruby files or a Ruby library that performs a certain task. Can also refer to the publishing system for those libraries (gems).
+        - New gems are said to be "cut" when a new version becomes available, public gems are available at http://rubygems.org, on Github, or elsewhere
+        - Installation syntax: `gem install <gem name>`, but this is "single use". We'll learn more about `Gemfiles` soon!
+    - Pry: Ruby library that acts as an irb alternative, good for debugging code
+        - `require "pry"` at the beginning of a code snippet, using `binding.pry` later shows you a "paused" version of the program
+            - A new pry session is opened and you can call your variables, play around with things, etc. to debug -> when done, do Ctrl + D to continue
