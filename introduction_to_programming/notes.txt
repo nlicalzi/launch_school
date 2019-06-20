@@ -41,6 +41,8 @@ Array
 
 Hash
     - Comparable to a dictionary, contains a set of key-value pairs wrapped in curly braces.
+    - Format: {:dog => 'barks', :cat => 'meows', :pig => 'oinks'}
+        - Retrieve values with keys, e.g. {:dog => 'barks', :cat => 'meows', :pig => 'oinks'){:cat]
 
 Vocab:
     - Domain-specific language (DSL): contrast w/ general-purpose language (like Ruby or Python) (ex. HTML, SQL, regex, Excel scripting)
@@ -52,3 +54,5 @@ Vocab:
         - `require "pry"` at the beginning of a code snippet, using `binding.pry` later shows you a "paused" version of the program
             - A new pry session is opened and you can call your variables, play around with things, etc. to debug -> when done, do Ctrl + D to continue
     - Hash Rocket: "=>"
+    - Expression: anything that can be evaluated, almost everything in Ruby is an expression, and expressions always return a value (even if it's nil)
+        - Important to remember the difference between 'puts' and 'return'-- 'puts' like Python 'print' (just print result to console), while 'return' returns a value
