@@ -1,0 +1,40 @@
+Methods: Ruby's version of functions.
+  def x
+    # do stuff
+  end
+
+Parameters: def say(x) -> "x" is a parameter
+  - Parameters are used to make  data from outside a method's scope accessible inside the definition
+  - Default parameters: def say(words='hello') -> say() will print "hello", but say("hi") prints "hi"
+  - PARENTHESES ARE OPTIONAL: say() could be say, say("hi") could also be say "hi". 
+      - Deciphering btw. local variables and method names can be tricky!!!
+
+"Method Invocation" refers to calling a method. 
+  - "Arguments" are what are passed in as parameters during method invocation
+
+Local Variable Scope
+  - Method definitions have their own variable scope, and can only access data outside if passed in as a parameter
+  - This is distinct from "method invocation with a block", which we learned about previously (refer to notes)
+    -ex.  [1, 2, 3]. each do |num|
+            puts num
+          end
+    - diff btw. do/end and def/end (block vs. method definition)
+
+obj.method or method(obj)
+  - There are two ways to call methods:
+    - Passing arguments to a method call: some_method(obj)
+    - Or calling the method on an object: obj.some_method
+    
+"Mutating the Caller"
+  - Altering the argument permanently on method call 
+  - A rare exception to the method scoping rule
+  
+        def some_method(number)
+          number = 7
+        end
+        
+        a = 5
+        some_method(a)
+        puts a
+    - Number starts off as 7, but then is mutated to 5 
+    - "pop" method 'mutates the caller'
