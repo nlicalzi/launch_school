@@ -1,0 +1,6 @@
+Flow Control
+
+- "Conditional Flow": making your data do the right thing at the right time
+    - Accomplished w/ Conditionals: "if", and operators 
+        - [<, >, <=, >=, ==, !=, &&, ||], 
+        - ["if", "else", "elsif" (NOTE: MISSING E), "end"]
