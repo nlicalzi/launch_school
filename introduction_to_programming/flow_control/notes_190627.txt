@@ -2,5 +2,51 @@ Flow Control
 
 - "Conditional Flow": making your data do the right thing at the right time
     - Accomplished w/ Conditionals: "if", and operators 
-        - [<, >, <=, >=, ==, !=, &&, ||], 
+        - [<, >, <=, >=, ==, !=, && (and), || (or), ! (not)], 
         - ["if", "else", "elsif" (NOTE: MISSING E), "end"]
+
+- One liners: if compressing if/end to one line, must use "then"
+    - ex. if x == 3 then puts "x is 3" end
+    - otherwise it would be:
+        if x == 3
+            puts "x is 3"
+        end
+        
+    - Puts and If can be rearranged!
+        - puts "x is 3" if x == 3
+        
+    - "Unless" is also a reserved word, meaning !if
+        - puts "x is NOT 3" unless x == 3
+
+- Order of precedence: 
+    1. <=, <, >, >= - Comparison
+    2. ==, != - Equality
+    3. && - Logical AND
+    4. || - Logical OR
+    
+- TERNARY OPERATOR
+    - Quick, one-line if/else statement, using "?" and ":"
+    - ex. true ? "this is true" : "this is not true"
+    - Left of : is True
+    - Right of : is False
+    - Depending on left of ?, either left (true) or right (false) is returned
+    
+- CASE STATEMENT
+    - Similar functionality to "if", but with different interface
+    - reserved words "case", "when", "else", and "end"
+    
+- Every expression evaluates to 'true' in control flow, except 'false' and 'nil'
+    ex.:
+        if x = 5
+            puts "how can this be true?"
+        else
+            puts "it is not true"
+        end
+        
+    ex.:
+        a = 5
+        if a
+            puts "how can this be true?"
+        else
+            puts "it is not true"
+        end

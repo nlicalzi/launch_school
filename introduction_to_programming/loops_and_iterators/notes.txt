@@ -1,0 +1,2 @@
+Loop: A *loop* is the repetitive execution of a piece of code for a given amount of repetitions or until a certain condition is met.
+  - Some types of loops include: for, while, and do/while loops
