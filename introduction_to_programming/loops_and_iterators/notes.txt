@@ -1,2 +1,11 @@
 Loop: A *loop* is the repetitive execution of a piece of code for a given amount of repetitions or until a certain condition is met.
-  - Some types of loops include: for, while, and do/while loops
+  - Some types of loops include: FOR, WHILE, and DO/WHILE loops
+  - Loops can be exited with *break*
+  - *next* keyword allows you to skip the rest of a loop iteration and go to next
+  - *until* loops are the opposite of while loops
+  - *for* loop RETURNS collection of elements after execution
+  - *while* loop RETURNS nil
+
+Range: not actually a keyword, but called like: 1..5 (works inclusively)
+
+Iterators in Ruby: "each", "collect", "times", "upto", "downto", "step", "each_line"
