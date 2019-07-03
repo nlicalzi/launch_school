@@ -1,0 +1,56 @@
+Array
+    - Ordered, bracketed list of elements of any type
+    - ex. [1, 'Bob', 4.33, 'another string']
+    - array.first, array.last, array[3] (indexing works, starts at 0)
+    - Modifying arrays (MUTATING THE CALLER!) 
+        - array.pop (removes last and returns it)
+        - array.push("string") adds "string" to end
+        - `<<` is the SHOVEL operator: array << "another string" same as array.push("another string")
+        - a.delete_at(1) (deletes in-place the indexed item in the array)
+        - a.delete("cat") deletes every instance of "cat" if it is in the array
+    - Array operations (does NOT mutate the caller!)    
+        - array.map {} and array.collect {} do the same thing -- operate on whole array
+            - ex. a.map { |num| num**2 } => squares every item in the array
+        - array.uniq returns a unique list of array items
+        - using the BANG operator `!` after a method (usually) makes it a destructive operation
+            - a.uniq! is like doing a.uniq in-place
+
+Iterating over an array
+    - `select` iterates over an array, returns a new array of items that return true to provided expression
+        - ex. numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        -     numbers.select { |number| number > 4 }
+        -     => [5, 6, 7, 8, 9, 10]
+        
+Common Array Methods
+    - `include?`
+        - checks to see if argument given is included in the array
+        - ex. a = [1, 2, 3]
+              a.include?(2)
+              => true
+              a.include?(5)
+              => false
+    - `flatten` 
+        - flattens an array containing nested arrays into a single-dimension
+        - can be made destructive: `flatten!`
+    - `each_index`
+        - iterates through array, passing index of elements
+            - ex. a = [1, 2, 3, 4, 5]
+                  a.each_index { |i| puts "This is index #{i}" }
+    - `each_with_index` (enumerator!)
+        - iterates through array returning both index and value per item
+            - ex. a = [1, 2, 3, 4, 5]
+                  a.each_with_index { |val, idx| puts "#{idx+1}. #{val}" }
+    - `sort`
+        - returns a sorted version of the array (only numerically, no strings)
+        - can be modified to be destructive using `sort!`
+    - `product`
+        - returns an array that is a combination of all elements from all arrays
+            - ex. [1, 2, 3].product([4, 5])
+                  => [[1, 4], [1, 5], [2, 4], [2, 5], [3, 4], [3, 5]]
+                  
+Each vs. Map
+    - each returns the original collection
+    - map creates a new array consisting of the returned value of the block
+        - a.map { |x| puts x**2 } prints the evaluated x**2 for each input, but returns [nil, nil, nil]
+            - this is because `puts` returns nil
+    - REMEMBER: `each` is for iteration, `map` is for transformation
