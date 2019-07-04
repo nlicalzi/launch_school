@@ -1,0 +1,36 @@
+Hash
+    - A data structure that stores key/value pairs
+    - Surrounded by curly braces, and comma separated
+    - commonly created with `symbols` for keys, and any data type as values
+        - Symbols used because they are immutable and have lower overhead than strings
+        - ex. person = { height: '6 ft', weight: '160 lbs' }
+              => {:height=>'6 ft', :weight=>'160 lbs'}
+              person[:height]
+              => "6 ft"
+              person[:age] = 62
+              => {:height=>'6 ft', :weight=>'160 lbs', :age=>62}
+              person.delete(:age)
+              => {:height=>'6 ft', :weight=>'160 lbs'}
+    - merge two hashes with .merge! (`!` for doing it in place on the part preceding .)
+
+Optional parameters
+    - A method can accept optional parameters with the use of hashes
+        - ex. greeting("Bob", {age: 62, city: "New York City"})
+        - see hashes/examples/optional_parameters.rb for more
+    - When the hash is the last argument in a method, you can skip the braces
+        - ex. greeting("Bob", age: 62, city: "New York City")
+
+Common Hash methods
+    - `has_key?`
+        - allows you to check if a hash contains a specific key
+        - hash.has_key?("key") returns a boolean (because of the ?)
+    - `select`
+        - Pass a block and return key/value pairs that evaluate to true
+        - ex. name_and_age.select { |k,v| (k == "Bob") || (v == 19) }
+    - `fetch`
+        - Pass a key and return value if key exists
+        - ex. name_and_age.fetch("Steve")
+    - `to_a`
+        - returns an array version of your hash
+    - `keys` / `values`
+        - returns all of the hash's keys / values in array format, respectively
