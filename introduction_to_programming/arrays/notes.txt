@@ -13,7 +13,7 @@ Array
             - ex. a.map { |num| num**2 } => squares every item in the array
         - array.uniq returns a unique list of array items
         - using the BANG operator `!` after a method (usually) makes it a destructive operation
-            - a.uniq! is like doing a.uniq in-place
+            - a.uniq! is lik1e doing a.uniq in-place
 
 Iterating over an array
     - `select` iterates over an array, returns a new array of items that return true to provided expression
