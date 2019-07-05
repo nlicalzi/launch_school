@@ -1,0 +1,39 @@
+Q1: Where can you find the most complete Ruby documentation?
+  - The official Ruby docs can be found here: https://docs.ruby-lang.org/en/
+
+Q2: Locate the description of the while loop in the ruby documentation.
+  - The documentation for the while loop can be found here: 
+    https://docs.ruby-lang.org/en/2.6.0/syntax/control_expressions_rdoc.html#label-while+Loop
+
+Q3: Using the ruby documentation, determine what value a while loop returns.
+  - A while loop will return `nil` if allowed to finish. To return a value, `break` should be used.
+
+Q4: Locate the documentation for break, and determine what value break sets the return value to 
+    for the while loop.
+  - Break will set the return value for the while loop to nil when break is passed without arguments,
+  - but will otherwise pass the value of the argument if one is given. 
+
+Q5: Using the ruby documentation, determine how you can write large numbers in a way that makes them easier to read.
+  - This information is found in the literals section, located at: https://docs.ruby-lang.org/en/2.6.0/syntax/literals_rdoc.html
+    - A `literal` is a special syntax in Ruby that creates an object, without having to declare its type.
+    - Literals include: booleans, nil, numbers, strings, symbols, arrays, hashes, ranges, regular expressions, and procs
+  - To make large numbers more readable
+    - You can either replace where commas would go with underscores (ex. 1_000_000)
+    - Or you can use scientific notation (ex. 1.234E2)
+    - You can also use decimal, hexadecimal, octal, and binary formats, but we'll worry about those later.
+
+Q6: Using the ruby documentation, determine how you would write a Symbol that represents your name. 
+  - To declare a Symbol that represents my name, one would write `:Nicholas`
+  - It's as simple as this because Symbols are a Literal in Ruby-- no type declaration needed beyond the colon.
+
+Q7: Locate and open the class documentation for the String class.
+  - The String class documentation can be found here: http://ruby-doc.org/core-2.6.3/String.html
+  - Reminder, in Ruby documentation:
+    - Instance methods like #this (String#size)
+    - Class/Module methods like ::this (Hash::new)
+
+Q8: Use the ruby documentation for the String class to determine which method can be used to right justify a String object.
+  - The method `rjust` can be used to right justify a String object.
+    - rjust(integer,padstr='')
+    - If integer.length > input_string.length, the String will be right justified and apdded with `padstr`
+  - Ex. "hello".rjust(20)
