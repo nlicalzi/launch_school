@@ -1,0 +1,48 @@
+Regex
+    - Regular Expression
+    - A series of characters that form pattern matching rules, applied to a string
+    - regex string enclosed in //, like /string/
+    - Containment uses '=~` operator
+        - ex. "powerball" =~ /b/
+              => 5
+    - Matching uses match method, either returns MatchData object or nil
+        - ex. /b/.match("powerball")
+              => #<MatchData "b">
+
+Ruby Standard Classes
+    - Math
+        - Math.sqrt()
+        - Math::PI
+    - Time
+        - t = Time.new(2008, 7, 4)
+        - t.friday?
+          => True
+
+Variables as Pointers
+    - Variables are pointers to physical space in memory
+    - some operations mutate the address space in memory, affecting all pointing variables
+    - some operations don't mutate address space, but rather re-point to new address space in memory
+
+Blocks and Procs
+    - Methods can take blocks as arguments that start with &
+    - Allows us to pass do..end block in
+    - ex. 
+        def take_block(&block)
+            block.call()
+        end
+        
+        take_block do
+            puts "Block being called in the method!"
+        end
+    - Procs are blocks wrapped in a proc object and passed as a variable
+    - Definitely read more about these soon...
+    
+Exception Handling
+    - Ruby has an Exception class for exception handling
+    - Syntactic structure uses reserved words 'begin'/'rescue'/'end'
+    - Rescue executes some code when an error is raised, rather than stalling out
+    
+Exceptions & Stack Traces
+    - Some common errors:
+        StandardError, Type Error, Argument Error, NoMethodError, RuntimeError,
+        SystemCallError, ZeroDivisionError, RegexpError, IOError, EOFError
