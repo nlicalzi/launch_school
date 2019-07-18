@@ -1,0 +1,41 @@
+# Variable Scope, Ruby Basics, Exercise Sets
+# https://launchschool.com/exercise_sets/ece1c62b
+
+A1. the "my_value(a)" call should return 17, while "puts a" will print 7 and 
+    return nil, because the caller isn't mutated by +=, the variable pointer is
+    instead just reassigned. Also, numbers are immutable in Ruby!
+
+A2. the same answer as the previous question applies-- the name of a variable
+    inside a method definition doesn't have any relationship to what gets (or 
+    doesn't get) passed in to it, because the scope is different.
+    
+A3. similarly to the two previous questions, the "a" that is defined inside the
+    "my_value" method has no bearing on the a outside of the method definition. 
+    therefore, what gets passed in to the method is "12", or 7 + 5, the a inside 
+    is set to 12 and returned, so the call to "my_value" will return 12 and "puts a"
+    will still print 7 and return nil.
+    
+A4. the result will be "Xy-zy", because strings are mutable, and setting string 
+    character value by index position is a mutating method. 
+    
+A5. unlike the previous exercise, we're not mutating the string, but rather 
+    reassigning it. (Explanation says: `Assignment never changes the value of an 
+    object, instead it reates a new object and then stores a reference to that 
+    object in the variable on the left.`) []= is a mutating method, while 
+    assignment to a variable does not mutate the referenced object.
+    
+A6. this will return an error, because only variable "b" is passed in to the 
+    method, so the value for `a` is undefined.
+    
+A7. the script will print `3`, because a block can access outside variable scope
+    and modify it
+    
+A8. this will return an undefined variable error, because a is only defined inside
+    the block, so it doesn't exist in the external scope. the previous example 
+    worked because `a` was already instantiated and just had to be reassigned.
+    
+A9. this will return 7, because the each do |a| hides (ANSWER: vocab is 'shadows/
+    shadowing') the `a` in the block from the a in the exterior scope. 
+    
+A10. `a` on line 6 isn't defined inside the scope of the method definition, so an
+    error will be returned.
