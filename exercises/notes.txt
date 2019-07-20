@@ -1,0 +1,5 @@
+Study list:
+- Boolean methods
+    - Integer.odd? Integer.even?
+    - Array.any? Array.all? Array.none? Array.one? Array.include? (enumerator methods, run a block)
+    - Array.eql? (test for same object, or arrays w/ same content)
