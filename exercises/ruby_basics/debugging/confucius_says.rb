@@ -1,0 +1,18 @@
+# Confucius Says, Debugging, Ruby Basics, Exercises
+
+def get_quote(person)
+  if person == 'Yoda'
+    'Do. Or do not. There is no try.'
+  elsif person == 'Confucius'
+    'I hear and I forget. I see and I remember. I do and I understand.'
+  elsif person == 'Einstein'
+    'Do not worry about your difficulties in Mathematics. I can assure you mine are still greater.'
+  end
+end
+
+puts 'Confucius says:'
+puts '"' + get_quote('Confucius') + '"'
+
+# The program lacks a return statement, so it's evaluating the last line which fails
+# unless the input is `Einstein`. Changing the method to if/elsif/elsif instead of
+# three if/end statements fixes the issue. So would explicit `return` statements.
