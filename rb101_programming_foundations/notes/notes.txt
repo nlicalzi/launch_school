@@ -1,0 +1,23 @@
+What is the Two-Layer Problem?
+    - Learning to solve problems while simultaneously memorizing the syntax of a particular language. 
+    - We need instead to simplify so we're not fighting a multi-front battle.
+    
+How can we get around the Two-Layer Problem?
+    - By using PEDAC
+    
+What does PEDAC stand for?
+    - Two objectives: Processing the problem (PEDA) and Coding with intent (C)
+    - P: Understanding the Problem
+        - Identify expected input and output
+        - Make the requirements explicit
+        - Identify rules
+        - Mental model of the problem
+    - E: Examples/Test Case (Validate understanding of the problem)
+    - D: Data Structure (How we represent data when converting input to output)
+    - A: Algorithm (Steps for converting input to output)
+    - C: Code (Implementation of Algorithm) 
+
+Why use PEDAC?
+    - Avoiding "hack and slash" coding
+        - Often leads to missed requirements, unforeseen edge cases, hard to
+          understand code, and code that's difficult to maintain. 

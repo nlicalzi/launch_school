@@ -1,0 +1,17 @@
+Source: https://launchschool.com/exercises/3e9ad7d3
+
+Q: How can you modify the below code to print only the public methods defined/overriden by the String class, and not Object/BasicObject/Kernel?
+
+s = 'abc'
+puts s.public_methods.inspect
+
+A: 
+
+The problem here is with the #public_methods method, which our String has inherited because the Object class is String's parent class.
+Looking at the documentation for Object#public_methods, we see that there is a keyword argument :all which defaults to true.
+If we set :all to false instead, only the methods in the receiver (in this case, String) will be listed.
+
+s = 'abc'
+puts s.public_methods(all=false).inspect
+
+We could just write s.public_methods(false).inspect since there's only one keyword arg, but I prefer verbosity in this case for clarity.

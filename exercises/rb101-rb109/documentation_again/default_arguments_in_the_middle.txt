@@ -1,0 +1,17 @@
+Source: https://launchschool.com/exercises/c3d56d90
+
+Q: What will the following code print? 
+
+def my_method(a, b = 2, c = 3, d)
+  p [a, b, c, d]
+end
+
+my_method(4, 5, 6)
+
+A:
+
+The code will print [4, 5, 3, 6], because Ruby allows default values to appear in the middle
+of positional arguments, and fills the missing arguments from left to right. There are 2 args
+without default values, so the interpreter knows that (given 3 input values), one default arg
+will have its value overwritten (the left-most one). Therefore a is assigned to 4, b to 5,
+c stays as 3, and d is assigned to 6.
