@@ -1,0 +1,13 @@
+Source: https://launchschool.com/exercises/bbb9b595
+
+Q: Use the documentation for the Array#min method to change the code and print the two smallest values in the Array.
+
+a = [5, 9, 3, 11]
+puts a.min
+
+A:
+
+puts a.min(2) # this will return the two smallest values. a.min will only return a single value.
+
+Prior to the implementation of Array#min, the way to do this would have been to use Array#sort and Array#take(2).
+Array#min is thanks to the Enumerable mix-in for Arrays. See vocab: 'mix-in module'
