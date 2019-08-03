@@ -1,10 +1,10 @@
 What is the Two-Layer Problem?
-    - Learning to solve problems while simultaneously memorizing the syntax of a particular language. 
+    - Learning to solve problems while simultaneously memorizing the syntax of a particular language.
     - We need instead to simplify so we're not fighting a multi-front battle.
-    
+
 How can we get around the Two-Layer Problem?
     - By using PEDAC
-    
+
 What does PEDAC stand for?
     - Two objectives: Processing the problem (PEDA) and Coding with intent (C)
     - P: Understanding the Problem
@@ -15,9 +15,24 @@ What does PEDAC stand for?
     - E: Examples/Test Case (Validate understanding of the problem)
     - D: Data Structure (How we represent data when converting input to output)
     - A: Algorithm (Steps for converting input to output)
-    - C: Code (Implementation of Algorithm) 
+    - C: Code (Implementation of Algorithm)
 
 Why use PEDAC?
     - Avoiding "hack and slash" coding
         - Often leads to missed requirements, unforeseen edge cases, hard to
-          understand code, and code that's difficult to maintain. 
+          understand code, and code that's difficult to maintain.
+
+Lesson 2 Vocab (for flash cards)
+Operator Precedence
+&&
+||
+Short Circuiting-- && and || will stop evaluating once they can guarantee return value
+Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
+x ||= y (assignment operator) -> if x is nil or false, set x to y
+declarative vs. imperative syntax
+Stack Trace
+Multiple Assignment
+Trapping the error
+Code smell
+`rescue`
+PRY - REPL for debugging
