@@ -2,3 +2,13 @@ Working with RB101-RB109 Small Problems Exercises
 https://launchschool.com/gists/2a3a3d72
 
 Make sure to complete 20 of these after each lesson (2 sets).
+
+String#split(//) and String#chars accomplish the same thing
+  That is, making an array with each character in the string as a separate object
+
+Enumerable#reduce has the alias Enumerable#inject
+  sum = numbers.reduce { |sum, number| sum + number }
+  numbers.reduce(:+) # using a symbol instead of a block
+    STUDY UP ON THIS SHORTHAND SYNTAX
+    https://ruby-doc.org/core-2.1.4/Symbol.html#method-i-to_proc
+    https://medium.com/whynotio/shorthand-syntax-for-each-map-reduce-more-a790ba12edc9
