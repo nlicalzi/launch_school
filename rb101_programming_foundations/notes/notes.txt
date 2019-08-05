@@ -36,3 +36,4 @@ Trapping the error
 Code smell
 `rescue`
 PRY - REPL for debugging
+yaml, psych
