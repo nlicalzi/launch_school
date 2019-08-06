@@ -22,7 +22,7 @@ Why use PEDAC?
         - Often leads to missed requirements, unforeseen edge cases, hard to
           understand code, and code that's difficult to maintain.
 
-Lesson 2 Vocab (for flash cards)
+***Lesson 2 Vocab (for flash cards)***
 Operator Precedence
 &&
 ||
@@ -37,3 +37,22 @@ Code smell
 `rescue`
 PRY - REPL for debugging
 yaml, psych
+do/while vs. while loops
+truthiness
+types of variables in ruby: https://launchschool.com/books/ruby/read/variables#typesofvariables
+method definition
+method invocation
+method invocation with a block
+    block acts as an argument to the method
+variable scoping within a block: inner scopes/nested scopes
+    outer scope variables can be accessed by inner scope
+    inner scope variables cannot be accessed in outer scope
+    peer (same-level) scopes do not conflict
+    nested blocks
+variable shadowing
+    reuse of a variable name in an inner scope blocks access to outer scoped variable
+    TO BE AVOIDED! easily done with long/descriptive variable names
+    ex. n = 10
+        [1, 2, 3].each do { |n| puts n } => "1" "2" "3"
+lexical scope (constants vs. local variables)
+
