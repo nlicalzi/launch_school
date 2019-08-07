@@ -55,4 +55,9 @@ variable shadowing
     ex. n = 10
         [1, 2, 3].each do { |n| puts n } => "1" "2" "3"
 lexical scope (constants vs. local variables)
-
+pass by reference (references original object)
+pass by value (copies of original object)
+pass by reference of the value // call by sharing:
+  when an operation within the method mutates the caller, it will affect the original object
+reassignment
+mutability

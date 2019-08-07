@@ -1,11 +1,20 @@
-The Two-Layer Problem  
+The Two-Layer Problem
     https://medium.com/launch-school/the-two-layer-problem-915b7587654c
-    
+
 Solving Coding Times with PEDAC
     https://medium.com/launch-school/solving-coding-problems-with-pedac-29141331f93f
 
 Working with RB101-RB109 Small Problems Exercises
     https://launchschool.com/gists/2a3a3d72
-    
+
 Problem Solving videos
     https://launchschool.com/gists/c013accd
+
+Variable References and Mutability of Ruby Objects
+    https://launchschool.com/blog/references-and-mutability-in-ruby
+
+Mutating and Non-Mutating Methods in Ruby
+    https://launchschool.com/blog/mutating-and-non-mutating-methods
+
+Object Passing in Ruby - Pass by Reference or Pass by Value
+    https://launchschool.com/blog/object-passing-in-ruby
