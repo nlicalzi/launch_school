@@ -1,3 +1,4 @@
-a = 'hello'
+CHOICE_HASH = { 'r' => 'rock', 'p' => 'paper', 'sc' => 'scissors',
+                'l' => 'lizard', 'sp' => 'spock' }
 
-[1, 2, 3].map { |num| puts a }
+p CHOICE_HASH['l']

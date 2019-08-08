@@ -1,5 +1,9 @@
 # https://launchschool.com/lessons/a0f3cd44/assignments/4f8be124
+# Comments: fix #1 to use a hash for decoding
 VALID_CHOICES = %w(rock paper scissors lizard spock)
+CHOICES_ABBREV = %w(r p sc l sp)
+CHOICE_HASH = { 'r' => 'rock', 'p' => 'paper', 'sc' => 'scissors',
+                'l' => 'lizard', 'sp' => 'spock' }
 
 def prompt(message)
   puts("=> #{message}")
@@ -23,6 +27,19 @@ def display_results(player, computer)
   end
 end
 
+def result(player, computer)
+  if win?(player, computer)
+    'player'
+  elsif win?(computer, player)
+    'computer'
+  else
+    'draw'
+  end
+end
+
+score = { 'player' => 0, 'computer' => 0, 'draw' => 0 }
+p score
+
 loop do
   choice = ''
   loop do
@@ -30,6 +47,9 @@ loop do
     choice = gets.chomp
 
     if VALID_CHOICES.include?(choice)
+      break
+    elsif CHOICES_ABBREV.include?(choice)
+      choice = CHOICE_HASH[choice]
       break
     else
       prompt("That's not a valid choice.")
@@ -41,6 +61,20 @@ loop do
   prompt("You chose: #{choice}, computer chose #{computer_choice}")
 
   display_results(choice, computer_choice)
+
+  round_winner = result(choice, computer_choice)
+
+  score[round_winner] += 1
+
+  prompt("...Player score is #{score['player']}")
+  prompt("...Computer score is #{score['computer']}")
+
+  if score.values.any? { |x| x == 5 }
+    prompt("We have a grand winner!")
+    prompt("Congratulations to our winner: *#{round_winner}*!!")
+
+    break
+  end
 
   prompt("Do you want to play again?")
   answer = gets.chomp
