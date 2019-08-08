@@ -1,14 +1,16 @@
-# Source: https://launchschool.com/lessons/a0f3cd44/assignments/9e75343c
-VALID_CHOICES = %w(rock paper scissors)
+# https://launchschool.com/lessons/a0f3cd44/assignments/4f8be124
+VALID_CHOICES = %w(rock paper scissors lizard spock)
 
 def prompt(message)
   puts("=> #{message}")
 end
 
 def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
-    (first == 'scissors' && second == 'paper') ||
-    (first == 'paper' && second == 'rock')
+  (first == 'rock' && (second == 'scissors' || second == 'lizard')) ||
+    (first == 'scissors' && (second == 'paper' || second == 'lizard')) ||
+    (first == 'paper' && (second == 'rock' || second == 'spock')) ||
+    (first == 'lizard' && (second == 'paper' || second == 'spock')) ||
+    (first == 'spock' && (second == 'rock' || second == 'scissors'))
 end
 
 def display_results(player, computer)
@@ -24,7 +26,7 @@ end
 loop do
   choice = ''
   loop do
-    prompt("Choose one: rock, paper, scissors")
+    prompt("Choose one: [r]ock, [p]aper, [sc]issors, [l]izard, [sp]ock")
     choice = gets.chomp
 
     if VALID_CHOICES.include?(choice)
