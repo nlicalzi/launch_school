@@ -50,14 +50,39 @@ variable scoping within a block: inner scopes/nested scopes
     peer (same-level) scopes do not conflict
     nested blocks
 variable shadowing
-    reuse of a variable name in an inner scope blocks access to outer scoped variable
-    TO BE AVOIDED! easily done with long/descriptive variable names
-    ex. n = 10
+    - reuse of a variable name in an inner scope blocks access to outer scoped
+      variable
+    - TO BE AVOIDED! easily done with long/descriptive variable names
+      ex. n = 10
         [1, 2, 3].each do { |n| puts n } => "1" "2" "3"
 lexical scope (constants vs. local variables)
-pass by reference (references original object)
-pass by value (copies of original object)
+Object Passing Strategies (Strict Evaluation)
+  - pass by reference (references original object)
+  - pass by value (copies of original object)
 pass by reference of the value // call by sharing:
-  when an operation within the method mutates the caller, it will affect the original object
+  when an operation within the method mutates the caller, it will affect the
+  original object
 reassignment
+  - Assignment always binds the target variable on the left hand side of the =
+    to the object referenced by the right hand side. The object originally
+    referenced by the target variable is never modified.
+  - Assignment operators are also non-mutating: *=, +=, -=, %=
 mutability
+non-mutating methods
+  A method is said to be non-mutating with respect to an argument or its calling
+  object if it does not modify it.
+mutating methods
+indexed assignment (is it mutating? no.)
+concatenation (is it mutating? yes)
+re/assignment (is it mutating?)
+setters (are they mutating? yes)
+setters
+object passing (passing the object to the method)
+caller (sometimes called the receiver/the object on which the method is called)
+evaluation strategy
+  How a language determines when expressions are valuated and what a method can do with resulting objects.
+strict evaluation
+  Every expression is evaluated and converted to an object before it is passed along to a method. (RUBY USES THIS STRICTLY)
+what is an evaluation strategy?
+what evaluation strategy does ruby use? how does it work?
+literal reference / anonymous (unnamed) reference
