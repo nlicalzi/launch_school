@@ -1,20 +1,21 @@
-# https://launchschool.com/lessons/a0f3cd44/assignments/4f8be124
-# Comments: fix #1 to use a hash for decoding
+# Source: https://launchschool.com/lessons/a0f3cd44/assignments/4f8be124
+
 VALID_CHOICES = %w(rock paper scissors lizard spock)
 CHOICES_ABBREV = %w(r p sc l sp)
 CHOICE_HASH = { 'r' => 'rock', 'p' => 'paper', 'sc' => 'scissors',
                 'l' => 'lizard', 'sp' => 'spock' }
+HIERARCHY = { 'rock' => ['scissors', 'lizard'],
+              'paper' => ['rock', 'spock'],
+              'scissors' => ['paper', 'lizard'],
+              'lizard' => ['paper', 'spock'],
+              'spock' => ['rock', 'scissors'] }
 
 def prompt(message)
   puts("=> #{message}")
 end
 
 def win?(first, second)
-  (first == 'rock' && (second == 'scissors' || second == 'lizard')) ||
-    (first == 'scissors' && (second == 'paper' || second == 'lizard')) ||
-    (first == 'paper' && (second == 'rock' || second == 'spock')) ||
-    (first == 'lizard' && (second == 'paper' || second == 'spock')) ||
-    (first == 'spock' && (second == 'rock' || second == 'scissors'))
+  HIERARCHY[first].any? { |x| x == second }
 end
 
 def display_results(player, computer)
@@ -38,7 +39,6 @@ def result(player, computer)
 end
 
 score = { 'player' => 0, 'computer' => 0, 'draw' => 0 }
-p score
 
 loop do
   choice = ''
