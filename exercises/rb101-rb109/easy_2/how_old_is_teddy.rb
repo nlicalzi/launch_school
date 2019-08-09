@@ -4,7 +4,7 @@
 #     To get the age, you should generate a random number between 20 and 200.
 
 def display_age
-  puts '=> Please enter your name below...'
+  puts "=> Please enter your name below... Otherwise we'll use Teddy!"
   name = gets.chomp.downcase.capitalize
 
   name = 'Teddy' if name.length.zero?
