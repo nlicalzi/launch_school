@@ -3,12 +3,14 @@
 # Q: Build a program that asks user for the length and width of a room in meters
 # and then displays the area of the room in both square meters and square feet.
 
+SQUARE_METERS_TO_SQUARE_FEET = 10.7639
+
 def prompt(message)
   puts "=> #{message}"
 end
 
 def valid_measurement?(input)
-  (input.to_i.to_s == input) && input.to_i.positive? && !(input.to_s.length.zero?)
+  (input.to_i.to_s == input) && input.to_i.positive? && !input.to_s.length.zero?
 end
 
 length = ''
@@ -35,10 +37,9 @@ loop do
 end
 
 square_meters = length.to_i * width.to_i
-square_feet = square_meters * 10.7639
+square_feet = square_meters * SQUARE_METERS_TO_SQUARE_FEET
 
 prompt("The room is #{square_meters.round(1)} M2 / #{square_feet.round(1)} SF!")
-
 
 # P: Request two floats (in Meters) from user: Length and Width of a given room.
 # Multiply Length by Width to get Square Meters, divide Square Meters by 10.7639
