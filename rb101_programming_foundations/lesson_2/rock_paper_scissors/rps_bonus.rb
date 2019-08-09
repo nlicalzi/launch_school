@@ -44,7 +44,7 @@ loop do
   choice = ''
   loop do
     prompt("Choose one: [r]ock, [p]aper, [sc]issors, [l]izard, [sp]ock")
-    choice = gets.chomp
+    choice = gets.chomp.downcase
 
     if VALID_CHOICES.include?(choice)
       break
@@ -77,7 +77,7 @@ loop do
   end
 
   prompt("Do you want to play again?")
-  answer = gets.chomp
+  answer = gets.chomp.downcase
   break unless answer.downcase.start_with?('y')
 end
 
