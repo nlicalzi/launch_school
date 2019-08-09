@@ -10,6 +10,8 @@ HIERARCHY = { 'rock' => ['scissors', 'lizard'],
               'lizard' => ['paper', 'spock'],
               'spock' => ['rock', 'scissors'] }
 
+WINNING_SCORE = 5
+
 def prompt(message)
   puts("=> #{message}")
 end
@@ -69,7 +71,7 @@ loop do
   prompt("...Player score is #{score['player']}")
   prompt("...Computer score is #{score['computer']}")
 
-  if score.values.any? { |x| x == 5 }
+  if score.values.any? { |x| x == WINNING_SCORE }
     prompt("We have a grand winner!")
     prompt("Congratulations to our winner: *#{round_winner}*!!")
 

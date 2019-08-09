@@ -24,8 +24,8 @@ Why use PEDAC?
 
 ***Lesson 2 Vocab (for flash cards)***
 Operator Precedence
-&&
-||
+&& (has higher precedence than || [because of short circuiting])
+|| (has lower precedence than && [because of short circuiting])
 Short Circuiting-- && and || will stop evaluating once they can guarantee return value
 Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
 x ||= y (assignment operator) -> if x is nil or false, set x to y
@@ -38,6 +38,7 @@ Code smell
 PRY - REPL for debugging
 yaml, psych
 do/while vs. while loops
+Does a while loop with do/end count as a block?
 truthiness
 types of variables in ruby: https://launchschool.com/books/ruby/read/variables#typesofvariables
 method definition
@@ -86,3 +87,4 @@ strict evaluation
 what is an evaluation strategy?
 what evaluation strategy does ruby use? how does it work?
 literal reference / anonymous (unnamed) reference
+double bang (!!) -- first returns the opposite boolean value, second inverts (used to convert object to boolean)
