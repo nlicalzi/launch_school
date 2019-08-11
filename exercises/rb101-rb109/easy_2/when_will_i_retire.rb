@@ -3,7 +3,7 @@
 # Q: Build a program that displays when the user will retire and how many years
 #    she has to work till retirement.
 
-CURRENT_YEAR = 2019
+CURRENT_YEAR = Time.now.year
 
 def prompt(message)
   puts "=> #{message}"
@@ -31,7 +31,7 @@ loop do
   target_year = CURRENT_YEAR + years_remaining
 
   prompt("It's currently #{CURRENT_YEAR}. You will retire in #{target_year}, " \
-          "#{years_remaining} years from now.")
+          "#{years_remaining} year(s) from now.")
 
   repeat = ''
 
@@ -55,6 +55,7 @@ prompt('Thanks for using the retirement age calculator!')
 # E:
 #   both current_age and target age should be positive
 #   target_age should be > current_age
+#   Does grammar matter for "x year(s) remaining" where x = 1?
 
 # D:
 #   in:
