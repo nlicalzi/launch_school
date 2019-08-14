@@ -60,11 +60,11 @@ loop do
 
   if operation == 's'
     output = 0
-    (1..input.to_i).each { |x| output += x }
+    (1..input.to_i).each { |x| output += x } # can do range.to_a.sum
     puts output
   elsif operation == 'p'
     output = 1
-    (1..input.to_i).each { |x| output *= x }
+    (1..input.to_i).each { |x| output *= x } # is there something like above?
     puts output
   end
 
