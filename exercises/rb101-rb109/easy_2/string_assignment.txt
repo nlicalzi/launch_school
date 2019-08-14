@@ -1,0 +1,17 @@
+Source: https://launchschool.com/exercises/a12ef94e
+
+Given the code:
+  name = 'Bob'
+  save_name = name
+  name.upcase!
+  puts name, save_name
+
+We should expect the last line to print out:
+  'BOB'
+  'BOB'
+
+This is because:
+  1. `save_name` is pointing to `name`
+  2. The #upcase! method is destructive to `name`
+  3. Since `save_name` is still pointing to `name` and `name` changed in-place
+     the code will print `BOB` \n `BOB`.
