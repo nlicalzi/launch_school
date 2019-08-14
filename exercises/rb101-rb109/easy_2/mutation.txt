@@ -1,0 +1,31 @@
+Source: https://launchschool.com/exercises/383b2769
+
+Given the following code:
+  array1 = %w(Moe Larry Curly Shemp Harpo Chico Groucho Zeppo)
+  array2 = []
+  array1.each { |value| array2 << value }
+  array1.each { |value| value.upcase! if value.start_with?('C', 'S') }
+  puts array2
+
+We should expect it to print:
+  'Moe
+  Larry
+  CURLY
+  SHEMP
+  Harpo
+  CHICO
+  Groucho
+  Zeppo'
+
+This is because:
+  1. The shovel operator adds each value from array1 to the end of array2. Each
+  array is now pointing to the same string objects in memory (in the same order).
+    1a. array1 looks like: Moe Larry Curly Shemp Harpo Chico Groucho Zeppo
+    1b. array2 looks like: Moe Larry Curly Shemp Harpo Chico Groucho Zeppo
+
+  2. Each value in array1 is up-cased if the value starts with 'C' or 'S'. Since
+  our arrays are pointing to the same string objects in memory, as the loop through
+  array1 #upcases! them in place, and the same objects are referenced by array2,
+  we can expect our arrays to continue being the same.
+    2a. array1 looks like: Moe Larry CURLY SHEMP Harpo CHICO Groucho Zeppo
+    2b. array2 looks like: Moe Larry CURLY SHEMP Harpo CHICO Groucho Zeppo
