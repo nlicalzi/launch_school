@@ -1,10 +1,6 @@
 # Source: https://launchschool.com/exercises/f85563ae
 
-def prompt(msg)
-  puts "==> #{msg}"
-end
-
-prompt('Please input a word or multiple words below: ')
+puts 'Please input a word or multiple words below: '
 
 input = gets.chomp
 
