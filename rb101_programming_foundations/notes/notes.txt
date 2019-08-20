@@ -88,3 +88,5 @@ what is an evaluation strategy?
 what evaluation strategy does ruby use? how does it work?
 literal reference / anonymous (unnamed) reference
 double bang (!!) -- first returns the opposite boolean value, second inverts (used to convert object to boolean)
+String#count
+String#delete
