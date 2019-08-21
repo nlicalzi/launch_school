@@ -22,12 +22,36 @@ Why use PEDAC?
         - Often leads to missed requirements, unforeseen edge cases, hard to
           understand code, and code that's difficult to maintain.
 
-***Lesson 2 Vocab (for flash cards)***
+###Lesson 2 Vocab (for flash cards)
 Operator Precedence
-&& (has higher precedence than || [because of short circuiting])
-|| (has lower precedence than && [because of short circuiting])
-Short Circuiting-- && and || will stop evaluating once they can guarantee return value
+  - What is Operator Precedence?
+    - The set of rules Ruby follows to determine evaluation order of operations in an expression.
+  - Reference: https://www.techotopia.com/index.php/Ruby_Operator_Precedence
+
+Short Circuit Evaluation
+  - What is short-circuit evaluation?
+    -The semantics of boolean operators in a given programming language in which the second argument
+    is evaluated only if the first argument does not suffice to determine the value of the expression.
+    In effect, short-circuit operators can be called 'control structures', since they guide evaluation.
+
+  - && and || will stop evaluating once they can guarantee return value
+    - && short circuits with False as the left-hand value
+      - ex. cook_dinner() or raise(RuntimeError, "Not in the mood.")
+    - || short circuits with True as the "left-hand" value (like a reversed 'unless')
+      - ex. raise(RuntimeError, "Not in the mood.") unless cook_dinner()
+
+  - &&, aka Logical 'AND' has higher precedence than ||, aka Logical 'OR' (b/c of short circuiting)
+  - ||, aka Logical 'OR' has lower precedence than &&, aka Logical 'AND' (b/c of short circuiting)
+
+
 Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
+  - What is implicit iteration? Provide an example.
+    - A way of iterating through the elements of a container object without using an explicit iterator object.
+  - What is explicit iteration? Provide an example.
+    - Generators in Python; using a "loop counter"
+  - Do we prefer implicit or explicit iteration as Rubyists? Why?
+  - https://en.wikipedia.org/wiki/Iterator#Implicit_iterators
+
 x ||= y (assignment operator) -> if x is nil or false, set x to y
 declarative vs. imperative syntax
 Stack Trace
@@ -81,7 +105,7 @@ setters
 object passing (passing the object to the method)
 caller (sometimes called the receiver/the object on which the method is called)
 evaluation strategy
-  How a language determines when expressions are valuated and what a method can do with resulting objects.
+  How a language determines when expressions are evaluated and what a method can do with resulting objects.
 strict evaluation
   Every expression is evaluated and converted to an object before it is passed along to a method. (RUBY USES THIS STRICTLY)
 what is an evaluation strategy?
