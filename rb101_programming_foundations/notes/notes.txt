@@ -37,6 +37,7 @@ Short Circuit Evaluation
   - && and || will stop evaluating once they can guarantee return value
     - && short circuits with False as the left-hand value
       - ex. cook_dinner() or raise(RuntimeError, "Not in the mood.")
+      
     - || short circuits with True as the "left-hand" value (like a reversed 'unless')
       - ex. raise(RuntimeError, "Not in the mood.") unless cook_dinner()
 
@@ -45,15 +46,96 @@ Short Circuit Evaluation
 
 
 Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
+  - How does iteration work in Ruby?
+    Iterations in Ruby are done by passing callback closures (read: blocks) to container methods.
+    
+  - What iteration methods are commonly used in Ruby?
+    Loops: 
+      loop (unconditional, uses break to exit)
+      while
+      until
+      for
+    Iterators:
+      #each
+      #collect
+      #times
+      #upto // downto
+      #step
+      #each_index
+      #each_with_index
+    Complex:
+      #map
+      #select
+      #reject
+      #partition
+      #reduce
+      #all?
+      #any?
+  
   - What is implicit iteration? Provide an example.
     - A way of iterating through the elements of a container object without using an explicit iterator object.
+    Sometimes calld 'internal iteration' because the code fully executes within the context of the iterable
+    object, and programmer only provides the operation to execute (using an anonymous function [lambda in Python]).
+    
+    iterable.each do |value|
+      puts value
+    end
+    
+    // OR //
+    
+    iterable.each { |value| puts value }
+    
   - What is explicit iteration? Provide an example.
-    - Generators in Python; using a "loop counter"
+    - Explicit, or 'external', iteration uses 'element access' and 'element traversal' to iterate over an object.
+      - Element access: referencing one particular element in the object collection.
+      - Element traversal: modifying itself so it points to the next element.
+    - Ex. Generators in Python; using a "loop counter"
+    
   - Do we prefer implicit or explicit iteration as Rubyists? Why?
+    - Implicit iteration is preferred in Ruby, relying heavily on the Enumerable module on Arrays and Hashes.
+      It generally results in improved code clarity and consistency.
+  
   - https://en.wikipedia.org/wiki/Iterator#Implicit_iterators
 
-x ||= y (assignment operator) -> if x is nil or false, set x to y
-declarative vs. imperative syntax
+Assignment
+  - Self assignment
+      = : equal operator
+      += : add AND; x += y equiv. x = x + y
+      -= : subtract AND; x -= y equiv. x = x - y
+      *= : multiply AND; x *= y equiv. x = x * y
+      /= : divide AND; x /= y equiv. x = x / y
+      %= : modulus AND; x %= y equiv. x = x % y
+      **= : exponent AND; x **= y equiv. x = x**y
+      
+  - Multiple assignments
+      var1, var2, var3 = 10, 20, 30
+      
+      myArray = %w(John Michel Fran Doug)
+      var1, var2, var3, var4 = *myArray
+        var1 => John, var2 => Michel, var3 => Fran, var4 => Doug
+      
+      names, school = myArray, 'St. Whatever'.
+        names => ['John', 'Michel', 'Fran', 'Doug]
+        school => 'St. Whatever'
+      
+  - Conditional assignment 
+      x ||= "default"
+        value of x will be replaced with "default", but only if x is nil or false
+      x &&= x.next_node
+        x will be set to x.next_node, but only if x is NOT nil or false
+
+  - https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators#Assignment
+
+What is the difference between Declarative and Imperative syntax?
+  - "With imperative code, you're telling your program *how* to do something, and with declarative
+  code, you're telling your program *what* you want to do." - Tyler Mcginnis, React Fundamentals
+  
+  - Imperative code focuses on the steps of implementation, or the how.
+  - Declarative code uses a Ruby block to make a declaration/expression of the problem itself, or the what.
+  - For more, read up on Higher Order Functions in Ruby. 
+  
+  - Reading: http://queirozf.com/entries/functional-programming-with-ruby-procs-lambdas-closures-and-functions
+  
 Stack Trace
 Multiple Assignment
 Trapping the error
