@@ -37,7 +37,7 @@ Short Circuit Evaluation
   - && and || will stop evaluating once they can guarantee return value
     - && short circuits with False as the left-hand value
       - ex. cook_dinner() or raise(RuntimeError, "Not in the mood.")
-      
+
     - || short circuits with True as the "left-hand" value (like a reversed 'unless')
       - ex. raise(RuntimeError, "Not in the mood.") unless cook_dinner()
 
@@ -48,9 +48,9 @@ Short Circuit Evaluation
 Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
   - How does iteration work in Ruby?
     Iterations in Ruby are done by passing callback closures (read: blocks) to container methods.
-    
+
   - What iteration methods are commonly used in Ruby?
-    Loops: 
+    Loops:
       loop (unconditional, uses break to exit)
       while
       until
@@ -71,30 +71,30 @@ Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
       #reduce
       #all?
       #any?
-  
+
   - What is implicit iteration? Provide an example.
     - A way of iterating through the elements of a container object without using an explicit iterator object.
     Sometimes calld 'internal iteration' because the code fully executes within the context of the iterable
     object, and programmer only provides the operation to execute (using an anonymous function [lambda in Python]).
-    
+
     iterable.each do |value|
       puts value
     end
-    
+
     // OR //
-    
+
     iterable.each { |value| puts value }
-    
+
   - What is explicit iteration? Provide an example.
     - Explicit, or 'external', iteration uses 'element access' and 'element traversal' to iterate over an object.
       - Element access: referencing one particular element in the object collection.
       - Element traversal: modifying itself so it points to the next element.
     - Ex. Generators in Python; using a "loop counter"
-    
+
   - Do we prefer implicit or explicit iteration as Rubyists? Why?
     - Implicit iteration is preferred in Ruby, relying heavily on the Enumerable module on Arrays and Hashes.
       It generally results in improved code clarity and consistency.
-  
+
   - https://en.wikipedia.org/wiki/Iterator#Implicit_iterators
 
 Assignment
@@ -230,30 +230,61 @@ Methods
       - b: The name of the method being invoked (the only required piece of method invocation!)
       - c: Argument values to be passed to the method (optional)
       - d: Optional block of code with {} or do/end
-      
+
     - Can we pass a block to a method in Ruby?
       - Yes! A block that is passed to a method is converted to a unnamed Proc object (anonymous function, lambda, etc.)
         - Ex. numbers = [1, 2, 5, 6, 9, 21]
               squares = numbers.map { |x| x * x }
         - do |x| \n ... \n end is equivalent to { |x| ... }
 
+Closures
+  - What is a `closure` in programming?
+    - A closure is a function that can be stored as a variable, or referred to by a pointer, (a.k.a. a `First Class Function`)
+    - Closures are `first class functions with an environment`.
+      - The environment is a mapping to the variables that existed when the closure was created, and the closure will retain its access to those variables.
+
+  - Does Ruby have first class functions?
+    - No, Ruby does not have first class functions. Instead, it has closures in the form of blocks, procs, and lambdas.
+      - Blocks are used for passing blocks of code to methods.
+      - Procs and lambdas allow storing blocks of code in variables.
+        - Ex. proc = Proc.new { |n| puts "#{n}!" }    \n    run_proc_with_random_number(proc)
+
+  - What is `lexical scoping`?
+    - In programming, scope refers to the `bindings` available at a specific part of the code.
+      - A `binding` binds a name to memory reference, like a variable's name to its value.
+    - Ruby uses a static scope, also sometimes called `lexical scope`: it's defined by where in the code the named variable or function is called.
+
+  - What kinds of closures exist in Ruby?
+    - Blocks, Procs, Lambdas(, sometimes methods). Procs and Lambdas (and methods) are objects!
+    - Block: a chunk of code that can be passed to an object/method and is executed in the context of that object.
+      - Ex: array.each do |x| ... end // array.each { }
+    - Proc (procedure): a block is actually a proc, except it has been declared inline rather than saved to a variable. They're reusable!
+    - Lambda: like a proc, but they enforce the number of arguments passed differently, and use "normal" returns.
+
 Scoping
   - What is variable scope?
     - Variable scope defines where in a program a given variable is accessible.
-    
-  - How many types of scope does Ruby have? 
+
+  - How many types of scope does Ruby have?
     - Ruby has four main types of scope: local, global, instance, and class. These correspond to the types of variables in Ruby (minus Constants).
       - Local scope: Local to the code construct in which they are declared. True for methods, loops, etc.
-        - Local variables begin with an undercore or a lowercase letter.
+        - Local variables begin with an underscore or a lowercase letter.
       - Global scope: Accessible anywhere in the program, regardless of where they're declared. Use (vs. a constant) is discouraged because they are mutable.
         - Global variables are prefixed with a dollar ($) sign.
       - Instance scope: Local to a specific instance of a class object. Changes don't affect other instances of the class.
-        - Instance variables are previxed by a single @ character.
-      - Class scope: Global amongst all instances of a class. Only one variable value exists for all objects instaniated from said class.
+        - Instance variables are prefixed by a single @ character.
+      - Class scope: Global amongst all instances of a class. Only one variable value exists for all objects instantiated from said class.
         - Class variables are prefixed with 2 @ (@@) characters
-      
+
   - What does `encapsulation` refer to in Ruby?
-    - Each method/module/class definition is known as a `scope gate`-- 
+    - The partitioning of variable scope across a Ruby program.
+
+  - How does `encapsulation` work?
+    - Each method/module/class definition is known as a `scope gate` (def, class, and module keywords)
+
+  - Can we avoid scope issues in method definitions?
+    - Yes, by using closure definitions like define_method, proc, or lambda, you can access externally scoped local variables.
+
   - How does scoping interact with namespacing in Ruby?
 
 variable scoping within a block: inner scopes/nested scopes
@@ -262,45 +293,65 @@ variable scoping within a block: inner scopes/nested scopes
     peer (same-level) scopes do not conflict
     nested blocks
 variable shadowing
-    - reuse of a variable name in an inner scope blocks access to outer scoped
-      variable
+    - reuse of a variable name in an inner scope blocks access to outer scoped variable
     - TO BE AVOIDED! easily done with long/descriptive variable names
       ex. n = 10
         [1, 2, 3].each do { |n| puts n } => "1" "2" "3"
-lexical scope (constants vs. local variables)
+
 Object Passing Strategies (Strict Evaluation)
   - pass by reference (references original object)
   - pass by value (copies of original object)
+
 pass by reference of the value // call by sharing:
   when an operation within the method mutates the caller, it will affect the
   original object
+
 reassignment
   - Assignment always binds the target variable on the left hand side of the =
     to the object referenced by the right hand side. The object originally
     referenced by the target variable is never modified.
   - Assignment operators are also non-mutating: *=, +=, -=, %=
+
 mutability
+
 non-mutating methods
   A method is said to be non-mutating with respect to an argument or its calling
   object if it does not modify it.
+
 mutating methods
+
 indexed assignment (is it mutating? no.)
+
 concatenation (is it mutating? yes)
+
 re/assignment (is it mutating?)
+
 setters (are they mutating? yes)
+
 setters
+
 object passing (passing the object to the method)
+
 caller (sometimes called the receiver/the object on which the method is called)
+
 evaluation strategy
   How a language determines when expressions are evaluated and what a method can do with resulting objects.
+
 strict evaluation
   Every expression is evaluated and converted to an object before it is passed along to a method. (RUBY USES THIS STRICTLY)
+
 what is an evaluation strategy?
+
 what evaluation strategy does ruby use? how does it work?
+
 literal reference / anonymous (unnamed) reference
+
 double bang (!!) -- first returns the opposite boolean value, second inverts (used to convert object to boolean)
-String#count
-String#delete
+
+String methods!
+  - String#count | String#delete
+  - https://www.rubyguides.com/2018/01/ruby-string-methods/
+  
 abstraction
 interface
 string interpolation
