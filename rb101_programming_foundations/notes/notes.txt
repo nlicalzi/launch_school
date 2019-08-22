@@ -37,7 +37,7 @@ Short Circuit Evaluation
   - && and || will stop evaluating once they can guarantee return value
     - && short circuits with False as the left-hand value
       - ex. cook_dinner() or raise(RuntimeError, "Not in the mood.")
-      
+
     - || short circuits with True as the "left-hand" value (like a reversed 'unless')
       - ex. raise(RuntimeError, "Not in the mood.") unless cook_dinner()
 
@@ -48,9 +48,9 @@ Short Circuit Evaluation
 Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
   - How does iteration work in Ruby?
     Iterations in Ruby are done by passing callback closures (read: blocks) to container methods.
-    
+
   - What iteration methods are commonly used in Ruby?
-    Loops: 
+    Loops:
       loop (unconditional, uses break to exit)
       while
       until
@@ -71,30 +71,30 @@ Implicit iteration (more idiomatic for Ruby than explicit [each vs. for loop])
       #reduce
       #all?
       #any?
-  
+
   - What is implicit iteration? Provide an example.
     - A way of iterating through the elements of a container object without using an explicit iterator object.
     Sometimes calld 'internal iteration' because the code fully executes within the context of the iterable
     object, and programmer only provides the operation to execute (using an anonymous function [lambda in Python]).
-    
+
     iterable.each do |value|
       puts value
     end
-    
+
     // OR //
-    
+
     iterable.each { |value| puts value }
-    
+
   - What is explicit iteration? Provide an example.
     - Explicit, or 'external', iteration uses 'element access' and 'element traversal' to iterate over an object.
       - Element access: referencing one particular element in the object collection.
       - Element traversal: modifying itself so it points to the next element.
     - Ex. Generators in Python; using a "loop counter"
-    
+
   - Do we prefer implicit or explicit iteration as Rubyists? Why?
     - Implicit iteration is preferred in Ruby, relying heavily on the Enumerable module on Arrays and Hashes.
       It generally results in improved code clarity and consistency.
-  
+
   - https://en.wikipedia.org/wiki/Iterator#Implicit_iterators
 
 Assignment
@@ -106,19 +106,19 @@ Assignment
       /= : divide AND; x /= y equiv. x = x / y
       %= : modulus AND; x %= y equiv. x = x % y
       **= : exponent AND; x **= y equiv. x = x**y
-      
+
   - Multiple assignments
       var1, var2, var3 = 10, 20, 30
-      
+
       myArray = %w(John Michel Fran Doug)
       var1, var2, var3, var4 = *myArray
         var1 => John, var2 => Michel, var3 => Fran, var4 => Doug
-      
+
       names, school = myArray, 'St. Whatever'.
         names => ['John', 'Michel', 'Fran', 'Doug]
         school => 'St. Whatever'
-      
-  - Conditional assignment 
+
+  - Conditional assignment
       x ||= "default"
         value of x will be replaced with "default", but only if x is nil or false
       x &&= x.next_node
@@ -129,26 +129,107 @@ Assignment
 What is the difference between Declarative and Imperative syntax?
   - "With imperative code, you're telling your program *how* to do something, and with declarative
   code, you're telling your program *what* you want to do." - Tyler Mcginnis, React Fundamentals
-  
+
   - Imperative code focuses on the steps of implementation, or the how.
   - Declarative code uses a Ruby block to make a declaration/expression of the problem itself, or the what.
-  - For more, read up on Higher Order Functions in Ruby. 
-  
+  - For more, read up on Higher Order Functions in Ruby.
+
   - Reading: http://queirozf.com/entries/functional-programming-with-ruby-procs-lambdas-closures-and-functions
-  
+
+Exceptions
+  - What is an exception?
+    - An exception is an object, from the Exception class, that is thrown to indicate something has gone wrong.
+
+  - How can we deal with planned exceptions in our code?
+    - Use an exception handler: a block of code that is only executed if an exception occurs during the execution of other code.
+
+  - What is a rescue clause?
+    - A rescue clause can be used to direct control flow to a piece of code if an exception is raised.
+
+  - What is the most common kind of Exception in Ruby?
+    - StandardError.
+
+  - What are some examples of subclasses of StandardError?
+    - ArgumentError: Raised when the arguments are wrong. Ex: wrong number of arguments, negative array size.
+    - IndexError: Raised when the given index is invalid. Ex: index 4 out of array bounds: -2...2
+    - IOError: Raised when an IO operation fails. Ex: No such file or directory - does/not/exist
+    - NameError: Raised when a given name is invalid or undefined. Ex: undefined local variable or method `foo'
+    - RangeError: Raised when a given numerical value is out of range. Ex: bignum too big to convert into `long'
+    - TypeError: Raised when encountering an object that is not of the expected type. Ex: TypeError: no implicit conversion of String into Integer
+    - ZeroDivisionError: Raised when attempting to divide an integer by 0.
+
+  - How can we prevent raised exceptions from crashing our application?
+    - We can use the 'rescue' keyword. Be as specific as possible to avoid unintentionally swallowing exceptions.
+
 Stack Trace
-Multiple Assignment
-Trapping the error
+  - What is a stack trace?
+    - A stack trace is a list of the method calls that the application was evaluating when an Exception was thrown.
+    - The debugging process involved going through the stack trace to see why there was an uncaught Exception.
+
 Code smell
-`rescue`
-PRY - REPL for debugging
-yaml, psych
-do/while vs. while loops
+  - A characteristic in a program's code that may indicate a deeper problem.
+    - Ex. Overly long methods, duplicated code, too many parameters passed to a method...
+
+Pry
+  What is Pry?
+    - Pry is a Ruby REPL for debugging that you can inject into your program.
+  How do we use Pry?
+    - With Pry, your program freezes at execution when it hits 'binding.pry', and you can explore and manipulate data.
+
+YAML
+  - What is YAML?
+    - YAML is a human-readable data serialization language, commonly used for config files, and a superset of JSON.
+  - Is YAML a markup language?
+    - Nope! YAML Ain't Markup Language! It's data oriented!
+  - How do we express lists and maps in YAML?
+    - Lists are denoted with [], and maps with {}; just like JSON!
+  - What is Psych?
+    - Psych is a Ruby gem designed to parse and emit YAML. It's a Ruby wrapper for the C library LibYAML.
+      - With Psych we can #load, #parse, #read, and #dump YAML-- serialize and unserialize it.
+
+What is the difference between a while loop and a do while loop?
+  - While loops in Ruby execute while a condition is true.
+  - Do while loops are similar to while, but evaluate at least once as the while condition is written at the end of the code.
+
 Does a while loop with do/end count as a block?
-truthiness
-types of variables in ruby: https://launchschool.com/books/ruby/read/variables#typesofvariables
-method definition
-method invocation
+  - Following the while keyword with do/end does not constitute a block.
+  - Code constituted a block if the {} or do/end immediately follows a method invocation.
+
+Truthiness
+  - What does 'truthiness' mean in the Ruby context?
+    - Truthiness refers to the use of non-boolean objects (integer, string, array, etc.) in a boolean context.
+      - A non-boolean value that counts as true is 'truthy', while a non-boolean that counts as false is 'falsey'.
+    - Note: only 'true' and 'false' are booleans. nil, 0, [1,2,3], 'hello' are not booleans.
+  - What counts as 'falsey' and 'truthy' in Ruby?
+    - Only 'false' and 'nil' count as 'falsey' in ruby. Not 0, '', [], 'zero', etc. Everything else is truthy.
+  - When do we need to consider truthiness in Ruby?
+    - When using boolean operators: ! (not), && (and), and || (or).
+
+What types of variables are available to us in Ruby?
+  - Constants: declared in CAPS, have global scope, never changed.
+      Ex: MY_CONSTANT = 'I am available throughout your app.'
+  - Global variables: declared with a $, have global scope, stay away.
+      Ex: $var = 'I am also available throughout your app.'
+  - Class variable: declared with @@, accessible by instances of class, initialized at class level.
+      Ex: @@instances = 0
+  - Instance variable: declared with @, available in current class instance, crosses some scopes.
+      Ex: @var = 'I am available throughout the current instance of this class.'
+  - Local variable: declared without @ or $ and not in uppercase. Obeys all scoping boundaries.
+      Ex: var = 'I must be passed around to cross scope boundaries.'
+
+Methods
+  - How do we define methods in Ruby?
+    - Method definitions consist of 'def' followed by the method name and optional parameters, the code body, and 'end'.
+      - Convention dictates that method names are snake_cased.
+      - Methods return the value of the last statement executed.
+
+  - How do we invoke methods in Ruby?
+    - Method invocation in Ruby looks like this: a.b(c) {d}
+      - a: An expression whose value is the object on which the method is invoked
+      - b: The name of the method being invoked (the only required piece of method invocation!)
+      - c: Argument values to be passed to the method (optional)
+      - d: Optional block of code with {} or do/end
+
 method invocation with a block
     block acts as an argument to the method
 variable scoping within a block: inner scopes/nested scopes
