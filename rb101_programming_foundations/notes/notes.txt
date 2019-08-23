@@ -351,16 +351,38 @@ double bang (!!) -- first returns the opposite boolean value, second inverts (us
 String methods!
   - String#count | String#delete
   - https://www.rubyguides.com/2018/01/ruby-string-methods/
-  
-abstraction
-interface
-string interpolation
-ruby symbol
-ruby expression
-variable scope
-method
-parameter
-argument
+
+What is abstraction?
+  - Abstraction is the handling of complexity by hiding unnecessary details from the user, allowing the layering of complex logic.
+
+What is an interface (in computing)?
+  - An interface is a shared boundary across which two or more separate components of a computer system exchange information.
+
+What is string interpolation?
+  - String interpolation is the process of evaluating a string literal containing one or more placeholders, and yielding a result where they are replaced with their corresponding values.
+
+What is a symbol in Ruby?
+  - A symbol is the most basic object in Ruby-- it consists of a name and an internal ID, and looks like :this.
+  - Symbols are immutable and more efficient than strings, and are well suited for use in hashes because of this.
+
+What is an expression in Ruby?
+  - Expressions are created from `operands` and `operators`. The operators indicate what to do with the operands.
+  - Order of evaluation is determined by the precedence and associativity of the operators.
+    - Precedence: The precedence of an operator specifies how 'tightly' an operator is bound to its operands, and affects the order of evaluation of an expression.
+    - Associativity: The associativity of an operator specifies the order of evaluation when operators with the same precedence appear sequentially in an expression.
+      - Associativity is either 'L' (left to right), 'R' (right to left), or 'N' (non-associative, requires parentheses to specify order.)
+    - Arity: The arity of an operation is the number of arguments (or operands) that the function takes.
+      - Unary/monadic (1), binary/dyadic (2), ternary ( x ? y : z ), etc.
+  - Table: https://www.oreilly.com/library/view/the-ruby-programming/9780596516178/ch04s06.html#tab-operators
+
+What is a method in Ruby?
+  - A method in Ruby is a set of expressions that returns a value. The organization of code into subroutines to ease invocation-- sometimes referred to as a function.
+
+What is the difference between parameters and arguments in Ruby?
+  - A parameter represents a value that a method definition expects to be called when it is passed.
+  - An argument is the value passed to a method parameter upon calling the method.
+  - Parameters appear in method definitions, while arguments appear in method calls.
+
 mutating the caller
 conditionals
 ternary operator
