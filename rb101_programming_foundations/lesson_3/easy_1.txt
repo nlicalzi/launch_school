@@ -1,0 +1,53 @@
+Source: https://launchschool.com/lessons/263069da/assignments/e2593fe1
+
+Q1:
+  The code will print out:
+  1
+  2
+  2
+  3
+
+  Because #uniq was called without a bang, so it was non-destructive and didn't mutate numbers.
+  The code prints out each number on a new line because 'puts' calls #to_s, while 'p' would print [1, 2, 2, 3] because it calls #inspect.
+
+Q2:
+  1. != is the inequality operator ("not equals")
+  2. An ! before something returns its negated boolean value.
+  3. An ! at the end of a method, like #uniq! might suggest that the method mutates the caller (is destructive).
+  4. A ? before something is the ternary operator for if... else: (x ? y : z)
+  5. A ? at the end of a method, like #any? might suggest that the method returns a boolean value.
+  6. A double bang (!!) before something returns its boolean value (first ! returns negated boolean value, second ! negates again)
+
+Q3:
+  advice = "Few things in life are as important as house training your pet dinosaur."
+  advice.gsub!('important', 'urgent')
+
+Q4:
+  Both #delete_at and #delete operate in place, without the trailing ! to highlight this functionality.
+  numbers.delete_at(1) will remove the item at index 1, returning 2 and resulting in numbers = [1, 3, 4, 5]
+  numbers.delete(1) will remove any instances of 1 from the array, returning 1 and resulting in numbers = [2, 3, 4, 5]
+
+Q5:
+  There are two basic options for seeing if 42 is included in the range of 10..100:
+    (10..100).include?(42)
+    (10..100).cover?(42)
+
+  Range#include? comes from the Enumerable module, and checks each item in the range to see if it is equivalent to the argument.
+  Range#cover? comes from the Comparable module, which checks if the item fits between the end points in a sorted list. (faster!)
+
+Q6:
+  famous_words = "seven years ago..."
+  first_bit = "Four score and "
+
+  puts first_bit + famous_words
+  puts famous_words.prepend(first_bit)
+  puts first_bit << famous_words
+
+Q7:
+  42 -> start at 2 and add 8 5 times.
+
+Q8:
+  flintstones.flatten! will convert the nested array to an un-nested array.
+
+Q9:
+  flintstones.assoc("Barney")

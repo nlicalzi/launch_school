@@ -1,0 +1,3 @@
+#gsub! for replacing substrings in strings
+Hash#assoc for collecting key/value pair where key matches argument
+How can we test if a key is included in a hash? (Hash#has_key? / Hash#include? / Hash#key?)
