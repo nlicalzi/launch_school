@@ -112,7 +112,6 @@ What is the difference between Declarative and Imperative syntax?
 
   - Reading: http://queirozf.com/entries/functional-programming-with-ruby-procs-lambdas-closures-and-functions
 
-*** STOPPED NOTES HERE ***
 Exceptions
   - What is an exception?
     - An exception is an object, from the Exception class, that is thrown to indicate something has gone wrong.
@@ -122,9 +121,6 @@ Exceptions
 
   - What is a rescue clause?
     - A rescue clause can be used to direct control flow to a piece of code if an exception is raised.
-
-  - What is the most common kind of Exception in Ruby?
-    - StandardError.
 
   - What are some examples of subclasses of StandardError?
     - ArgumentError: Raised when the arguments are wrong. Ex: wrong number of arguments, negative array size.
@@ -181,6 +177,8 @@ Truthiness
     - Only 'false' and 'nil' count as 'falsey' in ruby. Not 0, '', [], 'zero', etc. Everything else is truthy.
   - When do we need to consider truthiness in Ruby?
     - When using boolean operators: ! (not), && (and), and || (or).
+
+** NOTES IN ANKI UP TO HERE **
 
 What types of variables are available to us in Ruby?
   - Ruby has five types of variables: Constants, Global vars, Class vars, Instance vars, and Local vars. The last 4 are also our types of scoping in Ruby.
