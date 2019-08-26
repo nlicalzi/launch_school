@@ -112,6 +112,7 @@ What is the difference between Declarative and Imperative syntax?
 
   - Reading: http://queirozf.com/entries/functional-programming-with-ruby-procs-lambdas-closures-and-functions
 
+*** STOPPED NOTES HERE ***
 Exceptions
   - What is an exception?
     - An exception is an object, from the Exception class, that is thrown to indicate something has gone wrong.
@@ -266,8 +267,8 @@ Scoping
   - How does block scoping work in Ruby?
     - Local scoped variables inside a block are not available outside of them.
     - Local scoped variables created outside a block are available within them.
-    - Block parameters are always scoped local to the block, but we can override (re-point) variables outside the block. 
-    - Peer level scopes do not conflict. 
+    - Block parameters are always scoped local to the block, but we can override (re-point) variables outside the block.
+    - Peer level scopes do not conflict.
 
 What is variable shadowing in computer programming?
   - Variable shadowing refers to the reuse of a outer-scoped variable name in an inner scope, blocking access to the original outer scoped variable.
@@ -277,10 +278,10 @@ What is variable shadowing in computer programming?
 
 What object passing strategies (evaluation strategies) are commonly used in computer programming?
   - Strict evaluation: the arguments to a function are always evaluated completely before the function is applied.
-    - In the pass by reference strategy the function receives an implicit reference to a variable used as an argument, rather than a copy of its value. Therefore the function can modify the variable used as argument (mutate the caller). 
+    - In the pass by reference strategy the function receives an implicit reference to a variable used as an argument, rather than a copy of its value. Therefore the function can modify the variable used as argument (mutate the caller).
     - In the pass by value strategy the argument expression is evaluated and the resulting value is bound to the corresponding variable in the function (copying the value into a new memory region).
     - Call by sharing (or pass by reference value, or pass by copy of reference): when an operation within the method mutates the caller, it will affect the original object.
-    
+
 reassignment
   - Assignment always binds the target variable on the left hand side of the =
     to the object referenced by the right hand side. The object originally
@@ -294,7 +295,7 @@ Mutation
   - setters (are they mutating? yes)
   - setters
 
-Why might we use a double bang (!!) operator in Ruby? 
+Why might we use a double bang (!!) operator in Ruby?
   - Double bangs are used to convert objects to their boolean value.
   - The first bang returns the opposite boolean value, and the second inverts back to match the truthiness of the caller.
 
@@ -334,18 +335,18 @@ What is the difference between parameters and arguments in Ruby?
   - Parameters appear in method definitions, while arguments appear in method calls.
 
 What does it mean to mutate the caller?
-  - A calling object is mutated if the object is changed permanently as it is passed into a method as an argument. 
+  - A calling object is mutated if the object is changed permanently as it is passed into a method as an argument.
   - In other words, if changes to an argument persist affect the object beyond the scope of the method, the method is mutating.
-  - This works because Ruby method arguments are 'pass by reference value'. 
+  - This works because Ruby method arguments are 'pass by reference value'.
   - “Hamlet was not written by Shakespeare; it was merely written by a man named Shakespeare.” - Philip K Dick, Valis
     -  A name and a person are different things. A variable and an object are different things.
-    
+
 What is our mental model for whether Ruby is Pass by Reference or Pass by Value?
   - Ruby appears to act like pass by value for immutable objects, and pass by reference for mutable objects.
   - Ruby is actually 'Pass by Reference Value'
   - “Hamlet was not written by Shakespeare; it was merely written by a man named Shakespeare.” - Philip K Dick, Valis
     -  A name and a person are different things. A variable and an object are different things.
-  
+
 What conditional branches do we have access to in Ruby?
   - If, Unless, If/Elsif/Else, Short-If (Ternary Operator), and Case/When.
   - Conditional branches in Ruby are considered expressions because they evaluate to/return a value.
@@ -353,20 +354,20 @@ What conditional branches do we have access to in Ruby?
 What is the Ternary Operator in Ruby? Provide an example.
   - The ternary operator in Ruby is used to return a value based on the result of a binary condition.
     - Its arity is 3 because it takes a binary condition, and then a valueIfTrue and a valueIfFalse (3 arguments).
-    
+
   - ternary_result = binaryCondition ? valueReturnedIfTrue : valueReturnedIfFalse;
-  
+
 What are the component steps of the PEDAC process taught by Launch School?
   - P: Understand the problem-- analyze the question and construct a mental model of what is being requested. Understand implicit requirements and ask clarifying questions.
   - E: Examples/Test Cases-- validate our understanding of the problem. Construct cases that should pass and others that should fail-- consider extremes/outliers.
   - D: Data Structure-- what is the data structure of the input? How can we best re-fit it to our desired output structure?
   - A: Algorithm-- write out the steps you will follow to get from your input to your output in PSEUDOCODE so eventual coding is easier.
-  - C: Code-- Convert your pseudocode algorithm into proper syntax and execute. Ensure that all of your examples / test cases run correctly. 
-  
+  - C: Code-- Convert your pseudocode algorithm into proper syntax and execute. Ensure that all of your examples / test cases run correctly.
+
 What is the Two-Layer Problem?
   - Learning to solve problems while simultaneously memorizing the syntax of a particular language.
   - We need instead to simplify so we're not fighting a multi-front battle.
-    
+
 Why use PEDAC?
     - Avoiding "hack and slash" coding
         - Often leads to missed requirements, unforeseen edge cases, hard to
