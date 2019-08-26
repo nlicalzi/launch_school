@@ -1,0 +1,106 @@
+Tech and Talk
+
+# Command Line: Tips and Tricks
+
+Shell:
+  - A program that takes keyboard commands and passes them to your operating system for execution.
+  - Synonymous with the command line.
+  - (almost all) Linux distributions come with the bash shell installed. MacOS does as well.
+  - Other shell options: fish, zsh (use for customization, plugins)
+
+PATH:
+  - A list of directories the shell searches to find commands to execute (env variable that be modified at any time)
+  - To see your shell's PATH, type: echo $PATH
+  - Most Linux commands live in /bin folder
+  - To add a file to PATH: type `PATH=$PATH:path-to-folder` and then `export PATH` to save
+  - To remove a folder path from PATH, open your `.bash_profile` and find it in there
+
+Env. Variables:
+  - Environment variables are settings for your shell that are stored and built every time you start a shell session
+  - Used to pass information into processes run in your shell
+  - You can see all of your env variables by running `printenv` or `env` in your shell
+
+Dotfiles
+  - Dotfiles are files whose name starts with a period (.) that are used to set the customizations for specific programs.
+    - Ex. .bashrc, .bash_profile, .vimrc
+  - Usually hidden from `ls`, but made visible with `ls -a`
+  - You can customize your bash shell with .bash_profile or .bashrc.
+  - Many developers will create a Github repo of their dotfiles.
+    - If their computer ever breaks, they can quickly configure a new computer with all of their settings.
+    - However, git doesn't track dotfiles... so we use symbolic links to link a dotfile to a regular file.
+      - `ln -s source file_link` || ex: `ln -s dotfiles/bash/bashrc .bashrc`
+
+Aliases
+  - Aliases are a way to map long commands, or even a string of them, to a short name.
+  - Allows you to customize the way you work in your shell // allow you to replace hard to remember commands with a short command
+  - Simply open your shell's dotfile (.bash_profile or .bashrc) and use the keyword alias to define your short command
+    - alias gpm='git pull origin master'
+    - alias ..='cd ..'
+
+pbcopy and pbpaste
+  - Copy and paste commands for the command line, come by default with MacOS but can be installed for Linux.
+  - Copy and paste file contents that may be difficult to accomplish with a mouse.
+  - ex. `cat public_rsa.sh | pbcopy`
+    - This would copy the contents (`cat`) of `public_rsa.sh` and add them to your clipboard
+
+Finding files with `find`
+  - `find` is a command that helps you search for and find files in your filesystem.
+    - ex. `find <path> -name "filename"` will recursively search subdirectories in given path for files with name `filename`
+    - ex. `find /todo-app -name "*.rb"`
+    - ex. `find . -name ".txt" -delete` will find and delete every file ending in .txt in the current directory
+
+Finding previous commands with ctrl + r
+  - You can search for previously executed commands on the command line with ctrl + r
+  - Search can be quit with esc
+
+Viewing files with cat & less
+  - `cat` will output the contents of a file
+  - `less` lets you scroll through the file and search its contents
+  - `bat` is like less, but with syntax highlighting, shows line numbers, and works with git to show filechanges
+
+Jumping around with z!
+  - github.com/rupa/z
+  - Allows you to jump around your directories quickly instead of typing cd repeatedly
+  - Once you download z, browse with cd normally while it indexes your directories
+
+Search your code with grep
+   - `grep` is a command that allows you to search your code for a pettern in a given path
+   - ex. `grep <expression> <path>`
+   - Searching for a function called `validate_request`? `grep validate_request main.rb`
+    - recursively search all subdirectories with line numbers? `grep -rn validate_request app/*`
+  - download `ripgrep` to extend grep functionality github.com/BurntSushi/ripgrep
+
+I/O Redirection
+  - Using > and < can redirect the output of a command. Very commonly used technique!!
+    - Helpful when you want to save the output of a process to a file or have a command read from a file.
+  - ex. `ls > file_list.txt` will take the output of ls and save it to a new file called file_list.txt
+  - ex. `sort < file_list.txt` will take the contents of file_list.txt and send it as output to sort
+  - ex. `ls >> file_list.txt` will take the current contents of the directory and append to the end of file_list.txt
+  - Useful for saving result of tests to a log
+
+Pipes
+  - Pipes are represented by the `|` character. One of the most powerful cmd line features
+  - Chain commands together to complete tasks by taking the output of one command as input to a second command.
+  - ex. `cat README.md | grep -n --color "https:*"` will take the output of cat and feed it to grep
+  - ex. `cat file.txt | pbcopy`
+
+List processes and kill them
+  - `ps aux` will let you see the processes running on your computer. Every process has a PID number and can be killed.
+  - `kill -9 PID` will kill the process running at PID 9
+  - `lsof -wni` will show you running processes, their PID, and TCP/UDP port being used. Useful if you need port number!
+    - `lsof -wni tcp:3000`
+
+tmux
+  - A terminal multiplexer that's like a window manager but much more.
+    - Allows you to create sessions that you can attach/detach to/from for reattaching later.
+  - When attached, you can create several windows and perform separate commands or manage processes in each.
+  - You can also create panes that let you split-screen your shell
+  - mac `brew install tmux`
+
+Vim
+  - A powerful, versatile text editor that runs in the shell.
+  - Allows you to quickly find, edit, delete, and more with text.
+  - Everything in vim is done with just the keyboard, including moving cursor with the h/j/k/l keys
+  - You can run terminal commands in vim as well, allowing you to maintain focus in the shell context
+  - You can customize your vim by editing your `.vimrc` file
+  - Insanely customizable with hundreds of plugins and customizations
