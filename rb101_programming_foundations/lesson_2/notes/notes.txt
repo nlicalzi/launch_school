@@ -178,8 +178,6 @@ Truthiness
   - When do we need to consider truthiness in Ruby?
     - When using boolean operators: ! (not), && (and), and || (or).
 
-** NOTES IN ANKI UP TO HERE **
-
 What types of variables are available to us in Ruby?
   - Ruby has five types of variables: Constants, Global vars, Class vars, Instance vars, and Local vars. The last 4 are also our types of scoping in Ruby.
   - Constants: declared in CAPS, have global scope, never changed.
@@ -313,6 +311,8 @@ What is string interpolation?
 What is a symbol in Ruby?
   - A symbol is the most basic object in Ruby-- it consists of a name and an internal ID, and looks like :this.
   - Symbols are immutable and more efficient than strings, and are well suited for use in hashes because of this.
+
+** NOTES IN ANKI UP TO HERE **
 
 What is an expression in Ruby?
   - Expressions are created from `operands` and `operators`. The operators indicate what to do with the operands.
