@@ -1,0 +1,36 @@
+Source: https://launchschool.com/lessons/263069da/assignments/6eba600c
+
+Q1:
+  Question:
+    For this practice problem, write a one-line program that creates the following output 10 times, with the subsequent line indented 1 space to the right:
+    Input: "The Flintstones rock!"
+
+  Answer:
+    My solution: (0..10).each { |x| puts (" " * x) + "The Flintstones Rock!"}
+    LS Solution: 10.times { |number| puts (" " * number) + "The Flintstones Rock!" }
+
+    Difference: Using a range object and each to accomplish the goal when 10.times would have sufficed. Pref. LS solution for concision.
+Q2:
+  Question:
+    The result of the following statement will be an error: `puts "the value of 40 + 2 is " + (40 + 2)`
+    Why is this and what are two possible ways to fix this?
+
+  Answer:
+    This will return a TypeError that states "no implicit conversion of Integer into String".
+
+    Can be solved in the following ways:
+      1. Use string interpolation: puts "the value of 40 + 2 is #{40 + 2}"
+      2. Explicit typing: puts "the value of 40 + 2 is " + (40 + 2).to_s
+
+Q3:
+  My Answer:
+    A simple guard clause an assure that the program won't run unless the numbers input is positive: insert line 1 `return nil unless number.positive?`
+
+  LS Answer:
+    Use a while condition for the loop (`while divisor > 0 do`) instead of begin/end/until
+
+  Bonus 1:
+    number % divisor there ensures that any number is actually a factor of number, otherwise the modulus operation would evaluate to non-zero remainder.
+
+  Bonus 2:
+    Line 8 is using a property of Ruby-- the last line is returned without needing to include `return` to return the factors array
