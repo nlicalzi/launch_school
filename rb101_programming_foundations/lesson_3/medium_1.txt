@@ -34,3 +34,31 @@ Q3:
 
   Bonus 2:
     Line 8 is using a property of Ruby-- the last line is returned without needing to include `return` to return the factors array
+
+Q4:
+  Answer:
+    There is a difference between `buffer << new_element` and `buffer = input_array + [new_element]`. They return the same value.
+    Using the shovel operator (<<) mutates the input array, while using buffer = input_array + [new_element] reassigns buffer.
+
+Q5:
+  Answer:
+    The issue is that the local variable `limit` is out of scope for the #fib method. We can fix the code by passing in `limit` as a parameter.
+    Changes:
+      line 3:   def fib(first_num, second_num, limit)
+      line 12:  result = fib(0, 1, limit)
+
+Q6:
+  Answer:
+    Assignment is non-mutating, so the code in #mess_with_it does not affect our local variable `answer`. Therefore 42 - 8 = 34.
+
+Q7:
+  Answer:
+    Yes, the family's data was ransacked, because while assignment is non-mutating, hashes point to the object ids of variables in memory which are then altered.
+
+Q8:
+  Answer:
+    The code returns "paper" out of the nested calls.
+
+Q9:
+  Answer:
+    The code returns "no", because it passes in "yes" from foo, which is != "no"
