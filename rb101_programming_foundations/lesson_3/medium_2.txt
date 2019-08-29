@@ -1,0 +1,30 @@
+Source: https://launchschool.com/lessons/263069da/assignments/643eae16
+
+Q1 + Q2:
+  Answer:
+    - integers always have the same object id, as do symbols (strings do not: "a".object_id != "a".object_id), regardless of scope
+    - changing string vars means new objects are created (reassignment is not mutation) and the variable is re-pointed towards their location in memory
+    - variables declared inside a block don't persist outside of it (they have inner, not outer scope)
+
+Q3:
+  Answer:
+    - my_string will look like this: "pumpkins", while my_array will look like this: ["pumpkins", "rutabaga"]
+    - this is because self assignment is non-mutating (read: creates a new String object and re-points "my_string" to it), while the shovel operator is mutating (read: affects existing Array).
+      - if we were to print "a_string_param" as part of tricky method, it would read: "pumpkinsrutabaga", but it doesn't cross the method definition scope-gate
+
+Q4:
+  Answer:
+    - this is the inverse of the above question: my_string is now mutated with the shovel operator, while my_array is reassigned inside the method definition and not affected outside of it
+    - takeaway: assignment/reassignment creates NEW OBJECTS! mutation affects EXISTING OBJECTS!
+
+Q5:
+  Answer:
+    - More descriptive variable names (read: explicit code) and commenting the code make code results easier to predict/explain for future programmers.
+
+Q6:
+  Answer:
+    - The code could be refactored into a one-liner using the fact that Ruby methods return the last line by default:
+
+      def color_valid(color)
+        color == "blue" || color == "green"
+      end
