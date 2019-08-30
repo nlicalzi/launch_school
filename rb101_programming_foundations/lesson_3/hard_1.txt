@@ -1,0 +1,47 @@
+Source: https://launchschool.com/lessons/263069da/assignments/a3c602d1
+
+Q1:
+  Answer:
+    - An "undefined method or variable" error will be thrown
+      -`if false` will never evaluate and so greeting won`t be set to the string "hello world"
+
+  LS Answer:
+    - `greeting` actually evaluates to nil, because even though an error is thrown
+      normally, if a variable is initialized in an if block, it is initialized to nil
+
+  Takeaway: Normally referencing an uninitialized variable throws a "undefined" error, but a variable
+            initialized in an if block is initialized as nil, even if the block doesn`t execute.
+
+Q2:
+  Answer:
+    - 'greetings' will output `hi there`, because informal_greeting mutated the caller (the object pointed to by both greetings[:a] and informal_greeting)
+
+Q3:
+  Answer:
+    - Version A) will output the following (because mess_with_vars is non-mutating)
+        "one is: one"
+        "two is: two"
+        "three is: three"
+    - Version B) is the same as version A-- the variables one, two, and three aren't mutated by mess_with_vars
+        "one is: one"
+        "two is: two"
+        "three is: three"
+    - Version C) will output the following (because #gsub! mutates the caller)
+        "one is: two"
+        "two is: three"
+        "three is: one"
+
+Q4:
+  Answer:
+  
+  def dot_separated_ip_address?(input_string)
+    dot_separated_words = input_string.split(".")
+    return false unless dot_separated_words.size == 4
+
+    while dot_separated_words.size > 0 do
+      word = dot_separated_words.pop
+      return false unless is_an_ip_number?(word)
+    end
+
+    true
+  end
