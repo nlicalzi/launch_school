@@ -9,3 +9,5 @@ Hash#merge will interleave new key/value pairs to a hash
 String#index will return the left-index of a substring, use w/ String#slice
 
 I should consider making cards for various methods on String, Hash, Array, Numeric, etc...
+
+Enumerable.inject // Enumerable.reduce
