@@ -11,3 +11,15 @@ String#index will return the left-index of a substring, use w/ String#slice
 I should consider making cards for various methods on String, Hash, Array, Numeric, etc...
 
 Enumerable.inject // Enumerable.reduce
+
+String#tr
+
+Integer.divmod
+
+String#prepend (mutating methods-> String, Array, Hash)
+
+Ruby 'spaceship' operator: <=>
+
+What do String#ord and Integer#chr have to do with each other?
+
+Kernel#format
