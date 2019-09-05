@@ -23,3 +23,8 @@ Ruby 'spaceship' operator: <=>
 What do String#ord and Integer#chr have to do with each other?
 
 Kernel#format
+
+Map(&:to_i) // higher order functions with procs
+
+multiple-assignment syntax
+  a, b = b, a
