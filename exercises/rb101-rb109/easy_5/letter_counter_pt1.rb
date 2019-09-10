@@ -7,7 +7,7 @@ def word_sizes(str)
   len_set = lens.uniq
 
   counts = {}
-  len_set.each { |x| hash_out[x] = lens.count(x) }
+  len_set.each { |x| counts[x] = lens.count(x) }
   counts
 end
 
