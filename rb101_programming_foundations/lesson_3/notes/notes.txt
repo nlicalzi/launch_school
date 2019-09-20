@@ -1,3 +1,24 @@
+Revised Notes
+
+String substitution -- String#gsub (global substitution)
+  String substitution-- "white chocolate".gsub("white", "dark")
+  Regex substitution-- "a1".gsub(/\d/, "2") => a2 (find digit-- '\d')
+  Optional inplace: gsub!
+
+String case (upcase, downcase, capitalize, swapcase, )
+
+String booleans (end_with?, include?, start_with?, )
+
+String indexing (index, insert, )
+
+String summary (length, size, )
+
+String modification(reverse, slice, split, strip, gsub, sub,  )
+
+***
+
+Original Notes
+
 #gsub! for replacing substrings in strings
 
 Hash#assoc for collecting key/value pair where key matches argument
@@ -28,3 +49,9 @@ Map(&:to_i) // higher order functions with procs
 
 multiple-assignment syntax
   a, b = b, a
+
+Hash::new --> Different ways to initialize a hash with default values
+
+String#delete and its companion String#count
+
+Enumerable#sort_by
