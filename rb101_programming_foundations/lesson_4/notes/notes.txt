@@ -1,0 +1,63 @@
+# Collections Basics
+
+  ## Element Reference
+
+    ### String Element Reference
+      - Strings are ordered, zero-indexed collections of characters.
+        - Index can reference a single position: str[2]
+        - Index can reference start point and num characters to return: str[2, 3]
+          - This is a call to String#slice, syntactical sugar for str.slice(2, 3)
+
+    ### Array Element Reference
+      - Arrays are ordered, zero-indexed collections of objects.
+        - Index can reference a single position: arr[2]
+        - Index can reference start point and num objects to return: arr[2, 3]
+          - This is a call to Array#slice, syntactical sugar for arr.slice(2, 3)
+          - Accessing an array with a single index will return the object at that index
+          - Accessing an array with a range or start/length will return an array
+
+    ### Hash Element Reference
+      - Hashes are unordered, key-value pair collections of objects
+      - Keys in a hash *must* be unique (values can be duplicated)
+        - If a key is repeated, the last key/value pair overwrites the previous ones
+      - Hash#keys // Hash#values returns an array containing the keys or values
+      - Best practice: symbols as hash keys (symbols are like immutable strings)
+
+    ### Element Reference Gotchas
+      - Out of bounds indices
+        - Returns `nil` in Strings or Arrays
+          - `nil` in a string is obviously bad, but `nil` in array is a valid object
+            - Use Array#fetch to verify: returns either object or IndexError if OOB
+      - Negative indices
+        - Negative indices start with [-1] as the final character and work backward
+        - Work for both Strings and Arrays
+        - Negative indices can be out of bounds as well
+      - Invalid hash keys
+        - Hash#fetch distinguishes valid keys w/ `nil` value from invalid keys
+        - Common trap: :c vs. 'c' as keys -> symbol vs. string
+
+  ## Conversion
+    - String#chars and Array#join each represent methods to convert back and forth
+      - String#chars returns an array of individual characters
+      - Array#join returns a string with the elements of the array joined together
+    - Hash#to_a returns an array of arrays, each representing a k/v pair
+      - Array#to_h does the reverse
+
+  ## Element Assignment
+
+    ### String Element Assignment
+      - str = 'abc' | str[0] = 'A' | str # => 'Abc'
+      - String element assignment is destructive (acts in-place)
+
+    ### Array Element Assignment
+      - arr = [1, 2, 3] | arr[0] += 1 | arr # => [2, 2, 3]
+      - Array element assignment is destructive (acts in-place)
+
+    ### Hash Element Assignment
+      - hsh = { apple: 'Produce' } | hsh[:apple] = 'Fruit'
+      - Hash element assignment is destructive (acts in-place)
+
+Vocab:
+  Syntactical sugar
+  Method chaining
+  Symbols

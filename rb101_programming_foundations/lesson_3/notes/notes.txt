@@ -1,23 +1,59 @@
-Revised Notes
+# Revised Notes
 
-String substitution -- String#gsub (global substitution)
-  String substitution-- "white chocolate".gsub("white", "dark")
-  Regex substitution-- "a1".gsub(/\d/, "2") => a2 (find digit-- '\d')
-  Optional inplace: gsub!
+## String methods
 
-String case (upcase, downcase, capitalize, swapcase, )
+  String substitution -- String#gsub (global substitution)
+    String substitution-- "white chocolate".gsub("white", "dark")
+    Regex substitution-- "a1".gsub(/\d/, "2") => a2 (find digit-- '\d')
+    Optional in-place: gsub!
 
-String booleans (end_with?, include?, start_with?, )
+  String case (upcase, downcase, capitalize, swapcase, )
 
-String indexing (index, insert, )
+  String booleans (end_with?, include?, start_with?, casecmp, <=>, ==, ===)
 
-String summary (length, size, )
+  String conversion (chars, )
 
-String modification(reverse, slice, split, strip, gsub, sub,  )
+  String formatting (center, chomp, )
+
+  String enumerators (each_char, each_line, upto, )
+
+  String indexing (index, insert)
+    str[index]
+      if index < str.size
+        return char at index
+      else return nil
+    str[start, length]
+      if str[start] <= str.size
+        return corresponding substring
+      else return nil
+    str[range]
+      if range starting index <= str.size
+        return corresponding substring
+      else return nil
+    str[regexp]
+      if match, return matching substring
+      if no match, return nil
+    str[match_str]
+      if match, return match_str
+      if no match, return nil
+
+  String summary (length, size, count, )
+
+  String modification(reverse, slice, split, strip, delete, gsub, sub)
+
+## Hash methods
+
+## Array methods
+
+## Enumerable methods
+
+## Integer methods (or Math)
+
+## Higher Order Functions
 
 ***
 
-Original Notes
+# Original Notes
 
 #gsub! for replacing substrings in strings
 
