@@ -57,6 +57,21 @@
       - hsh = { apple: 'Produce' } | hsh[:apple] = 'Fruit'
       - Hash element assignment is destructive (acts in-place)
 
+# Selection and Transformation
+
+  - Most common actions to perform on a collection:
+    - Iteration (#each), Selection (Enumerable#select), Transformation (Enumerable#map)
+      - [FILL IN] What methods are available for each w/ Str/Arr/Hash?
+
+  - Use the basics of looping:
+    - A loop
+    - A counter
+    - A way to retrieve the current value
+      - + Some criteria for determining action
+    - A way to exit the loop
+
+  - Does our transformation return a new string/array or mutate the caller?
+
 Vocab:
   Syntactical sugar
   Method chaining

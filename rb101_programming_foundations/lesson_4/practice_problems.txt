@@ -1,0 +1,49 @@
+Source: https://launchschool.com/lessons/85376b6d/assignments/fd13de08
+
+Problem 1:
+  The return value of the select method is [1, 2, 3].
+  Because the last line is the string 'hi', which has a truthy return value--
+  read: not 'nil' or 'false', each of the 3 objects in the array calling select
+  evaluate to true and are therefore included in the returned array.
+
+Problem 2:
+  Array#count counts elements that resolve to a truthy value upon block execution.
+
+Problem 3:
+  The return value will be [1, 2, 3] because reject will return items that cause
+  the given block to resolve to a non-truthy value. Since `puts` always returns
+  nil, which is falsey, none of the elements in the caller are dropped.
+
+Problem 4:
+  { "a" => "ant", "b" => "bear", "c" => "cat" }
+  Enumerable#each_with_object takes an object as an argument, that is updated
+  with the block call for each element in the calling object. At the end, the
+  object is called, with all of the updates included.
+
+Problem 5:
+  Hash#shift modifies the array it is called on in-place, removing the left-most
+  (first) key/value pair and returning it.
+
+Problem 6:
+  The return value is 11-- pop returns 'caterpillar' (the right-most object in the
+  array), which is a string with 11 characters.
+
+Problem 7:
+  Because the last line in the block is `num.odd?`, the return value will be either
+  `true` or `false` for each element. Enumerable#any? returns `true` if any element
+  causes the block to resolve to `true`, so only 1, the first element, is printed.
+
+Problem 8:
+  Array#take accepts an integer argument `n` and returns an array of the
+  first `n` elements from the caller. It is non-mutating.
+
+Problem 9:
+  The return value of `map` is [nil, "bear"]. This is because Enumerable#map
+  returns an array, regardless of the object type that it calls, and `ant` doesn't
+  satisfy the `value.size > 3` criteria.
+
+Problem 10:
+  The return value of the code would be [1, nil, nil]. The first if clause only
+  resolves to true for the second and third elements in the caller, which become
+  nil since `puts` always returns nil. Since the first element in the caller is
+  sent to the `else` clause-- it is mapped to itself: num, or 1.
