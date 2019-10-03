@@ -80,6 +80,13 @@
     - Is the method destructive?
     - Difference use cases between #each / #select / #map
 
+# Quiz Review Topics
+  - What is the truthiness of a puts statement?
+  - || and &&
+  - ALWAYS check return value of a method
+  - What has to happen for each / select / map to return empty array?
+  - 
+
 Vocab:
   Syntactical sugar
   Method chaining
