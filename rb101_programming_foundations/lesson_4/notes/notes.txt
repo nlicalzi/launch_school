@@ -72,7 +72,16 @@
 
   - Does our transformation return a new string/array or mutate the caller?
 
+# Practice Problems
+  ## Key Considerations
+    - How does the method treat the block's return value?
+    - What is the return value of the method?
+    - How can you use the Ruby docs to learn more about a method?
+    - Is the method destructive?
+    - Difference use cases between #each / #select / #map
+
 Vocab:
   Syntactical sugar
   Method chaining
   Symbols
+  #inject(:+)

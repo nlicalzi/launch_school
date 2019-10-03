@@ -1,0 +1,90 @@
+Source: https://launchschool.com/lessons/85376b6d/assignments/a76c28ac
+
+Problem 1:
+  flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "BamBam"]
+
+  hash = {}
+  flintstones.each_with_index { |k, v| hash[k] = v }
+  hash
+
+Problem 2:
+  ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10,
+           "Marilyn" => 22, "Spot" => 237 }
+
+  ages.values.sum ## could also do ages.values.inject(:+)
+
+Problem 3:
+  ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 402, "Eddie" => 10 }
+
+  under_100 = []
+  ages.keys.each do |name|
+    unless ages[name] >= 100
+      under_100.append(name)
+    end
+  end
+  under_100
+
+Problem 4:
+  ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10,
+           "Marilyn" => 22, "Spot" => 237 }
+
+  ages.values.min
+
+Problem 5:
+  flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+
+  flintstones.select { |name| name[0..1] == "Be" }
+
+Problem 6:
+  flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+
+  flintstones.map! { |name| name[0..2] }
+
+Problem 7:
+  statement = "The Flintstones Rock"
+
+  char_count = {}
+  statement.chars.each do |char|
+    unless char_count.keys.include? char
+      char_count[char] = 0
+    end
+    char_count[char] += 1
+  end
+
+  char_count
+
+Problem 8:
+  Array#pop and Array#shift do similar things: pop removes the last item in a
+  given array and returns it, while shift removes the first item in a given
+  array and returns it.
+  The first code snippet will print 1 and 3. This is because it prints the item
+  at index 0 to begin, the integer 1, and then the shortened array has its
+  left-most value (2) shifted out, leaving us with an array of [3, 4]. The item
+  at index 0, the integer 3, is printed before the next item is shifted out.
+
+Problem 9:
+  words = "the flintstones rock"
+
+  words.split.map { |word| word.capitalize }.join(' ')
+
+Problem 10:
+  munsters = {
+    "Herman" => { "age" => 32, "gender" => "male" },
+    "Lily" => { "age" => 30, "gender" => "female" },
+    "Grandpa" => { "age" => 402, "gender" => "male" },
+    "Eddie" => { "age" => 10, "gender" => "male" },
+    "Marilyn" => { "age" => 23, "gender" => "female"}
+  }
+
+  munsters.keys.each do |name|
+    case
+      when munsters[name]["age"] < 18
+        munsters[name]["age_group"] = "kid"
+      when munsters[name]["age"] > 64
+        munsters[name]["age_group"] = "senior"
+      else
+        munsters[name]["age_group"] = "adult"
+    end
+  end
+
+  munsters
