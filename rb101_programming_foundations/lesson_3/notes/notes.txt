@@ -43,6 +43,15 @@
 
 ## Hash methods
 
+  Hash Modification
+    - Hash#merge(!)
+
+  Hash Lookup
+    - #assoc: takes an arg, if arg matches a key, return [key, [values]], else nil
+
+  Hash Booleans:
+    - Test hash for key inclusion: Hash#has_key? / Hash#include? / Hash#key?
+
 ## Array methods
 
 ## Enumerable methods
@@ -54,14 +63,6 @@
 ***
 
 # Original Notes
-
-#gsub! for replacing substrings in strings
-
-Hash#assoc for collecting key/value pair where key matches argument
-
-How can we test if a key is included in a hash? (Hash#has_key? / Hash#include? / Hash#key?)
-
-Hash#merge will interleave new key/value pairs to a hash
 
 String#index will return the left-index of a substring, use w/ String#slice
 

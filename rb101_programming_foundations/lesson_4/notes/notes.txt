@@ -85,7 +85,6 @@
   - || and &&
   - ALWAYS check return value of a method
   - What has to happen for each / select / map to return empty array?
-  - 
 
 Vocab:
   Syntactical sugar
