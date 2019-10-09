@@ -86,6 +86,10 @@
   - ALWAYS check return value of a method
   - What has to happen for each / select / map to return empty array?
 
+# Misc. (from Exercises)
+  - Set union (Array#|) -- use the pipe `|`
+  - 
+
 Vocab:
   Syntactical sugar
   Method chaining
