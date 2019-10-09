@@ -48,7 +48,7 @@
 
   Hash Lookup
     - #assoc: takes an arg, if arg matches a key, return [key, [values]], else nil
-
+i
   Hash Booleans:
     - Test hash for key inclusion: Hash#has_key? / Hash#include? / Hash#key?
 
