@@ -64,6 +64,9 @@ i
 
 # Original Notes
 
+character_array.count { |char| char =~ /[regex_pattern]/ }
+  String#=~ regex matching
+
 String#index will return the left-index of a substring, use w/ String#slice
 
 I should consider making cards for various methods on String, Hash, Array, Numeric, etc...
