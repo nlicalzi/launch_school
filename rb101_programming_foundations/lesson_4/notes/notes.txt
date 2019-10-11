@@ -90,6 +90,8 @@
   - Set union (Array#|) -- use the pipe `|`
   - Test char for lowercase/uppercase/numeric: `=~ /regex/`
     - https://launchschool.com/exercises/f149de8d
+  - What is a Proc object? Why are blocks passed to methods converted to Procs?
+  -
 
 Vocab:
   Syntactical sugar
