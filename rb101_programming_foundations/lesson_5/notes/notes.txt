@@ -1,0 +1,76 @@
+Source: https://launchschool.com/lessons/c53f2250/home
+
+Overview:
+  - Sorting
+  - Nested Data Structures
+  - Working with Blocks
+
+# Sorting
+
+  - Sorting is mostly performed on arrays, since index is important. Strings don't
+    have sorting methods (but can be converted to arrays with String#chars), and
+    Hashes are generally accessed using Hash[key], so order mostly doesn't matter.
+
+  - Comparison is at the heart of how sorting works.
+    - `<=>`, or the Spaceship operator, lets us compare two elements in an array.
+      - Returns a -1, 0, or 1 depending on whether the first object is less than,
+        equal to, or greater than the second object. If they can't be compared,
+        `nil` is returned (throwing an ArgumentError).
+          - Does the given object type implement <=> (strings? integers?)
+          - What is the specific implementation of the method for the object type?
+
+      - String order is determined by a character's position in the ASCII table.
+        - https://en.wikipedia.org/wiki/ASCII#Code_chart
+        - 'A' (0041) precedes 'a' (0061). String#ord reveals its ASCII position.
+        - `Digits` / `(most) punctuation` precede `UPPERCASE` precedes `lowercase`
+
+  - Array#sort
+    - Argument error if two elements aren't of comparable type (string vs. int)
+    - Can be called with a block. Ex:
+      - DEFAULT IMPLEMENTATION:
+        [2, 5, 3, 4, 1].sort { |a, b| a <=> b }
+          => [1, 2, 3, 4, 5]
+            - Using Integer#<=> to sort.
+      - DESCENDING SORT:
+        [2, 5, 3, 4, 1].sort { |a, b| b <=> a }
+          => [5, 4, 3, 2, 1]
+
+    - String#<=> compares multi-character strings char by char (character-wise):
+      - "ants" <=> "arc" ==> +1
+      - "cape" <=> "cap" ==> -1
+
+    - Array#<=> compares arrays element by element (element-wise):
+      - ["a", "car", "d"] <=> ["a", "car", "d", 3] ==> +1
+
+  - Array#sort_by
+    - Usually called with a block, determining how the items are compared.
+
+    ['cot', 'bed', 'mat'].sort_by { |word| word[1] } # sort by second letter
+      => ["mat", "bed", "cot"]
+
+  - Hash#sort_by
+    - Always returns an array, call Array#to_h to convert back to hash if desired
+    - Requires key and value to be passed to the block when called. Ex:
+
+      people = { Kate: 27, john: 25, Mike:  18 }
+      people.sort_by do |_, age|
+        age
+      end
+        => [[:Mike, 18], [:john, 25], [:Kate, 27]]
+
+  - Other methods also use <=> for comparisons:
+    - #min, #max, #minmax, #min_by, #max_by, #minmax_by
+      - All inherited from the Enumerable module (included in Array and Hash)
+
+# Nested Data Structures
+
+# VOCAB
+  - Spaceship operator (<=>)
+  - ASCII Table
+
+# METHODS
+  - String#ord
+  - Array#sort
+  - Array#sort_by
+  - Hash#sort_by
+  - String#<=>, Numeric#<=>
