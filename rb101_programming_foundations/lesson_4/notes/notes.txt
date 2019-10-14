@@ -91,10 +91,11 @@
   - Test char for lowercase/uppercase/numeric: `=~ /regex/`
     - https://launchschool.com/exercises/f149de8d
   - What is a Proc object? Why are blocks passed to methods converted to Procs?
-  -
+  - Array#zip (array combinations)
+  - Array#product (combinations)
 
 Vocab:
   Syntactical sugar
   Method chaining
-  Symbols
+  Symbols / Symbol Table (http://rubylearning.com/satishtalim/ruby_symbols.html)
   #inject(:+)
