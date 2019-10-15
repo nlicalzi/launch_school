@@ -64,13 +64,38 @@ Overview:
 
 # Nested Data Structures
 
-  - 
-  -
+  - Variable Reference for Nested Collections
+    - How does the addition of variable reference affect data in nested collections?
+      - Variables as pointers (mental model)
+        - http://d1b1wr57ag5rdp.cloudfront.net/images/collections/variables-as-pointers-1.png
+        - https://launchschool.com/books/ruby/read/more_stuff#variables_as_pointers
 
+  - Shallow Copy
+    - #dup and #clone create shallow copies of the object on which they're called
+    - A shallow copy of a collection is a copy of structure, not elements
+      - Two collections now share the individual elements
+    - A deep copy of a collection creates a new collection with all elements in
+      the original collection duplicated. Distinct objects in structure/content
+
+    - Consider using #map and #each on a shallow copy-- #map replaces elements,
+      so changes will only be seen in one collection, while each acts on each
+      element, and so changes will be seen in both.
+      - Changing the array vs. changing the elements within it.
+
+  - Freezing Objects
+    - Main difference between #dup and #clone:
+      - #clone preserves frozen state of object, #dup does not.
+    - #freeze only freezes the object it's called on (implications for nesting?)
+    - Can check if an object is frozen using #frozen?
+
+  - Deep Copy
+    - Ruby has no built-in deep copy / deep freeze functionality.
+      - Workarounds/methods exist, but always consider #freeze, #dup, and #clone
 
 # VOCAB
   - Spaceship operator (<=>)
   - ASCII Table
+  - Shallow Copy (vs. Deep Copy)
 
 # METHODS
   - String#ord
