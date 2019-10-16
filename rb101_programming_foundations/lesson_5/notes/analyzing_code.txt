@@ -1,0 +1,65 @@
+Source: https://launchschool.com/lessons/c53f2250/assignments/c633cf37
+
+In analyzing a code snippet with precision, consider the following steps:
+  - What type of action is being performed (method call, block, conditional, etc.)
+  - What is the object that the action is being performed on?
+  - Are there any side-effects of that action? (output? destructive action?)
+  - What is the return value of that action?
+  - Is the return value used by whatever instigated the action?
+
+The above analysis steps can be laid out in a tabular format:
+  Line | Action | Object | Side Effect | Return Value | Is Return Value Used?
+
+Example 1:
+
+  [[1, 2], [3, 4]].each do |arr|
+    puts arr.first
+  end
+  # 1
+  # 3
+  # => [[1, 2], [3, 4]]
+
+A:  We call #each on the nested array. Each object in the array (in this case, two
+    arrays) is passed into a block that prints the first element in the array. It
+    prints a string representation of the integer 1 from index 0 in the original
+    array before returning nil (puts returns nil), and a string representation
+    of the integer 3 from index 1 in the original array then puts returns nil,
+    before returning the original, unmodified calling array.
+
+Example 2:
+
+  [[1, 2], [3, 4]].map do |arr|
+    puts arr.first
+  end
+  # 1
+  # 3
+  # => [nil, nil]
+
+A:  The map method is called on a nested array with two elements. Each element
+    in the nested array is passed into the block passed into the map method. The
+    element at index 0 in the nested array, a sub-array with 2 elements, causes
+    the block to print '1' (line 4) but return nil, which is then appended to the
+    resulting array. The element at index 1 in the nested array, also a sub-array
+    with 2 elements, causes the block to print '3', but return nil, which is then
+    appended to the resulting array. The map method returns a new array, consisting
+    of the transformed elements: [nil, nil].
+
+Example 3:
+
+  [[1, 2], [3, 4]].map do |arr|
+    puts arr.first
+    arr.first
+  end
+
+A:  The map method is called on a nested array with 2 elements (sub-arrays). A
+    given block is executed once for each element in the array: first printing a
+    string representation of the integer '1' (at index 0 in the first subarray)
+    and returning the value nil before returning the integer 1 (element at index
+    0 of the subarray) as the block value and therefore the transformation for
+    the #map method.
+    Then the block is executed again: with line 2 printing a string representation
+    of the integer '3' & returning nil, before causing the block to return as its
+    value the integer 3 (element at index 0 in the second subarray), and passing
+    that value as its transformation for the #map method.
+    The given code block will print '1' and '3' before returning the result of
+    the map call: the new array [1, 3].

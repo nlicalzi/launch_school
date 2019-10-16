@@ -92,6 +92,15 @@ Overview:
     - Ruby has no built-in deep copy / deep freeze functionality.
       - Workarounds/methods exist, but always consider #freeze, #dup, and #clone
 
+# Working with Blocks
+  - Fundamental concepts in working with collections:
+    - Iterating
+    - Selecting
+    - Transforming
+    - Sorting
+    - Nested Collections
+    - Using Blocks
+
 # VOCAB
   - Spaceship operator (<=>)
   - ASCII Table
