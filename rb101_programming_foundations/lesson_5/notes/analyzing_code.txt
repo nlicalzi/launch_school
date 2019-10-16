@@ -63,3 +63,24 @@ A:  The map method is called on a nested array with 2 elements (sub-arrays). A
     that value as its transformation for the #map method.
     The given code block will print '1' and '3' before returning the result of
     the map call: the new array [1, 3].
+
+Example 4:
+
+  my_arr = [[18, 7], [3, 12]].each do |arr|
+    arr.each do |num|
+      if num > 5
+        puts num
+      end
+    end
+  end
+
+A:  We initialize the variable 'my_arr' and set it to the result of calling the
+    #each method (and a passed block) on the nested array [[18, 7], [3, 12]].
+    For each array in the nested array, we call the #each method on its contents,
+    printing the array element if it is greater than the integer 5. For the first
+    element (sub-array), '18' is printed, then '7' is printed, before the inner
+    #each call returns [18, 7], or the original calling sub-array. On the second
+    execution of the block, using the sub-array [3, 12], the inner #each call
+    prints '12', before returning [3, 12], or the original calling sub-array.
+    The original #each call returns the original, unmodified, nested array:
+    [[18, 7], [3, 12]].
