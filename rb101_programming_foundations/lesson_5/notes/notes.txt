@@ -105,6 +105,9 @@ Overview:
   - Spaceship operator (<=>)
   - ASCII Table
   - Shallow Copy (vs. Deep Copy)
+    - Mutating code while iterating (iterate over shallow copy, mutate original)
+  - "Element-wise" comparison for arrays
+    - https://ruby-doc.org/core-2.6.5/Array.html#method-i-3C-3D-3E
 
 # METHODS
   - String#ord

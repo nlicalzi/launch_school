@@ -84,3 +84,80 @@ A:  We initialize the variable 'my_arr' and set it to the result of calling the
     prints '12', before returning [3, 12], or the original calling sub-array.
     The original #each call returns the original, unmodified, nested array:
     [[18, 7], [3, 12]].
+
+Example 5:
+
+  [[1, 2], [3, 4]].map do |arr|
+    arr.map do |num|
+      num * 2
+    end
+  end
+
+A:  #Map is called on the nested, outer array. For each sub-array in the outer
+    array, we call #map again, mutating each element into double its original
+    value (since they are integers-- if they were strings, we would be changing
+    them to 'doubled' with concatenation), and returning the modified array--
+    in this case, [2, 4] for the first element in the outer array, and [6, 8] for
+    the second. Because the block passes those values to the original #map
+    method call, the code snippet will resolve to a new array: [[2, 4], [6, 8]].
+
+Example 6:
+
+  [{ a: 'ant', b: 'elephant' }, { c: 'cat' }].select do |hash|
+    hash.all? do |key, value|
+      value[0] == key.to_s
+    end
+  end
+  # => [{ :c => "cat" }]
+
+A:  The select method is called on an outer array containing two sub-hashes. #all?
+    is called for each sub-hash, returning `true` if, for all key/value pairings
+    in the given sub-hash, the character at index 0 for the hash value is equal
+    to the hash key, converted from a symbol to its string representation. This
+    returns false for the subhash at array index 0, because while 'a' ==
+    'a', 'b' does not equal 'e' from elephant, and #all? returns `false` if any
+    element causes the given block to resolve to not `true`. The element at
+    array index 1 causes the #all? block to resolve to true, since 'c' == 'c',
+    and because the corresponding values for the original array are [false, true],
+    and select returns an array containing elements that cause the given block
+    to return a true value, the code snippet returns [{ :c => "cat" }]
+
+Example 9:
+
+  [[[1], [2], [3], [4]], [['a'], ['b'], ['c']]].map do |element1|
+    element1.each do |element2|
+      element2.partition do |element3|
+        element3.size > 0
+      end
+    end
+  end
+  # => [[[1], [2], [3], [4]], [["a"], ["b"], ["c"]]]
+
+A:  #map is called by 3 level nested array. The block passed in to map consists
+    of an #each invocation, which returns the original, unmodified array. The
+    result of passing this into map is that the code snippet returns a new array
+    object that has matching elements with the original caller.
+
+Example 10:
+
+  [[[1, 2], [3, 4]], [5, 6]].map do |arr|
+    arr.map do |el|
+      if el.to_s.size == 1    # it's an integer
+        el + 1
+      else                    # it's an array
+        el.map do |n|
+          n + 1
+        end
+      end
+    end
+  end
+
+A:  The map method is called on an array with 3 levels. The second level has 2
+    elements, which are passed to a block that calls #map again, accessing the
+    third level of the array, which has 4 elements ([1, 2], [3, 4], 5, 6). That
+    #map invocation uses a conditional if clause: if the element, converted to
+    its string representation, has exactly one character, then it is an integer
+    and #map should transform it into itself plus 1, otherwise #map is called
+    again (on the elements 0 and 1: [1, 2] and [3, 4]) and each element in those
+    corresponding sub-arrays is incremented by 1. The final return value will be:
+    [[[2, 3], [4, 5]], [6, 7]]
