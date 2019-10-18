@@ -107,3 +107,141 @@ A:
     #=> [4, [5, 8]] Reassignment is non-mutating. Arr index 0 changes but A doesn't
   arr[1][0] -= a
     # => [4, [3, 8]]
+
+Problem 8:
+Q: Using the each method, write some code to output all of the vowels from the strings.
+
+  hsh = {first: ['the', 'quick'], second: ['brown', 'fox'], third: ['jumped'],
+         fourth: ['over', 'the', 'lazy', 'dog']}
+
+A:
+  hsh.each do |_,v|
+    vowels = %w(a e i o u)
+    v.each do |word|
+      word.chars.each do |char|
+        puts char if vowels.include?(char)
+      end
+    end
+  end
+
+Problem 9:
+Q: Given this data structure, return a new array of the same structure but with
+   the sub arrays being ordered (alphabetically or numerically as appropriate)
+   in descending order.
+
+   arr = [['b', 'c', 'a'], [2, 1, 3], ['blue', 'black', 'green']]
+
+A:
+  arr.map do |subarr|
+    subarr.sort { |a,b| b <=> a }
+  end
+
+Problem 10:
+Q: Given the following data structure and without modifying the original array,
+   use the map method to return a new array identical in structure to the
+   original but where the value of each integer is incremented by 1.
+
+   [{a: 1}, {b: 2, c: 3}, {d: 4, e: 5, f: 6}]
+
+A:
+  [{a: 1}, {b: 2, c: 3}, {d: 4, e: 5, f: 6}].map do |hsh|
+    hsh.map do |key,val|
+      {key => val+1}
+    end
+  end
+
+Problem 11:
+Q: Given the following data structure use a combination of methods, including
+   either the select or reject method, to return a new array identical in
+   structure to the original but containing only the integers that are multiples
+   of 3.
+
+   arr = [[2], [3, 5, 7], [9], [11, 13, 15]]
+
+A:
+  arr.map do |subarr|
+    subarr.select do |el|
+      el % 3 == 0
+    end
+  end
+
+Problem 12:
+Q: Given the following data structure, and without using the Array#to_h method,
+   write some code that will return a hash where the key is the first item in
+   each sub array and the value is the second item.
+
+   arr = [[:a, 1], ['b', 'two'], ['sea', {c: 3}], [{a: 1, b: 2, c: 3, d: 4}, 'D']]
+
+A:
+  hsh_out = {}
+  arr.each do |subarr|
+    hsh_out[subarr[0]] = subarr[1]
+  end
+  hsh_out
+
+Problem 13:
+Q: Given the following data structure, return a new array containing the same
+   sub-arrays as the original but ordered logically by only taking into
+   consideration the odd numbers they contain.
+
+   arr = [[1, 6, 7], [1, 4, 9], [1, 8, 3]]
+
+A:
+  arr.sort_by do |subarr|
+    subarr.select do |num|
+      num.odd?
+    end
+  end
+
+Problem 14:
+Q: Given this data structure write some code to return an array containing the
+   colors of the fruits and the sizes of the vegetables. The sizes should be
+   uppercase and the colors should be capitalized.
+
+  hsh = {
+    'grape' => {type: 'fruit', colors: ['red', 'green'], size: 'small'},
+    'carrot' => {type: 'vegetable', colors: ['orange'], size: 'medium'},
+    'apple' => {type: 'fruit', colors: ['red', 'green'], size: 'medium'},
+    'apricot' => {type: 'fruit', colors: ['orange'], size: 'medium'},
+    'marrow' => {type: 'vegetable', colors: ['green'], size: 'large'},
+  }
+
+A:
+  out = []
+  hsh.each do |_, val|
+    if val[:type] == 'fruit'
+      out << val[:colors].map { |col| col.capitalize}
+    elsif val[:type] == 'vegetable'
+      out << val[:size].upcase
+    end
+  end
+  out
+
+Problem 15:
+Q: Given this data structure write some code to return an array which contains
+   only the hashes where all the integers are even.
+
+   arr = [{a: [1, 2, 3]}, {b: [2, 4, 6], c: [3, 6], d: [4]}, {e: [8], f: [6, 10]}]
+
+A:
+  arr.select do |subarr|
+    subarr.all? do |_,val|
+      val.all? { |num| num.even? }
+    end
+  end
+
+Problem 16:
+Q: Write a method that returns one UUID when called with no parameters.
+
+  HEXCHARS = (0..9).to_a + ('a'..'f').to_a
+
+  def gen_string(length)
+    HEXCHARS.sample(length).join('')
+  end
+
+  def gen_UUID
+    "#{gen_string(8)}-#{gen_string(4)}-#{gen_string(4)}-" +
+    "#{gen_string(4)}-#{gen_string(12)}"
+  end
+
+  gen_UUID
