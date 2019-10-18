@@ -115,3 +115,4 @@ Overview:
   - Array#sort_by
   - Hash#sort_by
   - String#<=>, Numeric#<=>
+  - Hash#key vs. Hash#keys (return value?)
