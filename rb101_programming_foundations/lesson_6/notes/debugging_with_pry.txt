@@ -1,0 +1,25 @@
+Source: https://launchschool.com/lessons/de05b300/assignments/f9bd863d
+
+Revisiting RB101/Lesson_2/Debugging
+https://launchschool.com/lessons/a0f3cd44/assignments/e742d62a
+
+# Temperament
+  - The key to debugging is having a patient and logical temperament.
+
+# Reading Error Messages
+  - *Stack Trace*: every language/library has a certain pattern to theirs.
+
+# Steps to Debugging
+  1. Reproduce the Error
+  2. Determine the Boundaries of the Error
+  3. Trace the Code (or, 'Trapping the Error')
+  4. Understand the Problem Well
+  5. Implement a Fix (fix one problem at a time!)
+  6. Test the Fix (add additional automated tests now)
+
+# Techniques for Debugging
+  1. Line by line
+  2. Rubber Duck Debugging
+  3. Walking Away
+  4. Using Pry
+  5. Using a Debugger
