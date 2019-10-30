@@ -10,3 +10,8 @@ Tic Tac Toe
 8. Play again?
 9. If yes, go to #1
 10. Goodbye!
+
+
+Video notes:
+- !! to convert a string to boolean:
+  - string if true, boolean(false) if false
