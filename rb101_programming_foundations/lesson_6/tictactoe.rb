@@ -7,6 +7,7 @@ def prompt(msg)
 end
 
 def display_board(hsh)
+  system 'clear'
   puts ""
   puts "     |     |     "
   puts "  #{hsh[1]}  |  #{hsh[2]}  |  #{hsh[3]}  "
@@ -38,14 +39,33 @@ def player_move!(brd)
     prompt "Please select a square (#{empty_squares(brd).join(', ')}):"
     square = gets.chomp.to_i
     break if empty_squares(brd).include?(square)
-    p "Invalid input. Try again below."
+    p "Sorry, that's an invalid input. Try again below."
   end
 
   brd[square] = PLAYER_MARKER
 end
 
+def computer_move!(brd)
+  square = empty_squares(brd).sample
+  brd[square] = COMPUTER_MARKER
+end
+
+def board_full?(brd)
+  empty_squares(brd).empty?
+end
+
+def someone_won?(brd)
+  false
+end
+
 board = initialize_board
 display_board(board)
 
-player_move!(board)
+loop do
+  player_move!(board)
+  computer_move!(board)
+  display_board(board)
+  break if someone_won?(board) || board_full?(board)
+end
+
 display_board(board)
