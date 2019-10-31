@@ -64,9 +64,19 @@ end
 
 def computer_move!(brd)
   square = nil
+
+  # attack
   WINNING_LINES.each do |line|
-    square = detect_threatened_square(line, brd)
+    square = detect_threatened_square(line, brd, COMPUTER_MARKER)
     break if square
+  end
+
+  # defend
+  if !square
+    WINNING_LINES.each do |line|
+      square = detect_threatened_square(line, brd, PLAYER_MARKER)
+      break if square
+    end
   end
 
   if !square
@@ -105,8 +115,8 @@ def detect_winner(brd)
   nil
 end
 
-def detect_threatened_square(line, board)
-  if board.values_at(*line).count(PLAYER_MARKER) == 2
+def detect_threatened_square(line, board, marker)
+  if board.values_at(*line).count(marker) == 2
     board.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
   end
 end
