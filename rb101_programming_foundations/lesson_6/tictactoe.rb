@@ -75,6 +75,16 @@ def someone_won?(brd)
   !!detect_winner(brd)
 end
 
+def match_over?(player_pts, computer_pts)
+  !!match_winner(player_pts, computer_pts)
+end
+
+def match_winner(player_pts, computer_pts)
+  return 'Computer wins the match with 5 points!' if computer_pts == 5
+  return 'Player wins the match with 5 points!' if player_pts == 5
+  nil
+end
+
 def detect_winner(brd)
   WINNING_LINES.each do |line|
     if brd.values_at(*line).count(PLAYER_MARKER) == 3
@@ -107,7 +117,7 @@ loop do
   display_board(board)
 
   if someone_won?(board)
-    prompt "#{detect_winner(board)} won!"
+    prompt "#{detect_winner(board)} won this round!"
     if detect_winner(board) == 'Player'
       player_score += 1
     else
@@ -117,9 +127,14 @@ loop do
     prompt "It's a tie!"
   end
 
+  break if match_over?(player_score, computer_score)
+
   prompt "Play again? (y or n)"
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
 
+prompt match_winner(player_score, computer_score)
+prompt "Final score is..."
+prompt "Player: #{player_score} || Computer: #{computer_score}"
 prompt "Thanks for playing TicTacToe! Goodbye."
