@@ -9,6 +9,17 @@ def prompt(msg)
   puts "=> #{msg}"
 end
 
+def joinor(arr, delim=', ', conjunction = 'or')
+  case arr.size
+  when 0 then ''
+  when 1 then arr[0]
+  when 2 then arr.join(" #{conjunction} ")
+  else
+    arr[-1] = "#{conjunction} #{arr[-1]}"
+    arr.join(delim)
+  end
+end
+
 # rubocop:disable Metrics/AbcSize
 def display_board(hsh)
   system 'clear'
@@ -42,7 +53,7 @@ end
 def player_move!(brd)
   square = ''
   loop do
-    prompt "Please select a square (#{empty_squares(brd).join(', ')}):"
+    prompt "Please select a square (#{joinor(empty_squares(brd))}):"
     square = gets.chomp.to_i
     break if empty_squares(brd).include?(square)
     p "Sorry, that's an invalid input. Try again below."
@@ -75,12 +86,16 @@ def detect_winner(brd)
   nil
 end
 
+player_score = 0
+computer_score = 0
+
 loop do
   board = initialize_board
   display_board(board)
 
   loop do
     display_board(board)
+    puts "Player score: #{player_score}. Computer score: #{computer_score}."
 
     player_move!(board)
     break if someone_won?(board) || board_full?(board)
@@ -93,6 +108,11 @@ loop do
 
   if someone_won?(board)
     prompt "#{detect_winner(board)} won!"
+    if detect_winner(board) == 'Player'
+      player_score += 1
+    else
+      computer_score += 1
+    end
   else
     prompt "It's a tie!"
   end

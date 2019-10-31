@@ -15,3 +15,4 @@ Tic Tac Toe
 Video notes:
 - !! to convert a string to boolean:
   - string if true, boolean(false) if false
+- Splat operator (*arr) passes each arr value
