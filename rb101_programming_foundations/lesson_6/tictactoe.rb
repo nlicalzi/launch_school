@@ -1,3 +1,4 @@
+FIRST_MOVE = 'choose' # OPTIONS: "player" / "computer" / "choose"
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -80,6 +81,12 @@ def computer_move!(brd)
   end
 
   if !square
+    if empty_squares(brd).include?(5)
+      square = 5
+    end
+  end
+
+  if !square
     square = empty_squares(brd).sample
   end
 
@@ -121,8 +128,30 @@ def detect_threatened_square(line, board, marker)
   end
 end
 
+def place_piece!(board, current_player)
+  player_move!(board) if current_player == "player"
+  computer_move!(board) if current_player == "computer"
+end
+
+def alternate_player(player)
+  return "computer" if player == "player"
+  "player"
+end
+
 player_score = 0
 computer_score = 0
+current_player = ''
+
+loop do
+  if FIRST_MOVE == 'choose'
+    prompt "Who should go first? Please type (player) or (computer)?"
+    current_player = gets.chomp.downcase
+  else
+    current_player = FIRST_MOVE
+  end
+  break if current_player == 'player' || current_player == 'computer'
+  p "Sorry, that's an invalid input. Try again below."
+end
 
 loop do
   board = initialize_board
@@ -132,10 +161,9 @@ loop do
     display_board(board)
     puts "Player score: #{player_score}. Computer score: #{computer_score}."
 
-    player_move!(board)
-    break if someone_won?(board) || board_full?(board)
+    place_piece!(board, current_player)
+    current_player = alternate_player(current_player)
 
-    computer_move!(board)
     break if someone_won?(board) || board_full?(board)
   end
 
