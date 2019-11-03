@@ -12,6 +12,11 @@ def prompt(msg)
   puts "=> #{msg}"
 end
 
+def display_hands(player_hand, dealer_hand)
+  prompt "Player hand: #{player_hand}"
+  prompt "Dealer hand: #{dealer_hand[0]} & #{dealer_hand.size - 1} hidden card(s)."
+end
+
 def summed_hand_value(hand)
   hand.map { |card| CARD_VALUE[card[0]] }.sum
 end
@@ -47,13 +52,20 @@ puts ""
   dealer_hand << deck.shuffle!.pop # randomize/remove card from deck & append
 end
 
-prompt "Player hand: #{player_hand}"
-prompt "Dealer card: #{dealer_hand[0]}"
+loop do
+  display_hands(player_hand, dealer_hand)
 
-player_hand_value = player_hand.map { |card| CARD_VALUE[card[0]] }.sum
-dealer_show_value = CARD_VALUE[dealer_hand[0][0]]
+  # player_hand_value = player_hand.map { |card| CARD_VALUE[card[0]] }.sum
+  # dealer_show_value = CARD_VALUE[dealer_hand[0][0]]
+  #
+  # prompt "You are holding #{player_hand_value} points. "\
+  #        "Dealer is showing #{dealer_show_value} points."
 
-prompt "You are holding #{player_hand_value} points. "\
-       "Dealer is showing #{dealer_show_value} points."
 
-prompt "Would you like to hit or pass?"
+  prompt "Is player holding an ace: #{hand_has_ace?(player_hand)}" # test
+  loop do
+    prompt "Would you like to hit or pass?"
+    answer = gets.chomp
+    break if answer = 'pass'
+  end
+end
