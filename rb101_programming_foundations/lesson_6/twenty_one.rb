@@ -62,6 +62,7 @@ def display_final_game_state(player_hand, dealer_hand)
   system 'clear'
   puts "Player hand: #{player_hand}"
   puts "Player points: #{calculate_hand_value(player_hand)}"
+  puts ""
   puts "Dealer hand: #{dealer_hand}"
   puts "Dealer points: #{calculate_hand_value(dealer_hand)}"
 end
@@ -102,10 +103,10 @@ loop do
 
   answer = nil
   loop do # player turn logic
-    system 'clear'
     display_hands(player_hand, dealer_hand)
-    puts "You are holding #{calculate_hand_value(player_hand)} points. "
-    prompt "Would you like to hit or stay?"
+    puts ""
+    prompt "You are holding #{calculate_hand_value(player_hand)} points. "\
+           "Would you like to hit or stay?"
 
     loop do
       answer = gets.chomp
@@ -116,11 +117,13 @@ loop do
     deal_card(player_hand, deck) if answer == "hit"
     break if busted?(player_hand)
     break if answer == "stay"
+    system 'clear' # clear screen for the next round
   end
 
   if busted?(player_hand) # end game if player busted
     system 'clear'
     display_final_game_state(player_hand, dealer_hand)
+    puts ""
     puts "Game over! Player busted, Dealer wins!"
   else # dealer turn logic
     system 'clear'
@@ -133,6 +136,7 @@ loop do
     end
 
     display_final_game_state(player_hand, dealer_hand)
+    puts ""
     puts "Game over! #{winner(player_hand, dealer_hand)} wins!"
   end
 
@@ -142,7 +146,9 @@ loop do
     dealer_wins += 1
   end
 
+  puts ""
   puts "Current scoreline is Player: #{player_wins} || Dealer: #{dealer_wins}"
+  puts ""
   prompt "Would you like to play again? Enter (y) to continue..."
   answer = gets.chomp
   break unless answer.downcase.chr == "y"
