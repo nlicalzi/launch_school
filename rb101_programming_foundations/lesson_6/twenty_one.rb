@@ -11,7 +11,7 @@ CARD_VALUE = { '2' => 2, '3' => 3, '4' => 4, '5' => 5,
 # GAMEPLAY METHODS
 
 def deal_card(hand, deck)
-  hand << deck.shuffle!.pop
+  hand << deck.pop
 end
 
 # BOOLEAN METHODS
@@ -79,14 +79,15 @@ end
 def winner(player_hand, dealer_hand)
   player_pts = calculate_hand_value(player_hand)
   dealer_pts = calculate_hand_value(dealer_hand)
-  (player_pts > dealer_pts) || busted?(dealer_hand) ? ("Player") : ("Dealer")
+
+  (player_pts < dealer_pts) && !busted?(dealer_hand) ? ("Dealer") : ("Player")
 end
 
 player_wins = 0
 dealer_wins = 0
 
 loop do
-  deck = CARDS.product(SUITS_UNICODE) # An array w/ sub arrays: ['card', 'suit']
+  deck = CARDS.product(SUITS_UNICODE).shuffle # A deck array w/ card sub arrays
 
   dealer_hand = [] # initialize our dealer's hand array
   player_hand = [] # initialize our player's hand array
@@ -130,7 +131,7 @@ loop do
     display_hands(player_hand, dealer_hand)
 
     loop do
-      break if calculate_hand_value(dealer_hand) > 17 # don't let dealer bust
+      break if calculate_hand_value(dealer_hand) >= 17 # don't let dealer bust
       deal_card(dealer_hand, deck)
       break if busted?(dealer_hand)
     end
@@ -144,14 +145,14 @@ loop do
     end
   end
 
-  if !busted?(player_hand) && winner(player_hand, dealer_hand) == "Player"
+  if winner(player_hand, dealer_hand) == "Player"
     player_wins += 1
-  elsif !busted?(dealer_hand) && winner(player_hand, dealer_hand) == "Dealer"
+  elsif winner(player_hand, dealer_hand) == "Dealer"
     dealer_wins += 1
   end
 
   puts ""
-  puts "Current scoreline is Player: #{player_wins} || Dealer: #{dealer_wins}"
+  puts "Current scoreline is Player: #{player_wins} // Dealer: #{dealer_wins}"
   puts ""
   prompt "Would you like to play again? Enter (y) to continue..."
   answer = gets.chomp
