@@ -130,9 +130,9 @@ loop do
     display_hands(player_hand, dealer_hand)
 
     loop do
+      break if calculate_hand_value(dealer_hand) > 17 # don't let dealer bust
       deal_card(dealer_hand, deck)
       break if busted?(dealer_hand)
-      break if calculate_hand_value(dealer_hand) > 17
     end
 
     display_final_game_state(player_hand, dealer_hand)
@@ -142,6 +142,8 @@ loop do
 
   if !busted?(player_hand) && winner(player_hand, dealer_hand) == "Player"
     player_wins += 1
+  elsif calculate_hand_value(player_hand) == calculate_hand_value(dealer_hand)
+    puts "It was a draw!"
   else
     dealer_wins += 1
   end
