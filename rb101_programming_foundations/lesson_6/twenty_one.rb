@@ -14,7 +14,15 @@ end
 
 def display_hands(player_hand, dealer_hand)
   prompt "Player hand: #{player_hand}"
-  prompt "Dealer hand: #{dealer_hand[0]} & #{dealer_hand.size - 1} hidden card(s)."
+  prompt "Dealer hand: #{dealer_hand[0]} & #{dealer_hand.size - 1} hidden."
+end
+
+def display_final_game_state(player_hand, dealer_hand)
+  system 'clear'
+  prompt "Player hand: #{player_hand}"
+  prompt "Player points: #{calculate_hand_value(player_hand)}"
+  prompt "Dealer hand: #{dealer_hand}"
+  prompt "Dealer points: #{calculate_hand_value(dealer_hand)}"
 end
 
 def summed_hand_value(hand)
@@ -25,13 +33,47 @@ def hand_has_ace?(hand)
   hand.flatten.include?('ace')
 end
 
+def calculate_aces_value(aceless_hand, aces)
+  val = 0
+  aces.size.times do
+    (summed_hand_value(aceless_hand) + val + 11) < 22 ? (val += 11) : (val += 1)
+  end
+  val
+end
+
 def calculate_hand_value(hand)
   return summed_hand_value(hand) unless hand_has_ace?(hand)
 
   aceless_hand = hand.reject { |card| card[0] == 'ace' }
-  aceless_hand_value = summed_hand_value(aceless_hand)
+  aces = hand - aceless_hand
+  summed_hand_value(aceless_hand) + calculate_aces_value(aceless_hand, aces)
+end
 
-  aces = hand - aceless_hand_value
+def valid_player_choice?(input)
+  input.downcase == "hit" || input.downcase == "stay"
+end
+
+def busted?(hand)
+  calculate_hand_value(hand) > 21
+end
+
+def deal_card(hand, deck)
+  hand << deck.shuffle!.pop
+end
+
+def display_results(player_hand, dealer_hand)
+  system 'clear'
+  player_points = calculate_hand_value(player_hand)
+  dealer_points = calculate_hand_value(dealer_hand)
+
+  prompt "Our final scores are as follows:"
+  prompt "Player: #{player_points} || Dealer: #{dealer_points}"
+end
+
+def display_winner(player_hand, dealer_hand)
+  player_pts = calculate_hand_value(player_hand)
+  dealer_pts = calculate_hand_value(dealer_hand)
+  (player_pts > dealer_pts) || busted?(dealer_hand) ? ("Player") : ("Dealer")
 end
 
 deck = CARDS.product(SUITS_UNICODE) # An array w/ sub arrays: ['card', 'suit']
@@ -48,24 +90,46 @@ prompt "First, you'll each be dealt two cards."
 puts ""
 
 2.times do # deal 2 cards to the player and 2 to the dealer
-  player_hand << deck.shuffle!.pop # randomize/remove card from deck & append
-  dealer_hand << deck.shuffle!.pop # randomize/remove card from deck & append
+  deal_card(player_hand, deck)
+  deal_card(dealer_hand, deck)
 end
 
 loop do
-  display_hands(player_hand, dealer_hand)
+  loop do # player turn logic
+    system 'clear'
+    display_hands(player_hand, dealer_hand)
+    prompt "You are holding #{calculate_hand_value(player_hand)} points. "
+    prompt "Would you like to hit or stay?"
 
-  # player_hand_value = player_hand.map { |card| CARD_VALUE[card[0]] }.sum
-  # dealer_show_value = CARD_VALUE[dealer_hand[0][0]]
-  #
-  # prompt "You are holding #{player_hand_value} points. "\
-  #        "Dealer is showing #{dealer_show_value} points."
+    answer = ''
+    loop do
+      answer = gets.chomp
+      break if valid_player_choice?(answer)
+      prompt "Sorry, invalid input. Please choose either (hit) or (stay)"
+    end
 
-
-  prompt "Is player holding an ace: #{hand_has_ace?(player_hand)}" # test
-  loop do
-    prompt "Would you like to hit or pass?"
-    answer = gets.chomp
-    break if answer = 'pass'
+    deal_card(player_hand, deck) if answer == "hit"
+    break if busted?(player_hand)
+    break if answer == "stay"
   end
+
+  if busted?(player_hand) # end game if player busted
+    system 'clear'
+    display_final_game_state(player_hand, dealer_hand)
+    prompt "Game over! Player busted, Dealer wins!"
+    break
+  else # dealer turn logic
+    system 'clear'
+    display_hands(player_hand, dealer_hand)
+
+    loop do
+      deal_card(dealer_hand, deck)
+      break if busted?(dealer_hand)
+      break if calculate_hand_value(dealer_hand) > 17
+    end
+
+    display_final_game_state(player_hand, dealer_hand)
+    prompt "Game over! #{display_winner(player_hand, dealer_hand)} wins!"
+  end
+  break
 end
