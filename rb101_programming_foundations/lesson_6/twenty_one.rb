@@ -137,14 +137,16 @@ loop do
 
     display_final_game_state(player_hand, dealer_hand)
     puts ""
-    puts "Game over! #{winner(player_hand, dealer_hand)} wins!"
+    if calculate_hand_value(player_hand) == calculate_hand_value(dealer_hand)
+      puts "It's a draw!"
+    else
+      puts "Game over! #{winner(player_hand, dealer_hand)} wins!"
+    end
   end
 
   if !busted?(player_hand) && winner(player_hand, dealer_hand) == "Player"
     player_wins += 1
-  elsif calculate_hand_value(player_hand) == calculate_hand_value(dealer_hand)
-    puts "It was a draw!"
-  else
+  elsif !busted?(dealer_hand) && winner(player_hand, dealer_hand) == "Dealer"
     dealer_wins += 1
   end
 
