@@ -54,16 +54,16 @@ def prompt(msg)
 end
 
 def display_hands(player_hand, dealer_hand)
-  prompt "Player hand: #{player_hand}"
-  prompt "Dealer hand: #{dealer_hand[0]} & #{dealer_hand.size - 1} hidden."
+  puts "Player hand: #{player_hand}"
+  puts "Dealer hand: #{dealer_hand[0]} & #{dealer_hand.size - 1} hidden."
 end
 
 def display_final_game_state(player_hand, dealer_hand)
   system 'clear'
-  prompt "Player hand: #{player_hand}"
-  prompt "Player points: #{calculate_hand_value(player_hand)}"
-  prompt "Dealer hand: #{dealer_hand}"
-  prompt "Dealer points: #{calculate_hand_value(dealer_hand)}"
+  puts "Player hand: #{player_hand}"
+  puts "Player points: #{calculate_hand_value(player_hand)}"
+  puts "Dealer hand: #{dealer_hand}"
+  puts "Dealer points: #{calculate_hand_value(dealer_hand)}"
 end
 
 def display_results(player_hand, dealer_hand)
@@ -71,15 +71,18 @@ def display_results(player_hand, dealer_hand)
   player_points = calculate_hand_value(player_hand)
   dealer_points = calculate_hand_value(dealer_hand)
 
-  prompt "Our final scores are as follows:"
-  prompt "Player: #{player_points} || Dealer: #{dealer_points}"
+  puts "Our final scores are as follows:"
+  puts "Player: #{player_points} || Dealer: #{dealer_points}"
 end
 
-def display_winner(player_hand, dealer_hand)
+def winner(player_hand, dealer_hand)
   player_pts = calculate_hand_value(player_hand)
   dealer_pts = calculate_hand_value(dealer_hand)
   (player_pts > dealer_pts) || busted?(dealer_hand) ? ("Player") : ("Dealer")
 end
+
+player_wins = 0
+dealer_wins = 0
 
 loop do
   deck = CARDS.product(SUITS_UNICODE) # An array w/ sub arrays: ['card', 'suit']
@@ -88,8 +91,8 @@ loop do
   player_hand = [] # initialize our player's hand array
 
   system 'clear'
-  prompt "Welcome to Twenty One! You'll be playing against the dealer."
-  prompt "First, you'll each be dealt two cards."
+  puts "Welcome to Twenty One! You'll be playing against the dealer."
+  puts "First, you'll each be dealt two cards."
   puts ""
 
   2.times do # deal 2 cards to the player and 2 to the dealer
@@ -101,7 +104,7 @@ loop do
   loop do # player turn logic
     system 'clear'
     display_hands(player_hand, dealer_hand)
-    prompt "You are holding #{calculate_hand_value(player_hand)} points. "
+    puts "You are holding #{calculate_hand_value(player_hand)} points. "
     prompt "Would you like to hit or stay?"
 
     loop do
@@ -118,7 +121,7 @@ loop do
   if busted?(player_hand) # end game if player busted
     system 'clear'
     display_final_game_state(player_hand, dealer_hand)
-    prompt "Game over! Player busted, Dealer wins!"
+    puts "Game over! Player busted, Dealer wins!"
   else # dealer turn logic
     system 'clear'
     display_hands(player_hand, dealer_hand)
@@ -130,9 +133,16 @@ loop do
     end
 
     display_final_game_state(player_hand, dealer_hand)
-    prompt "Game over! #{display_winner(player_hand, dealer_hand)} wins!"
+    puts "Game over! #{winner(player_hand, dealer_hand)} wins!"
   end
 
+  if !busted?(player_hand) && winner(player_hand, dealer_hand) == "Player"
+    player_wins += 1
+  else
+    dealer_wins += 1
+  end
+
+  puts "Current scoreline is Player: #{player_wins} || Dealer: #{dealer_wins}"
   prompt "Would you like to play again? Enter (y) to continue..."
   answer = gets.chomp
   break unless answer.downcase.chr == "y"
