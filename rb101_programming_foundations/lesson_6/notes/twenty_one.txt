@@ -1,0 +1,26 @@
+Source: https://launchschool.com/lessons/de05b300/assignments/b6baf7e6
+
+Notes for flowchart below.
+
+Start
+Deal two cards to player.
+Deal two cards to dealer.
+Display both player cards, display one dealer card.
+
+Player chooses between "hit" and "stay"
+  If hit:
+    player draws a card
+    end turn
+  If stay:
+    end turn
+
+Calculate player hand value
+  if > 21: game over
+  if <= 21: dealer turn
+
+Dealer chooses between "hit" and "stay"
+  Calculate dealer hand value
+  If less than 17:
+    Dealer draws a card
+  If >= 17:
+    Dealer stays

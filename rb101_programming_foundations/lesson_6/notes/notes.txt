@@ -1,0 +1,4 @@
+Misc. Notes
+
+Splat (*) Operator
+Inject/reduce symbols to proc (:+) / (:*) etc...
