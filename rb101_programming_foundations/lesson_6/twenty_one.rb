@@ -20,7 +20,7 @@ def hand_has_ace?(hand)
 end
 
 def valid_player_choice?(input)
-  input.downcase == "hit" || input.downcase == "stay"
+  input.downcase.chr == "h" || input.downcase.chr == "s"
 end
 
 def busted?(hand)
@@ -80,7 +80,10 @@ def winner(player_hand, dealer_hand)
   player_pts = calculate_hand_value(player_hand)
   dealer_pts = calculate_hand_value(dealer_hand)
 
-  (player_pts < dealer_pts) && !busted?(dealer_hand) ? ("Dealer") : ("Player")
+  return "Dealer" if player_pts > 21
+  return "Player" if dealer_pts > 21
+  return "Player" if player_pts > dealer_pts
+  "Dealer"
 end
 
 player_wins = 0
@@ -107,17 +110,17 @@ loop do
     display_hands(player_hand, dealer_hand)
     puts ""
     prompt "You are holding #{calculate_hand_value(player_hand)} points. "\
-           "Would you like to hit or stay?"
+           "Would you like to (h)it or (s)tay?"
 
     loop do
       answer = gets.chomp
       break if valid_player_choice?(answer)
-      prompt "Sorry, invalid input. Please choose either (hit) or (stay)"
+      prompt "Sorry, invalid input. Please choose either (h)it or (s)tay"
     end
 
-    deal_card(player_hand, deck) if answer == "hit"
+    deal_card(player_hand, deck) if answer.downcase.chr == "h"
     break if busted?(player_hand)
-    break if answer == "stay"
+    break if answer.downcase.chr == "s"
     system 'clear' # clear screen for the next round
   end
 
@@ -158,3 +161,5 @@ loop do
   answer = gets.chomp
   break unless answer.downcase.chr == "y"
 end
+
+puts "Thanks for playing!"
