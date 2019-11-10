@@ -6,8 +6,8 @@ CARD_VALUE = { '2' => 2, '3' => 3, '4' => 4, '5' => 5,
                '6' => 6, '7' => 7, '8' => 8, '9' => 9,
                '10' => 10, 'jack' => 10, 'queen' => 10,
                'king' => 10, 'ace' => 'ace' }
-ROUND_WIN_VAL = 21
-BUST_VAL = 17
+MAX_VAL_BEFORE_BUST = 21
+STAY_VAL = 17
 MATCH_WIN_TOTAL = 5
 
 # GAMEPLAY METHODS
@@ -26,7 +26,7 @@ def valid_player_choice?(input)
 end
 
 def busted?(hand_value)
-  hand_value > ROUND_WIN_VAL
+  hand_value > MAX_VAL_BEFORE_BUST
 end
 
 # CALCULATION METHODS
@@ -77,8 +77,8 @@ def display_results(player_total, dealer_total)
 end
 
 def winner(player_total, dealer_total)
-  return "Dealer" if player_total > ROUND_WIN_VAL
-  return "Player" if dealer_total > ROUND_WIN_VAL
+  return "Dealer" if player_total > MAX_VAL_BEFORE_BUST
+  return "Player" if dealer_total > MAX_VAL_BEFORE_BUST
   return "Player" if player_total > dealer_total
   return "Dealer" if dealer_total > player_total
   "Draw"
@@ -140,7 +140,7 @@ loop do
     display_hands(player_hand, dealer_hand)
 
     loop do
-      break if dealer_total >= BUST_VAL # don't let dealer bust
+      break if dealer_total >= STAY_VAL # don't let dealer bust
       deal_card(dealer_hand, deck)
       dealer_total = calculate_hand_value(dealer_hand) # update cached value
 
