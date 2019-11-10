@@ -6,6 +6,9 @@ CARD_VALUE = { '2' => 2, '3' => 3, '4' => 4, '5' => 5,
                '6' => 6, '7' => 7, '8' => 8, '9' => 9,
                '10' => 10, 'jack' => 10, 'queen' => 10,
                'king' => 10, 'ace' => 'ace' }
+ROUND_WIN_VAL = 21
+BUST_VAL = 17
+MATCH_WIN_TOTAL = 5
 
 # GAMEPLAY METHODS
 
@@ -22,8 +25,8 @@ def valid_player_choice?(input)
   input.downcase.chr == "h" || input.downcase.chr == "s"
 end
 
-def busted?(hand)
-  calculate_hand_value(hand) > 21
+def busted?(hand_value)
+  hand_value > ROUND_WIN_VAL
 end
 
 # CALCULATION METHODS
@@ -57,32 +60,28 @@ def display_hands(player_hand, dealer_hand)
   puts "Dealer hand: #{dealer_hand[0]} & #{dealer_hand.size - 1} hidden."
 end
 
-def display_final_game_state(player_hand, dealer_hand)
+def display_final_game_state(player_hand, dealer_hand,
+                             player_total, dealer_total)
   system 'clear'
   puts "Player hand: #{player_hand}"
-  puts "Player points: #{calculate_hand_value(player_hand)}"
+  puts "Player points: #{player_total}"
   puts ""
   puts "Dealer hand: #{dealer_hand}"
-  puts "Dealer points: #{calculate_hand_value(dealer_hand)}"
+  puts "Dealer points: #{dealer_total}"
 end
 
-def display_results(player_hand, dealer_hand)
+def display_results(player_total, dealer_total)
   system 'clear'
-  player_points = calculate_hand_value(player_hand)
-  dealer_points = calculate_hand_value(dealer_hand)
-
   puts "Our final scores are as follows:"
-  puts "Player: #{player_points} || Dealer: #{dealer_points}"
+  puts "Player: #{player_total} || Dealer: #{dealer_total}"
 end
 
-def winner(player_hand, dealer_hand)
-  player_pts = calculate_hand_value(player_hand)
-  dealer_pts = calculate_hand_value(dealer_hand)
-
-  return "Dealer" if player_pts > 21
-  return "Player" if dealer_pts > 21
-  return "Player" if player_pts > dealer_pts
-  "Dealer"
+def winner(player_total, dealer_total)
+  return "Dealer" if player_total > ROUND_WIN_VAL
+  return "Player" if dealer_total > ROUND_WIN_VAL
+  return "Player" if player_total > dealer_total
+  return "Dealer" if dealer_total > player_total
+  "Draw"
 end
 
 player_wins = 0
@@ -106,11 +105,14 @@ loop do
     deal_card(dealer_hand, deck)
   end
 
+  player_total = calculate_hand_value(player_hand)
+  dealer_total = calculate_hand_value(dealer_hand)
+
   answer = nil
   loop do # player turn logic
     display_hands(player_hand, dealer_hand)
     puts ""
-    prompt "You are holding #{calculate_hand_value(player_hand)} points. "\
+    prompt "You are holding #{player_total} points. "\
            "Would you like to (h)it or (s)tay?"
 
     loop do
@@ -120,47 +122,59 @@ loop do
     end
 
     deal_card(player_hand, deck) if answer.downcase.chr == "h"
-    break if busted?(player_hand)
+    player_total = calculate_hand_value(player_hand) # update player hand value
+
+    break if busted?(player_total)
     break if answer.downcase.chr == "s"
     system 'clear' # clear screen for the next round
   end
 
-  if busted?(player_hand) # end game if player busted
+  if busted?(player_total) # end game if player busted
     system 'clear'
-    display_final_game_state(player_hand, dealer_hand)
+    display_final_game_state(player_hand, dealer_hand,
+                             player_total, dealer_total)
     puts ""
-    puts "Game over! Player busted, Dealer wins!"
+    puts "Round over! Player busted, Dealer wins!"
   else # dealer turn logic
     system 'clear'
     display_hands(player_hand, dealer_hand)
 
     loop do
-      break if calculate_hand_value(dealer_hand) >= 17 # don't let dealer bust
+      break if dealer_total >= BUST_VAL # don't let dealer bust
       deal_card(dealer_hand, deck)
-      break if busted?(dealer_hand)
+      dealer_total = calculate_hand_value(dealer_hand) # update cached value
+
+      break if busted?(dealer_total)
     end
 
-    display_final_game_state(player_hand, dealer_hand)
+    display_final_game_state(player_hand, dealer_hand,
+                             player_total, dealer_total)
     puts ""
-    if calculate_hand_value(player_hand) == calculate_hand_value(dealer_hand)
+    if player_total == dealer_total
       puts "It's a draw!"
     else
-      puts "Game over! #{winner(player_hand, dealer_hand)} wins!"
+      puts "Round over! #{winner(player_total, dealer_total)} wins!"
     end
   end
 
-  if winner(player_hand, dealer_hand) == "Player"
+  if winner(player_total, dealer_total) == "Player"
     player_wins += 1
-  elsif winner(player_hand, dealer_hand) == "Dealer"
+  elsif winner(player_total, dealer_total) == "Dealer"
     dealer_wins += 1
   end
 
   puts ""
   puts "Current scoreline is Player: #{player_wins} // Dealer: #{dealer_wins}"
   puts ""
-  prompt "Would you like to play again? Enter (y) to continue..."
-  answer = gets.chomp
-  break unless answer.downcase.chr == "y"
+  if player_wins == 5 || dealer_wins == 5
+    puts "Congratulations to #{winner(player_total, dealer_total)}! "\
+         "Our winner with 5 points!"
+    break
+  else
+    prompt "Would you like to play again? Enter (y) to continue..."
+    answer = gets.chomp
+    break unless answer.downcase.chr == "y"
+  end
 end
 
 puts "Thanks for playing!"
