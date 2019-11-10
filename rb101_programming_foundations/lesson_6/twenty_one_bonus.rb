@@ -1,7 +1,6 @@
 # Source: https://launchschool.com/lessons/de05b300/assignments/b6baf7e6
 
 CARDS = %w(2 3 4 5 6 7 8 9 10 jack queen king ace)
-SUITS = %w(hearts diamonds clubs spades)
 SUITS_UNICODE = %w(♥ ♦ ♣ ♠)
 CARD_VALUE = { '2' => 2, '3' => 3, '4' => 4, '5' => 5,
                '6' => 6, '7' => 7, '8' => 8, '9' => 9,
@@ -88,6 +87,8 @@ end
 
 player_wins = 0
 dealer_wins = 0
+player_total = 0
+dealer_total = 0
 
 loop do
   deck = CARDS.product(SUITS_UNICODE).shuffle # A deck array w/ card sub arrays
