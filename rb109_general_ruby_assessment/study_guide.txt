@@ -1,0 +1,26 @@
+Notes on LS Study Guide for RB109 Written Test
+
+# Topics of Interest
+  - Local Variable Scope
+    - How do local variables interact with method invocations with blocks?
+    - How do local variables interact with method definitions?
+  - When will passing an object to a method definition change the original object?
+  - Working with collections (Array, Hash, String)
+  - Using popular collection methods (#each, #map, #select)
+  - Variables as pointers
+    - https://launchschool.com/books/ruby/read/more_stuff#variables_as_pointers
+  - Puts vs. return
+    - puts returns nil, p Object will return object
+    - https://launchschool.com/books/ruby/read/methods#putsvsreturnthesequel
+  - False vs. nil and the idea of "truthiness"
+     - distinction between 'true' and 'truthy'
+     - every value but nil and false is 'truthy' in Ruby
+  - Method definition
+    - Method definition is when we define a Ruby method using the 'def' keyword
+      - in method definition, we can add *parameters* to the method
+    - Method invocation is when we call a method
+      - in method invocation, we can pass *arguments* to the method.
+      - Remember: caller.method(args) {block}
+  - Method invocation
+  - Implicit return value of method invocations
+  - Implicit return value of blocks
