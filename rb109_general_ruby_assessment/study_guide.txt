@@ -18,9 +18,23 @@ Notes on LS Study Guide for RB109 Written Test
   - Method definition
     - Method definition is when we define a Ruby method using the 'def' keyword
       - in method definition, we can add *parameters* to the method
+    - because of scope gating/encapsulation, methods can only access local
+      variables if they are passed in as parameters
+  - Method invocation
     - Method invocation is when we call a method
       - in method invocation, we can pass *arguments* to the method.
       - Remember: caller.method(args) {block}
-  - Method invocation
+    - Method invocation with a block has different scoping / encapsulation rules
   - Implicit return value of method invocations
   - Implicit return value of blocks
+
+Blog Posts
+
+"Variable References and Object Mutability"
+https://launchschool.com/blog/references-and-mutability-in-ruby
+
+Mutating and Non-Mutating Methods in Ruby
+https://launchschool.com/blog/mutating-and-non-mutating-methods
+
+Object Passing in Ruby: Pass by Reference or Pass by Value
+https://launchschool.com/blog/object-passing-in-ruby
