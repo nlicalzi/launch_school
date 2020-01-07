@@ -1,4 +1,4 @@
-Notes on LS Study Guide for RB109 Written Test
+LS Study Guide for RB109 Written Test
 
 # Topics of Interest
   - Local Variable Scope
@@ -28,7 +28,7 @@ Notes on LS Study Guide for RB109 Written Test
   - Implicit return value of method invocations
   - Implicit return value of blocks
 
-Blog Posts
+Variable References & Object Mutability Blog Posts
 
 "Variable References and Object Mutability"
 https://launchschool.com/blog/references-and-mutability-in-ruby
