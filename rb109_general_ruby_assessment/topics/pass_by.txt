@@ -2,9 +2,63 @@ Notes by Topic on the LS Study Guide for RB109
 
 # Pass by Reference of the Value / Call by Sharing
 
-- When an operation within the method mutates the caller, it will affect the
-  original object.
-
 ## Notes
+- When an operation within the method mutates the caller, it will affect the original object.
+- Reassignment is non-mutating.
+- Indexed assignment is mutating. (str[3] = 'x' // array[5] = Person.new)
+  - #[]= modifies the original object in-place, rather than re-binding variables
+- Concatenation is mutating (#<<)
+- Ruby variables and constants aren’t objects, but references to objects.
+
 ## Vocab
+- Strict Evaluation
+  - Every expression is evaluated and converted to an object before it is passed to a method.
+  - Ruby uses strict evaluation exclusively.
+- Caller
+- Object Passing Strategies
+  - Pass by Reference
+  - Pass by Value
+  - Pass by Reference Value (Ruby!)
+- Method Declaration
+- Method Invocation
+- Mutating the Caller
+- Variables as Pointers
+  - "Variables are pointers to physical space in memory"
+  - "Ruby variables are references to objects in memory"
+  - "(re)Assignment is non-mutating"
+- Assignment Operators (*=, +=, etc.)
+  - Assignment Operators are non-mutating, because assignment is non mutating
+
+## Code Sample
+```
+def fix(value)
+  value = value.upcase
+  value.concat('!')
+end
+
+s = 'hello'
+t = fix(s)
+```
+
+```
+def fix(value)
+  value << 'xyz'
+  value = value.upcase
+  value.concat('!')
+end
+s = 'hello'
+t = fix(s)
+```
+
+```
+def fix(value)
+  value[1] = 'x'
+  value
+end
+
+s = 'abc'
+t = fix(s)
+```
+
 ## Questions for Flashcards
+- What is the difference between #<< and #+=?
