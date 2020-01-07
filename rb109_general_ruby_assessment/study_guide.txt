@@ -2,8 +2,6 @@ LS Study Guide for RB109 Written Test
 
 # Topics of Interest
   - Local Variable Scope
-    - How do local variables interact with method invocations with blocks?
-    - How do local variables interact with method definitions?
   - When will passing an object to a method definition change the original object?
   - Working with collections (Array, Hash, String)
   - Using popular collection methods (#each, #map, #select)
