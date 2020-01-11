@@ -1,0 +1,3 @@
+Notes by topic on the LS Study Guide for RB109
+
+Popular Collection Methods (each, map, select... etc)
