@@ -1,0 +1,12 @@
+# Notes on exercises done in preparation for RB109 assessment
+
+How can we split a string 'str' into an array of chunks of length 'sz'?
+  - str.scan(/.{#{sz}}/)
+  - str.each_slice(sz)
+  - str.gsub(/.{1,#{sz}}/)
+
+How can we rotate an array to the left two places?
+  - arr.rotate(2)
+
+How can we rotate an array to the right one place?
+  - arr.rotate(-1)
