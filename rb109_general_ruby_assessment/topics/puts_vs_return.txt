@@ -1,0 +1,6 @@
+Notes by topic on the LS Study Guide for RB109
+
+# Puts vs. Return
+
+- Ruby methods always return the evaluated result of the last line of the expression
+  unless an explicit return statement comes before it.
