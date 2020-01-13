@@ -1,5 +1,8 @@
 # https://launchschool.com/exercises/dfa7db2c
 
+# Write a method to determine return a boolean value based on whether a given
+# integer is odd, without using .odd? or .even?
+
 def is_odd?(int)
   int % 2 == 1
 end
