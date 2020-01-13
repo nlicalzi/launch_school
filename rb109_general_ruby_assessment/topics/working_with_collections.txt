@@ -1,3 +1,24 @@
 Notes by topic on the LS Study Guide for RB109
 
-Working with Collections (Arrays, Hashes, Strings)
+# Working with Collections (Arrays, Hashes, Strings)
+
+Commonly used iterative methods (what does each accomplish?):
+  - each (iteration)
+  - select (selection)
+  - map (transformation)
+
+Calling methods with a block on Ruby collection objects:
+  - Remember: return value of the block is passed to the method on each iteration
+  - What does the method do with the block's return value?
+  - What is the ultimate return value of the method?
+  - What side effects might the code in the block have? (for ex: mutation)
+
+What to keep in mind about methods that work on collections:
+  - What is the method's return value?
+  - How does the method use a block's return value, if it takes a block?
+  - Is the method destructive?
+
+Looping iteration:
+  - 4 basic elements: loop, counter, value retrieval, and loop exiting
+  - Difference between loop/do and do/while loops?
+    - do/while executes the block at least once
