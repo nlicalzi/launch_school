@@ -4,3 +4,15 @@ Notes by topic on the LS Study Guide for RB109
 
 - Ruby methods always return the evaluated result of the last line of the expression
   unless an explicit return statement comes before it.
+
+## Puts vs. p vs. print
+
+- `Puts` prints something to the screen with a new line at the end
+  - the return value of a `puts` call is nil
+  - Puts attempts to convert its argument to a string with to_s
+  - Each element of an array will get a new line, and nils will be blank lines
+
+- `Print` behaves like puts, except it doesn't add new lines or display objects on new lines
+
+- `p` will show the results of obj.inspect, and add a new line ('rawer' version of object)
+  - `p` calls have as their return value the argument object that was passed in
