@@ -1,7 +1,7 @@
 # https://launchschool.com/exercises/dfa7db2c
 
 def is_odd?(int)
-  !(int % 2 == 0)
+  int % 2 == 1
 end
 
 puts is_odd?(2) == false
