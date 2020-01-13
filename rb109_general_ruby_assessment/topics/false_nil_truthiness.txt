@@ -1,0 +1,8 @@
+Notes by topic on the LS Study Guide for RB109
+
+# False vs. nil & 'truthiness'
+
+- Every value in Ruby, besides 'false' and 'nil' evaluates to true in a boolean context
+  - Therefore, every value besides 'false' and 'nil' is 'truthy'
+  - 'false' and 'nil' are the only 'falsey' values in Ruby
+  
