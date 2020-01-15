@@ -1,0 +1,29 @@
+Notes by Topic on the LS Study Guide for RB109
+
+# Method Definition & Method Invocation
+
+Method definition: when, in our code, we define a Ruby method using the `def` keyword
+
+Method invocation: when we call a method, either from the Ruby Core API / core library,
+or a custom method that we've defined ourselves using the `def` keyword
+
+- Method invocation, followed by curly braces or do..end, is how we define a block.
+  - The block acts as an argument to a method
+  - Methods have to be defined to use a block (see: keyword `yield` is required)
+    - If the method isn't so defined, it can't execute a block of code
+  - blocks and methods can interact, as defined at the time of  method
+    definition and applied at the time of method invocation
+
+- Method definition sets a certain scope for local variables (passed as params),
+  what it does with those params, and how it interacts (if at all) with a block.
+
+- Method invocation uses the scope set by the method definition. If the method
+  can use a block, its scope can add addt'l flexibility (access outer variables)
+
+
+LS Summary:
+  - The def..end construction in Ruby is method definition
+  - Referencing a method name, either of an existing method or subsequent to definition, is method invocation
+  - Method invocation followed by {..} or do..end defines a block; the block is part of the method invocation
+  - Method definition sets a scope for local variables in terms of parameters and interaction with blocks
+  - Method invocation uses the scope set by the method definition
