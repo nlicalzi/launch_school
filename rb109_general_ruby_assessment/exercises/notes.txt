@@ -10,3 +10,12 @@ How can we rotate an array to the left two places?
 
 How can we rotate an array to the right one place?
   - arr.rotate(-1)
+
+How can we loop increment an integer by 1 until a condition is satisfied?
+  - int += 1 until int == y (or other such condition)
+
+How can we decompose an integer to an array of its individual digits?
+  - int.digits
+
+How can we create a max integer by sorting the digits in a given integer?
+  - int.digits.sort.reverse.join.to_i
