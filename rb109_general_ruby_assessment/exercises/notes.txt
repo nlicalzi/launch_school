@@ -19,3 +19,9 @@ How can we decompose an integer to an array of its individual digits?
 
 How can we create a max integer by sorting the digits in a given integer?
   - int.digits.sort.reverse.join.to_i
+
+How can we filter an input string to only alphabetical characters (case insensitive?)
+  - str.scan(/[a-z]/i).join
+
+How can we sort an input string, case insensitively?
+  - str.sort_by(&:downcase)
