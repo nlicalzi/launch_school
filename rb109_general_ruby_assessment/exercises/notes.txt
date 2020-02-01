@@ -25,3 +25,13 @@ How can we filter an input string to only alphabetical characters (case insensit
 
 How can we sort an input string, case insensitively?
   - str.sort_by(&:downcase)
+
+What is the difference between indexed element access in strings and arrays?
+  - element access in strings returns a new string, while in arrays it's a reference to the object at that position
+
+How can we optimize recursive solutions for memory and runtime?
+  - Utilize tail recursion (recursion w/ extra accumulator args)
+
+How can we find the largest/smallest sentence by word count in an array of sentences?
+  - sentences.max_by { |sentence| sentence.split.size }
+  - sentences.min_by { |sentence| sentence.split.size }
