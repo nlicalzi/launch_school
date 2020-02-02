@@ -1,0 +1,15 @@
+Encapsulation:
+  - Hiding pieces of functionality, making them unavailable to rest of code base.
+  - Form of data protection, so that it can't be manipulated or changed without intention.
+Polymorphism:
+  - The ability for data to be represented as many different types.
+Inheritance:
+  - When a class inherits the behaviors of another class (the superclass).
+Superclass:
+  - A class from which a given class inherits behaviors.
+  - Usually basic classes with large reusability.
+Subclass:
+  - Smaller subclasses typically contain more fine-grained, detailed behaviors.
+Mixin:
+  - Modules may be "mixed-in" with classes using the `include` method invocation.
+  - This allows class and its objects access to the behaviors declared in that module.
