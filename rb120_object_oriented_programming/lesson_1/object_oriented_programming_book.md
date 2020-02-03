@@ -162,9 +162,44 @@ puts HumanBeing.ancestors
 
 #### States and Behaviors
 
+* When defining a class, we typically focus on two things: *states* and *behaviors*
+  * States: the tracking of attributes for individual objects (tracked in instance variables `@var`)
+  * Behaviors: what objects are capable of doing (available as instance methods)
+
 #### Initializing a New Object
 
+* The `initialize` method in a class is called immediately whenever you create a new object.
+
+  * ```Ruby
+    class GoodDog
+      def initialize
+        puts "This object was initialized!"
+      end
+    end
+    
+    sparky = GoodDog.new # => "This object was initialized!"
+    ```
+
+  * Instantiating a new object with the `new` class method triggers the `initialize` instance method.
+
+  * `initialize` is known as a *constructor*, because it is triggered whenever we create a new object.
+
 #### Instance Variables
+
+```Ruby
+class GoodDog
+  def initialize(name)
+    @name = name
+  end
+end
+
+sparky = GoodDog.new("Sparky")
+```
+
+* the `initialize` method takes a parameter `name`
+* our **instance variable** `@name` is set to the argument that is passed in to `initialize` through `new`
+  * `@name == "Sparky"`
+* Instance variables are how we keep track of each object's unique state
 
 #### Instance Methods
 
