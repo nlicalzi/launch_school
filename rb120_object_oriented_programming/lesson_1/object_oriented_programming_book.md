@@ -203,9 +203,127 @@ sparky = GoodDog.new("Sparky")
 
 #### Instance Methods
 
+```Ruby
+class GoodDog
+  def initialize(name)
+    @name = name
+  end
+  
+  def speak
+    "#{@name} says arf!"
+  end
+end
+
+sparky = GoodDog.new("Sparky")
+puts sparky.speak # => "Sparky says arf!"
+
+fido = GoodDog.new("Fido")
+puts fido.speak # => "Fido says arf!"
+```
+
+* All objects of the same class have the same behaviors, but contain different states (here: `@name`)
+
 #### Accessor Methods
 
+```Ruby
+puts sparky.name # => NoMethodError: undefined method `name`
+```
 
+* If we want to access the `@name` variable, we have to create a method that will return the name:
+
+  * ```Ruby
+    class GoodDog
+      def initialize(name)
+        @name = name
+      end
+      
+      def name
+        @name
+      end
+      
+      def name=(name) # syntactic sugar w/ the equals sign `=`
+        @name = name
+      end
+      
+      def speak
+        "#{@name} says arf!"
+      end
+    end
+    
+    sparky = GoodDog.new("Sparky")
+    puts sparky.speak
+    puts sparky.name
+    puts sparky.name = "Spartacus"
+    puts sparky.name
+    ```
+
+* In the above code, `name` is a **getter method**.
+
+* In the above code, `name=(name)`is a **setter method**, with syntactic sugar
+
+  * normally we'd have to call `sparky.name=('')`, instead we can do `sparky.name = ''`
+  * method name is `name=`, with the string argument being passed in
+
+* **getter** and **setter** methods use the same name as the instance variable they are exposing/setting
+
+* **attr_acccesor** method simplifies the process of creating **getter** and **setter** methods:
+
+  * ```Ruby
+    class GoodDog
+      attr_accessor :name
+      
+      def initialize(name)
+        @name = name
+      end
+      
+      def speak
+        "#{@name} says arf!"
+      end
+    end
+    
+    sparky = GoodDog.new("Sparky")
+    puts sparky.speak
+    puts sparky.name # => "Sparky"
+    sparky.name = "Spartacus"
+    puts sparky.name # => "Spartacus"
+    ```
+
+* all of the `attr_*` methods take symbols as parameters: `attr_accessor :name, :height, :weight`
+
+* Once we have `attr_accessor` active, we want to use their associated getter instance methods, rather than calling the instance variables themselves-- imagine the case of a social security number where you don't want to actually expose the underlying data.
+
+  * ```Ruby
+    # converts '123-45-6789' to 'xxx-xx-6789'
+    'xxx-xx-' + @ssn.split('-').last # have to call this repeatedly
+    
+    # VERSUS
+    
+    def ssn # can just call the method
+      # converts '123-45-6789' to 'xxx-xx-6789'
+      'xxx-xx-' + @ssn.split('-').last 
+    end
+    ```
+
+##### Calling methods with self:
+
+* ```Ruby
+  def change_info(n, h, w)
+    self.name = n
+    self.height = h
+    self.weight = w
+  end
+  ```
+
+  * using `self` tells Ruby that we're calling a setter method
+
+  * can also be used for getter methods:
+
+    * ```Ruby
+      def info
+        "#{self.name} weighs #{self.weight} and is #{self.height} tall."
+      ```
+
+* `self` can be used with any instance method, not just those included in `attr_accessor`
 
 ## Classes and Objects II
 
