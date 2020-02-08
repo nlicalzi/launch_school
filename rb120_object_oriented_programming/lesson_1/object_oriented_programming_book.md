@@ -431,6 +431,14 @@ puts sparky.name # => NoMethodError: undefined method `name`
 
 * Let's extract the `speak` method to superclass `Animal`, and use inheritance to make that behavior available to `GoodDog` and `Cat` classes.
 
+  * `<` symbol below signifies that `GoodDog` and `Cat` classes are inheriting from `Animal` superclass.
+
+  * Defining `speak` in a subclass that has also inherited `speak` from a superclass will **override** the `speak` method, because Ruby checks the object's class first before looking in the superclass.
+
+    * Read more about **method lookup** paths later.
+
+  * Take advantage of inheritance to adhere to **DRY**: don't repeat yourself
+
   * ```Ruby
     class Animal
       def speak
@@ -450,18 +458,232 @@ puts sparky.name # => NoMethodError: undefined method `name`
     puts paws.speak 	# => Hello!
     ```
 
-  * 
-
 #### super
+
+* Ruby's built-in function `super` allows us to call methods up the inheritance hierarchy.
+
+  * When `super` is called within a method, it will search the instance hierarchy for a method by the same name, and then invoke it. 
+
+  * ```Ruby
+    class Animal
+      def speak
+        "Hello!"
+      end
+    end
+    
+    class GoodDog < Animal
+      def speak
+        super + " from GoodDog class" # returns value of Animal#speak + message
+      end
+    end
+    
+    animal = Animal.new
+    sparky = GoodDog.new
+    puts animal.speak # => "Hello!"
+    puts sparky.speak # => "Hello! from GoodDog class"
+    ```
+
+  * ```Ruby
+    class Animal
+      attr_accessor :name # set & get
+    
+      def initialize(name)
+        @name = name
+      end
+    end
+    
+    class GoodDog < Animal
+      def initialize(color)
+        super # passes argument (color) back to Animal#initialize, setting @name
+        @color = color # sets obj.color to passed param
+      end
+    end
+    
+    animal = Animal.new('brown')
+    bruno = GoodDog.new('brown')
+    p animal # => @name="brown"
+    p bruno # => @name="brown", @color="brown"
+    ```
+
+* When called with specific arguments (eg. `super(a, b)`) the specified arguments will be sent up the method lookup chain:
+
+  * ```Ruby
+    class BadDog < Animal
+      def initialize(age, name)
+        super(name)
+        @age = age
+      end
+    end
+    
+    BadDog.new(2, "bear")
+    ```
+
+  * In the above example, when a `BadDog` object is created, the passed in `name` argument ('bear') is passed to the superclass and set to the `@name` instance variable.
 
 #### Mixing in Modules
 
+* Mixing in modules is another way to keep your code **DRY**. Consider the following example:
+
+  * If we want to model the animal kingdom, we might start with a superclass `Animal`, with subclasses `Fish` and `Mammal`. `Mammal` class objects might have a `warm_blooded?` method that resolves to `True`, while `Fish` objects have a `swim` method available to them. However, what about a subclass `Dog`? That is a mammal, but it can also swim-- therefore we can create a `Swimming` module and mix it in to both the `Fish` class but also the `Dog` class (since they're mammals and not fish).
+
+  * ```Ruby
+    module Swimmable
+      def swim
+        "I'm swimming!"
+      end
+    end
+    
+    class Animal; end
+    
+    class Fish < Animal
+      include Swimmable # mixing in Swimmable module
+    end
+    
+    class Mammal < Animal
+    end
+    
+    class Cat < Mammal
+    end
+    
+    class Dog < Mammal
+      include Swimmable # Mixing in Swimmable module
+    end
+    
+    sparky = Dog.new  # initialize our dog object `sparky`
+    neemo  = Fish.new # initialize our fish object `neemo`
+    paws   = Cat.new  # initialize our cat object `paws`
+    
+    puts sparky.swim # => I'm swimming!
+    puts neemo.swim  # => I'm swimming!
+    puts paws.swim   # => NoMethodError
+    ```
+
+* A common naming convention for Ruby is to use the "-able" suffix on whatever verb describes the behavior that the module is modeling (think: `Enumerable`, or `Swimmable` above)
+
 #### Inheritance vs. Modules
+
+* Two primary ways that Ruby implements inheritance:
+  * **Class inheritance**-- one type inherits the behaviors of another type.
+  * **Interface inheritance**-- class inherits the interface provided by the mixin module.
+* When to use class inheritance vs. mixins?
+  * You can only subclass from one class, but you can mixin as many modules as you'd like.
+  * "is-a" relationships: typically class inheritance || "has-a" relationships: typically mixins
+    * ex. dog "is an" animal, while dog "has an" ability to swim
 
 #### Method Lookup Path
 
+* The **method lookup path** is the order in which classes are inspected when you call a method.
+* Use the `ancestors` class method to see the path: `puts obj.ancestors`
+* The order in which modules are `include`d is important: last module included comes first in the lookup.
+
 #### More Modules
+
+* One important usecase for modules is **namespacing**, or organizing similar classes under a module.
+
+  * This allows us to group repated classes, and recognize them in our code
+
+  * Also allows us to reduce the likelihood of classes colliding with other similarly named classes
+
+  * ```Ruby
+    module Mammal
+      class Dog
+        def speak(sound)
+          p "#{sound}"
+        end
+      end
+    
+      class Cat
+        def say_name(name)
+          p "#{name}"
+        end
+      end
+    end
+    
+    buddy = Mammal::Dog.new # Call classes in a module using `::`
+    kitty = Mammal::Cat.new # Call classes in a module using `::`
+    buddy.speak('Arf!')     # => "Arf!"
+    kitty.say_name('kitty') # => "kitty"
+    ```
+
+* Another important use case is using modules as **containers** for methods (**module methods**).
+
+  * ```Ruby
+    module Mammal
+      # ...
+      def self.some_out_of_place_method(num)
+        num ** 2
+      end
+    end
+    
+    value = Mammal.some_out_of_place_method(4) # call the method like this
+    ```
 
 #### Private, Protected, and Public
 
+* A **public method** is a method that is avaiable to anyone who knows either the class or object's name.
+
+  * These methods are readily available for the rest of the program to use, comprising the classes' **interface** (how other classes and objects will interact with this class and its objects, think *API*).
+
+* A **private method** does work in the class, but doesn't need to be available to the rest of the program.
+
+  * Defined using the `private` method call in our program (anything below it is private), but can be "capped off" (or negated) using `protected`.
+
+  * Private methods are not accessible outside of the class definition at all, and are only accessible form inside the class when called without `self`.
+
+  * Helps keep our namespace clean, by ensuring that only other methods inside the class can call that method.
+
+  * ```Ruby
+    class GoodDog
+      DOG_YEARS = 7
+    
+      attr_accessor :name, :age
+    
+      def initialize(n, a)
+        self.name = n
+        self.age  = a
+      end
+    
+      def public_disclosure # note that this is above the call to `private`
+        "#{self.name} in human years is #{human_years}" # not self.human_years
+      end
+    
+      private
+    
+      def human_years
+        age * DOG_YEARS
+      end
+    end
+    
+    sparky = GoodDog.new("Sparky", 4)
+    puts sparky.public_disclosure # => "Sparky in human years is 28"
+    puts sparky.human_years # => NoMethodError: private method 'human_years' called for
+    ```
+
+* A **protected method** is created using the `protected` keyword.
+
+  * from inside the class, `protected` methods are accessible just like `public` methods.
+
+  * from outside the class, `protected` methods act just like `private` methods.
+
+  * ```Ruby
+    class Animal
+      def a_public_method
+        "Will this work? " + self.a_protected_method
+      end
+    
+      protected
+    
+      def a_protected_method
+        "Yes, I'm protected!"
+      end
+    end
+    
+    fido = Animal.new
+    puts fido.a_public_method # => "Will this work? Yes, I'm protected!"
+    puts fido.a_protected_method # => NoMethodError: protected method
+    ```
+
 #### Accidental Method Overriding
+
+* Try not to override inherited methods from classes like `Object`! (everything in Ruby inherits from it).
+

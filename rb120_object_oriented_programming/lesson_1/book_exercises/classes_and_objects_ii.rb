@@ -44,7 +44,7 @@ puts car
 puts MyCar.gas_mileage(100, 10_000)
 
 class Person
-  attr_accessor :name
+  attr_accessor :name # setter and getter enabled
   def initialize(name)
     @name = name
   end
