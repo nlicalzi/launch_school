@@ -399,12 +399,58 @@ puts sparky.name # => NoMethodError: undefined method `name`
 #### More About self
 
 * Two clear use cases for `self`:
-  * Use `self` when calling setter methods from within the class.
-  * Use `self` for class method definitions.
+  * Use `self` when calling setter methods from within the class, allowing Ruby to disambiguate between initializing a local variable and calling a setter method.
+  * Use `self` prepended to a method definition inside a class to define a **class method**.
+    * `def self.a_method` is equivalent to `def GoodDog.a_method` (read: defined on the class)
+* In other words:
+  * `self`, inside an instance method, references the instance (object) that called the method (the calling object)
+    * `self.weight=` is the same as `sparky.weight=`
+  * `self`, outside of an instance method, references the class and can be used to define class methods.
+    * `def self.name=(n)` is the same as `def GoodDog.name=(n)`
+
+##### Chapter Summary
+
+* Initializing objects with the `new` method
+* How instance variables keep track of an object's state
+* Learning how `attr_*` methods generate *getters* and *setters*
+* Using instance methods to perform operations on our objects
+* Using class methods to perform operations at the class level
+* Assigning class variables to relate specifically to our class
+* Assigning constants that never change to perform operations in our classes
+* How the `to_s` method is used and that we've been using it implicitly all along
+* How and when to use `self`
 
 ## Inheritance
 
+* **Inheritance** is when a class `inherits` behavior from another class (using keyword `include`)
+  * The class that is inheriting behavior is called the **subclass**
+  * The class that it inherits from is called the **superclass**
+  * We use inheritance as a way to extract common behaviors from classes that share the behavior and move it to a superclass, allowing us to keep logic in one place.
+
 #### Class Inheritance
+
+* Let's extract the `speak` method to superclass `Animal`, and use inheritance to make that behavior available to `GoodDog` and `Cat` classes.
+
+  * ```Ruby
+    class Animal
+      def speak
+        "Hello!"
+      end
+    end
+    
+    class GoodDog < Animal
+    end
+    
+    class Cat < Animal
+    end
+    
+    sparky = GoodDog.new
+    paws = Cat.new
+    puts sparky.speak # => Hello!
+    puts paws.speak 	# => Hello!
+    ```
+
+  * 
 
 #### super
 
