@@ -329,15 +329,78 @@ puts sparky.name # => NoMethodError: undefined method `name`
 
 #### Class Methods
 
+* **Class methods** are methods we can call directly on the class itself, without first instantiating objects.
+
+* Class methods are defined by prepending the method name with the reserved word `self`:
+
+  * ```Ruby
+    def self.what_am_i # class method definition
+      "I'm a GoodDog class!"
+    end
+    
+    GoodDog.what_am_i # => I'm a GoodDog class!
+    ```
+
+* Class methods are where we put functionality that does not pertain to individual objects.
+
+  * Individual objects contain state, class methods do not need to deal with state.
+
 #### Class Variables
+
+* We can also create variables for an entire class called **class variables** using `@@this_syntax`.
+
+  * ```Ruby
+    class GoodDog
+      @@number_of_dogs = 0 # class var
+      
+      def initialize # on initialization of new object, increment class var
+        @@number_of_dogs += 1
+      end
+      
+      def self.total_number_of_dogs # class method, returns the class var
+        @@number_of_dogs
+      end
+    end
+    
+    puts GoodDog.total_number_of_dogs # => 0
+    dog1 = GoodDog.new
+    dog2 = GoodDog.new
+    puts GoodDog.total_number_of_dogs # => 2
+    ```
 
 #### Constants
 
+* If you want to create a class varaiable that never changes, you can use a **constant**
+
+  * Constants are clared in capslock, like this: `DOG_YEARS`
+
+  * ```Ruby
+    class GoodDog
+      DOG_YEARS = 7
+      
+      attr_accessor :name,:age # able to "get" w/ methods obj.name || obj.age
+      
+      def initialize(n, a)
+        self.name = n # setter method, var: @name
+        self.age = a * DOG_YEARS # setter method, var: @age
+      end
+    end
+    
+    sparky = GoodDog.new("Sparky", 4)
+    puts sparky.age # => 28
+    ```
+
 #### The to_s Method
+
+* `#to_s` is called automatically on the object when we use it with `puts` or string interpolation
+* `puts spark` is equivalent to `puts sparky.to_s`
+* `p sparky` is equivalent to `puts sparky.inspect`
 
 #### More About self
 
-
+* Two clear use cases for `self`:
+  * Use `self` when calling setter methods from within the class.
+  * Use `self` for class method definitions.
 
 ## Inheritance
 
