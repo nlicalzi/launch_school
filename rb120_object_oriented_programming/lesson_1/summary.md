@@ -10,7 +10,7 @@
 #### Object Level
 
 * Objects of a given class *do not* share states with other objects of that class
-* Objects of a given class *do* share behavirs with other objects of that class
+* Objects of a given class *do* share behaviors with other objects of that class
 
 #### Class Level
 

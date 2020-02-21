@@ -123,3 +123,5 @@
 
 
 ### Notecards from Lesson 2
+
+* 

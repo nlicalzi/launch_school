@@ -134,4 +134,50 @@
     puts dog.greeting
     ```
 
-    
+* What is the core relationship between objects and classes?
+
+  * Classes group common behaviors and objects encapsulate state.
+
+* What is a **collaborator object**?
+
+  * An object that is stored as state within another object (either a custom object (`bud`), or even the string object stored in `@name` below (`"Robert"`))
+
+    * ```Ruby
+      bob = Person.new("Robert")
+      bud = Bulldog.new
+      
+      bob.pet = bud
+      
+      bob.pet.class # => Bulldog
+      bob.pet.fetch # => "fetching!"
+      ```
+
+  * Collaborator objects represent the connection between various actors in your program.
+
+* What is our mental model for **collaboration**?
+
+  * **Collaboration** occurs when one object is added to the state of another object
+  * The **collaborative** relationship exists in the design (or intention) of our code
+
+* What is a **CRC card**?
+
+  * "Class-responsibility-collaboration cards" are a brainstorming tool used in the design of OO software.
+
+  * Partitioned into three areas:
+
+    * On top of the card, the **class** name
+    * On the left, the **responsibilities** of the class
+    * On the right, the **collaborators** which this class interacts with to fulfill its responsibilities
+
+  * | Class: Library         |         |
+    | ---------------------- | ------- |
+    | Has Books              | Books   |
+    | Lends Books to Patrons | Patrons |
+
+  * Paper here: http://c2.com/doc/oopsla89/paper.html
+
+* What is Ruby's answer to how a language should support **multiple inheritance**?
+
+  * The use of **mixing in** behaviors (through `include`ing modules), since classes can only sub-class from a single parent class.
+
+* 
