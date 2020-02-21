@@ -370,7 +370,7 @@ puts sparky.name # => NoMethodError: undefined method `name`
 
 #### Constants
 
-* If you want to create a class varaiable that never changes, you can use a **constant**
+* If you want to create a class variable that never changes, you can use a **constant**
 
   * Constants are clared in capslock, like this: `DOG_YEARS`
 
@@ -422,7 +422,7 @@ puts sparky.name # => NoMethodError: undefined method `name`
 
 ## Inheritance
 
-* **Inheritance** is when a class `inherits` behavior from another class (using keyword `include`)
+* **Inheritance** is when a class **inherits** behavior from another class 
   * The class that is inheriting behavior is called the **subclass**
   * The class that it inherits from is called the **superclass**
   * We use inheritance as a way to extract common behaviors from classes that share the behavior and move it to a superclass, allowing us to keep logic in one place.
