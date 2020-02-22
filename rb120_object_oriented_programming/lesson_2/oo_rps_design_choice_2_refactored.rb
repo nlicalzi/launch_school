@@ -20,13 +20,9 @@ class Move
   end
 
   def >(other_move)
-    if rock?
-      other_move.scissors? ? true : false
-    elsif paper?
-      other_move.rock? ? true : false
-    else # scissors?
-      other_move.paper? ? true : false
-    end
+    (rock? && other_move.scissors?) ||
+      (paper? && other_move.rock?) ||
+      (scissors? && other_move.rock?)
   end
 
   def to_s
