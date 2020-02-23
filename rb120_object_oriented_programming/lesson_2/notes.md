@@ -210,4 +210,9 @@
 
   * https://launchschool.com/lessons/dfff5f6b/assignments/e1ba7b4b
   * A code complexity warning that counts assignments, branches (method calls), and conditions, before reduicng them to a single metric of "complexity" (`sqrt(a**2 + b**2 + c**2)`)
-  * 
+
+* What, specifically, do we mean when we refer to *collaborator objects* in OO Ruby?
+
+  * An object that is assigned to an instance variable in another object.
+
+  
