@@ -174,10 +174,40 @@
     | Has Books              | Books   |
     | Lends Books to Patrons | Patrons |
 
+  * | Class Name               |                       |
+    | ------------------------ | --------------------- |
+    | Responsibilities (verbs) | Collaborators (nouns) |
+
+  * | Human             | Super-class: Player |
+    | ----------------- | ------------------- |
+    | has a name        | move                |
+    | has a move        |                     |
+    | can choose a move |                     |
+
   * Paper here: http://c2.com/doc/oopsla89/paper.html
 
 * What is Ruby's answer to how a language should support **multiple inheritance**?
 
   * The use of **mixing in** behaviors (through `include`ing modules), since classes can only sub-class from a single parent class.
 
-* 
+* Repetitive nouns in method names is a sign that you're missing a class.
+
+  * In our Rock, Paper, Scissors game for example, if we find ourselves constantly referring to a "move", it may be a sign that we should encapsulate the logic into a `Move` class (which is what we did). 
+
+* When naming methods, don't include the class name.
+
+  * `player1.player_info` vs. `player1.info`
+
+* Avoid long method invocation chains (i.e.: `human.move.display.size`)
+
+  * ```Ruby
+    ## PREFERRED: alternative is hard to debug if human.move returns nil, etc.
+    move = human.move
+    puts move.display.size if move
+    ```
+
+* What does an AbcSize complaint mean in Rubocop?
+
+  * https://launchschool.com/lessons/dfff5f6b/assignments/e1ba7b4b
+  * A code complexity warning that counts assignments, branches (method calls), and conditions, before reduicng them to a single metric of "complexity" (`sqrt(a**2 + b**2 + c**2)`)
+  * 
