@@ -48,3 +48,19 @@
   * If two objects contain the same value and if they're of the same class.
   * Mostly used as `Hash#eql?`, but not used often.
 
+
+
+#### Variable Scope:
+
+* **Instance Variable Scope**
+  * Instance variables are variables that start with `@` and are scoped at the object level.
+  * They are used to track individual object state.
+  * If you try to reference an uninitialized local variable, you get a `NameError`, but referencing an uninitialized instance variable returns `nil`.
+* **Class Variable Scope**
+  * All instances of a class share 1 copy of the class's variables.
+  * Class methods can access class variables, regardless of where they're initialized.
+* **Constant Scope**
+  * Constants defined in a class are available in class and instance methods
+  * Constant Lookup Paths
+    * Read this: https://cirw.in/blog/constant-lookup.html
+* 
