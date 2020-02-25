@@ -224,4 +224,125 @@
     cowboys[3]    
     ```
 
-* 
+
+
+### Exceptions
+
+* What is an exception?
+
+  * Ruby's way of letting you know that your code is behaving unexpectedly.
+
+* What will happen if an exception is raised and your code does not handle it?
+
+  * Your program will crash and Ruby will provide a message telling you what type of error was encountered.
+
+* DO NOT HANDLE ALL EXCEPTIONS from `Exception`-- this is extremely dangerous
+
+  * Generally all `StandardError` exceptions are handleable
+
+* **How to Handle an Exceptional State**
+
+  * The `begin/rescue` block
+
+    * ```Ruby
+      begin
+        # put code at risk of failing here
+      rescue TypeError, ZeroDivisionError
+        # take action
+      rescue ArgumentError
+        # take a different action
+      end
+      ```
+
+  * Exception Objects and Built-In Methods
+
+    * ```Ruby
+      begin
+        # code at risk of failing here
+      rescue StandardError => e # stores exception object in e
+        puts e.class						# output error class
+        puts e.message 					# output error message
+      end
+      ```
+
+  * `ensure`
+
+    * If an `ensure` clause is entered in a `begin/rescue` block after the last `rescue` clause, the branch will always execute, whether an exception was raised or not. Useful for resource management:
+
+      * ```Ruby
+        file = open(file_name, 'w')
+        
+        begin
+          # do something with file
+        rescue
+          # handle exception
+        rescue
+          # handle a different exception
+        ensure
+          file.close # executes every time
+        end
+        ```
+
+  * `retry`
+
+    * using `retry` in your `begin/rescue` block redirects your program back to the `begin` statement-- you can make a loop to try x times
+
+    * ```Ruby
+      RETRY_LIMIT = 5
+      
+      begin
+        attempts = attempts || 0
+        # do something
+      rescue
+        attempts += 1
+        retry if attempts < RETRY_LIMIT
+      end
+      ```
+
+* **Raising Exceptions Manually**
+
+  * Ruby gives you the power to manually raise exceptions using `Kernel#raise`
+
+    * ```Ruby
+      raise TypeError.new("Something went wrong!")
+      raise TypeError, "Something went wrong!"
+      ```
+
+    * ```Ruby
+      def validate_age(age)
+        raise("invalid age") unless (0..105).include?(age)
+      end
+      ```
+
+    * ```Ruby
+      begin
+        validate_age(age)
+      rescue RuntimeError => e
+        puts e.message					# => "invalid age"
+      end
+      ```
+
+* **Raising Custom Exceptions**
+
+  * ```ruby
+    class ValidateAgeError < StandardError; end
+    # ValidateAgeError now has access to builtin exception objects
+    # Exception#message
+    # Exception#backtrace
+    ```
+
+  * ```Ruby
+    def validate_age(age)
+      raise ValidateAgeError, "invalid age" unless (0..105).include?(age)
+    end
+    
+    begin
+      validate_age(age)
+    rescue ValidateAgeError => e
+      # take action
+    end
+    ```
+
+* Look through exception documentation and draw up Anki cards: 
+
+  * https://ruby-doc.org/core-2.7.0/Exception.html
