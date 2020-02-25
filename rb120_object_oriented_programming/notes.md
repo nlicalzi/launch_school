@@ -130,3 +130,98 @@
 * **Instace variables** behave the way we'd expect. Make sure the instance variable is initialized before trying to reference it.
 * **Class variables** allow sub-classes to override super-class class variables. This is bad!
 * **Constants** have lexical scope, making their scope resolution rules unique. If it doesn't find the constant in lexical scope, Ruby will look at inheritance hierarchy.
+
+
+
+#### Fake Operators
+
+* | Method | Operator                                                     | Description                                                  |
+  | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | yes    | `[]`, `[]=`                                                  | Collection element getter and setter                         |
+  | yes    | `**`                                                         | Exponential operator                                         |
+  | yes    | `!`, `~`, `+`, `-`                                           | Not, complement, unary plus and minus (the methods names are `+@` and `-@`) |
+  | yes    | `*`, `/`, `%`                                                | Multiply, divide, and modulo                                 |
+  | yes    | `+`, `-`                                                     | Plus, minus                                                  |
+  | yes    | `>>`, `<<`                                                   | Right and left shift                                         |
+  | yes    | `&`                                                          | Bitwise "and"                                                |
+  | yes    | `^`, `|`                                                     | Bitwise exclusive "or" and regular "or" (inclusive "or")     |
+  | yes    | `<=`, `<`, `>`, `>=`                                         | Less than/equal to, less than, greater than, greater than/equal to |
+  | yes    | `<=>`, `==`, `===`, `!=`, `=~`, `!~`                         | Equality and pattern matching (`!=` and `!~` cannot be directly defined) |
+  | no     | `&&`                                                         | Logical "and"                                                |
+  | no     | `||`                                                         | Logical "or"                                                 |
+  | no     | `..`, `...`                                                  | Inclusive range, exclusive range                             |
+  | no     | `? :`                                                        | Ternary if-then-else                                         |
+  | no     | `=`, `%=`, `/=`, `+=`, `|=`, `&=`, `>>=`, `<<=`, `*=`, `&&=`, `||=`, `**=`, `{` | Assignment (and shortcuts) and block delimiter               |
+
+  * Any of the above operators that are methods can have their functionality overridden, or are **fake operators**-- powerful and potentially dangerous!
+
+* **Equality methods**
+
+  * a good candidate for overwriting is the `==` equality operator, which comes for free with a paired `!=` method. 
+
+* **Comparison methods**
+
+  * we can write a custom implementation of `#>`, `#<`, etc for our classes in order to compare them successfully:
+
+  * ```Ruby
+    def >(other_person)
+      age > other_person.age
+    end
+    ```
+
+* **The `<<` and `>>` shift methods**
+
+  * When implementing fake operators, choose some functionality that makes sense when used with the special operator-like syntax.
+  * Using the `<<` method fits well when working with a class that represents a collection
+
+* **The plus method**
+
+  * Define it to either increment or concatenate w/ the arg and return a new object of the same type, generally!
+    * `Integer#+`: increments the value by value of the arg, returning a new integer
+    * `String#+`: concatenates with arg, returning a new string
+    * `Array#+`: concatenates with arg, returning a new array
+    * `Date#+`: increments the date in days by value of arg, returning a new date
+
+* **Element setter and getter methods**
+
+  * ```Ruby
+    my_array = %w(first second third fourth)    # ["first", "second", "third", "fourth"]
+    
+    # element reference
+    my_array[2]                                 # => "third"
+    my_array.[](2)                              # => "third"
+    ```
+
+  * ```Ruby
+    # element assignment
+    my_array[4] = "fifth"
+    puts my_array.inspect    # => ["first", "second", "third", 
+    												 #		 "fourth", "fifth"]
+    
+    my_array.[]=(5, "sixth")
+    puts my_array.inspect    # => ["first", "second", "third",
+    												 # 		 "fourth", "fifth", "sixth"]
+    ```
+
+  * ```Ruby
+    class Team
+      # ... rest of code omitted for brevity
+    
+      def [](idx)
+        members[idx]
+      end
+    
+      def []=(idx, obj)
+        members[idx] = obj
+      end
+    end
+    
+    # assume set up from earlier
+    cowboys.members                           # => ... array of 3 Person objects
+    
+    cowboys[1]                                # => #<Person:0x007fae9295d830 @name="Emmitt Smith", @age=46>
+    cowboys[3] = Person.new("JJ", 72)
+    cowboys[3]    
+    ```
+
+* 
