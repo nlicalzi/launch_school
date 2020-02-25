@@ -63,4 +63,70 @@
   * Constants defined in a class are available in class and instance methods
   * Constant Lookup Paths
     * Read this: https://cirw.in/blog/constant-lookup.html
-* 
+
+
+
+#### Inheritance and Variable Scope:
+
+* **Instance Variables**
+
+  * Setting an instance variable further up the class chain means the instance variable can be inherited, as long as it isn't overwritten. **REMEMBER:** uninitialized instance variables return `nil`
+
+    * ```ruby
+      class Animal
+        def initialize(name)
+          @name = name
+        end
+      end
+      
+      class Dog < Animal
+        def dog_name
+          "bark! bark! #{@name} bark! bark!"    # can @name be referenced here?
+        end
+      end
+      
+      teddy = Dog.new("Teddy")
+      puts teddy.dog_name 
+      ```
+
+  * If a method is called that initializes an instance variable, then that variable is accessible-- keep this in mind for mixing in modules to enable behaviors
+
+    * ```Ruby
+      module Swim
+        def enable_swimming
+          @can_swim = true
+        end
+      end
+      
+      class Dog
+        include Swim
+      
+        def swim
+          "swimming!" if @can_swim
+        end
+      end
+      
+      teddy = Dog.new
+      
+      teddy.swim 						# => error
+      
+      teddy.enable_swimming # => sets @can_swim
+      teddy.swim   					# => swimming!
+      ```
+
+* **Class Variables**
+
+  * Class variables set in subclasses can overwrite class variables set in superclasses-- therefore generally Rubyists recommend avoiding class variables in favor of *class instance variables* (more to come on that soon).
+
+* **Constants**
+
+  * Constants can be accessed from within a class that is outside of the inheritance lookup path using the following syntax: `Class::CONSTANT`.
+    * The `::` is the *namespace resolution operator*
+  * Constant resolution rules are different from method lookup path and instance variables: 
+    * Constant resolution will look at the **lexical scope** first, then the **inheritance hierarchy**.
+
+##### Summary
+
+* **Instace variables** behave the way we'd expect. Make sure the instance variable is initialized before trying to reference it.
+* **Class variables** allow sub-classes to override super-class class variables. This is bad!
+* **Constants** have lexical scope, making their scope resolution rules unique. If it doesn't find the constant in lexical scope, Ruby will look at inheritance hierarchy.
