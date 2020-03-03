@@ -114,8 +114,12 @@ class TTTGame
   HUMAN_MARKER = 'X'
   COMPUTER_MARKER = 'O'
   PLAYER_ONE = 'computer'
+  WINNING_SCORE = 1
 
   attr_reader :board, :human, :computer, :current_player
+
+  @@human_wins = 0
+  @@computer_wins = 0
 
   def initialize
     @board = Board.new
@@ -129,17 +133,20 @@ class TTTGame
     display_welcome_message
     loop do
       display_board
+      display_score
       loop do
         current_player_moves
         break if board.someone_won? || board.full?
         clear_screen_and_display_board if human_turn?
       end
       display_result
+      break if match_winner
       break unless play_again?
       reset
       display_play_again_message
     end
 
+    puts "#{match_winner} won with #{WINNING_SCORE} points!" if match_winner
     display_goodbye_message
   end
 
@@ -204,17 +211,32 @@ class TTTGame
     end
   end
 
+  def display_score
+    puts "Current score is:"
+    puts "Human: #{@@human_wins}, Computer: #{@@computer_wins}"
+  end
+
+  def match_winner
+    return 'Human' if @@human_wins == WINNING_SCORE
+    return 'Computer' if @@computer_wins == WINNING_SCORE
+    nil
+  end
+
   def display_result
     clear_screen_and_display_board
 
     case board.winning_marker
     when human.marker
       puts "You won!"
+      @@human_wins += 1
     when computer.marker
       puts "Computer won!"
+      @@computer_wins += 1
     else
       puts 'The board is full!'
     end
+
+    display_score
   end
 
   def play_again?
