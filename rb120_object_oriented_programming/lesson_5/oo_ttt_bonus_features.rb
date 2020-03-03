@@ -1,5 +1,19 @@
-# Source: https://launchschool.com/lessons/97babc46/assignments/cb07735f
-require 'pry'
+# Source: https://launchschool.com/lessons/97babc46/assignments/cce6a20b
+module Editable
+  def joinor(arr, delim=', ', conj='or')
+    arr = arr.map(&:to_s)
+    case arr.size
+    when 0 # empty array
+      return []
+    when 1 # array with one element
+      return arr[0]
+    when 2 # array with two elements
+      return "#{arr[0]} #{conj} #{arr[1]}"
+    else # array with more than two elements
+      return arr[0..-2].join(delim) + "#{delim + conj} " + arr[-1]
+    end
+  end
+end
 
 class Board
   WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
@@ -11,6 +25,7 @@ class Board
     reset
   end
 
+  # rubocop:disable Metrics/AbcSize
   def draw
     puts "     |     |"
     puts "  #{@squares[1]}  |  #{@squares[2]}  |  #{@squares[3]}"
@@ -24,6 +39,7 @@ class Board
     puts "  #{@squares[7]}  |  #{@squares[8]}  |  #{@squares[9]}"
     puts "     |     |"
   end
+  # rubocop:enable Metrics/AbcSize
 
   def []=(key, marker)
     @squares[key].marker = marker
@@ -93,6 +109,8 @@ class Player
 end
 
 class TTTGame
+  include Editable
+
   HUMAN_MARKER = 'X'
   COMPUTER_MARKER = 'O'
   PLAYER_ONE = 'computer'
@@ -152,29 +170,38 @@ class TTTGame
     display_board
   end
 
+  def human_moves
+    square = nil
+    puts "Choose a square: (#{joinor(board.unmarked_keys)})"
+    loop do
+      square = gets.chomp.to_i
+      break if board.unmarked_keys.include?(square)
+      puts "Sorry, that's not a valid choice."
+    end
+    board[square] = human.marker
+  end
+
+  def computer_moves
+    board[board.unmarked_keys.sample] = computer.marker
+  end
+
   def current_player_moves
     case @current_player
     when 'human'
-      square = nil
-      puts "Choose a square: (#{board.unmarked_keys.join(', ')})"
-      loop do
-        square = gets.chomp.to_i
-        break if board.unmarked_keys.include?(square)
-        puts "Sorry, that's not a valid choice."
-      end
-      board[square] = human.marker
+      human_moves
     when 'computer'
-      board[board.unmarked_keys.sample] = computer.marker
+      computer_moves
     end
     change_player
   end
 
   def change_player
-    @current_player == 'human' ? @current_player = 'computer' : @current_player = 'human'
-  end
-
-  def computer_moves
-    board[board.unmarked_keys.sample] = computer.marker
+    case @current_player
+    when 'human'
+      @current_player = 'computer'
+    when 'computer'
+      @current_player = 'human'
+    end
   end
 
   def display_result
@@ -216,7 +243,6 @@ class TTTGame
   def human_turn?
     @current_player == 'human'
   end
-
 end
 
 game = TTTGame.new
