@@ -36,14 +36,14 @@
 
 * Look at the implementation for `#===` in classes like `Range` and make a couple of study cards about it.
 
-  * When `===` compares two objects, such as `(1..50)` and `25`, it's essentially asking "if `(1..50)` is a group, would `25` belong in that group?" 
+  * When `===` compares two objects, such as `(1..50)` and `25`, it's essentially asking "if `(1..50)` is a group, would `25` belong in that group?"
 
   * ```Ruby
     String === "hello" # => true
     String === 15      # => false
     ```
 
-* What does `#eql?` determine? 
+* What does `#eql?` determine?
 
   * If two objects contain the same value and if they're of the same class.
   * Mostly used as `Hash#eql?`, but not used often.
@@ -78,15 +78,15 @@
           @name = name
         end
       end
-      
+
       class Dog < Animal
         def dog_name
           "bark! bark! #{@name} bark! bark!"    # can @name be referenced here?
         end
       end
-      
+
       teddy = Dog.new("Teddy")
-      puts teddy.dog_name 
+      puts teddy.dog_name
       ```
 
   * If a method is called that initializes an instance variable, then that variable is accessible-- keep this in mind for mixing in modules to enable behaviors
@@ -97,19 +97,19 @@
           @can_swim = true
         end
       end
-      
+
       class Dog
         include Swim
-      
+
         def swim
           "swimming!" if @can_swim
         end
       end
-      
+
       teddy = Dog.new
-      
+
       teddy.swim 						# => error
-      
+
       teddy.enable_swimming # => sets @can_swim
       teddy.swim   					# => swimming!
       ```
@@ -122,7 +122,7 @@
 
   * Constants can be accessed from within a class that is outside of the inheritance lookup path using the following syntax: `Class::CONSTANT`.
     * The `::` is the *namespace resolution operator*
-  * Constant resolution rules are different from method lookup path and instance variables: 
+  * Constant resolution rules are different from method lookup path and instance variables:
     * Constant resolution will look at the **lexical scope** first, then the **inheritance hierarchy**.
 
 ##### Summary
@@ -157,7 +157,7 @@
 
 * **Equality methods**
 
-  * a good candidate for overwriting is the `==` equality operator, which comes for free with a paired `!=` method. 
+  * a good candidate for overwriting is the `==` equality operator, which comes for free with a paired `!=` method.
 
 * **Comparison methods**
 
@@ -186,7 +186,7 @@
 
   * ```Ruby
     my_array = %w(first second third fourth)    # ["first", "second", "third", "fourth"]
-    
+
     # element reference
     my_array[2]                                 # => "third"
     my_array.[](2)                              # => "third"
@@ -195,9 +195,9 @@
   * ```Ruby
     # element assignment
     my_array[4] = "fifth"
-    puts my_array.inspect    # => ["first", "second", "third", 
+    puts my_array.inspect    # => ["first", "second", "third",
     												 #		 "fourth", "fifth"]
-    
+
     my_array.[]=(5, "sixth")
     puts my_array.inspect    # => ["first", "second", "third",
     												 # 		 "fourth", "fifth", "sixth"]
@@ -206,19 +206,19 @@
   * ```Ruby
     class Team
       # ... rest of code omitted for brevity
-    
+
       def [](idx)
         members[idx]
       end
-    
+
       def []=(idx, obj)
         members[idx] = obj
       end
     end
-    
+
     # assume set up from earlier
     cowboys.members                           # => ... array of 3 Person objects
-    
+
     cowboys[1]                                # => #<Person:0x007fae9295d830 @name="Emmitt Smith", @age=46>
     cowboys[3] = Person.new("JJ", 72)
     cowboys[3]    
@@ -271,7 +271,7 @@
 
       * ```Ruby
         file = open(file_name, 'w')
-        
+
         begin
           # do something with file
         rescue
@@ -289,7 +289,7 @@
 
     * ```Ruby
       RETRY_LIMIT = 5
-      
+
       begin
         attempts = attempts || 0
         # do something
@@ -335,7 +335,7 @@
     def validate_age(age)
       raise ValidateAgeError, "invalid age" unless (0..105).include?(age)
     end
-    
+
     begin
       validate_age(age)
     rescue ValidateAgeError => e
@@ -343,6 +343,12 @@
     end
     ```
 
-* Look through exception documentation and draw up Anki cards: 
+* Look through exception documentation and draw up Anki cards:
 
   * https://ruby-doc.org/core-2.7.0/Exception.html
+
+* What is a tightly coupled dependency in OOP?
+
+* What is a loosely coupled dependency in OOP?
+
+* What is coupling (in the context of OOP)?
