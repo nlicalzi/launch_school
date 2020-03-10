@@ -22,14 +22,6 @@ class Board
                   [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # cols
                   [[1, 5, 9], [3, 5, 7]]              # diagonals
 
-  IMMINENT_WIN = WINNING_LINES.map { |arr| arr.permutation(2).to_a }\
-                              .flatten\
-                              .each_slice(2)\
-                              .to_a\
-                              .map(&:sort)\
-                              .uniq\
-                              .sort
-
   def initialize
     @squares = {}
     reset
@@ -74,22 +66,6 @@ class Board
       return squares.first.marker if winning_line?(squares)
     end
     nil
-  end
-
-  # returns winning space or nil
-  def winning_space
-    winning_space = nil
-    IMMINENT_WIN.each do |line|
-      squares = @squares.values_at(*line)
-      markers = squares.select(&:marked?).collect(&:marker)
-      break if markers.size == 3 # break and return nil if line is full
-      if markers.size == 2 && markers.uniq.size == 1 # if 2x same marker...
-        # iterate through WINNING_LINES for lines that include 'line'
-        winning_space = WINNING_LINES.select { |arr| arr.include?(line) } - line
-      end
-      # if yes, return missing square number from subarray e.g. [1, 3] => [2]
-    end
-    winning_space
   end
 
   def reset
@@ -214,8 +190,31 @@ class TTTGame
     board[square] = human.marker
   end
 
-  def computer_moves
-    board[board.unmarked_keys.sample] = computer.marker
+  # def computer_moves
+  #   board[board.unmarked_keys.sample] = computer.marker
+  # end
+
+  # returns winning space or nil
+  def winning_space(line, board)
+    if board.values_at(*line).count(HUMAN_MARKER) == 2
+      board.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+    else
+      nil
+    end
+  end
+
+  def computer_moves!(brd)
+    square = nil
+    Board::WINNING_LINES.each do |line|
+      square = winning_space(line, brd)
+      break if square
+    end
+
+    if !square
+      square = empty_squares(brd).sample
+    end
+
+    brd[square] = COMPUTER_MARKER
   end
 
   def current_player_moves
@@ -223,7 +222,7 @@ class TTTGame
     when 'human'
       human_moves
     when 'computer'
-      computer_moves
+      computer_moves!(board)
     end
     change_player
   end
