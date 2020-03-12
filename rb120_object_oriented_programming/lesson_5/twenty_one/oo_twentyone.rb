@@ -112,17 +112,14 @@ class Game
     clear
     if dealer.busted?
       puts "Dealer busted with #{dealer.total} pts! You win!"
-      display_hands
     elsif player.busted?
       puts "You busted with #{player.total} pts! Dealer wins!"
-      display_hands
     elsif dealer.total > player.total
       puts "Dealer wins with #{dealer.total} pts vs. your #{player.total} pts"
-      display_hands
     else
       puts "You win with #{player.total} pts vs. dealer's #{dealer.total} pts"
-      display_hands
     end
+    display_hands
   end
 
   def start
