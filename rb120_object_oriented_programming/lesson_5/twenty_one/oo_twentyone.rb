@@ -1,5 +1,6 @@
 # Source: https://launchschool.com/lessons/97babc46/assignments/819bf113
 require 'pry'
+
 class Player
   attr_accessor :hand, :name
 
@@ -19,7 +20,7 @@ class Player
   end
 
   def total
-    values = hand.map { |card| card[1] }    # map our hand to card vals
+    values = hand.map { |card| card[0] }    # map our hand to card vals
     values.map do |val|
       val = 10 if %w(J Q K A).include?(val) # convert face cards
       val.to_i                              # otherwise convert to int form
@@ -34,7 +35,7 @@ class Deck
   attr_accessor :cards
 
   def initialize
-    @cards = SUITS.product(VALUES).shuffle
+    @cards = VALUES.product(SUITS).shuffle
   end
 
   def deal_card!
@@ -54,6 +55,10 @@ class Game
     @deck = Deck.new
   end
 
+  def clear
+    system 'clear'
+  end
+
   def deal_cards
     2.times do |_|
       player.hit(deck)
@@ -61,9 +66,14 @@ class Game
     end
   end
 
-  def show_initial_cards
-    puts "#{player.name} is holding: #{player.hand} (or #{player.total} pts)"
-    puts "#{dealer.name} is holding: [#{dealer.hand[0]}, [?, ?]]"
+  def display_initial_cards
+    puts "#{player.name} is holding: #{player.hand.map(&:join)} (#{player.total} pts)"
+    puts "#{dealer.name} is showing: #{dealer.hand[0].join}"
+  end
+
+  def display_hands
+    puts "Player hand: #{player.hand.map(&:join)}"
+    puts "Dealer hand: #{dealer.hand.map(&:join)}"
   end
 
   # player turn:
@@ -77,6 +87,8 @@ class Game
     answer = nil
     loop do
       loop do
+        clear
+        display_initial_cards
         puts "Would you like to (h)it or (s)tay?"
         answer = gets.chomp.downcase
         player.hit(deck) if answer[0] == 'h'
@@ -85,19 +97,37 @@ class Game
         puts "Sorry, invalid answer..."
       end
       break if answer[0] == 's' # break out of all loops if staying
-      break if player.busted?
+      break if player.busted?   # break out of loops if busted
     end
   end
 
   def dealer_turn
-    dealer.hit unless dealer.total >= 17
+    loop do
+      break if dealer.total >= 17
+      dealer.hit(deck)
+    end
   end
 
-  def show_result; end
+  def show_result
+    clear
+    if dealer.busted?
+      puts "Dealer busted with #{dealer.total} pts! You win!"
+      display_hands
+    elsif player.busted?
+      puts "You busted with #{player.total} pts! Dealer wins!"
+      display_hands
+    elsif dealer.total > player.total
+      puts "Dealer wins with #{dealer.total} pts vs. your #{player.total} pts"
+      display_hands
+    else
+      puts "You win with #{player.total} pts vs. dealer's #{dealer.total} pts"
+      display_hands
+    end
+  end
 
   def start
     deal_cards
-    show_initial_cards
+    display_initial_cards
     player_turn
     dealer_turn
     show_result
