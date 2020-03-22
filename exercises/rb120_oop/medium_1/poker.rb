@@ -117,6 +117,7 @@ class PokerHand
   end
 
   def two_pair?
+    card_values.map { |n| card_values.count(n) }.count(2) == 4
   end
 
   def pair?
