@@ -1,0 +1,6 @@
+* Questions like "What is encapsulation?" -- use code examples for illustration, pretend like you're 'teaching'
+* Questions are generally more open ended than 109, less "explain a code sample"
+* Interview is not about problem solving like first interview necessarily, but more knowledge/demonstration-focused
+* Be prepared for back and forth and interaction throughout the questions
+* Talk about: "an object is an encapsulation of state and behavior"-- what is state? what is behavior? what is the relationship of an object and a class?
+
