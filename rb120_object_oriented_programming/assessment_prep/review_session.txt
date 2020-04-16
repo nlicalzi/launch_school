@@ -3,4 +3,17 @@
 * Interview is not about problem solving like first interview necessarily, but more knowledge/demonstration-focused
 * Be prepared for back and forth and interaction throughout the questions
 * Talk about: "an object is an encapsulation of state and behavior"-- what is state? what is behavior? what is the relationship of an object and a class?
-
+* Can state be inherited? (no)
+	* inheritance happens at the class level
+	* state is code that exists at the object level
+	* ex. State refers to instance variables and their values
+* Is behavior inherited? (yes)
+* Get used to writing code and using it to illustrate your knowledge and mastery
+* What / Where (or when?) / Why for each concept:
+	* what is inheritance? why is it useful? example of its use?
+* What is the difference between an instance variable and an attribute?
+	* Attribute is the exposed version of an instance variable in an object's interface
+* Use Matz's book to find definitions for vocabulary
+* What is the difference between a public, private, and protected method?
+	* can you give an implementation of each?
+	* protected method are useful for comparison (think person_1 == person_2, where ==(other) is based on "age")
