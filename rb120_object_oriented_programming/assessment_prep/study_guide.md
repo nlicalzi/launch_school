@@ -3,25 +3,63 @@
 #### Outline
 
 1. Classes and objects
+
    * Anything in Ruby that can have a value is an object
      * Is a method an object? Is a block an object? (no)
    * Objects are created from/defined by classes (think of a blueprint and a building)
    * What method can we call to see the class an object was instantiated from?
      * ```Object#class```
+
 2. Use ```attr_*``` to create setter and getter methods
+
 3. How to call setters and getters
+
 4. Instance methods vs. class methods
+
 5. Referencing and setting instance variables vs. using getters and setters
+
 6. Class inheritance, encapsulation, and polymorphism
+
 7. Modules
+
 8. Method lookup path
+
    1. ```Class.ancestors``` or ```object.class.ancestors```
+
 9. ```self```
+
    1. Calling methods with ```self```
+
+      1. ```Ruby
+         def change_info(n, h, w)
+           self.name = n # using self tells ruby we're calling the setter method
+           self.height = h
+           self.weight = w
+         end
+         ```
+
+      2. ```Ruby
+         class GoodDog
+           # ... rest of code omitted for brevity
+           def info
+             "#{self.name} weighs #{self.weight} and is #{self.height} tall"
+           end
+           def some_method
+             self.info # Calls the instance method, not an attr_* method
+           end
+         end
+         ```
+
+      3. 
+
    2. More about ```self```
+
 10. Reading OO code
+
 11. Fake operators and equality
+
 12. Truthiness
+
 13. Working with collaborator objects
 
 
