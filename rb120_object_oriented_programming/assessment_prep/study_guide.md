@@ -153,4 +153,51 @@
     attr_writer :name # SYMBOL AS ARG
     ```
 
-* 
+* **Class Variable**
+
+  * Class variables are created using two `@` symbols like so: `@@var`
+
+  * ```Ruby
+    class GoodDog
+      @@number_of_dogs = 0
+      
+      def initialize
+        @@number_of_dogs += 1
+      end
+      
+      def self.total_number_of_dogs # class method
+        @@number_of_dogs
+      end
+    end
+    
+    puts GoodDog.total_number_of_dogs # => 0
+    
+    dog1 = GoodDog.new # @@number_of_dogs += 1
+    dog2 = GoodDog.new # @@number_of_dogs += 1
+    
+    puts GoodDog.total_number_of_dogs # => 2
+    ```
+
+  * 
+
+* **Constants**
+
+  * Variables that remain unchanged, often in the context of class creation.
+
+  * ```Ruby
+    class GoodDog
+      DOG_YEARS = 7
+      
+      attr_accessor :name, :age
+      
+      def initialize(n, a)
+        self.name = n
+        self.age = a * DOG_YEARS
+      end
+    end
+    
+    sparky = GoodDog.new("Sparky", 4)
+    puts sparky.age # => 28
+    ```
+
+  * 
