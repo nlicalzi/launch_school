@@ -69,4 +69,59 @@
     # self, when included outside of an instance method, references the class
     ```
 
-  * 
+* What is the following code snippet an example of?
+
+  * ```Ruby
+    class FarmAnimal
+      def speak
+        "#{self.class} says "
+      end
+    end
+    
+    class Sheep < FarmAnimal
+      def speak
+        super + "baa!"
+      end
+    end
+    
+    class Cow < FarmAnimal
+      def speak
+        super + "moo!"
+      end
+    end
+    
+    puts Sheep.new.speak
+    puts Cow.new.speak
+    ```
+
+* What is a **collaborator object** in Ruby?
+
+  * An object that is assigned to an instance variable in another object.
+
+* What operators in Ruby are actually operators, and which are methods that can be overwritten?
+
+  * Real operators: `&&`, `||`, 
+  * Overrideable: `==`, `[]=`, `> / <`
+
+* How can we check to see if two variables point to the same object?
+
+  * `var1.object_id == var2.object_id`
+  * Depends on object class-- `str1.equal?(str2)`
+
+* What does `String#<=>` return if both compared strings are the same?
+
+  * `0`. Would return `-1` if left side was greater, or `1` if right side.
+
+* Is `#>` automatically implemented if we define `#<`? How about `#==` and `#!=`?
+
+  * No, and yes.
+
+* What is the difference between `Range#===` and `Integer#===`?
+
+  * `Range#===` is used to compare a `Range` to an `Instance`
+  * `Integer#===` is used to compare two instances of `Integer`
+
+* What is the **public interface** of a class?
+
+  * The methods exposed by the class to interact with objects of that class.
+  * The **behaviors** and **attributes** of a class-- externally facing.
