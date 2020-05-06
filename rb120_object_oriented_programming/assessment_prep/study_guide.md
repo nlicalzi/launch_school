@@ -4,15 +4,56 @@
 
 1. Classes and objects
 
-   * Anything in Ruby that can have a value is an object
+   * Anything in Ruby **that can have a value** is an object.
+
      * Is a method an object? Is a block an object? (no)
-   * Objects are created from/defined by classes (think of a blueprint and a building)
+
+   * Classes are blueprints from which object instances of that class are constructed.
+
+     * We can think of objects as "encapsulations of state and behavior": behaviors are defined in the class and are available to all object instances of that class, while each object's state tracks its attributes, is unique, and is initialized along with the object at the time of instantiation. The object's behaviors make up its **interface**, or how we can interact with it and its state from outside the object.
+
+     * ```Ruby
+       class Animal; end # class definition
+       
+       kitten = Animal.new # instantiation of a new Animal object, and pointing the local variable `kitten` at it
+       ```
+
    * What method can we call to see the class an object was instantiated from?
+
      * ```Object#class```
 
 2. Use ```attr_*``` to create setter and getter methods
 
+   * Setter and getter methods represent ways of interacting with an object's **state**-- either retrieving and returning or outputting some information (**getting**) or setting/overwriting some information (**setting**).
+   * `attr_*` setters and getters are defined at the top of a class, by invoking some specific methods: `attr_writer` for a setter, `attr_reader` for a getter, or `attr_accessor` for defining both at once. Each of those methods can take more than one argument, passed in as a symbol (ex. `:name`), which then defines the associated methods for you as either `def name` or `def name=`
+
 3. How to call setters and getters
+
+   * Ruby has built in syntactic sugar specifically for calling setter methods, which are either defined by invoking the `attr_writer / attr_accessor` methods or by defining a method like so: `def name=(first_name); @name = first_name; end`. Instead of invoking the method as `obj.name=('nick')`, the syntactic sugar allows us to call it as `student.name = 'nick'`, a much prettier way to do it!
+
+   * ```Ruby
+     class Person
+       attr_accessor :name, :age # defining setters and getters for both name and age
+       
+       def initialize(name, age) # defining our constructor method
+         @name = name
+         @age = age
+       end
+       
+       def greeting
+         "Hi! My name is #{name} and I'm #{age} years old." # using our getter methods
+       end
+     end
+     
+     student = Person.new("Nick", 27)
+     
+     puts student.greeting
+     
+     student.name = 'Nicole' # what if the student changes their name?
+     student.age = 28        # what about after their birthday passes?
+     
+     puts student.greeting
+     ```
 
 4. Instance methods vs. class methods
 
@@ -193,8 +234,6 @@
       
       value = Mammal.some_out_of_place_method(4)
       ```
-
-    * 
 
 * **Instantiation**
 
