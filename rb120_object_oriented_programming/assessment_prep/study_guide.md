@@ -33,15 +33,15 @@
 
    * ```Ruby
      class Person
-       attr_accessor :name, :age # defining setters and getters for both name and age
+       attr_accessor :name, :age # defining setters and getters for both `name` and `age`
        
        def initialize(name, age) # defining our constructor method
          @name = name
          @age = age
        end
        
-       def greeting
-         "Hi! My name is #{name} and I'm #{age} years old." # using our getter methods
+       def greeting 				  # using our getter methods
+         "Hi! My name is #{name} and I'm #{age} years old." 
        end
      end
      
@@ -57,9 +57,161 @@
 
 4. Instance methods vs. class methods
 
+   * Because anything in Ruby that can have a value is an object, that means defined classes are objects as well and can call methods that are defined within the class that are prepended with `self.`-- these are called **class methods**. 
+
+   * ```Ruby
+     class Animal
+       def self.from_the_class
+         "I'm the Animal class!"
+       end
+       
+       def from_an_instance
+         "I'm an initialized object of the Animal class!"
+       end
+     end
+     
+     puts Animal.from_the_class		# called on the Animal class, before any instance of it is instantiated
+     
+     fido = Animal.new
+     puts fido.from_an_instance		# called on an instantiated object of the Animal class
+     
+     puts Animal.from_an_instance	# error: undefined method (instance method called on class)
+     puts fido.from_the_class			# error: undefined method (class method called on instance)
+     ```
+
 5. Referencing and setting instance variables vs. using getters and setters
 
+   * Using a getter method can be preferable to returning or interacting with the instance variable directly-- this can protect us from overwriting the value of the variable by accident, and also helps us keep the actual value obscured if we need it to be-- think of a case involving social security numbers: which is preferable?
+
+     * ```Ruby
+       attr_accessor :ssn # this would expose the SSN to be both edited and displayed in full...
+       
+       ## BETTER TO DO THE FOLLOWING:
+       
+       attr_writer :ssn # attr_* for our setter
+       
+       def display_ssn	 # obscures SSN value & keeps it DRY
+         "xxx-xx-#{@ssn[-4..-1]}"
+       end
+       ```
+
+   * When including setter methods in instance methods, always prepend `self.` to the method invocation, or else Ruby will think we're initializing new local variables. This way, when the `change_info` method is called, `self` instructs the method to call the `name / height / weight` setter methods on the calling object as well, rather than thinking they're new variable names.
+
+     * ```Ruby
+       attr_accessor :name, :height, :weight
+       
+       def change_info(n, h, w)
+         name = n				 # accidentally initializing local var "name"
+         height = h			 # accidentally initializing local var "height"
+         weight = w			 # accidentally initializing local var "weight"
+       end
+       
+       ## VERSUS
+       
+       def change_info(n, h, w) 
+         self.name = n    # correctly calling our setter method
+         self.height = h	 # correctly calling our setter method 
+         self.weight = w  # correctly calling our setter method
+       end
+       ```
+
 6. Class inheritance, encapsulation, and polymorphism
+
+   * **Class Inheritance**: Class inheritance allows for classes to inherit the behaviors of other classes, generally modeling "is-a" relationships (like how a Dog "is-an" Animal.)
+
+     * ```Ruby
+       class Animal
+         attr_accessor :name # generate getter and setter methods `name`
+         
+         def initialize(name)
+           @name = name # assign arg to `name`
+         end
+         
+         def speak
+           "#{name} says "
+         end
+       end
+       
+       class Dog < Animal
+         # because there is no constructor (or initialize method) defined in the Dog class, the Ruby interpreter looks back at the method lookup//inheritance chain to find if one has been declared, finds one in the Animal class, then calls it so we are able to use our @name variable even though it isn't present in our Dog class as currently defined
+         
+         def speak 			 # overwrite the speak method from Animal
+           super + "woof" # super calls Animal#speak and appends to it
+         end
+       end
+       
+       fido = Animal.new('Fido')
+       sparky = Dog.new('Sparky')
+       
+       puts fido.speak 	# Calls Animal#speak => 'Fido says '
+       puts sparky.speak # Calls Dog#speak 	 => 'Sparky says woof'
+       ```
+
+   * **Encapsulation**: Encapsulation refers to the hiding pieces of functionality and making them unavailable to the rest of the code base. It is a form of data protection and a way to define boundaries in your application while embracing abstraction. Encapsulation also tells us that the only important thing for us in using a class is the knowledge of its interface-- we shouldn't need specific implementation details to be able to use a (well designed) class successfully.
+
+     * ```Ruby
+       class Car
+         attr_reader :speed
+       
+         def initialize
+           @speed = nil
+         end
+       
+         def turn_on
+           @speed = 0
+         end
+         
+         def turn_off
+           @speed = nil
+         end
+       
+         def on?
+           @speed != nil
+         end
+       end
+       
+       volvo = Car.new
+       puts volvo.on?   # => false
+       
+       volvo.turn_on
+       puts volvo.on?   # => true
+       
+       volvo.turn_off
+       puts volvo.on?   # => false
+       ```
+
+     * In the above code, we don't need to know how the `Car` class implements its logic for "turning on", "turning off", or checking for on/off, but those methods all exist as part of an interface that makes logical sense and protects the `@speed` variable.
+
+   * **Polymorphism**: Polymorphism refers to the ability for data to be represented as many different types, and it gives us flexibility in using pre-written code for new purposes.
+
+     * ```Ruby
+       class Animal
+         def initialize(name)
+           @name = name
+         end
+         
+         def speak
+           "#{@name} says "
+         end
+       end
+       
+       class Dog < Animal
+         def speak
+           super + "woof!"
+         end
+       end
+       
+       class Cat < Animal
+         def speak
+           super + "meow!"
+         end
+       end
+       
+       puts Cat.new('Bean').speak
+       puts Dog.new('Beatrice').speak
+       ```
+
+     * In the above code sample, the last two lines are both able to call a `speak` method and return outputs that are appropriate to each object. This is an example of polymorphism-- the interface performs appropriately for each object depending on the context in which it's called, giving us flexibility in implementation but maintaining a logical interface to interact with.
 
 7. Modules
 
@@ -134,9 +286,9 @@
     * `Class inheritance`: one type inherits the behaviors of another type
       * Generally used to model "is-a" relationships
       * A cat "is a" mammal
-    * `Interface inheritance`: a class inherits the interface provided by another.
+    * `Interface inheritance`: a class inherits the interface provided by a module.
       * Generally used to model "has-a" relationship.
-      * Dogs "have an" ability to swim
+      * Dogs "have an" ability to swim e.g. `include Swimmable`
 
   * Class inheritance allows you to override methods in `subclasses` that were defined in the `superclasses`, this is one way of implementing **polymorphism**
 
