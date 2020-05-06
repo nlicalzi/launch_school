@@ -215,6 +215,42 @@
 
 7. Modules
 
+   * What are two primary uses for modules in OOP in Ruby? 
+
+     * for **Namespacing** (a convenient way to bundle objects together)
+
+       * A good example of this is the `Math` module in Ruby, which contains several useful constants like `Math::PI` 
+
+       * ```Ruby
+         module Mammal
+           class Cat; end
+           class Dog; end
+         end
+         
+         kitten = Mammal::Cat.new
+         puppy = Mammal::Dog.new
+         ```
+
+     * as **Containers** (vehicles to implement **interface inheritance**)
+
+       * Modules can be used to house multiple methods that have similar themes and should be mixed in to classes-- e.g. `Enumerable` for `Array` or `Hash`, `Comparable` for `String` and `Integer`, etc.
+
+       * The ability to **mixin** multiple modules to a given class is Ruby's solution to simulating (otherwise nonexistant) *multiple inheritance*. Classes can only inherit from one **superclass**, but can mixin as many modules as needed.
+
+       * ```Ruby
+         module Swimmable
+           def swim
+             "Swimming!"
+           end
+         end
+         
+         class Dog
+           include Swimmable
+         end
+         
+         Dog.new.swim
+         ```
+
 8. Method lookup path
 
    1. ```Class.ancestors``` or ```object.class.ancestors```
