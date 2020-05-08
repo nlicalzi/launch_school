@@ -559,7 +559,7 @@
 * **Getter Method**
 
   * ```ruby
-    def name # Expost an object's state
+    def name # Expose an object's state
       @name
     end
     
