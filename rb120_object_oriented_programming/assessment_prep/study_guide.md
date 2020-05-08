@@ -182,36 +182,78 @@
 
      * In the above code, we don't need to know how the `Car` class implements its logic for "turning on", "turning off", or checking for on/off, but those methods all exist as part of an interface that makes logical sense and protects the `@speed` variable.
 
-   * **Polymorphism**: Polymorphism refers to the ability for data to be represented as many different types, and it gives us flexibility in using pre-written code for new purposes.
+   * **Polymorphism**: Polymorphism refers to the ability for data to be represented as many different types, and it gives us flexibility in using pre-written code for new purposes. Achievable through either **class inheritance** or **ducktyping**.
 
      * ```Ruby
+       ## CLASS INHERITANCE BASED POLYMORPHISM
+       
        class Animal
          def initialize(name)
            @name = name
          end
          
-         def speak
+         def speak 					# generic eat method
            "#{@name} says "
          end
        end
        
        class Dog < Animal
-         def speak
+         def speak						# dog specific implementation
            super + "woof!"
          end
        end
        
        class Cat < Animal
-         def speak
+         def speak						# cat specific implementation
            super + "meow!"
          end
        end
        
-       puts Cat.new('Bean').speak
-       puts Dog.new('Beatrice').speak
+       pets = [Cat.new('Bean'), Dog.new('Beatrice')]
+       
+       pets.each {|pet| puts pet.speak } # use the generic method, trust implementation
        ```
 
      * In the above code sample, the last two lines are both able to call a `speak` method and return outputs that are appropriate to each object. This is an example of polymorphism-- the interface performs appropriately for each object depending on the context in which it's called, giving us flexibility in implementation but maintaining a logical interface to interact with.
+
+     * ```Ruby
+       ## DUCKTYPING BASED POLYMORPHISM
+       
+       class Circus
+         attr_reader :acts
+         
+         def initialize(performers)
+           @acts = performers
+         end
+         
+         def perform
+           acts.each do |performer|
+             puts performer.perform # each performer uses own `perform` implementation
+           end
+         end
+       end
+       
+       class Lion
+         def perform 							 # custom `perform` implementation
+           "The lion jumps through the hoop!"
+         end
+       end
+       
+       class Acrobat
+         def perform								 # custom `perform` implementation
+           "The acrobat balances perfectly on the highwire!"
+         end
+       end
+       
+       class Clown
+         def perform								 # custom `perform` implementation
+           "The clown drives his car around!"
+         end
+       end
+       
+       barnum = Circus.new([Lion.new, Acrobat.new, Clown.new])
+       barnum.perform
+       ```
 
 7. Modules
 
@@ -253,10 +295,12 @@
 
 8. Method lookup path
 
-   1. ```Class.ancestors``` or ```object.class.ancestors```
-   2. Ruby looks at the last module that we included first, and modules mixed into superclasses are included in subclasses.
+   * If we wish to see the lookup path that a given method call will traverse, we can call either ``Class.ancestors`` or ```object.class.ancestors```, and it will return the ancestors in the same order that they are searched (last included to first included)
+   * Ruby looks at the last module that we included first, and modules mixed into superclasses are included in subclasses.
 
 9. ```self```
+
+   * What is `self`? `self` is a way of being explicit about exactly which object in our class is calling a method, and changes depending on the scope in which it is used.
 
    1. Calling methods with ```self```
 
@@ -295,6 +339,39 @@
 
 13. Working with collaborator objects
 
+    * Instance variables can hold any object, not just strings or integers.
+
+    * ```Ruby
+      class Book
+        attr_accessor :title, :author
+        
+        def initialize(title, author)
+          @title = title
+          @author = author
+        end
+        
+        def to_s
+          "#{title}, by #{author}"
+        end
+      end
+      
+      class Person
+        attr_accessor :name, :favorite_book
+        
+        def initialize(name)
+          @name = name
+        end
+      end
+      
+      nick = Person.new("Nicholas")
+      red_mars = Book.new("Red Mars", "Kim Stanley Robinson")
+      
+      nick.favorite_book = red_mars
+      
+      puts nick.favorite_book.inspect
+      puts nick.favorite_book
+      ```
+
 
 
 #### Vocab (What, Why, How, [& Code Example])
@@ -311,7 +388,33 @@
 * **Polymorphism**
 
   * The ability for data to be represented as many different types
+
   * Gives us flexibility in using pre-written code for new purposes
+
+  * ```Ruby
+    class Animal
+      def speak
+        "This animal says: "
+      end
+    end
+    
+    class Dog < Animal
+      def speak
+        super + "woof!"
+      end
+    end
+    
+    class Cat < Animal
+      def speak
+        super + "meow!"
+      end
+    end
+    
+    puts Dog.new.speak
+    puts Cat.new.speak
+    ```
+
+  * 
 
 * **Inheritance**
 
