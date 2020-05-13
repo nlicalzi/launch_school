@@ -121,6 +121,7 @@ class TodoList
     out
   end
 
+  # returns first Todo by title, or nil if no match
   def find_by_title(title)
     each { |todo| todo.title == title }.first
   end

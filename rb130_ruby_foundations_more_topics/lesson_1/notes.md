@@ -16,7 +16,14 @@
 - blocks can take arguments, just like normal methods. But unlike normal methods, it won't complain about wrong number of arguments passed to it.
 - blocks return a value, just like normal methods.
 - blocks are a way to defer some implementation decisions to method invocation time. It allows method callers to refine a method at invocation time for a specific use case. It allows method implementors to build generic methods that can be used in a variety of ways.
+  - blocks are great for pushing some decisions to method invocation time.
 - blocks are a good use case for "sandwich code" scenarios, like closing a `File` automatically.
+  - blocks are great for pushing some decisions to method invocation time.
+- closures drag their surrounding context/environment around, and this is at the core of how variable scope works.
+- when we `yield`, we can also pass arguments to the block.
+- when we `yield`, we have to be aware of the block's return value.
+- once we understand blocks, we can re-implement many of the common methods in the Ruby core library in our own classes.
+- the `Symbol#to_proc` is a nice shortcut when working with collections.
 
 
 
@@ -28,6 +35,8 @@
   * Closures can be thought of as methods you can pass around and execute, without defining it under a specific name.
   * Implemented in ruby as a `Proc` object, a lambda, or a block.
 * Binding
+  * The surrounding environment/context of a closure.
+  * A closure must keep track of its surrounding context in order to have all the information it needs in order to be executed later. This not only includes **local variables**, but also **method references**, **constants**, and other code.
 * Block parameter
   * 
 * Block local variable
@@ -37,6 +46,8 @@
   * Blocks have lenient arity rules, but `Proc`s and `lambda`s have different rules.
 * Implicit block
 * Explicit block
+* `Symbol#to_proc`
+  * `(&:to_s)` become `{ |n| n.to_s }`
 
 
 
@@ -146,4 +157,11 @@
 * What happens behind the scenes when calling a block explicitly?
 
   * Calling a block explicitly converts it to a `Proc`, which gives us additional flexibility. Instead of being limited to calling the block with `yield`, we can now *pass the block to another method* inside the method if we so desire.
+
+* What happens when we put `&` in front of an object?
+
+  * The Ruby interpreter tries to convert the object into a block.
+  * If the object is not a `Proc`, it will call `#to_proc` on it.
+    * Returning either a `Proc` or throwing an error.
+  * `Symbol#to_proc` returns a `Proc`, which `&` turns into a block.
 
