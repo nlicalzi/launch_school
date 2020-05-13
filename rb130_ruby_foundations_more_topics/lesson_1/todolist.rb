@@ -109,14 +109,16 @@ class TodoList
   end
 
   def each
-    counter = 0
-
-    while counter < @todos.size
-      yield @todos[counter]
-      counter += 1
+    @todos.each do |todo|
+      yield(todo)
     end
+    self
+  end
 
-    @todos
+  def select
+    out = TodoList.new('Selected')
+    each { |todo| out.add(todo) if yield(todo) }
+    out
   end
 end
 
@@ -129,6 +131,8 @@ list.add(todo1)
 list.add(todo2)
 list.add(todo3)
 
-list.each do |todo|
-  puts todo                   # calls Todo#to_s
-end
+todo1.done!
+
+results = list.select { |todo| todo.done? }    # you need to implement this method
+
+puts results.inspect
