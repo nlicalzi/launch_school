@@ -3,7 +3,6 @@
 # This class represents a todo item and its associated data:
 # `name` and `description`. There's also a "done" flag to
 # show whether this todo item is done or not.
-
 class Todo
   DONE_MARKER = 'X'.freeze
   UNDONE_MARKER = ' '.freeze
@@ -39,21 +38,14 @@ class Todo
   end
 end
 
-todo1 = Todo.new('Buy milk')
-todo2 = Todo.new('Clean room')
-todo3 = Todo.new('Go to gym')
+# This class represents a collection of Todo objects.
+# You can perform typical collection-oriented actions
+# on a TodoList object, including iteration and selection.
+class TodoList
+  attr_accessor :title
 
-puts todo1 # calls Todo#to_s automatically => [ ] Buy Milk
-puts todo2 # calls Todo#to_s automatically => [ ] Clean room
-puts todo3 # calls Todo#to_s automatically => [ ] Go to gym
-
-puts ''
-
-puts 'Doing task 1...'
-todo1.done!
-
-puts ''
-
-puts todo1 # => [X] Buy Milk
-puts todo2 # => [ ] Clean room
-puts todo3 # => [ ] Go to gym
+  def initialize(title)
+    @title = title
+    @todos = []
+  end
+end
