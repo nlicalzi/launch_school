@@ -48,4 +48,82 @@ class TodoList
     @title = title
     @todos = []
   end
+
+  def size
+    @todos.size
+  end
+
+  def first
+    @todos.first
+  end
+
+  def last
+    @todos.last
+  end
+
+  def to_a
+    @todos.clone
+  end
+
+  def done?
+    @todos.all?(&:done?)
+  end
+
+  def done!
+    @todos.each(&:done!)
+  end
+
+  def item_at(idx)
+    @todos.fetch(idx)
+  end
+
+  def mark_done_at(idx)
+    item_at(idx).done!
+  end
+
+  def mark_undone_at(idx)
+    item_at(idx).undone!
+  end
+
+  def add(task)
+    raise TypeError, 'can only add Todo objects' unless task.instance_of? Todo
+    @todos << task
+  end
+
+  def shift
+    @todos.shift
+  end
+
+  def pop
+    @todos.pop
+  end
+
+  def remove_at(idx)
+    @todos.delete_at(idx)
+  end
+
+  def to_s
+    text = "---- #{title} ----\n"
+    text << @todos.map(&:to_s).join("\n")
+    text
+  end
 end
+
+todo1 = Todo.new('Buy milk')
+todo2 = Todo.new('Clean room')
+todo3 = Todo.new('Go to gym')
+
+list = TodoList.new("Today's Todos")
+list.add(todo1)
+list.add(todo2)
+list.add(todo3)
+
+puts list
+
+list.pop
+
+puts list
+
+list.mark_done_at(1)
+
+puts list
