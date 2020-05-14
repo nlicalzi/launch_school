@@ -37,6 +37,7 @@
 * Binding
   * The surrounding environment/context of a closure.
   * A closure must keep track of its surrounding context in order to have all the information it needs in order to be executed later. This not only includes **local variables**, but also **method references**, **constants**, and other code.
+  * From quiz: `A closure retains access to variables, constants, and methods that were in scope at the time and location you created the closure. It binds some code with the in-scope items.`
 * Block parameter
   * 
 * Block local variable
