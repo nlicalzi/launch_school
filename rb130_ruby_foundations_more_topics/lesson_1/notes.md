@@ -69,10 +69,6 @@
 
   * Depend on the method implementation. `Integer#times` returns `self` (or the calling object), while `Array#map` returns a new array.
 
-* Which methods in Ruby can take an optional block as an implicit parameter?
-
-  * All of them! 
-
 * How can we invoke passed in block arguments inside methods?
 
   * Using the `yield` keyword to execute the block.
@@ -165,4 +161,42 @@
   * If the object is not a `Proc`, it will call `#to_proc` on it.
     * Returning either a `Proc` or throwing an error.
   * `Symbol#to_proc` returns a `Proc`, which `&` turns into a block.
+
+* What do we mean when we say that a closure creates a binding?
+
+  * A closure retains access to variables, constants, and methods that were in scope at the time and location you created the closure.
+
+* What methods in Ruby can take a block?
+
+  * Any method in Ruby can take an optional block as an implicit parameter. If the method doesn't use the block (by calling `yield`), the method ignores it.
+
+* What boolean method can we use to return `true` if yield would execute a block in the current context (read: if a block was passed to the method)?
+
+  * What does `Kernel#block_given?` check for?
+
+* What happens if you pass more arguments to a block than the block parameter list shows?
+
+  * The block will ignore the extra arguments and execute normally.
+
+* What happens if you pass fewer arguments to a block than the block parameter list shows?
+
+  * The omitted arguments will be accessible, but point to `nil`.
+
+* What might cause this error to be thrown? `LocalJumpError: no block given (yield)`?
+
+  * Invoking a method without a block, but calling `yield` inside that method. 
+
+* How can we explicitly pass in a block to a method? What happens behind the scenes when a block is called explicitly?
+
+  * A block can be passed in explicitly by prepending `&` to the parameter in the method definition (`def true_or_false(&block)`). The block is converted to a `Proc` object and assigned to a local variable.
+
+* What method is called behind the scenes in the following code? `arr.map(&:upcase)`
+
+  * `Symbol#to_proc` is called on the symbol, converting it to a `Proc` object.
+
+* Can we use `.call` to execute a block inside a method?
+
+  * No, the method is `Proc#call`-- the block has to be converted to a `Proc` first (perhaps by calling the block explicitly)
+
+* 
 
