@@ -64,7 +64,16 @@ Context: Learning unit testing!
 
   * There's also an *expectation / spec-style* syntax (closer to Rspec)
 
-* 
+* **SEAT Approach** (usually 4 steps to writing a test):
+
+  1. **Set up** the necessary objects.
+  2. **Execute** the code against the object we're testing.
+  3. **Assert** the results of the execution.
+  4. **Tear down** and clean up any lingering artifacts.
+
+  * E/A (steps 2 and 3) are the bare minimum required to succesfully test.
+
+  
 
 
 
