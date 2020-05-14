@@ -7,15 +7,34 @@ Context: Learning unit testing!
 **Summary**:
 
 * Minitest:
+
   * Minitest is an intuitive test library that comes with Ruby.
-  * Using Minitest is very easy, and you shouldn't be afraid to play around with it.
-  * Create a test file
+
+  * How to create a test file in Minitest
+
   * Create a test class by subclassing `MiniTest::Test`.
+
   * Create a test by creating an instance method that starts with `test_`.
-  * Create assertions with `assert_equal`, and pass it the expected value and the actual value.
+
+  * Create assertions with `assert_equal`, and pass it the expected value and the actual value. (`refute` is the opposite of `assert`)
+
   * Colorize Minitest output with `minitest-reporters`
+
   * You can skip tests with `skip`.
+
   * Minitest comes in two syntax flavors: assertion style and expectation style. The latter is to appease RSpec users, but the former is far more intuitive for beginning Ruby developers.
+
+  * Sample of Minitest assertions:
+
+    * | Assertion                          | Description                                 |
+      | :--------------------------------- | :------------------------------------------ |
+      | `assert(test)`                     | Fails unless `test` is truthy.              |
+      | `assert_equal(exp, act)`           | Fails unless `exp == act`.                  |
+      | `assert_nil(obj)`                  | Fails unless `obj` is `nil`.                |
+      | `assert_raises(*exp) { ... }`      | Fails unless block raises one of `*exp`.    |
+      | `assert_instance_of(cls, obj)`     | Fails unless `obj` is an instance of `cls`. |
+      | `assert_includes(collection, obj)` | Fails unless `collection` includes `obj`.   |
+
 * 
 
 
