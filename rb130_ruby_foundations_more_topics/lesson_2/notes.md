@@ -91,3 +91,6 @@ Context: Learning unit testing!
 
 **Card questions**:
 
+* What is the difference between using `assert_equal` (value equality) and `assert_same` (object equality)?
+* What instance method do we have to implement in our custom class before we are able to successfully call `assert_equal` on objects of that class?
+  * Custom `==` 
