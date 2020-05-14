@@ -4,9 +4,48 @@ Context: Learning unit testing!
 
 
 
+**Summary**:
+
+* Minitest:
+  * Minitest is an intuitive test library that comes with Ruby.
+  * Using Minitest is very easy, and you shouldn't be afraid to play around with it.
+  * Create a test file
+  * Create a test class by subclassing `MiniTest::Test`.
+  * Create a test by creating an instance method that starts with `test_`.
+  * Create assertions with `assert_equal`, and pass it the expected value and the actual value.
+  * Colorize Minitest output with `minitest-reporters`
+  * You can skip tests with `skip`.
+  * Minitest comes in two syntax flavors: assertion style and expectation style. The latter is to appease RSpec users, but the former is far more intuitive for beginning Ruby developers.
+* 
+
+
+
 **Notes**:
 
 * Two popular options for testing libraries in Ruby: RSpec and Mintiest
+
+* Import another file from the current file's directory with: `require_relative 'name'`
+
+* Test classes subclass from `MiniTest::Test` 
+
+  * Within those classes, we can define test methods by prepending instance methods with `test_`: `def test_wheels`.
+  * our `assert_*` methods are inherited from up the chain
+
+* If we wish to temporarily skip a given test, we can use the keyword `skip` as the first line of the test method.
+
+  * ```ruby
+    def test_bad_wheels
+      skip
+      car = Car.new
+      assert_equal(3, car.wheels)
+    end
+    ```
+
+* The Minitest syntax we've been using so far is the *assertion / assert-style* syntax
+
+  * There's also an *expectation / spec-style* syntax (closer to Rspec)
+
+* 
 
 
 
