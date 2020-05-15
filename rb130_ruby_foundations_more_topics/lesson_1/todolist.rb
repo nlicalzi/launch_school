@@ -89,6 +89,8 @@ class TodoList
     raise TypeError, 'can only add Todo objects' unless task.instance_of? Todo
     @todos << task
   end
+  alias_method :<<, :add
+
 
   def shift
     @todos.shift
