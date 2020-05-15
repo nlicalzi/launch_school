@@ -4,7 +4,17 @@ Context: Learning unit testing!
 
 
 
-**Summary**:
+**Lesson summary**:
+
+- Minitest is the default testing library that comes with Ruby.
+- Minitest tests come in 2 flavors: assert-style and spec-style. Unless you really like RSpec, use assert-style.
+- A test suite contains many tests. A test can contain many assertions.
+- Use `assert_equal` liberally, but don't be afraid to look up other assertions when necessary. Remember that `assert_equal` is for asserting value equality as determined by the `==` method.
+- Use the SEAT approach to writing tests.
+- Use code coverage as a metric to gauge test quality. (But not the only metric.)
+- Practice writing tests -- it's easy!
+
+**Midway Summary**:
 
 * Minitest:
 
