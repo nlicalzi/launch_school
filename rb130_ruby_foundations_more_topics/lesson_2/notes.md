@@ -104,3 +104,21 @@ Context: Learning unit testing!
 * What is the difference between using `assert_equal` (value equality) and `assert_same` (object equality)?
 * What instance method do we have to implement in our custom class before we are able to successfully call `assert_equal` on objects of that class?
   * Custom `==` 
+* What MiniTest assertion method will fail unless a passed argument `test` is a true value?
+  * `#assert(test, msg = nil)`
+* What MiniTest assertion method will fail unless a passed argument `obj` is empty?
+  * `#assert_empty(obj, msg = nil)`
+* What MiniTest assertion method will fail unless passed arguments `exp` and `act` are equal? (using `==`)
+  * `#assert_equal(exp, act, msg = nil)`
+* What MiniTest assertion method will fail unless a `collection` includes `obj`?
+  * `#assert_includes(collection, obj, msg = nil)`
+* What MiniTest assertion method will fail unless `obj` is an instance of `cls`?
+  * `#assert_instance_of(cls, obj, msg = nil)`
+* What MiniTest assertion method will fail unless `obj` has `cls` in its inheritance lookup path?
+  * `#assert_kind_of(cls, obj, msg = nil)`
+* What MiniTest assertion method will fail unless `obj` is `nil`?
+  * `#assert_nil(obj, msg = nil)`
+* What MiniTest assertion method will fail unless a passed block raises exception(s) `*exp`?
+  * `#assert_raises(*exp) { || ... }`
+* What MiniTest assertion method will fail unless `exp` and `act` are `equal?` (in terms of `object_id`)?
+  * `#assert_same(exp, act, msg = nil)`
