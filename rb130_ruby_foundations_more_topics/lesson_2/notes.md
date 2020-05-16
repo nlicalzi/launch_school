@@ -122,3 +122,5 @@ Context: Learning unit testing!
   * `#assert_raises(*exp) { || ... }`
 * What MiniTest assertion method will fail unless `exp` and `act` are `equal?` (in terms of `object_id`)?
   * `#assert_same(exp, act, msg = nil)`
+* How can we reverse the output of any given MiniTest assertion?
+  * Replace `assert` in the method call with `refutes`: `#refute_empty`, `refute_nil`, etc.
