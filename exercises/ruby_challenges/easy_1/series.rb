@@ -43,3 +43,19 @@ class Series
     result
   end
 end
+
+
+# LS Implementation
+
+# class Series
+#   attr_reader :numbers
+
+#   def initialize(str)
+#     @numbers = str.chars.map(&:to_i)
+#   end
+
+#   def slices(len)
+#     raise ArgumentError('Slice size is too large.') if len > numbers.size
+#     numbers.each_cons(len).to_a
+#   end
+# end
