@@ -31,9 +31,7 @@ class Series
   end
 
   def slices(n)
-    unless n <= str.size
-      raise ArgumentError.new("Slice size is too large.")
-    end
+    raise ArgumentError.new("Slice size is too large.") unless n <= str.size
 
     result = []
     idx = 0
