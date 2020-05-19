@@ -1,7 +1,7 @@
 # source: https://launchschool.com/exercises/ca16ce9f
 
 require 'minitest/autorun'
-require_relative 'sieve'
+require_relative '../sieve'
 
 class SieveTest < Minitest::Test
   def test_a_few_primes

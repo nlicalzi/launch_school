@@ -1,7 +1,7 @@
 # source: https://launchschool.com/exercises/09b0d367
 
 require 'minitest/autorun'
-require_relative 'octal'
+require_relative '../octal'
 
 class OctalTest < Minitest::Test
   def test_octal_1_is_decimal_1
