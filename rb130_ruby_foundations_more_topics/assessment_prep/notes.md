@@ -129,7 +129,7 @@
 
     * What is **arity**? What are the **arity** rules for blocks?
       * An object's **arity** is the number of arguments or operands that a function can take. Think of the *ternary operator*: it takes a condition and then returns one of two options (3-arity). Binary: or//and, etc.
-      * Blocks have *loose* arity rules, meaning they can take any number of arguments.
+      * Blocks have *lenient* arity rules, meaning they can take any number of arguments.
     * Can you call a block by passing in more arguments than the block parameters? With fewer?
       * You can call a block by passing in more arguments or fewer arguments than the block has block parameters. If you pass in more arguments, any extra arguments will be ignored, while if you pass in fewer arguments, any remaining parameters will be assigned to `nil`.
     * How does the splat operator (`*`) relate to invoking blocks with varying argument counts?
@@ -138,6 +138,7 @@
   * When can you pass a block to a method
 
     * Which methods in Ruby can take a block parameter?
+      * All of them! Just some of them `yield if block_given?` and others don't.
 
   * `&:symbol`
 
@@ -155,37 +156,114 @@
         # .map { |el| el.downcase }
         ```
 
-    * What do we call `&` when it is used by itself to prepend some other code? (Unary 'and')
+    * What do we call `&` when it is used by itself to prepend some other code? 
+
+      * Unary 'and' operator
 
 * **Testing with Minitest**
 
   * Testing terminology
+
     * What is testing? Why do we test our code?
+      * Unit testing? Integration testing? Regression testing?
+      * Testing as we have encountered it so far consists of two primary concepts. **Assertions**, the most atomic component, are code snippets that let us determine whether some piece of code is functioning as expected. **Tests** are comprised of one or more individual assertions, and are meant to cover specific functionality in the code-- whether a method works through several edge cases, or a password logs you in successfully, for example.
+      * As our programs grow in size and complexity, it is inevitable that bugs will pop up-- almost no programmer is able to write bug free code 100% of the time. There will be issues with unexpected data types, input values, edge cases, etc. We write tests in order to ensure that our code is capable of dealing with these issues, and to prevent **regression**, or the breaking of previously functioning code as new and different features are added. Writing tests means this process can be sped up and automated, ensuring that our code continues to work robustly despite the aforementioned increases in size and complexity.
+
   * Minitest vs. RSpec
+
     * What are Minitest and RSpec? Why would we use them?
+      * Minitest and RSpec are two popular libraries that are used to conduct testing in Ruby.
+      * Minitest is written using normal Ruby syntax, while RSpec is a **domain-specific language**-- the code reads more like natural English, but it's less simple to write.
+      * Minitest developers generally use its "assert-style" (assertion) syntax, instead of the "spec-style" (expectation) flavor which is closer to what RSpec looks like.
+
   * SEAT approach
+
     * What is the SEAT approach?
+      * **Setup** the necessary objects
+      * **Execute** the code against the object we're testing
+      * **Assert** the results of the execution
+      * **Teardown** and clean up any lingering artifacts
+    * E and A are required at a minimum, S and T are included so you can keep your code DRY and save on programming resources.
+
   * Assertions
-    * What is the most common assertion in Minitest? (`assert_equal`)
+
+    * What is the most common assertion in Minitest?
+
+      * `assert_equal`, which uses the implementation of `#==` for that object, so it's generally good to have it overwritten otherwise it's the same as `assert_same` and  `#eql?` (read: checks `object_id`)
+
     * What is the opposite of an assertion?
+
+      * a refutation, or `refute_equal` for ex.
+
+    * How do we measure how much of our code is being tested?
+
+      * This is a measure of **code coverage**-- how much of our actual program code is covered by a test suite, measuring both public and private methods. This doesn't mean all of the tests are 100% comprehensive, or that all test cases are covered, just that there is at least one test for each method.
+
+      * ```ruby
+        require 'simplecov' # the simplecov gem will output a html file when run
+        SimpleCov.start # put this at the very top of your test file
+        ```
 
 * **Core Tools / Packaging Code**
 
   * Purpose of core tools
+
+    * Rubygems
+
+      * Rubygems provide a library of code that you can download and run or use directly inside your Ruby programs. You can use the `gem` command to interact with your installed gems.
+      * You can release your own Gems, consisting either of helper libraries that you can `require` into your own code, or fully fledged independent programs that you can run (like `bundle` or `rake`).
+
+    * Ruby Version Managers (RVM and rbenv)
+
+      * Ruby Version Managers help you manage multiple versions of Ruby on a single system. This helps deal with compatibility issues across versions of Ruby and Gems. 
+      * Each version of Ruby works with its own set of tools, relying on different releases of Gems and programs.
+
+    * Bundler
+
+      * Bundler provides the tools you need to describe the dependencies for your Ruby programs. It reads and creates `Gemfile` and `Gemfile.lock`, which tell the Ruby interpreter what it needs to look up/access and which versions of it in order to successfully execute your code.
+
+    * Rake
+
+      * Rake is a program that allows for Ruby developers to automate specific tasks while working on a project-- running a test suite, installing/building/packaging a program, setting up or altering a databse, outputting information about directories and files, etc.
+
+      * Rake uses a file named `Rakefile` to describe the tasks that rake can perform
+
+        * ```ruby
+          desc 'Say hello'
+          task :hello do
+            puts "Hello there. This is the 'hello' task."
+          end
+          
+          desc 'Say goodbye'
+          task :bye do
+            puts 'Bye now!'
+          end
+          
+          desc 'Do everything by default'
+          task :default => [:hello, :bye] # executed if rake called w/o a task
+          ```
+
+        * See what tasks a `Rakefile` can run with the `rake -T` command
+
+      * Specific rake tasks:
+
+        * Run all tests
+        * Increment program version number
+        * Create release notes for this version
+        * Make a backup of your local repo
+
   * Gemfiles
-    * What is a Gemfile? Why do we use it?
-    * What belongs in a Gemfile?
+
+    * What is a Gemfile? Why do we use it? What belongs in it?
+
+      * A `Gemfile` is a file consisting of instructions about what version of Ruby and specific Gems should be used to successfully execute a program, written in a Ruby domain specific language.
+
     * What file does Bundler read to produce a `Gemfile.lock` when `bundle install` is called?
 
+      * bundler reads through the `Gemfile` in order to produce a `Gemfile.lock` when `bundle install` is called.
+      * calling `bundle exec` allows bundler to override any dependency conflicts when issuing shell commands and should be used as a default (when running rake, for ex.: `bundle exec rake`)
 
-
-**Lesson 1 Summary**:
-
-**Lesson 2 Summary**:
-
-**Lesson 3 Summary**:
-
-
+      
 
 **Vocab**:
 
