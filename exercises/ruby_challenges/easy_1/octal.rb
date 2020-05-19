@@ -49,6 +49,3 @@ class Octal
     @digits.all? { |el| VALID_OCTAL_CHARS.include?(el) }
   end
 end
-
-puts Octal.new('123').to_decimal
-puts Octal.new('1a3').to_decimal
