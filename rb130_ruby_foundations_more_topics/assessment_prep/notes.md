@@ -257,11 +257,16 @@
     * What is a Gemfile? Why do we use it? What belongs in it?
 
       * A `Gemfile` is a file consisting of instructions about what version of Ruby and specific Gems should be used to successfully execute a program, written in a Ruby domain specific language.
+      * A Gemfile should consist of the following:
+        * A `source` for where Bundler should find/download Gems (usually `rubygems.org`)
+        * The specific version of Ruby the program should use
+        * The Ruby Gems (and their versions) that the program will use
+        * `gemspec`  to let the interpreter know that there is a `gemspec` file in the directory including information about the project, the author, release number, etc. for release
 
     * What file does Bundler read to produce a `Gemfile.lock` when `bundle install` is called?
 
       * bundler reads through the `Gemfile` in order to produce a `Gemfile.lock` when `bundle install` is called.
-      * calling `bundle exec` allows bundler to override any dependency conflicts when issuing shell commands and should be used as a default (when running rake, for ex.: `bundle exec rake`)
+      * calling `bundle exec` allows bundler to override any dependency conflicts when issuing shell commands and should be used as a default (when running rake, for ex.: `bundle exec rake`). It executes the command in the context of the current bundle, so that there's no conflict between your system-wide gems and the ones that were specified in the current project's `Gemfile`.
 
       
 
