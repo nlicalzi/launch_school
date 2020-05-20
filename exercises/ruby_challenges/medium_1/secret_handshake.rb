@@ -33,27 +33,27 @@ class SecretHandshake
 
   def commands
     return [] if seed.zero?
-    out = []
-    binary_seed = seed.to_s(2) # convert to string binary form
-    binary_chars = binary_seed.chars.reverse
+    out = []                                            # initialize output array
+    binary_seed = seed.to_s(2)                          # convert to string binary form
+    binary_chars = binary_seed.chars.reverse            # properly align chars to powers
     
-    out << 'wink' if binary_chars[0] == '1'
-    out << 'double blink' if binary_chars[1] == '1'
-    out << 'close your eyes' if binary_chars[2] == '1'
-    out << 'jump' if binary_chars[3] == '1'
-    out.reverse! if binary_chars[4] == '1'
+    out << 'wink' if binary_chars[0] == '1'             # ones place
+    out << 'double blink' if binary_chars[1] == '1'     # tens place
+    out << 'close your eyes' if binary_chars[2] == '1'  # hundreds place
+    out << 'jump' if binary_chars[3] == '1'             # thousands place
+    out.reverse! if binary_chars[4] == '1'              # ten thousands place
 
-    out
+    out                                                 # return output array
   end
 
   private
   attr_reader :seed
 
-  def valid_int?(val)
+  def valid_int?(val)  # check if input is a valid integer
     val.to_s == val.to_i.to_s
   end
   
-  def valid_bool?(val)
+  def valid_bool?(val) # check if input is a valid boolean
     val.to_i.to_s(2).chars.all? { |char| %w(0 1).include?(char) }
   end
 end
