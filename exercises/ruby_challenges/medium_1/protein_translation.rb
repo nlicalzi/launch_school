@@ -7,34 +7,25 @@ class InvalidCodonError < StandardError; end
 
 class Translation
   CODON_TO_AMINO = {
-    'AUG' => 'Methionine',
-    'UUU' => 'Phenylalanine',
-    'UUC' => 'Phenylalanine',
-    'UUA' => 'Leucine',
-    'UUG' => 'Leucine',
-    'UCU' => 'Serine',
-    'UCC' => 'Serine',
-    'UCA' => 'Serine',
-    'UCG' => 'Serine',
-    'UAU' => 'Tyrosine',
-    'UAC' => 'Tyrosine',
-    'UGU' => 'Cysteine',
-    'UGC' => 'Cysteine',
-    'UGG' => 'Tryptophan',
-    'UAA' => 'STOP',
-    'UAG' => 'STOP',
+    'AUG' => 'Methionine',    'UGG' => 'Tryptophan',
+    'UUU' => 'Phenylalanine', 'UUC' => 'Phenylalanine',
+    'UUA' => 'Leucine',       'UUG' => 'Leucine',
+    'UCU' => 'Serine',        'UCC' => 'Serine', 
+    'UCA' => 'Serine',        'UCG' => 'Serine',
+    'UAU' => 'Tyrosine',      'UAC' => 'Tyrosine',
+    'UGU' => 'Cysteine',      'UGC' => 'Cysteine',
+    'UAA' => 'STOP',          'UAG' => 'STOP',
     'UGA' => 'STOP'
   }.freeze
 
   def self.of_codon(codon)
-    CODON_TO_AMINO[codon]
+    CODON_TO_AMINO.fetch(codon) { fail InvalidCodonError }
   end
 
   def self.of_rna(rna)
     result = []
-    rna.scan(/.../).each do |sequence|
-      raise InvalidCodonError unless CODON_TO_AMINO.keys.include?(sequence)
-      codon = CODON_TO_AMINO[sequence]
+    rna.scan(/.../).each do |sequence| # for each 3 character sequence do...
+      codon = of_codon(sequence)
       break if codon == 'STOP'
       result << codon
     end
