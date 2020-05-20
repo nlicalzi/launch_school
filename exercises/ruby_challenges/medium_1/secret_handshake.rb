@@ -11,8 +11,7 @@ class SecretHandshake
   def commands
     return [] if seed.zero?
     out = []                                            # initialize output array
-    binary_seed = seed.to_s(2)                          # convert to string binary form
-    binary_chars = binary_seed.chars.reverse            # properly align chars to powers
+    binary_chars = seed.to_s(2).chars.reverse           # align binary chars to powers of 10
     
     out << 'wink' if binary_chars[0] == '1'             # ones place
     out << 'double blink' if binary_chars[1] == '1'     # tens place
