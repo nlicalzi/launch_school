@@ -5,7 +5,7 @@
 
 class SecretHandshake
   def initialize(val)
-    @seed = valid_int?(val) && valid_bool?(val) ? val.to_i : 0
+    @seed = valid_int?(val) && valid_binary?(val) ? val.to_i : 0
   end
 
   def commands
@@ -30,8 +30,9 @@ class SecretHandshake
     val.to_s == val.to_i.to_s
   end
   
-  def valid_bool?(val) # check if input is a valid boolean
-    val.to_i.to_s(2).chars.all? { |char| %w(0 1).include?(char) }
+  def valid_binary?(val) # check if input is a valid binary number
+    binary = val.to_i.to_s(2) # Integer#to_s(base) changes the base system
+    binary.chars.all? { |char| %w(0 1).include?(char) }
   end
 end
 
