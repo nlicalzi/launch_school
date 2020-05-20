@@ -3,6 +3,8 @@
 # Q: Write a program that given a phrase can count the occurrences of each
 # word in that phrase.
 
+# STILL FAILING ONE TEST-- REMOVE WRAPPING SINGLE QUOTES, BUT NOT INNER
+
 class Phrase
   def initialize(phrase)
     @words = phrase.downcase\
