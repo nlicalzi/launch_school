@@ -37,7 +37,9 @@
             
             while counter < arr.size
               el = arr[counter]
-              out << el if yield(el)  # flexible! 
+              out << el if yield(el)  # flexible!
+              # if yield(el) gives us select
+              # unless yield(el) would give us reject
               counter += 1
             end
             
@@ -111,7 +113,7 @@
       * ```ruby
         def return_new_array(arr, &block)
           return arr unless block_given?
-          arr.map { |el| result << block.call(el)}
+          arr.map { |el| result << block.call(el)}# Proc#call for an explicit block
         end
         
         def mutate_input_array(arr, &block)
