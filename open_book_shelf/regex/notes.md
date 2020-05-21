@@ -50,6 +50,10 @@ Useful resources:
     * ex. `/[^0-9]/` returns all non-numeric characters, `/[^aeiou]/` returns all non lowercase vowels
 * What Ruby method can we use to return a truthy value if there is a regex match anywhere in a given string?
   * `String#match(regex)`
+* What regex will match any letter except `x` or `X`?
+  * `/[a-wyzA-WYZ]/` or `/[a-wyz/i`
+* What regex will match any character that's not a letter? Any character that's not a number?
+  * `/[^a-z]/` and `/[^0-9]/`
 * 
 
 
