@@ -111,12 +111,12 @@
     * How do we execute a block that has been passed implicitly to a method? Explicitly?
 
       * ```ruby
-        def return_new_array(arr, &block)
+        def clone_array(arr, &block)
           return arr unless block_given?
           arr.map { |el| result << block.call(el)}# Proc#call for an explicit block
         end
         
-        def mutate_input_array(arr, &block)
+        def mutate_array(arr, &block)
           return arr unless block_given?
           arr.each_with_index { |el, idx| arr[idx] = block.call(el) }
           arr
@@ -126,6 +126,10 @@
     * What is the difference between passing a block implicitly or explicitly to a method?
 
       * An implicit block can be passed to any method in Ruby, but will only be utilized if the method includes a `yield` call. A block can be passed explicitly by including `&block` as a parameter during method definition; that block will then be called by calling `block.call` inside the method. When a block is passed to that method afterwards, it will be automatically converted to a `Proc`. 
+
+    * Why would we want to pass a block explicitly to a method?
+
+      * It can be considered more readable-- being explicit about what the functionality is in the parameters list would allow someone to see that the method is intended to work with a block, rather than having to search for a `yield` in the method definition. An explicitly passed block also gives us more flexibility-- for one, it allows us to pass the block (now a `Proc` object) to another method inside the original method if we would like to do so. We can do this without the unary and `&` this time, since the block has already been converted to a `Proc` when it was passed in to the first object.
 
   * Arguments and return values with blocks
 
