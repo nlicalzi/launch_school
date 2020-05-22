@@ -140,7 +140,40 @@ Useful resources:
   * `/\b[a-z][a-z][a-z]\b/i`
   * `\b` for word boundaries, three letter character classes, and a case insensitive `i` flag
 
-* 
+* What **quantifier** can we use to repeat a pattern 0 or more times?
+
+  * `*`-- `/co*t/` will match with `ct`, `cot`, `coot`, `cooot`, etc.
+
+* What **quantifier** can we use to repeat a pattern 1 or more times?
+
+  * `+`-- `/co+t/` will match with `cot`, `coot`, `cooot`, etc., but not `ct`
+
+* What **quantifier** can we use to match against either zero or one occurance of the pattern to its left?
+
+  * `?`-- `/coo?t/` will match `cot` or `coot` but not `ct` or `cooot`. Useful for dates!
+
+* What **quantifier** can we use to define a repeat range?
+
+  * `{}`, with three options.
+    * `p{m}` matches `p` with exactly `m` occurances
+    * `p{m,}` matches `m` or more occurances of `p`
+    * `p{m,n}` matches `m` or more occurances of `p`, but not more than `n`
+
+* What regex can we use to test a string to see if it contains ten consecutive digits?
+
+  * `/\b\d{10}\b/`.	`\b` word boundary, `\d{10}` 10 digit chars, `\b` word boundary
+
+* What regex can we use to match words of 5-8 letters?
+
+  * `/\b[a-z]{5,8}\b/i`. `\b` word boundary, `[a-z]{5,8}` 5-8 letters, `\b` boundary, `i` flag
+
+* What does it mean for a regex quantifier to be **greedy**?
+
+  * They always match the longest possible string they can. 
+
+* How can we match the fewest number of characters possible (**lazy** match, instead of greedy)?
+
+  * request a lazy match by adding a `?` after the main quantifier: `/a[abc]*?c/` 
 
   
 
