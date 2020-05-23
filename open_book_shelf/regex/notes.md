@@ -197,6 +197,51 @@ Useful resources:
     /x
     ```
 
+* What does `String#match(/regex/)` return?
+
+* What does `String#scan(/regex/)` return?
+
+* What does `=~` do?
+
+  * `=~` is similar to `match`, except it returns the index within the string at which the regex matched or `nil` if there was no match.
+
+* Why do some Rubyists prefer `=~` instead of `String#match`? 
+
+  * `=~` is measurably faster than `match`, so some Rubyists prefer to use it when they can, but others prefer `match` for legibility.
+
+* What regex can we pass to `String#split(/regex/)` in order to handle data where arbitrary whitespace characters separate fields, and there may be more than one whitespace character between each pair of items?
+
+  * ```ruby
+    record = "xyzzy  3456  \t  334\t\t\tabc"
+    fields = record.split(/\s+/)
+    # -> ['xyzzy', '3456', '334', 'abc']
+    ```
+
+* What is a regex **capture group**?
+
+  * Capture groups capture the matching characters that correspond to part of a regex. You can reuse these matches later in the same regex. 
+
+  * ```ruby
+    /(['"]).+?\1/
+    # the above code captures the part of the string that matches the pattern
+    # between parentheses: either a single or a double quote. 
+    # the \1 is a backreference, used to reference the value in the first 
+    # capture group in the regex. If the first group matches a double quote,
+    # then \1 matches a double quote, but not a single one.
+    ```
+
+* What is a regex **backreference**? How can we use it?
+
+  * A regex backreference is a way to refer to previously used **capture groups**-- you can reference them like so... `\1 \2 \3 \4` etc.
+
+* What `String` methods can we use to perform transformation using regex?
+
+  * `String#sub` (first part of string that matches regex) and `String#gsub` (every match)
+
+* How can we use `String#gsub` to replace every instance of a vowel in a string with a `*`?
+
+  * `str.gsub(/aeiou/, '*')`
+
 * 
 
   
