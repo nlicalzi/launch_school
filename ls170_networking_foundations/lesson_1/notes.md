@@ -16,6 +16,26 @@
 
 
 
+### Summary
+
+* The internet is a vast *network of networks*. It is comprised of both the **network infrastructure** itself (devices, routers, switches, cables, etc.) and the **protocols** that enable that infrastructure to function.
+* **Protocols** are *systems of rules*. Network protocols are systems of rules governing the exchange or transmission of data over a network.
+* Different types of protocol are concerned with different aspects of network communication. It can be useful to think of these different protocols as operating at particular '*layers*' of the network.
+* Encapsulation is a means by which protocols at different network layers can work together.
+* Encapsulation is implemented through the use of **Protocol Data Units** (PDUs). The PDU of a protocol at one layer becomes the data payload of the PDU of a protocol at a lower layer.
+* The physical network is the tangible infrastructure that transmits the electrical signals, light, and radio waves which carry network communications.
+* **Latency** is a measure of *delay*. It indicates the amount of time it takes for data to travel from one point to another.
+* **Bandwidth** is a measure of *capacity*. It indicates the amount of data that can be transmitted in a set period of time.
+* **Ethernet** is a set of standards and protocols that enables communication between devices on a local network.
+* Ethernet uses a Protocol Data Unit called a **Frame**.
+* Ethernet uses **MAC addressing** to identify devices connected to the local network.
+* The **Internet Protocol** (IP) is the predominant protocol used at this layer for *inter-network communication*.
+* There are two versions of IP currently in use: IPv4 and IPv6.
+* The *Internet Protocol* uses a system of addressing (IP Addressing) to *direct data between one device and another across networks*.
+* IP uses a Protocol Data Unit called a **Packet**.
+
+
+
 ### Notes
 
 * **What is the internet?**
@@ -75,9 +95,9 @@
   * What utility can we use to display the route and latency of a path across a network?
     * `traceroute`-- for documentation use `man traceroute`
 * **The Link/Data Link Layer**
-  * The protocols operating at this layer are primarily concerned with the identification of devices on the physical network and moving data over the physical network between the devices that comprise it (like host computers, switches, and routers).
+  * The protocols operating at this layer are primarily concerned with the identification of devices on the physical network and moving data over the physical network between the devices that comprise it (like host computers, switches, and routers). (Keys: **FRAMES** and **ADDRESSING**)
   * The most commonly used protocol at this layer is the **Ethernet** protocol.
-    * **Ethernet Frames** are a Protocol Data Unit (PDU) that encapsulate data from the Internet/Network layer above. The Link/Data Link layer is the lowest layer at which encapsulation takes place. At the Physical layer, data is a strim of bits-- an Ethernet Frame adds logical structure to the binary data.
+    * **Ethernet Frames** are a Protocol Data Unit (PDU) that encapsulate data from the Internet/Network layer above. The Link/Data Link layer is the lowest layer at which encapsulation takes place. At the Physical layer, data is a stream of bits-- an Ethernet Frame adds logical structure to the binary data.
       * Components of an Ethernet Frame include (focus on the bolded ones):
         * Preamble and SFD: Notify the receiving device to expect frame data and identify the start point of that data.
           * Preamble is 7 bytes (56 bits) and SFD is one byte (8 bits)
