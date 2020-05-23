@@ -44,6 +44,8 @@
     * It specifies how data should be packetized, addressed, transmitted, routed, and received, dividing its layers in terms of the scope of communications within each layer.
     * Organized into four abstraction layers (from lowest to highest):
       * Link -> Internet -> Transport -> Application
+  * How do the OSI and TCP/IP models relate to each other?
+    * ![Diagram comparing OSI model layers with TCP/IP layers](https://da77jsbdz4r05.cloudfront.net/images/ls170/layered-system-osi-tcp-ip-comparison.png)
   * What does TCP/IP stand for?
     * Transmission Control Protocol / Internet Protocol
   * How does data encapsulation apply to network communication models?
@@ -56,4 +58,20 @@
     * The payload is the data we want to transport over the network-- the entire PDU from a protocol at one layer is set as the payload for a protocol at the layer below:
       * ![Diagram demonstrating concept of encapsulation i the context of PDUs at different network layers ](https://da77jsbdz4r05.cloudfront.net/images/ls170/layered-system-encapsulation.png)
     * A protocol at one layer doesn't need to know anything about how a protocol at another layer is implemented in order for those protocols to interact-- remember encapsulation/abstraction? A lower layer effectively provides a *service* to the layer above it.
+* **The Physical Network**
+  * The bottommost layer of the OSI model is the Physical layer-- the functionality at this level is essentially the transfer of bits, which are converted and transmitted either by electrical, light, or radio signals.
+  * What are the two main characteristics in terms of the performance of a physical network? 
+    * **Latency**, or the amount of time it takes for data to go from point to point in a network
+    * **Bandwith**, or the amount of data that can be sent at once. The bandwidth that a connection receives is the lowest amount at a particular point in the overall connection (bandwith bottleneck).
+  * What are the various elements of types of delay that are combined to determine overall latency?
+    * **Propagation delay**: amount of time it takes for a message to travel from sender to receiver
+    * **Transmission delay**: amount of time it takes to push data onto each link in the system
+    * **Processing delay**: amount of time each link takes to process the data
+    * **Queueing delay**: amount of time spent *buffering* (waiting in the processing queue), as routers can only process a certain amount of data at one time
+  * What is **last mile latency**?
+    * The delays involved in getting the network signal from your ISP's network to your home or office network-- the entry point into a network.
+  * What is **Round-trip Time (RTT)** in the context of latency?
+    * The length of time for a signal to be sent, plus the time for an acknowledgement or a response to be received.
+  * What utility can we use to display the route and latency of a path across a network?
+    * `traceroute`-- for documentation use `man traceroute`
   * 
