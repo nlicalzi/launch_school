@@ -175,6 +175,30 @@ Useful resources:
 
   * request a lazy match by adding a `?` after the main quantifier: `/a[abc]*?c/` 
 
+* What regex can we use to match any word that contains at least three occurrances of the letter `i`?
+
+  * `/\b[a-z]*i[a-z]*i[a-z]*i[a-z]*\b/i`
+
+* What regex can we use to match the last word in each line of text? (any sequence of non whitespace characters)
+
+  * `/\S+$/i`
+
+* What flag/option can we use at the end of a regex in Ruby to allow us to break a regex over several lines, with the ability to comment each line?
+
+  * ```ruby
+    /
+      ^                  # Start of line
+      (\d+,){2}          # 2 numbers at start
+      (                  # followed by...
+        (\d+,){3,}       #    at least 3 more numbers
+      )?                 #    that are optional
+      \d+                # followed by one last number
+      $                  # end of line
+    /x
+    ```
+
+* 
+
   
 
 ### Vocab
