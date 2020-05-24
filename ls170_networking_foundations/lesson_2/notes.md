@@ -54,5 +54,13 @@
     * A connectionless system could have one socket object calling a `listen()` method on a specific port, processing incoming messages as they arrive and responding as necessary.
     * Instantiating multiple socket objects allows for the implementation of connection-oriented network communication between applications-- a dedicated virtual connection for communication btw. a specific process on one host and a specific process on another.
 * Network Reliability
+  * The levels of the network, up to and including the Internet Protocol is effectively an *unreliable communication channel* because of the possibility of losing data and it not being replaced-- we know that Ethernet and the IP include checksum data as part of their head or trailer and the frames/packets are simply dropped if corrupted.
+  * What are the fundamental elements required for reliable data transfer?
+    * In order delivery: data is received in the order that it was sent.
+    * Error detection: corrupt data is identified using a checksum.
+    * Handling data loss: missing data is retransmitted based on acknowledgements and timeouts.
+    * Handling duplication: duplicate data is eliminated through the use of sequence numbers.
+  * A Stop-and-Wait protocol is one in which each message is sent one at a time, and an acknowledgement is received before the next message is sent. Too much time is spent *wait*ing for an acknowledgement-- inefficient use of bandwith.
+    * This issue is solved through *pipelining*-- the sender implements a 'window' representing the max. number of messages in the pipeline at any time, and moves the window as it receives the appropriate acknowledgements for the messages in the window. Efficient use of available bandwidth!
 * Transmission Control Protocol (TCP)
 * User Datagram Protocol (UDP)
