@@ -88,3 +88,16 @@
     * Head-of-Line (HOL) blocking: issues in delivering/processing one message in a sequence of messages can delay or 'block' the delivery/processing of subsequent messages.
       * Occurs in TCP because of the In-Order Delivery of segments-- results in Queueing Delay (one of the elements of Latency.)
 * User Datagram Protocol (UDP)
+  * If TCP implements reliable data transfer through sequencing and retransmission, flow control, and congestion avoidance, what does UDP implement them? It *doesn't*!
+  * The Protocol Data Unit (PDU) of UDP is a **Datagram**-- its header consists of a Source and Destination Port, the length in bits of the Datagram and its encapsulatied data, and a Checksum field.
+    * Datagrams provide multiplexing in the same way that TCP Segments do (port info).
+    * UDP provides no guarantee of message delivery.
+    * UDP provides no guarantee of message delivery order.
+    * UDP provides no built-in congestion avoidance or flow-control mechanisms.
+    * UDP provides no connection state tracking, since it is a *connectionless protocol*.
+  * What advantages does UDP have over TCP? Its simplicity, providing *speed* and *flexibility*.
+    * UDP is a connectionless protocol-- no need to wait for a connection to be established.
+    * No acknowledgements/retransmissions makes data delivery faster, latency is less of an issue.
+    * Lack of In-Order delivery removes the issue of Head-of-Line blocking.
+  * UDP is effectively a 'base template'-- engineers building at the application level can pick and choose to implement any/all of the services that UDP doesn't natively provide.
+  * Think of a voice or video calling application-- a slightly glitchy call or few pixels of video dropping out is ok if the speed is otherwise as close as possible to real-time. Same for online gaming-- want to reduce lag at all costs? Go with UDP!
