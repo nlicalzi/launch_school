@@ -18,6 +18,19 @@
 
 ### Summary:
 
+* **Multiplexing** and **demultiplexing** provide for the transmission of *multiple signals over a single channel*.
+* Multiplexing is enabled through the use of **network ports**.
+* **Network sockets** can be thought of as a combination of **IP address** and *port number*.
+* At the *implementation level* (like in Ruby or Python), sockets can also be *socket objects*.
+* the underlying network is *inherently unreliable*. If we want reliable data transport we need to implement a system of rules to enable it.
+* **TCP** is a *connection-oriented* protocol. It establishes a connection using the *three-way-handshake*.
+* TCP provides reliability through *message acknowledgement*, *retransmission*, and *in-order delivery*.
+* TCP also provides *Flow Control* and *Congestion Avoidance*.
+* The main downsides of TCP are the *latency overhead of establishing a connection*, and the potential for **Head-of-Line blocking** as a result of in-order delivery.
+* **UDP** is a very simple protocol compared to TCP. It provides *multiplexing*, but no reliability, in-order delivery, congestion avoidance, or control flow.
+* UDP is a *connectionless* protocol: it doesn't need to establish a connection before it starts sending data.
+* Although it is unreliable, the *advantage of UDP* is *speed* and *flexibility*-- any missing features can be implemented on top of UDP if deemed necessary.
+
 
 
 ### Vocab:
