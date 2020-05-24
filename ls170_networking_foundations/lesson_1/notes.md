@@ -16,7 +16,7 @@
 
 
 
-### Summary
+### Summary:
 
 * The internet is a vast *network of networks*. It is comprised of both the **network infrastructure** itself (devices, routers, switches, cables, etc.) and the **protocols** that enable that infrastructure to function.
 * **Protocols** are *systems of rules*. Network protocols are systems of rules governing the exchange or transmission of data over a network.
@@ -36,7 +36,7 @@
 
 
 
-### Notes
+### Notes:
 
 * **What is the internet?**
   * What is a Network?
