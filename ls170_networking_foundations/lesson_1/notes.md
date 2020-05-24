@@ -4,9 +4,12 @@
 
 * What to Focus On
   * Build a general picture of the network infrastructure
+    * Build the general mental modles that will provide sufficient context to understand protocols operating at higher levels of abstraction, such as TCP and HTTP
   * Be aware of the limitations of the physical network
+    * TCP and HTTP are bound by limitations of physical infrastructure: latency and bandwidth
   * Understand that protocols are systems of rules
   * Learn that IP enables communication between devices
+    * Form a clear mental model of the Internet Protocol
 * What is the Internet?
 * Protocols
 * A Layered System
@@ -33,6 +36,24 @@
 * There are two versions of IP currently in use: IPv4 and IPv6.
 * The *Internet Protocol* uses a system of addressing (IP Addressing) to *direct data between one device and another across networks*.
 * IP uses a Protocol Data Unit called a **Packet**.
+
+
+
+### Vocab:
+
+* **Network infrastruture**
+* **Protocols**
+* **Protocol Data Units**
+* **Latency**
+* **Bandwidth**
+* **Ethernet**
+* **Ethernet Frame**
+* **MAC Address**
+* **Internet Protocol**
+* **IP Addressing**
+* **IPv4**
+* **IPv6**
+* **Packet**
 
 
 
