@@ -63,4 +63,28 @@
   * A Stop-and-Wait protocol is one in which each message is sent one at a time, and an acknowledgement is received before the next message is sent. Too much time is spent *wait*ing for an acknowledgement-- inefficient use of bandwith.
     * This issue is solved through *pipelining*-- the sender implements a 'window' representing the max. number of messages in the pipeline at any time, and moves the window as it receives the appropriate acknowledgements for the messages in the window. Efficient use of available bandwidth!
 * Transmission Control Protocol (TCP)
+  * A major part of the implementation of TCP is finding a balance between reliability and performance.
+  * TCP, essentially, provides the abstraction of reliable network communication on top of an unreliable channel-- hiding much of the complexity of reliable network communication from the application layer: *data integrity*, *de-duplication*, *in-order delivery*, and *retransmission of lost data*.
+  * TCP comes with performance challenges because of its complexity, despite it being hidden by abstraction from developers at the application level. It tries to compensate by providing mechanisms for *flow control* and *congestion avoidance*.
+  * **TCP Segments** are the Protocol Data Unit of TCP-- consisting of headers (incl. Source Port, Destination Port, Checksum, Sequence Number, Acknowledgement Number, Window Size, Flags, etc.) and payloads (e.g. HTTP Request).
+    * Checksum: provides the *Error Detection* aspect of TCP reliability.
+    * Sequence & Acknowledgement Number: provide the In-order Delivery, Handling Data Loss, and Handling Duplication aspects of TCP reliability.
+  * TCP is a *connection-oriented protocol*, only sending application data once a connection has been established between application processes.
+    * TCP uses a "*three-way handshake*" to establish a connection, and a "*four-way handshake*" for terminating connections.
+    * Three-way handshake: Sender sends `SYN`, receiver responds with `SYN ACK`, sender responds with `ACK`, and connection is then established. (`SYN`: 'synchronize'. `ACK`: 'acknowledge')
+      * There is an entire round-trip of latency before any application data can be exchanged!
+    * ![Screen Shot 2020-05-24 at 4.44.45 PM](/Users/nicholaslicalzi/Library/Application Support/typora-user-images/Screen Shot 2020-05-24 at 4.44.45 PM.png)
+    * ![Diagram of three-way TCP handshake, with data being sent after the ACK](https://da77jsbdz4r05.cloudfront.net/images/ls170/transport-tcp-thre-way-handshake-data-delay.png)
+  * TCP involves a lot of overhead in terms of establishing connections, and providing reliability through the retransmission of lost data. In order to facilitate efficient data transfer once a connection is established, TCP provides mechanisms for **flow control** and **congestion avoidance**.
+    * **Flow control** is a mechanism to prevent the sender from overwhelming the receiver with data.
+      * Data awaiting processing is stored in a *buffer*, the size of which depends on the amount of memory allocated by the OS configuration and physical resources available.
+      * Each side lets the other know the amount of data that it is willing to accept through the `WINDOW` field of the TCP header-- the number is dynamic and can change during connection.
+    * **Congestion avoidance** is a mechanism to prevent the sender or receiver from overwhelming the underlying network with data.
+      * It's like traffic gridlock, but instead of a standstill the 'excess vehicles' are just lost for good.
+      * At each hop for an IP Packet, the packet has to be processed by a router (run a checksum, check destination address, route the packet)-- the processing takes time, and other packets are stored in a buffer while waiting their turn. If the buffer over-flows those packets are dropped.
+      * TCP uses data loss as a feedback mechanism-- if lots of retransmissions are occurring, TCP knows the network is congested and reduces the transmission `WINDOW SIZE`.
+  * What are the drawbacks of using TCP? 
+    * Latency overhead in establishing a TCP connection due to the handshake process.
+    * Head-of-Line (HOL) blocking: issues in delivering/processing one message in a sequence of messages can delay or 'block' the delivery/processing of subsequent messages.
+      * Occurs in TCP because of the In-Order Delivery of segments-- results in Queueing Delay (one of the elements of Latency.)
 * User Datagram Protocol (UDP)
