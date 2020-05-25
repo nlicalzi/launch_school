@@ -1,4 +1,4 @@
-## RB170 Lesson 1: The Internet
+## LS170 Lesson 1: The Internet
 
 ### Overview:
 

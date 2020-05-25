@@ -1,4 +1,4 @@
-## RB170 Lesson 2: The Transport Layer
+## LS170 Lesson 2: The Transport Layer
 
 ### Overview:
 
