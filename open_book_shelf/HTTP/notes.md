@@ -136,3 +136,6 @@ Useful Resources:
       * What do we call the type of attack where users are allowed to input HTML or JavaScript that ends up being displayed by the site directly? (What is Cross-site Scripting (XSS)?)
       * What do we accomplish by sanitizing our HTML inputs in an app? (How can we account for the possibility of a Cross-site Scripting (XSS) attack?)
    5. Conclusion
+      * Understanding HTTP and things like `GET`, `POST`, sessions, cookies, and what it means to be "stateless" is vital
+      * Understanding the basics of HTTP means you know what is happening "behind the scenes" when you build a web application
+      * Learning about security means you're aware of threats like `XSS` and session hijacking, as well as the countermeasures you need to guard against them
