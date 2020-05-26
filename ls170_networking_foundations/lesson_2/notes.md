@@ -22,7 +22,7 @@
 * Multiplexing is enabled through the use of **network ports**.
 * **Network sockets** can be thought of as a combination of **IP address** and *port number*.
 * At the *implementation level* (like in Ruby or Python), sockets can also be *socket objects*.
-* the underlying network is *inherently unreliable*. If we want reliable data transport we need to implement a system of rules to enable it.
+* The underlying network is *inherently unreliable*. If we want reliable data transport we need to implement a system of rules to enable it.
 * **TCP** is a *connection-oriented* protocol. It establishes a connection using the *three-way-handshake*.
 * TCP provides reliability through *message acknowledgement*, *retransmission*, and *in-order delivery*.
 * TCP also provides *Flow Control* and *Congestion Avoidance*.
