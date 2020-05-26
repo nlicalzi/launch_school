@@ -83,6 +83,21 @@ Useful Resources:
 2. HTTP
 
    1. Making Requests
+      * How can we see the raw response data of an `HTTP GET` request, rather than having a browser parse and process it? (What is an HTTP tool like `curl` or Insomnia used for?)
+      * How can we see each individual `HTTP GET` request sent upon navigating to a website? (What can we inspect by using Chrome -> Dev Tools -> Network?)
+      * How can we tell HTTP the desired action to be performed on the resource? (What is an HTTP Request Method?)
+      * What is the result of every HTTP request (minus timeouts)? (What is an HTTP response?)
+      * What HTTP Request Method can we use to retrieve a resource? (When do we use HTTP GET?)
+      * What HTTP Request Method can we use to initiate some action on a server or send data to a server? (When do we use HTTP POST?)
+      * What is the most common use of HTTP `POST` from within a browser? (What HTTP Request Method do we typically use when submitting a form?)
+      * What are the advantages of using POST over GET in submitting a username and password to a server? (How can we sidestep the query string size limitation and public-facing nature of an HTTP GET request when logging in to a server?)
+      * What allows the client and the server to send additional information during the request/response HTTP cycle? (What is an HTTP header?)
+      * What part of the request being sent to the server is used to give more information about the client and the resource to be fetched? (What are HTTP Request headers?)
+      * **Summary**:
+        * HTTP Method
+        * Path
+        * Headers
+        * Message body (for `POST` requests)
    2. Processing Responses
    3. Stateful Web Applications
    4. Security
