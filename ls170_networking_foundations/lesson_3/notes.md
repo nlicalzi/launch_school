@@ -7,7 +7,7 @@
 1. What to Focus On
    * Develop a clear understanding of the role of HTTP
      * How does the web function as a combination of multiple different technologies?
-     * What is the specific role that HTTP pleays in this?
+     * What is the specific role that HTTP plays in this?
    * Break things down into individual components
      * Ensure clarity in mental models: break HTTP, URLs, etc. into components and purposes
 2. The Application Layer
