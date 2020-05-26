@@ -4,6 +4,10 @@ Source: https://launchschool.com/books/http
 
 Useful Resources:
 
+* Paw: https://paw.cloud/
+* Insomnia: https://insomnia.rest/
+* Postman: https://www.postman.com/
+
 
 
 ### Summary
@@ -73,8 +77,8 @@ Useful Resources:
 
    3. Preparations
 
-      1. HTTP GUI Tools
-      2. HTTP Command line Tools
+      1. HTTP Command line Tools
+         * What command line tool can we use to issue HTTP requests? (What is `curl`?)
 
 2. HTTP
 
