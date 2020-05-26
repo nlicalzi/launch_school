@@ -13,7 +13,9 @@ Useful Resources:
 ### Notes
 
 1. Background
+
    1. Background
+
       1. Overview & History
          * HTTP follows a simple model where a client makes a request to a server and waits for a response. (Why is HTTP referred to as a request response protocol?)
          * HTTP/0.9 (1991) had the ability to transmit HTML pages
@@ -37,16 +39,45 @@ Useful Resources:
          * What can we call a protocol designed in such a way that each request/response pair is completely independent of the previous one? (What makes a protocol stateless?)
          * Are HTTP requests/responses dependent on previous requests/responses? (Why can we say HTTP is a stateless protocol?)
          * Why do web developers have to work hard to simulate a stateful experience in web applications? (What is one result of HTTP being a stateless protocol?)
+
    2. What is a URL?
-      1. Introduction
-      2. URL Components
-      3. Query Strings / Parameters
-      4. URL Encoding
-      5. Summary
+
+      1. URL Components
+
+         * What is created by combining a scheme, a host, a port, a path, and an optional query string? (What are the component parts of a URL?)
+
+         * Name each individual piece of the following text: http://www.example.com:88/home?item=book" 
+           * Scheme: http
+           * Hostname: www.example.com
+           * Port: :88
+           * Path: /home/
+           * Query string (optional): ?item=book
+         * What part of a URL tells the web client how to access the resource? (What the scheme section of a URL tell us?)
+         * What part of a URL tells the web client where the resource is hosted? (What does the hostname section of a URL tell us?)
+         * What part of a URL tells us what local resource is being requested? (What does the path section of a URL tell us?)
+         * What part of a URL is used to send data to the server? (What does the query string section of a URL tell us?)
+         * What is the default port number that HTTP requests use? (What can we accomplish by specifying a port number other than 80 for an HTTP request?)
+
+      2. Query Strings / Parameters
+
+         * What is the reserved character that marks the beginning of a query string in a URL? (What does  `?`  signal in a URL?)
+         * What is the reserved character that is used to add an additional parameter to a query string in a URL? (What does `&` signal in a URL?)
+         * Why are query strings only used in `HTTP GET` requests? (What kind of requests use query strings passed in through a URL?)
+         * What kind of HTTP request do we use when we type in a URL into the address bar of our browser? (How do we most commonly issue an `HTTP GET` request?)
+         * Query strings have a max length, are visible (not suitable for passing username/password), and preclude the use of spaces or `&` (reserved character) without URL encoding.
+
+      3. URL Encoding
+
+         * How can we include non-ASCII, unsafe, or reserved characters in a URL? (When must a character be URL encoded?)
+         * What is a `%` followed by two hexadecimal digits, in the context of a URL? (What symbol denotes the start of a URL encoded character?)
+
    3. Preparations
+
       1. HTTP GUI Tools
       2. HTTP Command line Tools
+
 2. HTTP
+
    1. Making Requests
    2. Processing Responses
    3. Stateful Web Applications
