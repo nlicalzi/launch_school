@@ -99,6 +99,18 @@ Useful Resources:
         * Headers
         * Message body (for `POST` requests)
    2. Processing Responses
+      * What do we call the raw data returned by a server after an HTTP request? (What is an HTTP response?)
+      * What do we call the three digit number signifying the status of the request that the server sends back after receiving a request? (What is an HTTP Status code?)
+      * What HTTP Status Code pairs with the Status Text: "OK", "Found", "Not Found", and "Internal Server Error"? (What HTTP Status Text pairs with the code: 200, 302, 404, and 500?) (x5)
+      * What HTTP Status Code is returned when a resource has been moved, so the browser knows it should expect to follow the `redirect` URL in the `Location` response header? (What does an HTTP Status Code of 302 Found mean?)
+      * What HTTP Status Code is returned when a request has been handled successfully? (What does an HTTP Status Code of 200 OK mean?)
+      * What HTTP Status Code is returned when a requested resource cannot be found? (What does an HTTP Status Code of 404 Not Found mean?)
+      * What HTTP Status Code is returned when the server has encountered a generic error? (What does an HTTP Status code of 500 Internal Server Error mean?)
+      * What part of an HTTP Response contains additional meta-information about the data being returned? (What does an HTTP Response Header contain?)
+      * **Summary**: (most important parts of an HTTP response)
+        * Status Code
+        * Headers
+        * Message body, containing raw response data
    3. Stateful Web Applications
    4. Security
    5. Conclusion
