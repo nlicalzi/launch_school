@@ -124,4 +124,15 @@ Useful Resources:
         * What is a piece of logic that you can pass on to some function to be executed after a certain event has happened? (What is a `callback`?)
         * What is the difference between an AJAX request and a normal request? (When is a request processed by a callback function (usually some client-side JavaScript code) instead of the browser refreshing and processing a response?)
    4. Security
+      * Which Application layer protocol encrypts every request/response before it is transported over the network? (What is the difference between HTTP and HTTPS?)
+      * What cryptographic protocol does HTTPS use for encryption? (What is the Transport Layer Security protocol (TLS)?)
+      * Under what policy does a web browser permit scripts contained in a first web page to access data in a second web page if both have the same origin (a combination of URI scheme, host name, and port number)? (What is the same-origin policy?)
+      * What do we call the mechanism that allows interactions that would normally be restricted cross-origin to take place? (What is cross-origin resource sharing (CORS)?)
+      * What process adds new HTTP headers, allowing servers to share resources cross-origin to certain specified origins? (How does CORS (cross-origin resource sharing) work?)
+      * What do we call the exploitation of a valid computer session (session id) to gain unauthorized access to information or services in a computer system? (What is session hijacking?)
+      * What do we call it when a successful login renders an old session id invalid, creating a new one? (How does resetting sessions solve the session hijacking issue?)
+      * What do we accomplish by setting an expiration time on sessions? (How does setting an expiration time solve the session hijacking issue?)
+      * What are three main countermeasures for session hijacking? (What problem are we trying to solve by implementing resetting sessions, setting a session expiration time, or using HTTPS across the entire app?)
+      * What do we call the type of attack where users are allowed to input HTML or JavaScript that ends up being displayed by the site directly? (What is Cross-site Scripting (XSS)?)
+      * What do we accomplish by sanitizing our HTML inputs in an app? (How can we account for the possibility of a Cross-site Scripting (XSS) attack?)
    5. Conclusion
