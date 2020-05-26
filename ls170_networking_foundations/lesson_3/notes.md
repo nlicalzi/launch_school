@@ -47,7 +47,7 @@
   * A Uniform Resource Identifiers (**URI**) is a string of characters that identifies a particular resource, part of a system by which resources can be uniformly **addressed** on the web.
   * **Hypertext** is text displayed on a computer display with references (**hyperlinks**) to other text that the reader can immediately access.
   * **Hypertext Transfer Protocol (HTTP)** is the set of rules which provide uniformity to the way resources on the web are transferred between applications.
-* HTTP Book
+* HTTP Book (**refer to ~/launch_school/open_book_shelf/HTTP/**)
 * Some Background and Diagrams
 * URLs
 * URL Components
