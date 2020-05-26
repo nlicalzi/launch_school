@@ -49,6 +49,16 @@
   * **Hypertext Transfer Protocol (HTTP)** is the set of rules which provide uniformity to the way resources on the web are transferred between applications.
 * HTTP Book (**refer to ~/launch_school/open_book_shelf/HTTP/**)
 * Some Background and Diagrams
+  * Note: make multiple flashcards per diagram
+  * ![Client Server](https://da77jsbdz4r05.cloudfront.net/images/handling_requests_manually/client-sever.png)
+    * First question: client and server, second question: http request and response
+  * ![Zoomed in Server](https://da77jsbdz4r05.cloudfront.net/images/handling_requests_manually/server-zoom-web-app-data.png)
+    * First question: black out Web Server, Application Server, Data Store
+  * What do we call a server that responds to requests for static assets: files, images, css, javascript, etc? (What is a web server?)
+  * What do we call a server where application or business logic resides and more complex requests are handled (e.g. where your server-side code lives when deployed) ?(What is an application server?)
+  * What do we call the place where we can retrieve or create data (like a file, key/value store, relational database, etc)? (What is a data store?)
+  * ![HTTP over TCP/IP](https://da77jsbdz4r05.cloudfront.net/images/handling_requests_manually/http-zoom-tcpip.png)
+    * 
 * URLs
 * URL Components
 * The Request Response Cycle
