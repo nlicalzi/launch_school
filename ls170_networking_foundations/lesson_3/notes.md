@@ -35,6 +35,18 @@
   * Different applications have different requirements for how to communicate at a syntactical level, and so there are many different Application layer protocols: FTP, SMTP, **HTTP**, etc.
 * HTTP and the Web
   * HTTP is the primary protocol used for communication on the Web
+  * The ***internet*** is a network of networks-- can be thought of as the infrastructure that enables inter-network communication, both in terms of the physical network and the lower-level protocols that control its use.
+  * The World Wide Web (***web***) is a **service** that can be accessed via the internet-- it is a vast information system comprised of resources which are navigable by means of a URL.
+  * **URL** stands for Uniform Resource Locator.
+  * Tim Berners-Lee and Robert Cailliau proposed the Web as a way to create an easily accessible information system at CERN, spanning various internal computers and networks.
+  * Uniformity was provided in the earliest incarnation of the web through a combination of three technologies/concepts: **HTML**, **URI**s, and **HTTP**.
+    * HTML provided uniformity in the way resources were structured so they could all be correctly rendered for viewing (anchor elements `<A>` used `href` attributes to provide links between resources).
+    * URIs provided uniformity in the way resources were addressed so they could be simply and easily located.
+    * HTTP provided uniformity in the way a request for a particular resource was made and the way in which that request was responded to.
+  * **HTTP** is the primary means by which applications interact with the resources which make up the web.
+  * A Uniform Resource Identifiers (**URI**) is a string of characters that identifies a particular resource, part of a system by which resources can be uniformly **addressed** on the web.
+  * **Hypertext** is text displayed on a computer display with references (**hyperlinks**) to other text that the reader can immediately access.
+  * **Hypertext Transfer Protocol (HTTP)** is the set of rules which provide uniformity to the way resources on the web are transferred between applications.
 * HTTP Book
 * Some Background and Diagrams
 * URLs
