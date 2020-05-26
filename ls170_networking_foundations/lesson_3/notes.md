@@ -84,3 +84,12 @@
   * What character is used between the name and value of a query parameter? (What does a `=` represent in a URL?)
   * What character is used between multiple query parameters? (What does a `&` represent in a URL?)
 * The Request Response Cycle
+  * What are the required components of an HTTP request? What are the additional optional components?
+    * Required: `Method`, `Host` `Header`, and `Path` (request-URI)
+    * Optional: `Parameters`, other `Headers`, and `Body`
+  * What are the required components of an HTTP response? What are the additional optional components?
+    * Required: `Status`
+    * Optional: `Headers` and `Body` payload
+  * What determines whether a request should use `GET` or `POST` as its HTTP method?
+    * `GET` requests or fetches data from the server
+    * `POST` pushes data back to the server from the client, adding or changing values
