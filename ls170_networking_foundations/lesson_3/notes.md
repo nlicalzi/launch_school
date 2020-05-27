@@ -22,7 +22,7 @@
 
 ### Summary
 
-* The **Domain Name System** (DNS) is a distribute database which *translates a domain name* such as `google.com` to an **IP address** such as `216.58.213.14.`
+* The **Domain Name System** (DNS) is a distributed database which *translates a domain name* such as `google.com` to an **IP address** such as `216.58.213.14.`
 * A **URI** is an *identifier* for a *particular* resource within an information space.
 * A **URL** is a subset of URI, but the two terms are often used interchangeably.
 * URL components include the *scheme*, *host* (or hostname), *port*, *path*, and *query string*.
@@ -58,7 +58,6 @@
     * URIs provided uniformity in the way resources were addressed so they could be simply and easily located.
     * HTTP provided uniformity in the way a request for a particular resource was made and the way in which that request was responded to.
   * **HTTP** is the primary means by which applications interact with the resources which make up the web.
-  * A Uniform Resource Identifiers (**URI**) is a string of characters that identifies a particular resource, part of a system by which resources can be uniformly **addressed** on the web.
   * **Hypertext** is text displayed on a computer display with references (**hyperlinks**) to other text that the reader can immediately access.
   * **Hypertext Transfer Protocol (HTTP)** is the set of rules which provide uniformity to the way resources on the web are transferred between applications.
 * HTTP Book (**refer to ~/launch_school/open_book_shelf/HTTP/**)

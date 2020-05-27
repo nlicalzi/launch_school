@@ -35,7 +35,7 @@ Useful Resources:
          * Name the five different pieces of the below diagram (Anki card w/ redactions)
            * ![Internet](https://d186loudes4jlv.cloudfront.net/http/images/internet.png)
       3. Clients and Servers
-         * What trype of client is responsible for issuing HTTP requests and processing the HTTP response in a user-friendly manner onto your screen? (What is a Web Browser?)
+         * What type of client is responsible for issuing HTTP requests and processing the HTTP response in a user-friendly manner onto your screen? (What is a Web Browser?)
          * What do we call a machine that handles inbound requests and issues responses? (What is a Server?)
       4. Resources
          * What is the generic term for things you interact with on the Internet via a URL-- files, web pages, software, etc? (What is a resource?)
@@ -50,7 +50,7 @@ Useful Resources:
 
          * What is created by combining a scheme, a host, a port, a path, and an optional query string? (What are the component parts of a URL?)
 
-         * Name each individual piece of the following text: http://www.example.com:88/home?item=book" 
+         * Name each individual piece of the following text: http://www.example.com:88/home?item=book
            * Scheme: http
            * Hostname: www.example.com
            * Port: :88
