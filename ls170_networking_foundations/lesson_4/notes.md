@@ -32,5 +32,8 @@
 
 ### Notes:
 
-* Using Telnet to explore HTTP
-  * 
+* Using telnet/netcet (`nc`) to explore HTTP
+  * How can we use `nc` to connect to google.com?
+    * `nc -v google.com 80` (port 80 for HTTP requests)
+  * Once we have a connection, how do we get the homepage?
+    * `GET /`
