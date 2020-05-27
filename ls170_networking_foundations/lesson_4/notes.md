@@ -91,3 +91,6 @@
     | `-f path/to/file` | `file` exists and is a *regular* file (not a directory) |
     | `-d path/to/file` | `file` exists and is a directory                        |
 
+* Working with netcat (`nc`)
+  * Netcat is a network utility for reading and writing data across network connections w/ TCP or UDP.
+* 
