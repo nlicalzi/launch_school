@@ -49,10 +49,14 @@
   * What do we call a set of steps for performing encryption, decryption, and other related tasks (a.k.a. a cryptographic algorithm)? (What is a cipher/cipher suite?)
   * What do we call the set of algorithms required to perform each task in the Transport Layer Security (TLS) protocol? (How does the Transport Layer Security (TLS) protocol use a cipher suite?)
 * **TLS Authentication**
+  * What critical piece of the TLS authentication process happens when a server provides its certificate? (When does a server transfer its public key to a client?)
+  * What two pieces of data does a server provide to a client to prove that its certificate is valid and it holds the correct private key? (Why does a server provide a signature and the private key used to encrypt it to a client?)
+  * What do we call an organization that issues trustworthy certificates? (What is a Certificate Authority (**CA**)?)
 * **TLS Integrity**
 
 * Diagrams
   * ![Simple Alice and Bob graphic illustrating the mechanics of asymmetric key encryption](https://da77jsbdz4r05.cloudfront.net/images/ls170/tls-encryption-asymmetric.png)
   * ![Graphic illustrating the steps of TLS Handshake](https://da77jsbdz4r05.cloudfront.net/images/ls170/tls-encryption-tls-handshake.png)
     * https://launchschool.com/lessons/74f1325b/assignments/54f6defcho
+  * ![Diagram showing chain of trust structure](https://da77jsbdz4r05.cloudfront.net/images/ls170/tls-authentication-chain-of-trust.png)
 
