@@ -24,7 +24,7 @@
 * URI
   * What is the term for an identifer for a particular resource within an information space? (What is a Uniform Resource Identifier (URI)?)
 * URL
-  * What is the subset of subset of Uniform Resource Identifiers (URIs) that, in addition to identifying a resource, provide a means of locating the resource by describing its primary access mechanism (e.g. its network 'location')? (What is a Uniform Resource Locator (URL)?)
+  * What is the subset of Uniform Resource Identifiers (URIs) that, in addition to identifying a resource, provide a means of locating the resource by describing its primary access mechanism (e.g. its network 'location')? (What is a Uniform Resource Locator (URL)?)
   * What are the 5 typical components of a URL? (What do we create by combining a scheme, hostname, port, path, and query string?)
   * Name each individual piece of the following url: `http://www.example.com:88/home?item=book`
     * Scheme: `http`, hostname: `example.com`, port: `88`, path: `/home/`, query string: `?item=book`
@@ -40,7 +40,7 @@
 * URL Encoding
   * What do we call the technique whereby certain characters in a URL are replaced with an ASCII code? (What is URL encoding?)
   * How can we include non-ASCII, unsafe, or reserved characters in a URL? (When must a character be URL encoded?)
-  * What is represented by `%` followed by two hex digits in the contest of a URL? (What reserved symbol denotes the start of a URL encoded character?)
+  * What is represented by `%` followed by two hex digits in the context of a URL? (What reserved symbol denotes the start of a URL encoded character?)
   * What are two different ways to encode a space in a query parameter? (What do the following represent: %20 and +?)
 * HTTP
   * What command line tool can we use to issue HTTP requests? (What is `curl`?)
@@ -60,7 +60,7 @@
   * What are the component parts of an HTTP Request? (What is typically composed of a request line, headers, and an optional body payload?)
   * What are the component parts of an HTTP Response? (What is typically composed of a status line, optional headers, and an optional body payload?)
   * What is the piece of an HTTP Response that indicates the status of the request? (What is an HTTP status code?)
-  * What is the the set of rules which provide uniformity to the way resources on the web are transferred between applications? (What is HTTP?)
+  * What is the set of rules that provide uniformity to the way resources on the web are transferred between applications? (What is HTTP?)
   * What do we call text displayed on a computer display with references (hyperlinks) to other text that the reader can immediately access? (What is hypertext?)
 * Simulating Statefulness
   * What kind of protocol is HTTP, given that each Request/Response cycle is independent of those that came before or after? (Why do we consider HTTP a stateless protocol?)
