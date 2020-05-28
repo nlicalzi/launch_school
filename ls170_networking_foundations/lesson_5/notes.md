@@ -12,6 +12,12 @@
      * Hard to verify if the source of an HTTP message is trustworthy.
      * Hard to know if an HTTP message has been tampered with in transit.
 2. What to Focus On
+   * Understand that TLS provides for secure message exchange over an unsecure channel
+     * What does unsecure HTTP message transfer look like?
+     * How can we build on current understanding ot HTTP to understand value of TLS?
+   * Learn that there are multiple aspects to security
+     * TLS provides a number of different services-- what are they?
+     * What does each service provide? What problem does each service solve?
 3. The Transport Layer Security (TLS) Protocol
 4. TLS Encryption
 5. TLS Authentication
