@@ -38,8 +38,21 @@
   * What do we call the process of verifying the identity of a particular party in a message exchange? (What is authentication?)
   * What do we call the process of detecting whether a message has been interfered with or faked? (What is integrity?)
 * **TLS Encryption**
+  * What do we call the process by which the Transport Layer Security (**TLS**) protocol sets up an encrypted connection? (What is a TLS Handshake?)
+  * What do we call the type of encryption system where sender and receiver share a common encryption key? (What is symmetric key encryption?)
+  * What encryption system uses a pair of keys (one public and one private) and works only in one direction? (What is asymmetric key encryption/public key encryption?)
+  * What Transport layer protocol does the Transport Layer Security (TLS) protocol assume is being used? (?)
+  * What are the two types of encryption used in a Transport Layer Security (TLS) Handshake? (What are symmetric and asymmetric key encryption?)
+  * What are the three main outcomes of a TLS Handshake? (How do two clients in a TLS exchange agree on the version of TLS to use, the algorithms in the cipher suite, and exchange their symmetric encryption keys?)
+  * What is the impact of a TLS Handshake on latency in a client/server connection (on top of the initial round trip from a TCP handshake)? (What security protocol can add up to 2 round-trips worth of latency to the initialization of a TCP connection?)
+  * What security protocol exists for use with network connections using UDP instead of TCP at the Transport layer? (What is the Datagram Transport Layer Security (**DTLS**) protocol?)
+  * What do we call a set of steps for performing encryption, decryption, and other related tasks (a.k.a. a cryptographic algorithm)? (What is a cipher/cipher suite?)
+  * What do we call the set of algorithms required to perform each task in the Transport Layer Security (TLS) protocol? (How does the Transport Layer Security (TLS) protocol use a cipher suite?)
 * **TLS Authentication**
 * **TLS Integrity**
 
-
+* Diagrams
+  * ![Simple Alice and Bob graphic illustrating the mechanics of asymmetric key encryption](https://da77jsbdz4r05.cloudfront.net/images/ls170/tls-encryption-asymmetric.png)
+  * ![Graphic illustrating the steps of TLS Handshake](https://da77jsbdz4r05.cloudfront.net/images/ls170/tls-encryption-tls-handshake.png)
+    * https://launchschool.com/lessons/74f1325b/assignments/54f6defcho
 
