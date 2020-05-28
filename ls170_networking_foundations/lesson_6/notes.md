@@ -95,5 +95,26 @@
       * Non-trivial solution: separate architecture component (save this for later)
 
 * Browser Networking APIs
+  * HTTP and Real-Time Data Synchronization
+    * Request/Response model is poorly suited to Real-Time Data Sync-- use browser APIs.
+  * XHR (XMLHttpRequest)
+    * Enables clients to manage requests and responses programmatically and asynchronously.
+    * Key component of AJAX-- update individual pieces of a page through DOM manipulation.
+    * Polling: issue a periodic request to the server to check for updates (think Twitter feed).
+      * Long-polling: client makes a request, server keeps connection idle until an update is available and *then* it issues a response.
+  * SSE (Server-Sent Events)
+    * Enables efficient server-to-client streaming of text-based event data
+    * Enables efficient, low-latency server-to-client streaming of text-based data in which the client initiates a connection and the server streams updates to the client.
+    * After the initial handshake, the client can no longer send data to the server using that connection, instead it's reserved for the server providing real-time updates to the client.
+    * Leverages the delivery of messages over a single, long-lived TCP connection-- reduces round-trip time, and messages are pused to the client when they become available on the server.
+    * Drawbacks:
+      * Only works with a client-server model
+      * Does not allow for request streaming such as when streaming a large upload to the server
+      * Streaming support specificially designed to transfer UTF-8 data, inefficient for binary
+  * WebSocket
+    * Enables us to layer and deliver arbitrary application protocols between client and server such that either side can send data to the other at any time (bidirectional communication).
+    * Low latency delivery of text and binary app data in both directions.
+    * Offloads responsibility for state management, compression, caching, etc. to the browser.
+    * Used for Capstone projects like Spacecraft!
 
 * Peer to Peer Networking
