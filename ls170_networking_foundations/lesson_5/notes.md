@@ -53,6 +53,9 @@
   * What two pieces of data does a server provide to a client to prove that its certificate is valid and it holds the correct private key? (Why does a server provide a signature and the private key used to encrypt it to a client?)
   * What do we call an organization that issues trustworthy certificates? (What is a Certificate Authority (**CA**)?)
 * **TLS Integrity**
+  * How does TLS encapsulate data between HTTP and TCP? (When does TLS encapsulate data as a payload, with a critical `MAC` header for ensuring integrity?)
+  * What does `MAC` stand for in the context of TLS headers? (What is a Message Authentication Code (**MAC**)?)
+  * How does a `MAC` field add security to a TLS message? (Why does a TLS message use a hashing algorithm on its data payload both before encrypting and sending and after receipt and decryption?)
 
 * Diagrams
   * ![Simple Alice and Bob graphic illustrating the mechanics of asymmetric key encryption](https://da77jsbdz4r05.cloudfront.net/images/ls170/tls-encryption-asymmetric.png)
