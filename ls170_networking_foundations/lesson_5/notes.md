@@ -18,10 +18,10 @@
    * Learn that there are multiple aspects to security
      * TLS provides a number of different services-- what are they?
      * What does each service provide? What problem does each service solve?
-3. The Transport Layer Security (TLS) Protocol
-4. TLS Encryption
-5. TLS Authentication
-6. TLS Integrity
+3. **The Transport Layer Security (TLS) Protocol**
+4. **TLS Encryption**
+5. **TLS Authentication**
+6. **TLS Integrity**
 
 
 
@@ -30,6 +30,16 @@
 
 
 ### Notes
+
+* **The Transport Layer Security (TLS) Protocol**
+  * What was the original version of the Transport Layer Security (**TLS**) protocol called? (What evolved out of the Secure Sockets Layer (**SSL**) protocol?)
+  * What are the three main security services provided by the Transport Layer Security (**TLS**) protocol? (What protocol provides Encryption, Authentication, and Integrity services?)
+  * What do we call the process of encoding a message so that it can only be read by those with an authorized means of decoding that message? (What is encoding?)
+  * What do we call the process of verifying the identity of a particular party in a message exchange? (What is authentication?)
+  * What do we call the process of detecting whether a message has been interfered with or faked? (What is integrity?)
+* **TLS Encryption**
+* **TLS Authentication**
+* **TLS Integrity**
 
 
 
