@@ -117,4 +117,25 @@
     * Offloads responsibility for state management, compression, caching, etc. to the browser.
     * Used for Capstone projects like Spacecraft!
 
-* Peer to Peer Networking
+* Peer to Peer (P2P) Networking
+  * Instead of a client and a server, each computer in the network acts as a 'node'.
+    * Each node is capable of performing both typical "client" and "server" functions.
+    * Underlying infrastructure is the same as a client-server architecture (TCP or UDP, etc.)
+  * Use Cases
+    * No need to set up and maintain a server to provide functionality, just need two nodes.
+    * More resilient because of the lack of reliance on a central server.
+    * No need for each communication to be routed through a central point-- reducing latency by giving shorter paths between a client and a server (better for Real Time Communication).
+  * Complexities of P2P
+    * Discovery is an issue
+      * IP addresses of devices may not be fixed
+      * Nodes might be online or offline at various times
+    * Solvable through *flooding*-- a message sent to network and each node forwards it until a specified number of network 'hops' have elapsed.
+    * More structured approach is to use a Distributed Hash Table (**DHT**): a table of key/value pairs.
+    * Hybrid model: including a central server that enables nodes to discover each other.
+      * Nodes have a client-server relationship with the server and P2P with other nodes.
+    * Other issues: connection negotiation and establishment, security, performance, scaling
+  * WebRTC
+    * Provides real-time communication functionality with in the browser (node in P2P network).
+    * A collection of standards, protocols, and APIs available in most modern web browsers.
+    * Abstracts away the complexities of establishing P2P communication btw nodes.
+    * Capstone projects again! Conclave, Layr, Xorro
