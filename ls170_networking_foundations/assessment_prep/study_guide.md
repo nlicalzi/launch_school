@@ -10,6 +10,7 @@
   * What is latency? What strategies can we employ to minimize its impact?
   * What is bandwidth? How can we "boost" our bandwidth without changing the physical network?
 * Have a basic understanding of how lower level protocols operate
+  * What is a protocol? What is a network protocol?
   * What are the four main protocol layers in TCP/IP? From highest to lowest?
   * What is each protocol layer responsible for?
     * Application: Responsible for creating and transmitting user data between applications that can be on remote systems but should appear to operate as if locally to the end user.
@@ -18,6 +19,7 @@
     * Link: Establishes connections between neighboring nodes to send data-- allowing the internet layer to present an addressable interface.
 * Know what an IP address is and what a port number is
   * What is an IP Address?
+  * What is the difference between an IP Address and a MAC Address?
   * What is a port number?
 
 * Have an understanding of how DNS works
@@ -44,7 +46,13 @@
 
 * Be able to identify the components of a URL, including query strings
   * Name the various components of a URL.
+    * {scheme}://{hostname}{optional port (HTTPS GET default is 80)}{path}{query string}
   * What does each component represent?
+    * What is a scheme, in the context of a URL?
+    * What is a hostname, in the context of a URL?
+    * What is a port, in the context of a URL?
+    * What is a path, in the context of a URL?
+    * What is a query string, in the context of a URL?
 * Be able to construct a valid URL
 * Have an understanding of what URL encoding is and when it might be used
   * What is URL encoding?
