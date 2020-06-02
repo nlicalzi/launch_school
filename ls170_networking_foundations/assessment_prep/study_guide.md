@@ -6,6 +6,10 @@
 
 * Have a broad understanding of what the internet is and how it works
   * What is the internet? How does it work?
+    * The internet is a network of networks, made up of interconnected computers and devices that communicate and exchange data.
+    * Two important conceptual components of the internet are the physical infrastructure of the network, as well as the network protocols that enable legible communication.
+      * The physical network is [...]
+      * By using network protocols (specifically the Internet Protocol Suite or TCP/IP), we ensure that the individual links in the network are transmitting data in a structured way such that the recipients of that transmission are able to process and respond to the messages that they receive. This is an important component of a functioning internet because of the vast array of devices and software in existence-- how can we enable successful and productive communication between an iPhone and a smart television, for example? The answer lies in creating a framework/set of rules for predictible, structured messaging, and that's what protocols offer us. 
 * Understand the characteristics of the physical network, such as latency and bandwidth
   * What is latency? What strategies can we employ to minimize its impact?
   * What is bandwidth? How can we "boost" our bandwidth without changing the physical network?
