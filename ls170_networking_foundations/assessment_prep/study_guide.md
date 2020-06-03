@@ -12,7 +12,9 @@
       * By using network protocols (specifically the Internet Protocol Suite or TCP/IP), we ensure that the individual links in the network are transmitting data in a structured way such that the recipients of that transmission are able to process and respond to the messages that they receive. This is an important component of a functioning internet because of the vast array of devices and software in existence-- how can we enable successful and productive communication between an iPhone and a smart television, for example? The answer lies in creating a framework/set of rules for predictible, structured messaging, and that's what protocols offer us. 
 * Understand the characteristics of the physical network, such as latency and bandwidth
   * What is latency? What strategies can we employ to minimize its impact?
+    * Latency is a measure of delay, measuring how long it takes for data to travel from point to point (in the case of the internet, generally from the client to the server and back again). 
   * What is bandwidth? How can we "boost" our bandwidth without changing the physical network?
+    * Bandwidth is a measure of capacity, measuring the amount of data that can be transmitted in a set period of time. 
 * Have a basic understanding of how lower level protocols operate
   * What is a protocol? What is a network protocol?
   * What are the four main protocol layers in TCP/IP? From highest to lowest?
