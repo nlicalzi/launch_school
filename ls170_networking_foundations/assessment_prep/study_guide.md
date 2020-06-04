@@ -14,9 +14,10 @@
   * What is latency? What strategies can we employ to minimize its impact?
     * Latency is a measure of delay, measuring how long it takes for data to travel from point to point (in the case of the internet, generally from the client to the server and back again). 
     * Latency is a particular issue with the TCP Transport protocol, since it involves a certain amount of latency in establishing a connection through the TCP Handshake process as well as its requirement for in-order delivery of data (which causes Head-of-Line blocking and queueing delay).
-    * If our goal is to reduce latency at the cost of data fidelity, we can use the UDP protocol instead which focuses on speed through simplicity, without requiring a connection to start sending data or providing guarantees of message delivery and message order.
+    * If our goal is to reduce latency at the cost of data integrity/fidelity, we can use the UDP protocol instead which focuses on speed through simplicity, without requiring a connection to start sending data or providing guarantees of message delivery and message order.
   * What is bandwidth? How can we "boost" our bandwidth without changing the physical network?
     * Bandwidth is a measure of capacity, measuring the amount of data that can be transmitted in a set period of time. 
+    * We can "increase" our bandwidth (or, more accurately: increase our usage efficiency of available bandwidth) by using multiplexing (and demultiplexing), which refers to the process and technique of transmitting multiple signals over a single channel. Multiplexing capacity is implemented at the Transport layer of the Internet Protocol suite, and both TCP and UDP implement this capability through the use of network ports: source and destination ports for the message are specified in the header of the Transport layer Protocol Data Unit.
 * Have a basic understanding of how lower level protocols operate
   * What is a protocol? What is a network protocol?
   * What are the four main protocol layers in TCP/IP? From highest to lowest?
