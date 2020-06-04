@@ -20,6 +20,8 @@
     * We can "increase" our bandwidth (or, more accurately: increase our usage efficiency of available bandwidth) by using multiplexing (and demultiplexing), which refers to the process and technique of transmitting multiple signals over a single channel. Multiplexing capacity is implemented at the Transport layer of the Internet Protocol suite, and both TCP and UDP implement this capability through the use of network ports: source and destination ports for the message are specified in the header of the Transport layer Protocol Data Unit.
 * Have a basic understanding of how lower level protocols operate
   * What is a protocol? What is a network protocol?
+    * A protocol is a set of rules, and in terms of computer networking, a network protocol refers to a set of rules that govern how different devices on a network exchange data.
+    * Network protocols are useful because they allow the vast range of devices (and the even more vast range of software) out there in the world to successfully and legibly interact. How can we ensure that your smart lightbulb is able to switch colors as you press buttons on your phone? By ensuring that the data transmission between the two devices is specifically formatted in such a way that the programs running on both devices are able to read and respond to individual messages.
   * What are the four main protocol layers in TCP/IP? From highest to lowest?
   * What is each protocol layer responsible for?
     * Application: Responsible for creating and transmitting user data between applications that can be on remote systems but should appear to operate as if locally to the end user.
