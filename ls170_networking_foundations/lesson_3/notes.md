@@ -1,4 +1,4 @@
-## LS 170 Lesson 3: Intro to HTTP
+## sLS 170 Lesson 3: Intro to HTTP
 
 
 
