@@ -8,6 +8,14 @@ This course will cover server side development from first principles. We'll buil
 
 
 
+### What to focus on
+
+* **HTTP**: When working with Sinatra, focus on what's going on under the hood. Web development frameworks abstract away a lot of the detail, but at the base level we're still dealing with HTTP, request/response, and URL parsing. Try to focus on those things when building applications.
+* **Stay high-level**: Aim to understand *what* a web development framework does, rather than focusing on Sinatra specifics. Think about what is happening at a general level, such as what a route is, what a template is, and how they work together.
+* **Get comfortable with the development process**: We'll work on iteratively adding features to a web application using a development workflow. As part of this workflow we'll also cover testing your web application. Familiarize yourself with this process and add to the non-technical side of your skillset!
+
+
+
 ### Detailed Syllabus
 
 * Handling HTTP Requests
