@@ -6,6 +6,7 @@ loop do
 
   request_line = client.gets
   puts request_line
+  
   client.puts request_line
   client.close
 end
