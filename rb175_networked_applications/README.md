@@ -50,4 +50,4 @@ This course will cover server side development from first principles. We'll buil
 * Adding JavaScript
   * Including JavaScript files
   * Confirming destructive actions
-  * Making HTTP requests from JavaScript
+  * Making HTTP requests from JavaScriptg
