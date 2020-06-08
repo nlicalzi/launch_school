@@ -18,21 +18,30 @@ loop do
 
   request_line = client.gets
   next if !request_line || request_line =~ /favicon/
-  puts request_line
-
   http_method, path, params = parse_request(request_line)
+  
+  client.puts "HTTP/1.1 200 OK"                   # needed for rendering in Chrome
+  client.puts "Content-Type: text/html\r\n\r\n"   # needed for rendering in Chrome
+  client.puts                                     # empty line btw. header and body
+  client.puts "<html>"
+  client.puts "<body>"
+  client.puts "<pre>"
+  client.puts "#{http_method} #{path} #{params}"
+  # client.puts path
+  # client.puts params
+  client.puts "</pre>"
+
+  client.puts "<h1>Rolls!</h1>"
 
   rolls = params["rolls"].to_i
   sides = params["sides"].to_i
-  
-  client.puts "HTTP/1.1 200 OK"                   # needed for rendering in Chrome
-  client.puts "Content-Type: text/plain\r\n\r\n"  # needed for rendering in Chrome
 
-  client.puts params
   rolls.times do 
     roll = rand(sides) + 1
-    client.puts roll
+    client.puts "<p>", roll, "</p>"
   end
 
+  client.puts "</body>"
+  client.puts "</html>"
   client.close
 end
