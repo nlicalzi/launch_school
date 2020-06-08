@@ -2,7 +2,7 @@
 
 
 
-### Summary
+### Overview
 
 This course will cover server side development from first principles. We'll build on your knowledge of HTTP and the request/response cycle to create a dynamic web application from scratch, before moving on to build some more complex applications using a lightweight development framework. We'll also talk about other development considerations such as deployment and security, and deploy an application to Heroku.
 
@@ -16,14 +16,15 @@ This course will cover server side development from first principles. We'll buil
 
 
 
-### Detailed Syllabus
+### Detailed Summary
 
 * Handling HTTP Requests
-  * A simple echo server
-  * Parsing paths and parameters
-  * Sending a complete HTTP response
-  * Dealing with empty HTTP requests
-  * Persisting states in the URL
+  * Although it is not something you'd normally do, it is possible to interact with HTTP manually because it is a *text-based protocol*.
+  * HTTP is built on top of TCP, which is a networking layer that handles communicating between two computers.
+  * *URLs* are made up of many components: a *protocol*, a *host*, a *port*, a *path*, and *parameters*.
+  * *Query parameters* are parameters that are included in a URL. They are appended to the path using `?`. Parameters are specified in the URL using the form `key=value`.
+  * Parameters after the first are appended to the URL using `&`.
+  * HTTP is stateless, which means that each request is handled separately by the server. By carefully crafting URLs and parameters, stateful interactions can be built on top of HTTP.
 * Project: Build a Book Reading App
   * How routes work
   * Rendering templates

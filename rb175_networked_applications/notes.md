@@ -8,3 +8,4 @@
   * ![Server TCP server](https://da77jsbdz4r05.cloudfront.net/images/handling_requests_manually/server-zoom-tcp-ruby.png)
 
 * We're using the `TCPServer` class from Ruby, which is subclassed from `Socket`
+* 
