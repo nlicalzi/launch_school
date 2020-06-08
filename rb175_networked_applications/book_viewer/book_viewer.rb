@@ -3,6 +3,8 @@ require "sinatra"
 require "sinatra/reloader"
 
 get "/" do
-  @title = "The (mis)Adventures of Sherlock Holmes"
+  @title = "The Adventures of Sherlock Holmes"
+  @chapters = File.read("data/toc.txt").split("\n")
+
   erb :home
 end
