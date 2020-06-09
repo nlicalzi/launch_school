@@ -1,21 +1,33 @@
 require "tilt/erubis"
 require "sinatra"
 require "sinatra/reloader"
+require "yaml"
 
 helpers do
-  def count_interests; end # populate layout erb
+  def count_interests(x)
+    interests = @users.map do |usr|
+                  usr[1][:interests]
+                end.flatten
+    interests.uniq.size
+  end
+end
+
+before do
+  @users = YAML.load_file("users.yaml")
 end
 
 get "/" do
-  # redirect to /users/
+  redirect "/users"
 end
 
 get "/users" do
-  # display a link to a page for each user
+  erb :users
 end
 
-get "/users/:name" do
+get "/:username" do
+  @user = params[:username]
   # display email address
   # display interests, comma separated
   # display a link to each other user
+  erb :user
 end
