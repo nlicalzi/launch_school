@@ -7,14 +7,25 @@
 
 <% if params[:query] %>
   <% if @results.empty? %>
-    <p>Sorry, no matches were found.</p>
-  <% else %>
-    <h2 class="content-subhead">Results for '<%= params[:query]%>'</h2>
+  <p>Sorry, no matches were found.</p>
+<% else %>
+  <h2 class="content-subhead">Results for '<%= params[:query]%>'</h2>
 
-    <ul>
-      <% @results.each do |result| %>
-        <li><a href="/chapters/<%= result[:number] %>"><%= result[:name] %></a></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <ul>
+    <% @results.each do |result| %>
+      <li>
+        <h4><%= result[:name] %></h4>
+        <ul>
+          <% result[:grafs].each do |idx, txt| %>
+            <li>
+              <a href="/chapters/<%= result[:number] %>#graf<%= idx %>">
+                <%= txt.gsub(params[:query], "<strong>#{params[:query]}</strong>") %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 <% end %>

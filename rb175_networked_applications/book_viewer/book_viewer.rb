@@ -12,8 +12,8 @@ helpers do
   end
 
   def in_paragraphs(text)
-    text.split("\n\n").map do |graf|
-      "<p>#{graf}</p>"
+    text.split("\n\n").each_with_index.map do |line, idx|
+      "<p id=graf#{idx}>#{line}</p>"
     end.join
   end
 end
@@ -56,10 +56,14 @@ end
 def chapters_matching(query)
   results = []
 
-  return results if !query || query.empty?
+  return results unless query
 
   each_chapter do |number, name, contents|
-    results << {number: number, name: name} if contents.include?(query)
+    matches = {}
+    contents.split("\n\n").each_with_index do |graf, idx|
+      matches[idx] = graf if graf.include?(query)
+    end
+    results << {number: number, name: name, grafs: matches} if matches.any?
   end
 
   results
