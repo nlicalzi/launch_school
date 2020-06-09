@@ -18,6 +18,10 @@ helpers do
   end
 end
 
+not_found do    # if a user tries a bad path...
+  redirect "/"  # redirect to homepage
+end
+
 get "/" do
   @title = "The Adventures of Sherlock Holmes"
 
