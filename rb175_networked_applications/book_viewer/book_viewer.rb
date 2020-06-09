@@ -16,6 +16,10 @@ helpers do
       "<p id=graf#{idx}>#{line}</p>"
     end.join
   end
+
+  def highlight(txt, term)
+    txt.gsub(term, %(<strong>#{term}</strong>))
+  end
 end
 
 not_found do    # if a user tries a bad path...

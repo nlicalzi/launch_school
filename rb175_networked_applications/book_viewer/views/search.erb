@@ -19,7 +19,7 @@
           <% result[:grafs].each do |idx, txt| %>
             <li>
               <a href="/chapters/<%= result[:number] %>#graf<%= idx %>">
-                <%= txt.gsub(params[:query], "<strong>#{params[:query]}</strong>") %>
+                <%= highlight(txt, params[:query]) %>
               </a>
             </li>
           <% end %>
