@@ -9,9 +9,8 @@
       </li>
     </ul>
 
-  <b>Other Users:</b> <%= (@users\
-                            .keys\
-                            .map(&:to_s) - [@user])\
-                            .map { |usr| "<a href='/#{usr}'>#{usr}</a>" }\
-                            .join(', ') %>
+  <b>Other Users:</b> <%= (@users.keys\
+                                 .map(&:to_s) - [@user])\
+                                 .map { |usr| "<a href='/#{usr}'>#{usr}</a>" }\
+                                 .join(', ') %>
 </html>

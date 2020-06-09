@@ -26,8 +26,6 @@ end
 
 get "/:username" do
   @user = params[:username]
-  # display email address
-  # display interests, comma separated
-  # display a link to each other user
+
   erb :user
 end
