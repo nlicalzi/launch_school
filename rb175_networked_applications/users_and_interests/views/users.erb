@@ -1,0 +1,9 @@
+<html>
+  <ul>
+    <% @users.keys.each do |usr| %>
+      <li>
+        <a href="/<%= usr %>"> <%= usr %> </a>
+      </li>
+    <% end %>
+  </ul>
+</html>

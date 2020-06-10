@@ -1,0 +1,16 @@
+<html>
+  <b>User:</b> <%= @user %>
+    <ul>
+      <li>
+        <b>Email</b>: <%= @users[@user.to_sym][:email] %>
+      </li>
+      <li>
+        <b>Interests:</b> <%= @users[@user.to_sym][:interests].join(', ') %>
+      </li>
+    </ul>
+
+  <b>Other Users:</b> <%= (@users.keys\
+                                 .map(&:to_s) - [@user])\
+                                 .map { |usr| "<a href='/#{usr}'>#{usr}</a>" }\
+                                 .join(', ') %>
+</html>
