@@ -37,3 +37,18 @@ This course will cover server side development from first principles. We'll buil
   * A user can be sent to a new location in response to a request with *redirection*. This is done in Sinatra using the `redirect` method.
     * The redirection is accomplished by setting the `Location` header in the response. The client looks at the URL in the location header and sends out a new HTTP GET request for the associated resource, which in turn navigates the client to that new location.
   * The files in a project can be identified as either *server-side* or *client-side* code based on where they will be evaluated.
+* Deploying Sinatra Applications
+  * `Procfile` defines what types of processes are provided by the application and how to start them.
+  * `config.ru` tells the web server how to start the application. In this project, we require the file that contains the Sinatra application and then start it.
+  * While WEBrick is a fine server for development, it is better to use a production-ready web server such as Puma when deploying a project.
+  * Puma is a threaded web server, which means that it can handle more than one request at a time using a single process. As a result, Puma will perform much better for most applications.
+  * A specific version of Ruby can be specified in the `Gemfile` to ensure that the same version is used in both development and production.
+* Project: Todos (https://nlicalzi-todolist.herokuapp.com/)
+  * *State* is data that persists over time.
+  * The *session* provides a way to store data that will persist between subsequent HTTP requests. This data is associated with a specific user by storing a cookie in their browser. In Sinatra, the session data itself is also stored in this cookie, but this is configurable and not always the case with other web frameworks.
+  * Data that is submitted to the server often needs to be *validated* to ensure it meets the requirements of the application. In this lesson we built *server-side* validation as we performed the validation logic on the server.
+  * Messages that need to be displayed to the user on their next request and then deleted can be stored in the session. This kind of message is often referred to as a *flash* message.
+  * Content from within a view template can be stored under a name and retrieved later using `content_for` and `yield_content`.
+  * `GET` requests should only request data. Any request that modifies data should be over `POST` or another non-GET method.
+  * Web browsers don't support request methods other than `GET` or `POST` in HTML forms, so there are times when a developer has to use `POST` even when another method would be more appropriate.
+  * View helpers provide a way to extract code that determines what HTML markup is generated for a view.
