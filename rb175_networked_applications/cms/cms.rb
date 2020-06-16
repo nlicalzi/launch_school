@@ -47,20 +47,24 @@ get "/new" do
 end
 
 # create new document
-post "/new" do
+post "/create" do
+  filename = params[:filename]
   # if file name was provided...
-  if params[:new_doc].size > 0
-    file_path = File.join(data_path, params[:new_doc])
+  if filename.size > 0
+    file_path = File.join(data_path, filename)
+
     File.write(file_path, "")
-    session[:message] = "#{params[:new_doc]} was created."
+    session[:message] = "#{params[:filename]} was created."
+
     redirect "/"
   else
     session[:message] = "A name is required."
+    status 422
     erb :new
   end
 end
 
-# return individual plaintext file resources
+# load individual documents
 get "/:filename" do
   file_path = File.join(data_path, params[:filename])
 
@@ -72,7 +76,7 @@ get "/:filename" do
   end
 end
 
-# file editing page
+# load page to edit a document
 get "/:filename/edit" do
   @file_name = params[:filename]
   file_path = File.join(data_path, @file_name)
@@ -87,7 +91,7 @@ get "/:filename/edit" do
   erb :edit
 end
 
-# endpoint for editing a file
+# send edits to a document
 post "/:filename" do
   file_path = File.join(data_path, params[:filename])
   File.write(file_path, params[:content])

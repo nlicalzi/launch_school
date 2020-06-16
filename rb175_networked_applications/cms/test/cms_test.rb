@@ -41,6 +41,31 @@ class CmsTest < Minitest::Test
     assert_includes last_response.body, "changes.txt"
   end
 
+  def test_view_new_document_form
+    get "/new"
+    assert_equal 200, last_response.status
+    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+    assert_includes last_response.body, "Add a new document"
+    assert_includes last_response.body, ""
+  end
+
+  def test_create_new_document
+    post "/create", filename: "test_doc.txt"
+    assert_equal 302, last_response.status
+
+    get last_response["Location"]
+    assert_includes last_response.body, "test_doc.txt was created"
+
+    get "/"
+    assert_includes last_response.body, "test_doc.txt"
+  end
+
+  def test_create_new_document_without_filename
+    post "/create", filename: ""
+    assert_equal 422, last_response.status # error
+    assert_includes last_response.body, "A name is required"
+  end
+
   def test_viewing_text_document
     create_document "history.txt", "Ruby 0.95 released"
     
