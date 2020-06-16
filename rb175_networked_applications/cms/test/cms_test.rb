@@ -17,7 +17,7 @@ class CmsTest < Minitest::Test
     assert_equal 200, last_response.status                                # status code
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"] # content type header
     
-    files = %w(about.txt changes.txt history.txt)
+    files = %w(about.md changes.txt history.txt)
     assert files.all? { |file| last_response.body.include?(file) }        # content body
   end
 
@@ -42,5 +42,13 @@ class CmsTest < Minitest::Test
 
     get "/" 
     refute_includes last_response.body, "notafile.txt does not exist"
+  end
+
+  def test_viewing_markdown_document
+    get "/about.md"
+
+    assert_equal 200, last_response.status
+    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+    assert_includes last_response.body, "Building a CMS"
   end
 end
