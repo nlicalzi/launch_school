@@ -91,6 +91,20 @@ get "/:filename/edit" do
   erb :edit
 end
 
+# delete a document
+post "/:filename/delete" do
+  filename = params[:filename]
+  file_path = File.join(data_path, filename)
+
+  if File.exist?(file_path)
+    File.delete(file_path)
+    session[:message] = "#{filename} was deleted."
+  else
+    session[:message] = "#{filename} not found."
+  end
+  redirect "/"
+end
+
 # send edits to a document
 post "/:filename" do
   file_path = File.join(data_path, params[:filename])
