@@ -1,6 +1,9 @@
 <html>
-  <title>CMS</title>
-  <link href="/stylesheets/cms.css" rel="stylesheet" type="text/css" />
+  <head>
+    <title>CMS using Sinatra</title>
+    <link rel="stylesheet" href="/stylesheets/cms.css" type="text/css" />
+    <link rel="icon" href="/images/favicon.ico" />
+  </head>
   <body>
     <% if session[:message] %>
       <p class="message"><%= session.delete(:message) %></p>
