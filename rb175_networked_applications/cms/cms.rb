@@ -15,6 +15,7 @@ def data_path
     File.expand_path("../test/data", __FILE__)
   else
     File.expand_path("../data", __FILE__)
+  end
 end
 
 def render_markdown(text)
@@ -55,7 +56,7 @@ end
 # file editing page
 get "/:filename/edit" do
   @file_name = params[:filename]
-  file_path = root + "/data/" + @file_name
+  file_path = File.join(data_path, @file_name)
 
   if File.file?(file_path)
     @content = File.read(file_path)
@@ -69,7 +70,7 @@ end
 
 # endpoint for editing a file
 post "/:filename" do
-  file_path = root + "/data/" + params[:filename]
+  file_path = File.join(data_path, params[:filename])
 
   File.write(file_path, params[:content])
 

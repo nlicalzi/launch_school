@@ -2,7 +2,7 @@ ENV["RACK_ENV"] = "test" # tell Sinatra not to start a web server
 
 require "minitest/autorun"
 require "rack/test"
-
+# require "fileutils"
 require_relative "../cms"
 
 class CmsTest < Minitest::Test
@@ -12,22 +12,43 @@ class CmsTest < Minitest::Test
     Sinatra::Application
   end
 
+  def setup
+    FileUtils.mkdir_p(data_path)
+  end
+
+  def teardown
+    FileUtils.rm_rf(data_path)
+  end
+
+  def create_document(name, content = "")
+    File.open(File.join(data_path, name), "w") do |file|
+      file.write(content)
+    end
+  end
+
   def test_index
-    get "/"
-    assert_equal 200, last_response.status                                # status code
-    assert_equal "text/html;charset=utf-8", last_response["Content-Type"] # content type header
+    # set up necessary data
+    create_document "about.md"
+    create_document "changes.txt"
     
-    files = %w(about.md changes.txt history.txt)
-    assert files.all? { |file| last_response.body.include?(file) }        # content body
+    # execute the code being tested
+    get "/"
+    
+    # assert the results of the execution
+    assert_equal 200, last_response.status
+    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+    assert_includes last_response.body, "about.md"
+    assert_includes last_response.body, "changes.txt"
   end
 
   def test_viewing_text_document
+    create_document "history.txt", "Ruby 0.95 released"
+    
     get "/history.txt"
 
     assert_equal 200, last_response.status
     assert_equal "text/plain", last_response["Content-Type"]
     assert_includes last_response.body, "Ruby 0.95 released"
-    assert_includes last_response.body, "2015 - Ruby 2.3 released"
   end
 
   def test_document_not_found
@@ -45,14 +66,18 @@ class CmsTest < Minitest::Test
   end
 
   def test_viewing_markdown_document
+    create_document "about.md", "# Building a CMS"
+
     get "/about.md"
 
     assert_equal 200, last_response.status
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
-    assert_includes last_response.body, "Building a CMS"
+    assert_includes last_response.body, "<h1>Building a CMS"
   end
 
   def test_editing_document
+    create_document "changes.txt"
+
     get "/changes.txt/edit"
 
     # successful response code issued
