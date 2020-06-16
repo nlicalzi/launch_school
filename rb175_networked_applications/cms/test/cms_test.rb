@@ -29,4 +29,18 @@ class CmsTest < Minitest::Test
     assert_includes last_response.body, "Ruby 0.95 released"
     assert_includes last_response.body, "2015 - Ruby 2.3 released"
   end
+
+  def test_document_not_found
+    get "/notafile.txt"                     # nonexistent file
+    
+    assert_equal 302, last_response.status  # assert redirection
+
+    get last_response["Location"]           # request redirection page
+
+    assert_equal 200, last_response.status
+    assert_includes last_response.body, "notafile.txt does not exist"
+
+    get "/" 
+    refute_includes last_response.body, "notafile.txt does not exist"
+  end
 end
