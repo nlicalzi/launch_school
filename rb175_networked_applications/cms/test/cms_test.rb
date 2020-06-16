@@ -51,4 +51,33 @@ class CmsTest < Minitest::Test
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
     assert_includes last_response.body, "Building a CMS"
   end
+
+  def test_editing_document
+    get "/changes.txt/edit"
+
+    # successful response code issued
+    assert_equal 200, last_response.status
+    # form populated properly
+    assert_includes last_response.body, "<textarea"
+    # submit button appears
+    assert_includes last_response.body, %q(<input type="submit)
+  end
+
+  def test_updating_document
+    # post edits to file
+    post "/changes.txt", content: "new content"
+
+    assert_equal 302, last_response.status # 302: redirect from POST route in Sinatra
+    
+    # load the redirected page
+    get last_response["Location"]
+    # ensure that the session message properly flashed
+    assert_includes last_response.body, "changes.txt has been updated"
+
+    get "/changes.txt"
+    # ensure file properly loads
+    assert_equal 200, last_response.status
+    # ensure edits are present
+    assert_includes last_response.body, "new content"
+  end
 end
