@@ -36,11 +36,35 @@ end
 get "/:resource" do
   file_path = root + "/data/" + params[:resource]
 
-  # File.extname("filepath")
   if File.file?(file_path)
     load_file_content(file_path)
   else
     session[:message] = "#{params[:resource]} does not exist."
     redirect "/"
   end
+end
+
+# file editing page
+get "/:resource/edit" do
+  @file_name = params[:resource]
+  file_path = root + "/data/" + @file_name
+
+  if File.file?(file_path)
+    @content = File.read(file_path)
+  else
+    session[:message] = "#{params[:resource]} does not exist."
+    redirect "/"
+  end
+
+  erb :edit
+end
+
+# endpoint for editing a file
+post "/:resource" do
+  file_path = root + "/data/" + params[:resource]
+
+  File.write(file_path, params[:content])
+
+  session[:message] = "#{params[:resource]} has been updated."
+  redirect "/"
 end
