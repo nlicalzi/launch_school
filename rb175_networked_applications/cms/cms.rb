@@ -41,6 +41,27 @@ get "/" do
   erb :index
 end
 
+get "/users/signin" do
+  erb :signin
+end
+
+post "/users/signin" do
+  if params[:username] == "admin" && params[:password] == "secret"
+    session[:message] = "Welcome!"
+    session[:username] = params[:username]
+    redirect "/"
+  else
+    session[:message] = "Invalid Credentials"
+    redirect "/users/signin"
+  end
+end
+
+post "/logout" do
+  session.delete(:username)
+  session[:message] = "You have been signed out."
+  redirect "/"
+end
+
 # load page for creating a new document
 get "/new" do
   erb :new
