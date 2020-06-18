@@ -34,11 +34,11 @@ def load_file_content(path)
 end
 
 def load_user_credentials
-  credentials_path =  if ENV['RACK_ENV'] == 'test'
-                        File.expand_path('../test/users.yml', __FILE__)
-                      else
-                        File.expand_path('../users.yml', __FILE__)
-                      end
+  credentials_path = if ENV['RACK_ENV'] == 'test'
+                       File.expand_path('../test/users.yml', __FILE__)
+                     else
+                       File.expand_path('../users.yml', __FILE__)
+                     end
   Psych.load_file(credentials_path)
 end
 
@@ -90,7 +90,7 @@ post '/users/signout' do
 end
 
 # load page for creating a new document
-get "/new" do
+get '/new' do
   require_user_signin
 
   erb :new
