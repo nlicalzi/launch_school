@@ -2,7 +2,8 @@ ENV["RACK_ENV"] = "test" # tell Sinatra not to start a web server
 
 require "minitest/autorun"
 require "rack/test"
-# require "fileutils"
+require "fileutils"
+
 require_relative "../cms"
 
 class CmsTest < Minitest::Test
@@ -18,6 +19,10 @@ class CmsTest < Minitest::Test
 
   def teardown
     FileUtils.rm_rf(data_path)
+  end
+
+  def session
+    last_request.env["rack.session"]
   end
 
   def create_document(name, content = "")
@@ -52,28 +57,30 @@ class CmsTest < Minitest::Test
   def test_signin
     post "/users/signin", username: "admin", password: "secret"
     assert_equal 302, last_response.status
+    assert_equal "Welcome!", session[:message]
+    assert_equal "admin", session[:username]
 
     get last_response["Location"]
-    assert_includes last_response.body, "Welcome"
     assert_includes last_response.body, "Signed in as admin"
   end
 
   def test_signin_with_bad_credentials
     post "/users/signin", username: "guest", password: "shhhh"
     assert_equal 422, last_response.status
+    assert_nil session[:username]
     assert_includes last_response.body, "Invalid credentials"
   end
 
   def test_signout
-    post "/users/signin", username: "admin", password: "secret"
-    get last_response["Location"]
-    assert_includes last_response.body, "Welcome"
+    get "/", {}, {"rack.session" => { username: "admin" } }
+    assert_includes last_response.body, "Signed in as admin"
 
     post "/users/signout"
-    get last_response["Location"]
+    assert_equal "You have been signed out.", session[:message]
 
-    assert_includes last_response.body, "You have been signed out"
-    assert_includes last_response.body, "Sign in"
+    get last_response["Location"]
+    assert_nil session[:username]
+    assert_includes last_response.body, "Sign In"
   end
 
   def test_view_new_document_form
@@ -87,9 +94,7 @@ class CmsTest < Minitest::Test
   def test_create_new_document
     post "/create", filename: "test_doc.txt"
     assert_equal 302, last_response.status
-
-    get last_response["Location"]
-    assert_includes last_response.body, "test_doc.txt was created"
+    assert_equal "test_doc.txt was created.", session[:message]
 
     get "/"
     assert_includes last_response.body, "test_doc.txt"
@@ -115,14 +120,7 @@ class CmsTest < Minitest::Test
     get "/notafile.txt"                     # nonexistent file
     
     assert_equal 302, last_response.status  # assert redirection
-
-    get last_response["Location"]           # request redirection page
-
-    assert_equal 200, last_response.status
-    assert_includes last_response.body, "notafile.txt does not exist"
-
-    get "/" 
-    refute_includes last_response.body, "notafile.txt does not exist"
+    assert_equal "notafile.txt does not exist.", session[:message]
   end
 
   def test_viewing_markdown_document
@@ -153,11 +151,8 @@ class CmsTest < Minitest::Test
     post "/changes.txt", content: "new content"
 
     assert_equal 302, last_response.status # 302: redirect from POST route in Sinatra
-    
-    # load the redirected page
-    get last_response["Location"]
     # ensure that the session message properly flashed
-    assert_includes last_response.body, "changes.txt has been updated"
+    assert_equal "changes.txt has been updated.", session[:message]
 
     get "/changes.txt"
     # ensure file properly loads
@@ -170,13 +165,10 @@ class CmsTest < Minitest::Test
     create_document "test.txt"
 
     post "/test.txt/delete"
-
     assert_equal 302, last_response.status
-
-    get last_response["Location"]
-    assert_includes last_response.body, "test.txt was deleted"
+    assert_equal "test.txt was deleted.", session[:message]
 
     get "/"
-    refute_includes last_response.body, "test.txt"
+    refute_includes last_response.body, %q(href="/test.txt")
   end
 end
