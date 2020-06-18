@@ -14,11 +14,12 @@
 <br><br>
 
 <% if session[:username] %>
-  <form class="inline" method="POST" action="/logout">
-    <i>Signed in as <%= session[:username] %>.</i>
-    <button type="submit">Sign Out</button>
+  <form method="POST" action="/users/signout">
+    <p class="user-status">
+      Signed in as <%= session[:username] %>.
+      <button type="submit">Sign Out</button>
+    </p>
   </form>
 <% else %>
-  <form class="inline" method="GET" action="/users/signin">
-  <button type="submit">Sign In</button>
+  <p class="user-status"><a href="/users/signin">Sign In</a></p>
 <% end %>

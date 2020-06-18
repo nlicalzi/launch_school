@@ -52,11 +52,12 @@ post "/users/signin" do
     redirect "/"
   else
     session[:message] = "Invalid Credentials"
-    redirect "/users/signin"
+    status 422
+    erb :signin
   end
 end
 
-post "/logout" do
+post "/users/signout" do
   session.delete(:username)
   session[:message] = "You have been signed out."
   redirect "/"
