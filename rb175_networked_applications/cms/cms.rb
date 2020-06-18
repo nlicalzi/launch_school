@@ -34,6 +34,17 @@ def load_file_content(path)
   end
 end
 
+def signed_in?
+  session.key?(:username)
+end
+
+def require_user_signin
+  unless signed_in?
+    session[:message] = "You must be signed in to do that."
+    redirect "/"
+  end
+end
+
 # load index page w/ all files
 get "/" do
   pattern = File.join(data_path, "*")
@@ -47,8 +58,8 @@ end
 
 post "/users/signin" do
   if params[:username] == "admin" && params[:password] == "secret"
-    session[:message] = "Welcome!"
     session[:username] = params[:username]
+    session[:message] = "Welcome!"
     redirect "/"
   else
     session[:message] = "Invalid credentials"
@@ -65,11 +76,15 @@ end
 
 # load page for creating a new document
 get "/new" do
+  require_user_signin
+
   erb :new
 end
 
 # create new document
-post "/create" do
+post "/new" do
+  require_user_signin
+
   filename = params[:filename]
   # if file name was provided...
   if filename.size > 0
@@ -100,6 +115,8 @@ end
 
 # load page to edit a document
 get "/:filename/edit" do
+  require_user_signin
+
   @file_name = params[:filename]
   file_path = File.join(data_path, @file_name)
 
@@ -115,6 +132,8 @@ end
 
 # delete a document
 post "/:filename/delete" do
+  require_user_signin
+
   filename = params[:filename]
   file_path = File.join(data_path, filename)
 
