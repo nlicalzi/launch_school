@@ -148,6 +148,8 @@ end
 
 # send edits to a document
 post "/:filename" do
+  require_user_signin
+  
   file_path = File.join(data_path, params[:filename])
   File.write(file_path, params[:content])
 
