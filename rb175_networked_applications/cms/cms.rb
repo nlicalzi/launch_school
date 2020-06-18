@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 require "tilt/erubis"
 require "redcarpet"
+require "psych"
 
 configure do
   enable :sessions
@@ -34,6 +35,20 @@ def load_file_content(path)
   end
 end
 
+def load_user_credentials
+  credentials_path = if ENV["RACK_ENV"] == "test"
+    File.expand_path("../test/users.yml", __FILE__)
+  else
+    File.expand_path("../users.yml", __FILE__)
+  end
+  Psych.load_file(credentials_path)
+end
+
+def valid_login_info?(username, password)
+  all_credentials = load_user_credentials
+  all_credentials.key?(username) && all_credentials[username] == password
+end
+
 def signed_in?
   session.key?(:username)
 end
@@ -57,8 +72,11 @@ get "/users/signin" do
 end
 
 post "/users/signin" do
-  if params[:username] == "admin" && params[:password] == "secret"
-    session[:username] = params[:username]
+  username = params[:username]
+  password = params[:password]
+
+  if valid_login_info?(username, password)
+    session[:username] = username
     session[:message] = "Welcome!"
     redirect "/"
   else
@@ -149,7 +167,7 @@ end
 # send edits to a document
 post "/:filename" do
   require_user_signin
-  
+
   file_path = File.join(data_path, params[:filename])
   File.write(file_path, params[:content])
 
