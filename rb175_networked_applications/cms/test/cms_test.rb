@@ -92,7 +92,7 @@ class CmsTest < Minitest::Test
   end
 
   def test_create_new_document
-    post "/create", filename: "test_doc.txt"
+    post "/new", filename: "test_doc.txt"
     assert_equal 302, last_response.status
     assert_equal "test_doc.txt was created.", session[:message]
 
@@ -101,7 +101,7 @@ class CmsTest < Minitest::Test
   end
 
   def test_create_new_document_without_filename
-    post "/create", filename: ""
+    post "/new", filename: ""
     assert_equal 422, last_response.status # error
     assert_includes last_response.body, "A name is required"
   end
