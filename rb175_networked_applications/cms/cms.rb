@@ -106,7 +106,7 @@ end
 post '/new' do
   require_user_signin
 
-  filename = params[:filename]
+  filename = File.basename(params[:filename])
   # if file name was provided...
   if !filename.empty?
     file_path = File.join(data_path, filename)
@@ -124,7 +124,7 @@ end
 
 # load individual documents
 get '/:filename' do
-  file_path = File.join(data_path, params[:filename])
+  file_path = File.join(data_path, File.basename(params[:filename]))
 
   if File.file?(file_path)
     load_file_content(file_path)
@@ -138,7 +138,7 @@ end
 get '/:filename/edit' do
   require_user_signin
 
-  @file_name = params[:filename]
+  @file_name = File.basename(params[:filename])
   file_path = File.join(data_path, @file_name)
 
   if File.file?(file_path)
@@ -155,7 +155,7 @@ end
 post '/:filename/delete' do
   require_user_signin
 
-  filename = params[:filename]
+  filename = File.basename(params[:filename])
   file_path = File.join(data_path, filename)
 
   if File.exist?(file_path)
@@ -171,7 +171,7 @@ end
 post '/:filename' do
   require_user_signin
 
-  file_path = File.join(data_path, params[:filename])
+  file_path = File.join(data_path, File.basename(params[:filename]))
   File.write(file_path, params[:content])
 
   session[:message] = "#{params[:filename]} has been updated."
