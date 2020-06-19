@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'tilt/erubis'
 require 'redcarpet'
 require 'psych'
+require 'bcrypt'
 
 configure do
   enable :sessions
@@ -44,7 +45,12 @@ end
 
 def valid_login_info?(username, password)
   all_credentials = load_user_credentials
-  all_credentials.key?(username) && all_credentials[username] == password
+  if all_credentials.key?(username)
+    bcrypt_password = BCrypt::Password.new(all_credentials[username])
+    bcrypt_password == password
+  else
+    false
+  end
 end
 
 def signed_in?

@@ -127,7 +127,7 @@ class CmsTest < Minitest::Test
 
   def test_viewing_text_document
     create_document 'history.txt', 'Ruby 0.95 released'
-    
+
     get '/history.txt'
 
     assert_equal 200, last_response.status
@@ -137,7 +137,7 @@ class CmsTest < Minitest::Test
 
   def test_document_not_found
     get '/notafile.txt'                     # nonexistent file
-    
+
     assert_equal 302, last_response.status  # assert redirection
     assert_equal 'notafile.txt does not exist.', session[:message]
   end

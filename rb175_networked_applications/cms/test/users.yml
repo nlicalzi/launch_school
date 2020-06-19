@@ -1,4 +1,4 @@
 {
-  nick: nickspassword,
-  admin: secret
+  nick: $2a$12$hBOxVgi9zT/V6dwYdOCaC.wV9Z3GqFwUXA8JWPOWOxLkHx0Ny6Xo2, # nickspassword
+  admin: $2a$12$606VzH5hPL0wlpyOA1PtzOPN7k8akRlxrzWRY3RWhQ7UfuhzH51Eu # "secret"
 }
