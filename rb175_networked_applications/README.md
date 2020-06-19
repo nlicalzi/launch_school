@@ -52,3 +52,15 @@ This course will cover server side development from first principles. We'll buil
   * `GET` requests should only request data. Any request that modifies data should be over `POST` or another non-GET method.
   * Web browsers don't support request methods other than `GET` or `POST` in HTML forms, so there are times when a developer has to use `POST` even when another method would be more appropriate.
   * View helpers provide a way to extract code that determines what HTML markup is generated for a view.
+* Project: File-based CMS
+  * Sinatra will render a layout automatically if it is located at `views/layout.erb`.
+  * `Rack::Test` is the library used to test Sinatra applications.
+  * Calling the `redirect` method in Sinatra aborts the current request.
+  * Passwords should never be stored in raw form. They should always be hashed first.
+  * Possible extensions to the CMS project:
+    * Validate that document names contain an extension that the application supports.
+    * Add a "duplicate" button that creates a new document based on an old one.
+    * Extend this project with a user signup form.
+    * Add the ability to upload images to the CMS (which could be referenced within markdown files).
+    * Modify the CMS so that each version of a document is preserved as changes are made to it.
+
