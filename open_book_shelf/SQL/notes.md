@@ -61,6 +61,9 @@ Useful Resources:
     * Used to retrieve or modify data stored in a database. `SELECT` queries are part of DML.
   * DCL: Data Control Language
     * Used to determine what various users are allowed to do when interacting with a database.
+* Database schema
+  * The skeleton structure that represents the logical view of the entire database, defining how the data is organized and how the relations among them are associated. Ex.: names of tables, table columns, data types of columns, constraints on the columns.
+* 
 
 
 
