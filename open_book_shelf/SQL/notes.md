@@ -23,46 +23,49 @@ Useful Resources:
 * Two types of commands you can issue from the `psql` console prompt:
   * `psql` console meta-commands
   * run SQL statements using standard SQL syntax
-* What are two ways to create a new database?
-  * execute the utility function `createdb`, or use the SQL statement `CREATE DATABASE [db name];`
-* What are two ways to delete an existing database?
-  * execute the utility function `dropdb` or use the SQL statement `DROP DATABASE [db name];`
-* What is the syntax for a psql console meta-command?
-  * `\[command]`. Examples: `\conninfo` (connection info), `\q` (quit psql)
-  * What does the `-d` flag for the `psql` command let us do? (Specify a database to access)
-  * What does the  `\c` metacommand do in the psql console? What alias can we use?
-    * `\connect` -- switch database connection in psql console
-  * What does the `\dt` metacommand do in the psql console?
-    * What psql metacommand can we use to list all tables in the current database?
-  * What does the `\list` metacommand do in the psql console?
-    * How can we list all databases that we are currently connected to?
 
 * How many separate sub-languages can we think of SQL as comprising, and what are they?
 
   * DDL: Data Definition Language
   * DML: Data Manipulation Language
   * DCL: Data Control Language
+    * Think of the `Owner` information when using the `\dt` meta command.
 
 * Database names should be written in **snake_case**.
 
+* What are some common Postgres keys/constraints?
+
+  * `NOT NULL constraint`, `UNIQUE constraint`,  `DEFAULT constraint`, `PRIMARY Key`, `FOREIGN Key`
+
 * | Command-line Command | Notes                                                        |
   | :------------------- | :----------------------------------------------------------- |
-  | `psql -d sql_book`   | starts a `psql` session and connect to the *sql_book* database |
+  | `psql -d sql_book`   | starts a `psql` session and connect to the *sql_book* database (specified by `-d`) |
   | `createdb sql_book`  | creates a new database called *sql_book* using a psql utility |
   | `dropdb my_database` | permanently deletes the database named *my_database* and all its data |
-
 * | PSQL Command                         | Notes                                                        |
   | :----------------------------------- | :----------------------------------------------------------- |
   | `\l` or `\list`                      | displays all databases                                       |
   | `\c sql_book` or `\connect sql_book` | connects to the *sql_book* database                          |
   | `\q`                                 | exits the PostgreSQL session and return to the command-line prompt |
+  | `\dt`                                | lists all tables in the current database connection          |
+  | `\d [table]`                         | describe a table-- columns, datatypes, propertiesx           |
 
-* | SQL Statement               | Notes                                                        |
-  | :-------------------------- | :----------------------------------------------------------- |
-  | `CREATE DATABASE sql_book`  | creates a new database called *sql_book*                     |
-  | `DROP DATABASE my_database` | permanently deletes the database named *my_database* and all its data |
+* | SQL Statement                                                | Notes                                                        |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | `CREATE DATABASE sql_book`                                   | creates a new database called *sql_book*                     |
+  | `DROP DATABASE my_database`                                  | permanently deletes the database named *my_database* and all its data |
+  | ```CREATE TABLE some_table(column_1_name column_1_data_type [constraints, ...]);``` | creates a table `some_table` in the currently connected database, with columns and constraints |
 
-
+* | Column Data Type          | Description                                                  |
+  | :------------------------ | :----------------------------------------------------------- |
+  | serial                    | This data type is used to create identifier columns for a PostgreSQL database. These identifiers are integers, auto-incrementing, and cannot contain a null value. |
+  | char(N)                   | This data type specifies that information stored in a column can contain strings of up to N characters in length. If a string less than length N is stored, then the remaining string length is filled with space characters. |
+  | varchar(N)                | This data type specifies that information stored in a column can contain strings of up to N characters in length. If a string less than length N is stored, then the remaining string length isn't used. |
+  | boolean                   | This is a data type that can only contain two values "true" or "false". In PostgreSQL, boolean values are often displayed in a shorthand format, t or f |
+  | integer or INT            | An integer is simply a "whole number." An example might be 1 or 50, -50, or 792197 depending on what storage type is used. |
+  | decimal(precision, scale) | The decimal type takes two arguments, one being the total number of digits in the entire number on both sides of the decimal point (the precision), the second is the number of the digits in the fractional part of the number to the right of the decimal point (the scale). |
+  | timestamp                 | The timestamp type contains both a simple date and time in YYYY-MM-DD HH:MM:SS format. |
+  | date                      | The date type contains a date but no time.                   |
 
 ### Vocab
 
