@@ -144,6 +144,43 @@ Useful Resources:
     * Typically used with **GROUP BY** clauses
       * `SELECT enabled, count(id) FROM users GROUP BY enabled;`
 
+* How do we update data in an existing record?
+
+  * ```sql
+    /* set columns to these values when an expression evaluates to true */
+    /* without a WHERE clause, every record will be updated -- test w/ a SELECT first */
+    UPDATE table_name SET [col1 = val1, ...]
+    WHERE (expression);	
+    ```
+
+* What statement would we write if we wanted to set the entire `enabled` column in a table `users` to `false`?
+
+  * ```sql
+    UPDATE users SET enabled = false; /* no WHERE clause-- every record updated */
+    ```
+
+* How do we delete existing records?
+
+  * ```sql
+    DELETE FROM table_name WHERE (expression);
+    ```
+
+  * ```sql
+    DELETE FROM users
+    WHERE full_name='Harry Potter' and id > 3;
+    ```
+
+* What is the core difference between `UPDATE` and `DELETE` statements?
+
+  * `UPDATE` can update individual columns within multiple rows, `DELETE` deletes entire rows
+
+  * ```sql
+    UPDATE table_name SET col1 = NULL
+    WHERE (expression);
+    ```
+
+* 
+
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
 | `psql -d sql_book`   | starts a `psql` session and connect to the *sql_book* database (specified by `-d`) |
