@@ -25,25 +25,85 @@ Useful Resources:
   * run SQL statements using standard SQL syntax
 
 * How many separate sub-languages can we think of SQL as comprising, and what are they?
+
   * DDL: Data Definition Language
+    * Deals with the level of the table structure (schema)-- columns, constraints
+    * `DEFAULT`: default value used if a value is not specified for a column in an `INSERT` statement
+    * Constraints: `NOT NULL`, `UNIQUE`, `CHECK`
   * DML: Data Manipulation Language
+    * Add, query, change, and remove data (CRUD operations -- create/read/update/delete)
+    * Data Manipulation Statements have four distinct types: `INSERT`, `SELECT`, `UPDATE`, and `DELETE`
   * DCL: Data Control Language
     * Think of the `Owner` information when using the `\dt` meta command.
+
 * Database names should be written in **snake_case**.
+
 * What are some common Postgres keys/constraints?
+
   * `NOT NULL constraint`, `UNIQUE constraint`,  `DEFAULT constraint`, `PRIMARY Key`, `FOREIGN Key`
+
 * What is the basic format of an `ALTER TABLE` statement?
+
   * `ALTER TABLE table_to_change HOW TO CHANGE THE TABLE additional arguments`
+
 * What is the basic format for adding a column constraint (`NOT NULL`, `UNIQUE`, etc)?
+
   * `ALTER TABLE table_name ALTER COLUMN column_name SET constraint clause`	
+
 * What is the basic format for removing a column constraint?
+
   * `ALTER TABLE table_name DROP CONSTRAINT constraint_name`
+
 * What is the basic format for adding a table constraint?
+
   * `ALTER TABLE table_name ADD CONSTRAINT constraint_name constraint clause`
+
 * How can we add a column to an existing table?
+
   * Use an `ADD COLUMN` clause in an `ALTER TABLE` statement
+
 * How can we remove a column from an existing table?
+
   * Use a `DROP COLUMN` clause in an `ALTER TABLE` statement.
+
+* What is the general form of an `INSERT` SQL statement?
+
+  * ```SQL
+    INSERT INTO table_name (column1_name, column2_name, ...)
+      VALUES (data_for_column1, data_for_column2, ...);
+    ```
+
+  * ```SQL
+    /* ONE ROW: single tuple */
+    INSERT INTO users (full_name, enabled)
+    	VALUES ('John Smith', false);
+    /* > INSERT 0 1 */
+    ```
+
+  * ```SQL
+    /* MULTIPLE ROWS: comma separated tuples */
+    INSERT INTO users (full_name)
+    	VALUES ('Jane Smith'), ('Harry Potter');
+    /* > INSERT 0 2 */
+    ```
+
+  * The tablename we wish to store data in;
+
+  * The names of the columns we're adding data to;
+
+  * The values we wish to store in the columns listed directly after the table name.
+
+* How do we indicate to Postgres that we'd like to use the default function set for a column?
+
+  * pass `DEFAULT` as the `VALUES` arg corresponding to the column name
+
+* What does each element of the following message returned after a successful `INSERT` represent?
+
+  * `INSERT 0 1`-- `0` is the `oid`, `1` is the number of rows inserted
+
+* What is the Three State Boolean problem / Three Valued-logic problem?
+
+  * What issue is potentially encountered when we don't set a `NOT NULL` constraint on a `boolean` type column?
 
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
@@ -64,7 +124,8 @@ Useful Resources:
 | `CREATE DATABASE sql_book`                                   | creates a new database called *sql_book*                     |
 | `DROP DATABASE my_database`                                  | permanently deletes the database named *my_database* and all its data |
 | ```CREATE TABLE some_table(column_1_name column_1_data_type [constraints, ...]);``` | creates a table `some_table` in the currently connected database, with columns and constraints |
-| `ALTER TABLE tablename`                                      | change the table in some way... `RENAME TO new_table`, `RENAME COLUMN _ TO _`, `ALTER COLUMN _ TYPE _`, etc |
+| `ALTER TABLE tablename`                                      | change the table in some way... `RENAME TO new_table`, `RENAME COLUMN _ TO _`, `ALTER COLUMN _ TYPE _`, `DROP CONSTRAINT`, etc |
+| `INSERT INTO table_name (column1_name, column2_name, ...) VALUES (column1_data, column2_data, ...);` | create new record in `table_name` with specified columns and values, possibility to add multiple records by adding comma separated tuples after `VALUES` |
 
 | Column Data Type          | Description                                                  |
 | :------------------------ | :----------------------------------------------------------- |
