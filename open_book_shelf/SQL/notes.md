@@ -105,6 +105,31 @@ Useful Resources:
 
   * What issue is potentially encountered when we don't set a `NOT NULL` constraint on a `boolean` type column?
 
+* SQL statements are made up of *identifiers* and *keywords*. Ex.: `SELECT enabled, full_name FROM users;`
+
+  * Identifiers: `enabled, full_name, users`
+  * Keywords: `SELECT, FROM`
+  * Avoid naming columns the same as keywords, to avoid errors-- if unavoidable, the *identifier* can be double-quoted in your query like so: `"year"`
+
+* What clauses might we use with a `SELECT` query?
+
+  * `WHERE (condition)`, `ORDER BY column_1 [ASC/DESC], column_2 [ASC/DESC], ...`, 
+  * Columns can be used by `WHERE` / `ORDER BY`, etc. even if they aren't included in `SELECT`ed columns
+
+* What kinds of operators can we use to construct our `WHERE` clauses?
+
+  * Comparison: `= < > <= >= !=`
+  * Comparison predicates: `IS NULL`, `IS NOT NULL`, `BETWEEN`, `NOT BETWEEN`, `IS DISTINCT FROM`, `IS NOT DISTINCT FROM`
+    * Not used like comparison operators (e.g. `WHERE x = NULL`, rather: `WHERE x IS NULL`)
+  * Logical: `AND`, `OR`, `NOT` (not commonly used)
+  * String Matching: `WHERE full_name LIKE '%Smith'` (also can use `SIMILAR TO` w/ SQL Regex)
+    * `%`: multi character wildcard
+    * `_`: single character wildcard
+
+* When would we use `IS DISTINCT FROM` instead of `!=`?
+
+  * `IS DISTINCT FROM` excludes `NULL` values automatically
+
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
 | `psql -d sql_book`   | starts a `psql` session and connect to the *sql_book* database (specified by `-d`) |
@@ -126,6 +151,7 @@ Useful Resources:
 | ```CREATE TABLE some_table(column_1_name column_1_data_type [constraints, ...]);``` | creates a table `some_table` in the currently connected database, with columns and constraints |
 | `ALTER TABLE tablename`                                      | change the table in some way... `RENAME TO new_table`, `RENAME COLUMN _ TO _`, `ALTER COLUMN _ TYPE _`, `DROP CONSTRAINT`, etc |
 | `INSERT INTO table_name (column1_name, column2_name, ...) VALUES (column1_data, column2_data, ...);` | create new record in `table_name` with specified columns and values, possibility to add multiple records by adding comma separated tuples after `VALUES` |
+| `SELECT [*, (col1, col2)] FROM table_name WHERE (condition);` | select statement/read; the **R** in **CRUD**                 |
 
 | Column Data Type          | Description                                                  |
 | :------------------------ | :----------------------------------------------------------- |
