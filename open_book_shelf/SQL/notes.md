@@ -113,7 +113,9 @@ Useful Resources:
 
 * What clauses might we use with a `SELECT` query?
 
-  * `WHERE (condition)`, `ORDER BY column_1 [ASC/DESC], column_2 [ASC/DESC], ...`, 
+  * `WHERE (condition)`, `ORDER BY column_1 [ASC/DESC], column_2 [ASC/DESC], ...`
+  * `LIMIT` (return `n` results), `OFFSET` (skip first `n` rows), `DISTINCT` (limit to unique results)
+    * **IMPORTANT:** The `LIMIT` and `OFFSET` clauses of `SELECT` are the basis for **pagination** in apps.
   * Columns can be used by `WHERE` / `ORDER BY`, etc. even if they aren't included in `SELECT`ed columns
 
 * What kinds of operators can we use to construct our `WHERE` clauses?
@@ -129,6 +131,18 @@ Useful Resources:
 * When would we use `IS DISTINCT FROM` instead of `!=`?
 
   * `IS DISTINCT FROM` excludes `NULL` values automatically
+
+* What kinds of SQL functions are commonly used?
+
+  * String: 
+    * `length`: `SELECT length(full_name)`,
+    * `trim`: (can be used to delete whitespace) `SELECT trim(leading ' ' from full_name)`
+  * Date/Time:
+    * `date_part` selects y/m/d/h/s: `SELECT full_name, date_part('year', last_login) FROM users;`
+    * `age` calculates `datetime` elapsed: `SELECT full_name, age(last_login) FROM users;`
+  * Aggregate: `count`, `sum`, `min`, `max`, `avg`
+    * Typically used with **GROUP BY** clauses
+      * `SELECT enabled, count(id) FROM users GROUP BY enabled;`
 
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
