@@ -18,8 +18,9 @@ Useful Resources:
 ### Notes
 
 * What command can we use to open the psql console and open the database 'postgres'?
-  * `psql postgres`
-
+  
+* `psql postgres`
+  
 * Two types of commands you can issue from the `psql` console prompt:
   * `psql` console meta-commands
   * run SQL statements using standard SQL syntax
@@ -179,7 +180,7 @@ Useful Resources:
     WHERE (expression);
     ```
 
-* 
+* .
 
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
