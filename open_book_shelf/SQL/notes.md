@@ -262,8 +262,3 @@ Useful Resources:
 * Database schema
   * The skeleton structure that represents the logical view of the entire database, defining how the data is organized and how the relations among them are associated. Ex.: names of tables, table columns, data types of columns, constraints on the columns.
 * 
-
-
-
-### Anki
-
