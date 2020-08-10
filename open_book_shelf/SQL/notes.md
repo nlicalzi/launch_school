@@ -180,7 +180,45 @@ Useful Resources:
     WHERE (expression);
     ```
 
-* .
+* What do we call the process of splitting up data across multiple tables, creating relationships between them, in order to remove redundancy/duplication and improve data integrity?
+
+  * What is *normalization* in the context of SQL / table relations?
+
+* What is the reason for normalizing a database?
+
+  * Reducing data redundancy and improving data integrity.
+
+* What is the mechanism by which we normalize a database?
+
+  * Arranging data in multiple tables and defining relationships between them.
+
+* What are the two high-level components of the database design process?
+
+  * Defining **entities** and designing **relationships** between them.
+
+* What is an **Entity Relationship Diagram (ERD)**?
+
+  * What do we call a commonly used tool within database design, consisting of a graphical representation of entities and their relationships to each other?
+
+* What do we call a special type of constraint used to establish relationships and uniqueness in database?
+
+  * What is a database **key**?
+
+* What is the difference between a **Primary Key** and a **Foreign Key**?
+
+  * What do we call a key that acts as a unique identifier for a row of data? What do we call a key that allows us to associate a row in one table to a row in another table?
+
+* What two other constraints combined are essentially identical to making a column a Primary Key?
+
+  * What other constraint is mimicked by adding `NOT NULL` and `UNIQUE` constraints to a given column?
+
+* How do we establish a column as the primary key for a table?
+
+  * ```sql
+    ALTER TABLE users ADD PRIMARY KEY (id);
+    ```
+
+* 
 
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
