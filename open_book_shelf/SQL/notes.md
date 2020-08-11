@@ -218,6 +218,12 @@ Useful Resources:
     ALTER TABLE users ADD PRIMARY KEY (id);
     ```
 
+* How do we set a column in a table as a Foreign Key, referencing another table's Primary Key column?
+
+  * ```sql
+    FOREIGN KEY (fk_col_name) REFERENCES target_table_name(pk_col_name);
+    ```
+
 * 
 
 | Command-line Command | Notes                                                        |
