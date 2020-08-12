@@ -224,7 +224,39 @@ Useful Resources:
     FOREIGN KEY (fk_col_name) REFERENCES target_table_name(pk_col_name);
     ```
 
-* 
+* What is **referential integrity**?
+
+  * What do we call the assurance that a column value within a record must reference an existing value, throwing an error if it does not.
+
+* What does **referential integrity** mean in PostgreSQL?
+
+  * Why will PostgreSQL not allow you to add a value to the Foreign Key column of a table if the Primary Key column of the table it is referencing does not already contain that value?
+
+* What types of entity relationships do we have?
+
+  * **One to One**
+
+    * A one-to-one relationship between two entities exists when a particular entity instance exists in one table, and it can have only one associated entity instance in another table.
+
+      * Ex. A user can have only one email address, and an email address belongs to only one user (a bit contrived/simplified-- users can have more than one email address)
+
+    * Implemented in a db like so: the `id` that is the `PRIMARY KEY` of table 1 is used as both the `FOREIGN KEY` *and*  the `PRIMARY KEY` of table 2.
+
+      * ```sql
+        CREATE TABLE addresses (
+        /* ... */
+          PRIMARY KEY (user_id),
+          FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+        );
+        ```
+
+      * 
+
+  * **One to Many**
+
+    * 
+
+  * **Many to Many**
 
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
