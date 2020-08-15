@@ -250,6 +250,11 @@ Useful Resources:
         );
         ```
 
+    * What does `ON DELETE CASCADE` do?
+
+      * If the row being referenced is deleted, the row referencing it is also deleted.
+      * There are alternatives to `CASCADE` such as `SET NULL` or `SET DEFAULT`
+
   * **One to Many**
 
   * **Many to Many**
