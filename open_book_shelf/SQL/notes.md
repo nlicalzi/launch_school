@@ -228,9 +228,13 @@ Useful Resources:
 
   * What do we call the assurance that a column value within a record must reference an existing value, throwing an error if it does not.
 
-* What does **referential integrity** mean in PostgreSQL?
+* How is **referential integrity** enforced in PostgreSQL?
 
   * Why will PostgreSQL not allow you to add a value to the Foreign Key column of a table if the Primary Key column of the table it is referencing does not already contain that value?
+
+* What is *modality* in the context of entity relationships?
+
+  * [N/A]
 
 * What types of entity relationships do we have?
 
@@ -257,7 +261,36 @@ Useful Resources:
 
   * **One to Many**
 
+    * A one to many relationship exists between two entities if an entity instance in one of the tables can be associated with multiple records (entity instances) in the other table.
+
+      * The opposite relationship (many to one) does not exist; that is, each entity instance in the second table can only be associated with one entity instance in the first table. 
+      * **Ex.**: a review belongs to only one book. A book has many reviews.
+
+    * ```sql
+      CREATE TABLE books (
+        id serial,
+        /* ... */
+        PRIMARY KEY (id) /* referenced as FOREIGN KEY below */
+      );
+      
+      CREATE TABLE reviews (
+        id serial,
+        book_id integer NOT NULL,
+        /* ... */
+        PRIMARY KEY (id),
+        FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE /* books ID */
+        /*
+        since book_id is foreign, not bound by UNIQUE constraint of PRIMARY KEY
+        that means that the id from books can reappear (1 book : many reviews)
+        */
+      );
+      ```
+
+    * ![One-to-Many schema](https://d186loudes4jlv.cloudfront.net/sql/images/table_relationships/one-to-many.png)
+
   * **Many to Many**
+
+    * 
 
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
