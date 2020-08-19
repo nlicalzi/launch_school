@@ -290,6 +290,24 @@ Useful Resources:
 
   * **Many to Many**
 
+    * A many-to-many relationship exists between two entities if for one entity instance there may be multiple records in the other table, and vice versa. (Can be thought of as two one to many relationships, e.g. `checkouts` and `users`, `checkouts` and `books`, etc.)
+
+      * **Ex.**: A user can check out many books. A book can be checked out by many users (over time).
+      * ![Many-to-Many cross-reference table](https://d186loudes4jlv.cloudfront.net/sql/images/table_relationships/checkouts-table-references.png)
+
+    * ```sql
+      CREATE TABLE checkouts (
+        id serial,
+        user_id int NOT NULL,
+        book_id int NOT NULL,
+        checkout_date timestamp,
+        return_date timestamp,
+        PRIMARY KEY (id),
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+      );
+      ```
+
     * 
 
 | Command-line Command | Notes                                                        |
