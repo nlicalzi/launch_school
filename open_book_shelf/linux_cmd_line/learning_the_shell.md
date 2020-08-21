@@ -1,6 +1,4 @@
-## Notes on "The Linux Command Line" by William Shotts
-
-Source: http://linuxcommand.org/tlcl.php
+## Notes on Part 1 (Learning the Shell) of "The Linux Command Line" by William Shotts
 
 
 
