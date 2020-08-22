@@ -1,10 +1,9 @@
 ## Notes on Part 1 (Learning the Shell) of "The Linux Command Line" by William Shotts
 
-
-
-### Chapter 1: What is the Shell?
+### Chapter 1 Outline: What is the Shell?
 
 * Terminal Emulators
+  * When using a GUI, we need a terminal emulator to interact with the shell.
 * Making Your First Keystrokes
   * Command History
   * Cursor Movement
@@ -13,11 +12,23 @@
 * Ending a Terminal Session
   * The Console Behind the Curtain
 * Summing Up
+  * The "command line" really refers to the **shell**-- a program that takes keyboard commands and passes them to the operating system to carry out.
+  * Linux distributions use a shell program from the GNU Project called `bash` (the name is an acronym for the "*Bourne Again SHell*", because `bash` replaced `sh`, the original Unix shell program written by Steve Bourne.)
 * Further Reading
+  * To learn more about Steve Bourne, father of the Bourne Shell, see this Wikipedia article:
+    * http://en.wikipedia.org/wiki/Steve_Bourne
+  * This Wikipedia article is about Brian Fox, the original author of bash:
+    * https://en.wikipedia.org/wiki/Brian_Fox_(computer_programmer)
+  * Here is an article about the concept of shells in computing:
+    * http://en.wikipedia.org/wiki/Shell_(computing)
+
+
 
 ### Chapter 2: Navigation
 
 * Understanding the File System Tree
+  * Both Windows and Unix-like OSes organize files in a *hierarchical directory structure*.
+  * Unlike Windows, which has a separate file system tree for each storage device, Unix-like systems have a single file system tree, regardless of how many drives or storage devices are mounted.
 * The Current Working Directory
 * Listing the Contents of a Directory
 * Changing the Current Working Directory
@@ -25,7 +36,10 @@
   * Relative Pathnames
   * Some Helpful Shortcuts
     * Important Facts about Filenames
-* Summing Up
+      * Filenames that begin with a period character are hidden and won't appear with a `ls` command, unless the `-a` flag is used, like so: `ls -a`
+      * Filenames and commands in Unix-like systems are case sensitive
+      * Unix-like OSes have no concept of "file extensions" like other OSes (NOTE: applications may use extensions to determine the contents/purpose of files, even if Linux does not)
+      * Naming conventions: limit file names to alphanumeric characters, period, dash, underscore. NO SPACES!
 
 ### Chapter 3: Exploring the System
 
