@@ -45,16 +45,37 @@
 
 * Having More Fun with `ls`
   * Options and Arguments
+    * Commands are often followed by one or more *options* that modify behavior, with one or more *arguments*, or the items upon which the command acts.
+      * `command -options arguments`
+    * Two main types of options:
+      * A single character following a dash: `-l`
+      * *Long option*, a word preceded by two dashes: `--reverse`
   * A Longer Look at Long Format
+    * Long format displays the following fields when `ls -l` is called:
+    * Example: `-rw-r--r-- 1 root root 3576296 2017-04-03 11:05 Experience ubuntu.ogg`
+      * `-rw-r--r--`: Access rights to the file
+      * `1`: Number of hard links in the file
+      * `root`: Username of the file's owner
+      * `root`: Name of the group that owns the file
+      * `32059`: Size of the file in bytes
+      * `2007-04-03 11:05`: Date and time of file's last modification
+      * `oo-cd-cover.odf`: Name of the file.
 * Determining a File's Type with `file`
+  * One of the common ideas in Unix-like operating systems such as Linux is that "everything is a file".
 * Viewing File Contents with `less`
   * What is "Text"?
   * Less Is More
+    * The `less` program was designed as an improved replacement of an earlier Unix program called `more` ("`less` is `more`")
+    * `less` falls into the class of programs called "pagers", or programs that allow the easy viewing of long text documents in a page by page manner.
+    * `less` allows for forward and backwards paging, while `more` only allowed for forward.
 * Taking a Guided Tour
 * Symbolic Links
 * Hard Links
 * Summing Up
 * Further Reading
+  * The full version of the *Linux Filesystem Hierarchy Standard* can be found here: http://www.pathname.com/fhs/
+  * An article about the directory structure of Unix and Unix-like systems: http://en.wikipedia.org/wiki/Unix_directory_structure
+  * A detailed description of the ASCII text format: http://en.wikipedia.org/wiki/ASCII
 
 ### Chapter 4: Manipulating Files and Directories
 
