@@ -31,3 +31,26 @@
     * `n`: search for next occurence of previous search
     * `h`: display help screen
     * `q`: quit `less` 
+* `cp`: copy files and directories
+  * Options:
+    * `-a` // `--archive`: copy files, directories, and all of their attributes (including ownerships and permissions)
+    * `-i` // `--interactive`: before overwriting an existing file, prompt the user for confirmation
+    * `-r` // `--recursive`: recursively copy directories and their contents
+    * `-u` // `--update`: when copying files from one directory to another, only copy files that either don't exist or are newer than the exisitng corresponding files in the destination directory
+    * `-v` // `--verbose`: display informative messages as the copy is performed
+* `mv`: move/rename files and directories
+  * Options
+    * `-i` // `--interactive`: before overwriting an existing file, prompt the user for confirmation
+    * `-u` // `--update`: when copying files from one directory to another, only copy files that either don't exist or are newer than the exisitng corresponding files in the destination directory
+    * `-v` // `--verbose`: display informative messages as the copy is performed
+* `mkdir`: create directories
+* `rm`: remove files and directories
+  * Options:
+    * `-i` // `--interactive`: before overwriting an existing file, prompt the user for confirmation
+    * `-r` // `--recursive`: recursively delete directories
+    * `-f` // `--force`: ignore nonexistent files and do not prompt. This overrides the `--interactive` option.
+    * `-v` // `--verbose`: display informative messages as the copy is performed
+* `ln`: create hard and symbolic links
+  * `ln [file] [link]` creates a hard link to a file
+  * `ln -s [item] [link]` creates a symbolic link to either a file or a directory
+

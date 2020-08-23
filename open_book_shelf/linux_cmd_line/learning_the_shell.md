@@ -79,9 +79,17 @@
 
 ### Chapter 4: Manipulating Files and Directories
 
-* Wildcards
-  * Character Ranges
-  * Wildcards Work in the GUI Too
+* Wildcards/Globbing
+  * `*`: matches any characters
+  * `?`: matches any single character
+  * `[characters]`: matches any character in the set
+  * `[!characters]`: matches any character not in the set
+  * `[[:class:]]`: matches any character that is a member of the specified class
+    * `[:alnum:]`: matches alphanumeric
+    * `[:alpha:]`: matches alphabetic
+    * `[:digit:]`: matches numerals
+    * `[:lower:]`: matches lowercase letters
+    * `[:upper:]`: matches uppercase letters
 * `mkdir` - Create Directories
 * `cp` - Copy Files and Directories
   * Useful Options and Examples
@@ -92,7 +100,15 @@
     * Be Careful with `rm`!
 * `ln` - Create Links
   * Hard Links
+    * The original Unix way of creating links.
+    * Cannot reference a file outside its own file system (like disk partitions)
+    * May not reference a directory
+    * Indistinguishable from a file itself, but can be deleted without affecting the original file/its contents
   * Symbolic Links
+    * A more modern way of creating links than hard links
+    * When deleted, only the link is deleted, not the file itself.
+    * Most file operations are carried out on the link's target, not the link itself, except for `rm` which will affect the link instead of the target.
+    * If the linked file is deleted before the symbolic link, the link will continue to exist but will point to nothing and can be said to be *broken*
 * Let's Build a Playground
   * Creating Directories
   * Copying Files
@@ -103,3 +119,4 @@
     * Creating Symlinks With The GUI
 * Summing Up
 * Further Reading
+  * A discussion of symbolic links: http://en.wikipedia.org/wiki/Symbolic_link

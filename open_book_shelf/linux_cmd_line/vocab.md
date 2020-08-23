@@ -46,3 +46,4 @@
 * Symbolic link / soft link / sym-link
   * A special type of file that serves as a reference to another file or directory. Enables the use of multiple names to reference a single file.
 * Hard link
+* Globbing
