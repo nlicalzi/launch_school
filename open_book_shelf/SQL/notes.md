@@ -308,7 +308,92 @@ Useful Resources:
       );
       ```
 
-    * 
+* What is a SQL Join?
+
+  * Clauses in SQL statements that link two tables together, usually based on the keys that define the relationship between those two tables.
+
+* What are the kinds of SQL joins?
+
+  * `INNER JOIN`: a result set containing the common elements of the tables (intersection where they match on the joined condition); the default assumption in PSQL if join type isn't specified
+
+    * ```sql
+      SELECT users.*, addresses.*
+      FROM users
+      INNER JOIN addresses
+      ON (users.id = addresses.user_id);
+      ```
+
+  * `LEFT JOIN` / `RIGHT JOIN`: takes all the rows from one table (either left or right) and joins it with a second table, even if there are no matching rows in the second table (will just fill the empty values with `NULL`)
+
+    * ```sql
+      SELECT users.*, addresses.*
+      FROM users
+      [LEFT/RIGHT] JOIN addresses
+      ON (users.id = addresses.user_id);
+      ```
+
+  *  `FULL JOIN`: both a `LEFT` and `RIGHT` join simultaneously-- less common
+
+  * `CROSS JOIN`: aka a Cartesian JOIN, returns all combinations of table rows (or the *cross product*), doesn't need an `ON` clause since it involves every record.
+
+* What is the general syntax of a `JOIN` statement?
+
+  * ```sql
+    SELECT [table1.col1, table1.col2, ...] FROM table1
+    join_type JOIN table2 ON (join_condition);
+    ```
+
+  * ```sql
+    SELECT colors.color, shapes.shape
+    FROM colors JOIN shapes
+    ON colors.id = shapes.color_id;
+    ```
+
+* What is a **join table**?
+
+* How can we join more than two tables together?
+
+  * ```sql
+    SELECT users.full_name, books.title, checkouts.checkout_date
+    FROM users
+    INNER JOIN checkouts ON (users.id = checkouts.user_id)
+    INNER JOIN books ON (books.id = checkouts.book_id);
+    ```
+
+* What is **aliasing** in the context of SQL?
+
+  * What do we call specifying another name for a column or table, then using that name in later parts of a query to allow for a more concise syntax?
+
+  * ```sql
+    SELECT u.full_name, b.title, c.checkout_date
+    FROM users AS u /* Table Alias */
+    INNER JOIN checkouts AS c ON (u.id = c.user_id)
+    INNER JOIN books AS b ON (b.id = c.book_id);
+    ```
+
+  * ```sql
+    SELECT count(id) AS "Number of Books Checked Out" /* Column Alias */
+    FROM checkouts;
+    ```
+
+* What is a **subquery**?
+
+  * What is it called when we nest queries in order to use the results of a given query as a condition in another one?
+
+* How do we craft/use **subqueries** in Postgres?
+
+  * ```SQL
+    SELECT u.full_name FROM USERS u
+    WHERE u.id NOT IN (SELECT c.user_id FROM checkouts c); /* subquery */
+    ```
+
+* What subquery expressions are provided in Postgres?
+
+  * `IN`, `NOT IN`, `ANY`, `SOME`, `ALL`
+
+* Subqueries and `JOIN`s can often be used interchangably, but `JOIN`s are typically more performant.
+
+* 
 
 | Command-line Command | Notes                                                        |
 | :------------------- | :----------------------------------------------------------- |
