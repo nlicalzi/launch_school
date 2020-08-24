@@ -31,4 +31,3 @@ Source: http://linuxcommand.org/tlcl.php
 
 ### Programs
 
-sta

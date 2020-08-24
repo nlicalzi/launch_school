@@ -120,3 +120,25 @@
 * Summing Up
 * Further Reading
   * A discussion of symbolic links: http://en.wikipedia.org/wiki/Symbolic_link
+
+
+
+
+
+### Seminar Session Notes
+
+* Produce 1 page cheat sheet, in addition to any slides, covering materials for presentation
+* Mon-Wed individual work, Wed-Fri meet with group to discuss, Sun 4pm EST seminar session
+* Presentation: everyone intro themselves and 1 interesting fact that people may not know
+  * 20-25 minutes for presentation
+* Linux knowledge: <u>unreasonably</u> useful for a career
+* Links:
+  * Intro to the Shell: https://3.basecamp.com/3695031/buckets/18163491/documents/2956496295
+  * Navigation: https://3.basecamp.com/3695031/buckets/18163491/documents/2956496800
+  * Exploring the System: https://3.basecamp.com/3695031/buckets/18163491/documents/2956497121
+  * Manipulating Files and Directories: https://3.basecamp.com/3695031/buckets/18163491/documents/2956497387
+* What is the difference between a terminal emulator and the shell? Elaborate.
+* What does "tailing a log" mean?
+  * https://www.linode.com/docs/quick-answers/linux/how-to-use-tail/
+  * Think of what the stream looks like when a Sinatra app is running, w/ each HTTP request/response-- that's a log file
+* 
