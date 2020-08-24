@@ -8,12 +8,38 @@ Useful Resources:
 
 * PostgreSQL (`psql`) terminal documentation 
   * https://www.postgresql.org/docs/9.0/app-psql.html
+* LS180 SQL exercises
+  * https://launchschool.com/exercises#180_sql_fundamentals
+* More practice:
+  * https://sqlbolt.com/
+  * https://pgexercises.com/
+  * http://sqlfiddle.com/
 
 
 
 ### Summary
 
-
+* Schema
+  * How to create/modify a database and tables within it (`CREATE`, `ALTER`, `DROP`)
+  * Variety of data types
+  * Keys and constraints
+* Data
+  * CRUD operations form the core of working with data in SQL: `INSERT`, `SELECT`, `UPDATE`, and `DELETE`
+    * How do constraints determine what data can/cannot be added to a table?
+    * How are `WHERE` clauses used to filter data?
+    * How are `ORDER BY` clauses used to sort data?
+    * How are `GROUP BY` clauses used to aggregate data?
+    * Types of operators available: string matching, logical, comparison
+    * How can we change specific data values in existing rows using `UPDATE`?
+    * How can we remove entire rows using `DELETE`?
+    * Why should we target only specific rows for `UPDATE` / `DELETE` queries?
+* Multiple Tables
+  * How can we deal with *redundancy* and *data integrity* issues in SQL?
+    * What is *normalization*?
+  * What is an *entity relationship diagram* / ERD?
+  * What is the difference between a *Primary Key* and a *Foreign Key* and what is each used for?
+  * How can we query data across multiple tables using `JOIN` statements?
+    * What is a *join table*?
 
 ### Notes
 
