@@ -1,6 +1,10 @@
 ## Notes on RB180: Database Foundations
 
-Postgres Documentation: https://www.postgresql.org/docs/12/
+### Useful Links
+
+* Postgres Documentation: https://www.postgresql.org/docs/12/
+
+* SQL Style Guide: https://www.sqlstyle.guide/
 
 
 
@@ -45,7 +49,27 @@ Postgres Documentation: https://www.postgresql.org/docs/12/
   * `trunc()`: convert a float to an integer by removing decimal places
   * `pi()`
 
-  
+* Style guide notes:
+
+  * For tables, use a collective name or, less ideally, a plural form. For example (in order of preference) `staff` and `employees`
+
+  * Always use uppercase for the reserved keywords like `SELECT` and `WHERE`, etc.
+
+  * Spaces should be used to line up the code so that the root keywords all <u>end</u> on the same character boundary
+
+    * ```sql
+      (SELECT f.species_name,
+              AVG(f.height) AS average_height, AVG(f.diameter) AS average_diameter
+         FROM flora AS f
+        WHERE f.species_name = 'Banksia'
+           OR f.species_name = 'Sheoak'
+           OR f.species_name = 'Wattle'
+        GROUP BY f.species_name, f.observation_date)
+      ```
+
+  * Always include newlines: before `AND` or `OR`, after semicolons, after keyword definitions, etc.
+
+  * 
 
 #### Vocab
 
