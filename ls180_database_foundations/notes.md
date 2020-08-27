@@ -100,6 +100,26 @@
   * `timestamp`: includes a date and a time of day
   * `date`: only includes the date (and no time of day)
 
+* Two main ways to load SQL files into a Postgres database:
+
+  * ```bash
+    bash $ psql -d my_database < file_to_import.sql
+    ```
+
+  * ```sql
+    /* psql */ my_database=# \i ~/some/files/file_to_import.sql
+    ```
+
+* What is the result of using an operator on a `NULL` value?
+
+  * The operator will return `NULL` (unknown)
+
+* What Postgres program can be used to create a SQL file that contains the commands needed to recreate the current structure and data of a given table?
+
+  * `pg_dump -d [database] -t [table] --inserts > dump.sql`
+    * `--inserts` flag means that multiple `INSERT INTO` statements are used to insert the data
+    * Without `--inserts`, the data is inserted with a `COPY FROM stdin` statement
+
 
 
 #### Vocab
