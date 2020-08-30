@@ -120,22 +120,31 @@
     * `--inserts` flag means that multiple `INSERT INTO` statements are used to insert the data
     * Without `--inserts`, the data is inserted with a `COPY FROM stdin` statement
 
+* 
+
 
 
 #### Vocab
 
 * **SQL**
+
   * A language used to manipulate the structure and values of datasets stored in a relational database.
+
 * **Special purpose language**
+
   * A programming language designed to solve a finite class of problems.
   * Applicable to SQL because it is exclusively for interacting with relational databases.
   * Synonym of "Domain-specific language"
   * Opposite of a "general purpose language", like Ruby/Python/JavaScript, etc.
+
 * **Declarative language**
+
   * Describes what needs to be done, but does not detail how to accomplish this objective.
   * Opposite of "imperative"
   * Relate to **declarative** (expresses the logic of a computation without describing its control flow see: `Array.select{}`) vs. **imperative**  (using a loop counter or explicit iterator) programming
+
 * **DDL / DML / DCL**
+
   * What three sub-languages make up SQL? 
   * **DDL**: Data definition language
     * Defines relation structure and rules
@@ -146,6 +155,56 @@
   * **DCL**: Data control language
     * Controls who can do what
     * `GRANT`, `REVOKE`
+
 * **SQL statement**
+
 * **SQL expression**
-* 
+
+* **Key**
+
+  * Uniquely identifies a single row in a database table. Main types: **natural key**, and **surrogate key**
+
+* **Natural key**
+
+  * An existing value in a dataset that can be used to uniquely identify each row of data in that dataset.
+  * Issue: many seemingly good fits for a natural key actually often are not. Phone numbers can change hands, only some people have social security numbers, products can have the same product number but be on different iterations, etc.
+
+* **Composite key**
+
+  * Combining two or more existing values in a dataset to uniquely identify each row of data in that set. 
+  * Issue: typically just defers the problems with natural keys, rather than solving them.
+
+* **Surrogate key**
+
+  * A value that is created solely for the purpose of identifying a row of data in a database table (like a UID), thereby avoiding many of the problems associated with natural keys.
+
+  * Most common surrogate key: auto-incrementing integer, added to rows in a table on creation.
+
+  * ```sql
+    /* This statement: */
+    CREATE TABLE colors (id serial, name text);
+    
+    /* is actually interpreted as if it were this one: */
+    CREATE SEQUENCE colors_id_seq;
+    CREATE TABLE colors (
+      id integer NOT NULL DEFAULT nextval('colors_id_seq'),
+      name text
+    );
+    ```
+
+* **Serial column**
+
+  * Short hand for a column definition that creates a sequence.
+
+* **Sequence**
+
+  * A special kind of relation that generates a series of numbers, remembering the last number that it generated and using it to inform the generation of the next one.
+
+* **Primary key**
+
+  * By specifying `PRIMARY KEY` as a constraint (similarly to how we would specify `NOT NULL`), Postgres will create an index on that column that enforces it holding unique values in addition to preventing the column from holding `NULL ` values.
+
+* **UUID (Universally Unique Identifier)**
+
+  * A very large number that is ues to identify individual objects, or database rows when working with a database. Often represented using hexadecimal strings with dashes (`f47ac10b-58cc-4372-a567-0e02b2c3d479`)
+
