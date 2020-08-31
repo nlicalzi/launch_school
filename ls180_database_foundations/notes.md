@@ -120,6 +120,21 @@
     * `--inserts` flag means that multiple `INSERT INTO` statements are used to insert the data
     * Without `--inserts`, the data is inserted with a `COPY FROM stdin` statement
 
+* What does `string_agg()` do? Why is it useful?
+
+* What are the steps PostgreSQL goes through when executing a `SELECT` query?
+
+  * Rows are collected into a virtual derived table
+    * A new temporary table using the data from all tables listed in the `FROM` clause (incl. `JOIN`s)
+  * Rows are filtered using `WHERE` conditions
+  * Rows are divided into groups (if a `GROUP BY` clause is present)
+  * Group are filtered using `HAVING` conditions
+    * `HAVING` conditions are like `WHERE` conditions, except applied only to values used to create groups, and not individual rows
+    * A column mentioned in a `HAVING` clause should almost always appear in a `GROUP BY`/aggregate function
+  * Compute values to return using select list (executing functions, etc.)
+  * Sort results (in execution order, unless an `ORDER BY` clause is present)
+  * Limit results (if `LIMIT` or `OFFSET` clauses are included in the query)
+
 * 
 
 
