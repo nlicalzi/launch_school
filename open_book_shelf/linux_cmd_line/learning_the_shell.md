@@ -1,4 +1,4 @@
-## Notes on Part 1 (Learning the Shell) of "The Linux Command Line" by William Shotts
+## Notes on Chapters 1-10 (Learning the Shell) of "The Linux Command Line" by William Shotts
 
 ### Chapter 1 Outline: What is the Shell?
 
@@ -123,6 +123,53 @@
 
 
 
+### Chapter 5, Working with Commands: 
+
+
+
+### Chapter 6, Redirection: 
+
+#### Programs covered:
+
+* `cat`: Concatenate files
+  * Reads one or more files and copies them to standard output like so: `cat [file...]`
+  * Often used to display short text files.
+  * Since cat can accept more than one file as an argument, it can also be use to join files together.
+    * Note: wildcards auto-expand in sorted order, so `cat movie.mpeg.0 > movie.mpeg` works
+* `sort`: Sort lines of text
+* `uniq`: Report or omit repeated lines
+* `grep`: Print lines matching a pattern
+* `wc`: Print newline, word, and byte counts for each file
+* `head`: Output the first part of a file
+* `tail`: Output the last part of a file
+* `tee`: Read from stdin and write to stdout and files
+
+#### Vocab:
+
+* **STDIN**
+* **STDOUT**
+* **STDERR**
+* **Bit bucket**
+* **File descriptor** (0: stdin, 1: stdout, 2: stderr)
+* **Pipeline** (pipe operator: `|`)
+
+#### Notes:
+
+* Keeping with the Unix theme of "everything is a file", programs such as `ls` actually send their results to a special file called *standard output (stdout)*, and their status messages to another file called *standard error (stderr)*.
+  * By default both standard output and standard error are linked to the screen and not saved into a disk file.
+* To redirect standard output to another file instead of the screen, we use the `>` redirection operator (can also use `<`) followed by the name of the file:
+  * `ls -l /usr/bin > ls-output.txt`
+* Why does the following program return a `No such file or directory` error message instead of sending its error message to `stdout`? `ls -l /bin/usr > ls-output.txt`
+  * Well-written Unix programs send their error messages to `stderr`, instead of `stdout`. 
+* How do we append output to a file, rather than overwriting it?
+  * Using the `>>` operator-- `ls-l /usr/bin >> ls-output.txt`
+* How can we write `stderr` to a file?
+  * By prepending the `>` redirection operator with a `2`-- `ls -l /bin/usr 2> ls-error.txt`
+* How can we write both `stdout` and `stderr` to a file?
+  * By prepending the `>` redirection operator with an `&`-- `ls -l /bin/usr &> ls-output.txt`
+* How can we dispose of unwanted output? 
+  * By writing to `/dev/null` (a so-called 'bit bucket')-- `ls -l /bin/usr 2> /dev/null`
+
 
 
 ### Seminar Session Notes
@@ -141,4 +188,3 @@
 * What does "tailing a log" mean?
   * https://www.linode.com/docs/quick-answers/linux/how-to-use-tail/
   * Think of what the stream looks like when a Sinatra app is running, w/ each HTTP request/response-- that's a log file
-* 
