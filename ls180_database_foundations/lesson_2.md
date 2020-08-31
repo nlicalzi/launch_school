@@ -52,6 +52,12 @@
   * One can determine if the relationship is `1:1` or `1:M` from the conceptual schema because it should include modality symbols.
   * One cannot determine if a relationship is `1:1` or `1:M` from a physical schema alone, because the modality is not specified.
 
+* A review of `JOIN`s (always be explicit about the type you are using, even if database will auto-populate)
+
+  * (left/full/right) `INNER`: Rows from one or both tables that are unmatched in the other are not returned.
+  * (left/full/right) `OUTER`: Unmatched rows in one or both tables can be returned.
+  * (left/full/right) `CROSS`: Cross product-- all possible combinations of rows from each table
+
 
 
 #### Vocab
