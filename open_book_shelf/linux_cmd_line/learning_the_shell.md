@@ -138,11 +138,17 @@
     * Note: wildcards auto-expand in sorted order, so `cat movie.mpeg.0 > movie.mpeg` works
 * `sort`: Sort lines of text
 * `uniq`: Report or omit repeated lines
+  * `-d` flag reports duplicate values instead of unique ones
 * `grep`: Print lines matching a pattern
+  * `-i` makes `grep` searches case <u>in</u>sensitive
+  * `-v` tells `grep` to print lines <u>not</u> matching the pattern 
 * `wc`: Print newline, word, and byte counts for each file
-* `head`: Output the first part of a file
-* `tail`: Output the last part of a file
-* `tee`: Read from stdin and write to stdout and files
+  * `-l` flag limits output to report only lines
+* `head` / `tail`: Output the first/last part of a file
+  * `-n` allows you to change the number of lines output (default is 10)
+  * Tailing a log w/ `-f`: https://www.linode.com/docs/quick-answers/linux/how-to-use-tail/
+* `tee`: Read from stdin and write to stdout <u>and</u> files
+  * Capture data at an intermediate stage to an output file, before sending along in the pipeline`ls /usr/bin | tee ls.txt | grep zip`
 
 #### Vocab:
 
@@ -169,6 +175,23 @@
   * By prepending the `>` redirection operator with an `&`-- `ls -l /bin/usr &> ls-output.txt`
 * How can we dispose of unwanted output? 
   * By writing to `/dev/null` (a so-called 'bit bucket')-- `ls -l /bin/usr 2> /dev/null`
+* How can we display, page by page, the output of any command that sends its results to standard output?
+  * By using `less` with a pipe, since it accepts stdin: `ls -l /usr/bin | less`
+* What is the difference between using `>` and `|`?
+  * The redirection operator `>` connects a command with a file, while the pipeline operator connects the output of one command with the input of a second command.
+* What do we call each command in a multi-command pipeline, used to perform complex operations on data?
+  * Commands used in that manner are referred to as **filters**: they take input, change it somehow, and then output it.
+    * What are some commonly used filters? `sort`, `uniq`, `wc`, `grep`...
+      * `ls /bin /usr/bin | sort | less` 
+        * Returns a combined list of all executable programs in `/bin` & `/usr/bin`
+      * `ls /bin /usr/bin | sort | uniq | less`
+        * Same as above, but removing any duplicates from the list with `uniq`
+      * `ls /bin /usr/bin | sort | uniq -d | less`
+        * Same as above, except displaying the list of duplicate values
+      * `ls /bin /usr/bin | sort | uniq | wc -l`
+        * Report the count of unique lines in the list of all executable programs
+      * `ls /bin /usr/bin | sort | uniq | grep zip`
+        * Return a sorted, de-duped list of all programs that include `zip` in their name
 
 
 
