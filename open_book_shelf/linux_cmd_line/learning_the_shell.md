@@ -150,6 +150,8 @@
 * `tee`: Read from stdin and write to stdout <u>and</u> files
   * Capture data at an intermediate stage to an output file, before sending along in the pipeline`ls /usr/bin | tee ls.txt | grep zip`
 
+
+
 #### Vocab:
 
 * **STDIN**
@@ -192,6 +194,56 @@
         * Report the count of unique lines in the list of all executable programs
       * `ls /bin /usr/bin | sort | uniq | grep zip`
         * Return a sorted, de-duped list of all programs that include `zip` in their name
+
+
+
+### Chapter 7, Seeing the World as the Shell Sees It: 
+
+#### Programs covered:
+
+* `echo`- display a line of text
+
+#### Vocab
+
+* **Expansion**
+  * Each time we type a command and press the Enter key, `bash` performs several substitutions upon the text before it carries out our command. The process that makes this happen is called *expansion.*
+  * The process causing something we entered to be expanded into something else before the shell acts on it.
+* **Word-splitting**
+  * The ultimate result of most shell commands is to execute some program with a specific set of arguments. *Word-splitting* is part of the process that determines what each of those arguments will be-- after word-splitting and pathname expansion, every resulting word becomes an argument to the program that the shell executes.
+* **Quoting**
+  * A mechanism the shell uses to selectiely suppress unwanted expansions.
+  * Double-quotes suppress every special character besides `$ \ '` 
+    * Suppress word-splitting, pathname, tilde, and brace expansion
+    * Allows parameter/arithmetic expansion, and command substutition
+  * Single-quotes suppress *all* expansions
+
+#### Notes
+
+* What are the different types of expansion?
+
+  * Pathname Expansion (`*` wildcard): `echo *`, `echo D*`, `echo *s`, `echo /usr/*/share`
+
+  * Tilde Expansion: `echo ~`, `echo ~foo`
+
+  * Arithmetic Expansion (integers only): `echo $((2 + 2))`
+
+  * Brace Expansion: create multiple text strings from a pattern containing braces
+
+    * `echo Number_{1..5}` -> `Number_1 Number_2 Number_3 Number_4 Number_5`
+
+    * `echo {Z..A}` -> `Z Y X ... C B A`
+
+    * ```bash
+      # Make lists of files or directories to be created
+      mkdir Photos
+      cd Photos
+      mkdir {2007..2009}-{01-12} # creates 2007-01, 2007-02 ... 2009-11, 2009-12
+      ```
+
+  * Parameter Expansion (use env. variables): `echo $USER`
+  * Command Substitution: use the output of a command as an expression
+    * `echo $(ls)`
+    * `ls -l $(which cp)`-- get listing of `cp` without knowing pathname
 
 
 
