@@ -58,6 +58,21 @@
   * (left/full/right) `OUTER`: Unmatched rows in one or both tables can be returned.
   * (left/full/right) `CROSS`: Cross product-- all possible combinations of rows from each table
 
+* What is the difference between a foreign key column and a foreign key constraint? How do we create each?
+
+  * A foreign key column is a column that represents a relationship between two rows by pointing to a specific row in another table using its primary key.
+  * A foreign key constraint enforces certain rules about what values are permitted in foreign key relationships.
+  * To create a foreign key column, just create a column of the same type as the primary key column it will point to. 
+  * To create a foreign key constraint, there are two options:
+    * In a `CREATE TABLE` statement, include: `[fkey] [dtype] REFERENCES [table] (col)`
+      * `product_id integer REFERENCES products (id)`
+    * Alter the table: `ALTER TABLE t1 ADD CONSTRAINT c FOREIGN KEY (col) REFERENCES t2(col)`
+      * `ALTER TABLE orders ADD CONSTRAINT orders_product_id_fkey FOREIGN KEY (product_id) REFERENCES products(id);`
+
+* Does a foreign key constraint prevent `NULL` values from being stored in a column? What are the implications of this?
+
+  * No, foreign key columns allow `NULL` values. As a result, it is often necessary to use `NOT NULL` and a foreign key constraint together.
+
 
 
 #### Vocab
@@ -80,4 +95,8 @@
     * **One - required**: This side of a relationship will have 1 and only 1 instance of the entity.
     * **Many - optional**: This side of a relationship can have 0 or more instances of the entity.
     * **Many - required**: This side of a relationship will have at least 1, maybe more instances of the entity.
-* 
+* **Foreign key column**
+  * A column that represents a relationship between two rows by pointing to a specific row in another table using its **primary key**.
+* **Foreign key constraint**
+  * A constraint that enforces certain rules about what values are permitted in these foreign key relationships. 
+
