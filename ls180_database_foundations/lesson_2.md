@@ -102,7 +102,7 @@
     * **One - optional**: This side of a relationship can have 0 or 1 instances of the entity.
     * **One - required**: This side of a relationship will have 1 and only 1 instance of the entity.
     * **Many - optional**: This side of a relationship can have 0 or more instances of the entity.
-    * **Many - required**: This side of a relationship will have at least 1, maybe more instances of the entity.
+      * **Many - required**: This side of a relationship will have at least 1, maybe more instances of the entity.
 * **Foreign key column**
   * A column that represents a relationship between two rows by pointing to a specific row in another table using its **primary key**.
 * **Foreign key constraint**
