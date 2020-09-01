@@ -73,6 +73,14 @@
 
   * No, foreign key columns allow `NULL` values. As a result, it is often necessary to use `NOT NULL` and a foreign key constraint together.
 
+* How can we reference a column that shared a name with a SQL keyword without having an error occur?
+
+  * Wrap the column name in `""` when you refer to it.
+
+* What is the concatenation operator in SQL?
+
+  * `||` -> `(contacts.first_name || ' ' || contacts.last_name)`
+
 
 
 #### Vocab
@@ -99,4 +107,18 @@
   * A column that represents a relationship between two rows by pointing to a specific row in another table using its **primary key**.
 * **Foreign key constraint**
   * A constraint that enforces certain rules about what values are permitted in these foreign key relationships. 
-
+* **Update anomaly**
+  * A data inconsistency that results from data redundancy (a poorly normalized database) and a partial update.
+  * If a contact is duplicated, and the name or number needs to be changed, we'd have to update every row that contains information about that contact, otherwise the database would *contain more than one answer for a given question*. E.G. what is the phone number for `user_id` = 3?
+* **Insertion anomaly**
+  * The inability to add data to a database due to absence of other data.
+  * For ex.: we can't store the information for a contact without first having placed a call to them, if we're only using one table `calls` instead of creating relations/relationships and normalizing our database.
+* **Deletion anomaly**
+  * The unintended loss of data due to the deletion of other data.
+  * What if we want to drop a specific call that someone made, but that was the only call in their records and then we just lose them from the database completely?
+* **Normalization**
+  * The process of designing schema that mimimize or eliminate the possible occursence of the three aforementioned anomalies (update, insertion, and deletion).
+  * The basic procedure of normalization involves extracting data into additional tables by concern (working back to the ERD model of entities) and using foreign keys to tie it back to its associated data in the other relations.
+* **Denormalized**
+  * A database having duplicated data, sometimes desirable because it can make certain retrieval operations much more efficient.
+* 
