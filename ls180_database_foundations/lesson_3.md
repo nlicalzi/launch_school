@@ -57,6 +57,27 @@
   * By using a `DROP INDEX` statement.
   * We can use the `/di` `psql` console command to list all indexes for the current database.
 
+* What is the `EXPLAIN` command in `psql` used to accomplish?
+
+  * `EXPLAIN` gives a step by step analysis of how the query will be run internally by Postgres.
+  * The values that `EXPLAIN` outputs are estimates, based on the planner's knowledge of the schema and assumptions based on Postgres system statistics.
+
+* What should we look for when using `EXPLAIN` statements to analyze/compare query execution times?
+
+  * One of the key pieces of information to look out for in order to compare queries is the estimated 'total cost' value of the top-most node in an `EXPLAIN` statement.
+
+* If the values that `EXPLAIN` outputs are just estimates of how long a given statement will take to run, how can we actually output the real runties to compare them?
+
+  * By adding the `ANALYZE` option to an `EXPLAIN` command:
+
+    * ```sql
+      EXPLAIN ANALYZE SELECT books.title FROM books
+      JOIN authors ON books.author_id = authors.id
+      WHERE authors.name = 'William Gibson';
+      ```
+
+* 
+
 #### Vocab
 
 * **Index**
@@ -65,4 +86,14 @@
   * **How?** They do this by storing indexed data in a table-like structure, which can be quickly searched using particular search algorithms. The results of the search provide a link back to the record(s) to which the indexed data belongs.
   * **Why?** Using an index means that the database engine can locate column values more efficiently since it doesn't have to search through every record in a table in sequence.
 
-  
+* **Query Plan**
+
+  * In order to execute each query that it receives, Postgres devises an appropriate query plan.
+
+  * We are able to access and view this plan for a given statement by using the `EXPLAIN` command:
+
+    * ```sql
+      EXPLAIN SELECT * FROM books;
+      ```
+
+* 
