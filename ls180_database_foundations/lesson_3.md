@@ -76,7 +76,22 @@
       WHERE authors.name = 'William Gibson';
       ```
 
-* 
+* What are the different types of subquery expressions we have access to?
+
+  * `EXISTS`: check wheter any rows at all are returned by the nested query, returning a boolean.
+  * `IN`: checks every row in the subquery result for inclusion of an evaluated expression, returning a boolean.
+  * `NOT IN`: same as in, but inverted. If an equal row is **not** found, returns `true`.
+  * `ANY` / `SOME`: used along with an operator (`= < >`, etc.), returning a boolean
+    * When used with `=`, an `ANY`/`SOME` statement is equivalent to `IN`.
+  * `ALL`: same as `ANY`/`SOME`, but checks for all results rather than at least one.
+    * When used with `<>` or `!=`, an `ALL` statement is equivalent to `NOT IN`.
+
+* How should we pick between using a subquery or a `JOIN` statement?
+
+  * When first formulating your queries (i.e. not yet at the optimization stage where performance becomes a factor) the decision over whether to use a subquery over a join will often come down to personal preference.
+  * There are valid arguments to say that subqueries are more readable/make more logical sense in some situations:
+    * If you want to return data from one table conditional on data from another table, but don't need to return any data from the second table, use a subquery.
+  * One at the optimization stage, use `EXPLAIN` / `EXPLAIN ANALYZE` to benchmark each option!
 
 #### Vocab
 
