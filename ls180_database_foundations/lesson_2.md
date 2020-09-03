@@ -81,7 +81,30 @@
 
   * `||` -> `(contacts.first_name || ' ' || contacts.last_name)`
 
+* How can we use enumerated type columns? Add a new one? Update an existing one?
 
+  * ```sql
+    CREATE TYPE mood AS enum ('sad', 'ok', 'happy');
+    CREATE TABLE person (
+      name text,
+      current_mood mood
+    );
+    ```
+
+  * ```sql
+    ALTER TABLE stars
+    DROP CONSTRAINT stars_spectral_type_check;
+    
+    CREATE TYPE spectral_type_enum AS ENUM ('O', 'B', 'A', 'F', 'G', 'K', 'M');
+    
+    ALTER TABLE stars
+    ALTER COLUMN spectral_type TYPE spectral_type_enum
+                               USING spectral_type::spectral_type_enum;
+    ```
+
+* 
+
+  
 
 #### Vocab
 
@@ -121,4 +144,5 @@
   * The basic procedure of normalization involves extracting data into additional tables by concern (working back to the ERD model of entities) and using foreign keys to tie it back to its associated data in the other relations.
 * **Denormalized**
   * A database having duplicated data, sometimes desirable because it can make certain retrieval operations much more efficient.
-* 
+* **Enumerated type**
+  * A data type that comprise a static, ordered set of values; think of a stoplight-- 'r', 'y', 'g'.
