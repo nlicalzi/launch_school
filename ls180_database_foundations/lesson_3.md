@@ -11,6 +11,10 @@
 
 #### Summary
 
+* How indexes can be used as part of database optimization
+* Comparing the performance of SQL statements
+* Using subqueries as an alternative to joins
+
 #### Notes
 
 * When should we use an index?
@@ -76,9 +80,19 @@
       WHERE authors.name = 'William Gibson';
       ```
 
+* How can we talk about the results of an `EXPLAIN [ANALYZE]` statement?
+
+  * **REFER TO HERE https://launchschool.com/exercises/27dac993 AND HERE https://launchschool.com/exercises/549674f5**
+    * The first `EXPLAIN` statement contains a fair amount of information. Each row represents an operation taken. The following items are listed in each row of information.
+      1. The name of the node used to perform the SQL statement. A node represents some operation taken to run the SQL statement. An example would be the name in the first row of our query plan, `Hash Join`
+      2. The estimated startup cost and estimated total cost. These can be seen here: `Hash Join (cost=33.38..62.84 rows=635 width=32)` The first number after `cost` is the estimated startup cost, and the second is the estimated total cost.
+      3. The estimated number of rows to be shown when the SQL statement we are explaining is run. This is the number right after `rows=` above.
+      4. The width is the estimated amount in bytes taken up by rows for the SQL statement we are explaining.
+    * Next, let's take a look at the information that was added when we used the `ANALYZE` option. The information here is mostly the same: cost, rows, and width are still there. But there is one other bit of information that has been added to each node: the `actual_time` required for the startup and execution of that node. At the end of our query plan, the planning and execution time have also been added: these represent the total time required to set up the SQL statement along with the total time it took to execute that SQL statement.
+
 * What are the different types of subquery expressions we have access to?
 
-  * `EXISTS`: check wheter any rows at all are returned by the nested query, returning a boolean.
+  * `EXISTS`: check whether any rows at all are returned by the nested query, returning a boolean.
   * `IN`: checks every row in the subquery result for inclusion of an evaluated expression, returning a boolean.
   * `NOT IN`: same as in, but inverted. If an equal row is **not** found, returns `true`.
   * `ANY` / `SOME`: used along with an operator (`= < >`, etc.), returning a boolean
@@ -92,6 +106,39 @@
   * There are valid arguments to say that subqueries are more readable/make more logical sense in some situations:
     * If you want to return data from one table conditional on data from another table, but don't need to return any data from the second table, use a subquery.
   * One at the optimization stage, use `EXPLAIN` / `EXPLAIN ANALYZE` to benchmark each option!
+
+* What are some examples of subqueries?
+
+  * ```sql
+    SELECT name AS "Bid on Items" FROM items
+    WHERE id IN (SELECT DISTINCT item_id FROM bids);
+    ```
+
+  * ```sql
+    SELECT name AS "Not Bid On" FROM items
+    WHERE id NOT IN (SELECT DISTINCT item_id FROM bids);
+    ```
+
+  * ```sql
+    SELECT name FROM bidders
+    WHERE EXISTS (SELECT 1 FROM bids WHERE bids.bidder_id = bidders.id);
+    ```
+
+  * ```sql
+    SELECT MAX(bid_counts.count) FROM
+      (SELECT COUNT(bidder_id) FROM bids GROUP BY bidder_id) AS bid_counts;
+    ```
+
+* How can we use `ROW` comparison to find a given record without using `AND` statements?
+
+  * ```sql
+    -- construct two virtual rows and compare them
+    SELECT id FROM items
+    WHERE ROW('Painting', 100.00, 250.00) = 
+      ROW(name, initial_price, sales_price);
+    ```
+
+* 
 
 #### Vocab
 
@@ -111,4 +158,15 @@
       EXPLAIN SELECT * FROM books;
       ```
 
-* 
+* **Scalar subquery**
+
+  * A scalar subquery is an ordinary `SELECT` query in parentheses that returns exactly one row with one column.
+
+  * ```sql
+    SELECT
+      name,
+      (SELECT COUNT(item_id) FROM bids WHERE item_id = items.id)
+    FROM items;
+    ```
+
+  * 
