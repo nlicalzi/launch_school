@@ -14,15 +14,55 @@
 #### Notes
 
 * When should we use an index?
+
   * Indexes are best used in cases where sequential reading is inadequate. 
     * For example: columns that aid in mapping relationships (such as Foreign Key columns), or columns that are frequently used as part of an `ORDER BY` clause, are good candidates for indexing.
   * They are best used in tables and/or columns where the data will be read much more frequently than it is created or updated.
+
 * What are some types/examples of indexes within Postgres?
+
   * B-tree, Hash, GiST, and GIN
+
+* How are indexes created?
+
+  * Defining a `PRIMARY KEY` or `UNIQUE` constraint will automatically create an index on that column.
+
+  * ```sql
+    CREATE INDEX [index_name] ON table_name (field_name);
+    ```
+
+* What are some of the most important types of indexes?
+
+  * (Non-)Unique Index
+
+    * When an index is created via `PRIMARY KEY` or `UNIQUE` constraints, the index created is a unique index.
+    * When an index is unique, multiple table rows with equal values for that index are not allowed.
+    * Non-unique instances, where we don't enforce uniqueness, allow for the same value to occur multiple times in a given indexed column.
+
+  * Single/Multi-Column Index
+
+    * Only certain index types support multi-column indexes, and there is a limit to the number of columns that can be combined in an index.
+
+    * ```sql
+      CREATE INDEX [index_name] ON table_name (field_name_1, field_name_1);
+      ```
+
+  * Partial Index
+
+    * Partial indexes are built from a subset of the data in a table, defined by a conditional expression, and the index contains entries only for the rows from the table where the value in the indexed column satisfies the condition.
+    * Partial indexes can be useful in certain situations, but most of the time we'll be using single- or multi-column indexes.
+
+* How can we delete indexes that have been created?
+
+  * By using a `DROP INDEX` statement.
+  * We can use the `/di` `psql` console command to list all indexes for the current database.
 
 #### Vocab
 
 * **Index**
+
   * **What?** In the context of a database, an index is a mechanism that SQL engines use to speed up queries.
   * **How?** They do this by storing indexed data in a table-like structure, which can be quickly searched using particular search algorithms. The results of the search provide a link back to the record(s) to which the indexed data belongs.
   * **Why?** Using an index means that the database engine can locate column values more efficiently since it doesn't have to search through every record in a table in sequence.
+
+  
