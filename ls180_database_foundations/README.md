@@ -8,11 +8,7 @@ This course focuses on the relational model, the SQL language, and how to work w
 
 
 
-### What to focus on
-
-
-
-### Detailed Summary
+### Lesson Summary Overview
 
 ##### Schema, Data, and SQL
 
@@ -45,4 +41,3 @@ This course focuses on the relational model, the SQL language, and how to work w
 * Indexes
 * Comparing SQL Statements
 * Subqueries
-
