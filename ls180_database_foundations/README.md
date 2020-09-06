@@ -39,3 +39,10 @@ This course focuses on the relational model, the SQL language, and how to work w
 * Extracting a 1:M Relationship from Existing Data
 * Many to Many Relationships
 * Converting a 1:M Relationship from a M:M Relationship
+
+##### Optimizing SQL Queries
+
+* Indexes
+* Comparing SQL Statements
+* Subqueries
+
