@@ -40,7 +40,7 @@
 * Database dumps can be loaded using `psql -d database_name < file_to_import.sql`
 * Table columns can have default values, which are specified using `SET DEFAULT`.
 * Table columns can be disallowed from storing `NULL` values using `SET NOT NULL`.
-* `CHECK` constraints are rults that must be met by the data stored in a table.
+* `CHECK` constraints are rules that must be met by the data stored in a table.
 * A **natural key** is an existing value in a dataset that can be used to uniquely identify each row of data in that dataset.
 * A **surrogate key** is a value that is created solely for the purpose of identifying a row of data in a database table.
 * A **primary key** is a value that is used to uniquely identify the rows in a table. It cannot be `NULL` and must be unique within a table. They are created using `PRIMARY KEY`.
