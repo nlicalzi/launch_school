@@ -20,9 +20,9 @@ def display_records
   end
 end
 
-def add_record(amount, memo)
-  sql = "INSERT INTO expenses (amount, memo) VALUES (#{amount}, '#{memo}');"
-  CONNECTION.exec(sql) 
+def add_expense(amount, memo)
+  sql = "INSERT INTO expenses (amount, memo) VALUES ($1, $2);"
+  CONNECTION.exec_params(sql, [amount, memo]) 
 end
 
 
@@ -52,5 +52,5 @@ when "add"
   memo   = input_args[1]
   abort "You must provide an amount and memo." unless amount && memo
 
-  add_record(amount, memo)
+  add_expense(amount, memo)
 end
