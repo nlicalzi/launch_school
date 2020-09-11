@@ -1,8 +1,6 @@
 #! /usr/bin/env ruby
 require "pg"
 
-CONNECTION = PG.connect(dbname: "expenses")
-
 class ExpenseData
   def initialize
     @connection = PG.connect(dbname: "expenses")
@@ -33,6 +31,21 @@ class ExpenseData
     @connection.exec_params(sql, [amount, memo]) 
   end
 
+  def delete_expense(id)
+    sql = "SELECT * FROM expenses WHERE id = $1"
+    result = @connection.exec_params(sql, [id])
+
+    if result.ntuples == 1
+      sql = "DELETE FROM expenses WHERE id=$1"
+      @connection.exec_params(sql, [id])
+
+      puts "The following expense has been deleted:"
+      display_expenses(result)
+    else
+      puts "There is no expense with the id '#{id}'."
+    end
+  end
+
   def search_expenses(term)
     sql = "SELECT * FROM expenses WHERE memo ILIKE $1"
     result = @connection.exec_params(sql, ["%#{term}%"])
@@ -45,25 +58,24 @@ class CLI
     @application = ExpenseData.new
   end
 
-  def run(args)
-    input_command, *input_args = args
+  def run(input_args)
+    command, *args = input_args
   
-    case input_command
+    case command
     when nil
       display_help
     when "list"
       @application.list_expenses
     when "add"
-      amount = input_args[0]
-      memo   = input_args[1]
+      amount = args[0]
+      memo   = args[1]
       abort "You must provide an amount and memo." unless amount && memo
     
       @application.add_expense(amount, memo)
     when "search"
-      term = input_args[0]
-      abort "You must provide a search term." unless term
-
-      @application.search_expenses(term)
+      @application.search_expenses(args[0])
+    when "delete"
+      @application.delete_expense(args[0])
     end
   end
 
