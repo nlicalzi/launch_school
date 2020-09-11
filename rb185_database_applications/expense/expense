@@ -10,7 +10,7 @@ def format_row(tuple)
   puts features.join(" | ")
 end
 
-def display_records(db)
+def display_records
   db = PG.connect(dbname: "expenses")
 
   result = db.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
@@ -20,12 +20,22 @@ def display_records(db)
   end
 end
 
+def add_record(amount, memo)
+  unless amount && memo
+    puts "You must provide an amount and memo."
+  else
+    db = PG.connect(dbname: "expenses")
+    db.exec("INSERT INTO expenses (amount, memo) VALUES (#{amount}, '#{memo}');")
+  end
+end
+
+
 def display_help
   puts <<~HELP
     An expense recording system
 
     Commands:
-    
+
     add AMOUNT MEMO [DATE] - record a new expense
     clear - delete all expenses
     list - list all expenses
@@ -38,7 +48,9 @@ input_command, *input_args = ARGV
 
 case input_command
 when nil
-  describe_program
+  display_help
 when "list"
   display_records
+when "add"
+  add_record(input_args[0], input_args[1])
 end
