@@ -1,3 +1,17 @@
 #! /usr/bin/env ruby
 require "pg"
-puts "Hello World"
+
+def format_row(tuple)
+  id = tuple["id"]
+  date = tuple["created_on"]
+  amount = tuple["amount"].rjust(12)
+  memo = tuple["memo"]
+  puts [id, date, amount, memo].join(" | ")
+end
+
+db = PG.connect(dbname: 'expenses')
+result = db.exec("SELECT * FROM expenses;")
+
+result.each do |tuple|
+  format_row(tuple)
+end
