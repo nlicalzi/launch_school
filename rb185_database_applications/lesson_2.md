@@ -13,8 +13,19 @@
 
 #### Notes
 
-* 
+* **Current** flow of todo-list app (before adding database functionality):
 
+  * <left><img src="/Users/nicholaslicalzi/Library/Application Support/typora-user-images/Screen Shot 2020-09-11 at 3.32.08 PM.png", style="zoom:40%"/>
+
+* **Intermediate, updated** flow of todo-list app (after extracting SessionPersistance functionality as a class from Sinatra app):
+
+  * <left><img src="/Users/nicholaslicalzi/Library/Application Support/typora-user-images/Screen Shot 2020-09-11 at 3.35.56 PM.png", style="zoom:40%"/>
+
+* **Final** flow state of todo-list app (after changing dependence on SessionPersistance/cookies to DatabasePersistance/a database):
+
+  * <left><img src="/Users/nicholaslicalzi/Library/Application Support/typora-user-images/Screen Shot 2020-09-11 at 3.42.50 PM.png", style="zoom:40%"/>
+
+* Extracting **SessionPersistance**, then implementing **DatabasePersistance** is an application of the Abstractor pattern-- allowing the Sinatra application to use the same API, but changing the implementation of the datastore.
 
 #### Vocab
 
