@@ -1,6 +1,8 @@
 #! /usr/bin/env ruby
 require "pg"
 
+CONNECTION = PG.connect(dbname: "expenses")
+
 def format_row(tuple)
   features = [ tuple["id"],
                tuple["created_on"],
@@ -11,9 +13,7 @@ def format_row(tuple)
 end
 
 def display_records
-  db = PG.connect(dbname: "expenses")
-
-  result = db.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
+  result = CONNECTION.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
 
   result.each do |tuple|
     format_row(tuple)
@@ -21,12 +21,8 @@ def display_records
 end
 
 def add_record(amount, memo)
-  unless amount && memo
-    puts "You must provide an amount and memo."
-  else
-    db = PG.connect(dbname: "expenses")
-    db.exec("INSERT INTO expenses (amount, memo) VALUES (#{amount}, '#{memo}');")
-  end
+  sql = "INSERT INTO expenses (amount, memo) VALUES (#{amount}, '#{memo}');"
+  CONNECTION.exec(sql) 
 end
 
 
@@ -52,5 +48,9 @@ when nil
 when "list"
   display_records
 when "add"
-  add_record(input_args[0], input_args[1])
+  amount = input_args[0]
+  memo   = input_args[1]
+  abort "You must provide an amount and memo." unless amount && memo
+
+  add_record(amount, memo)
 end
