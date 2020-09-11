@@ -2,15 +2,16 @@
 require "pg"
 
 def format_row(tuple)
-  id = tuple["id"]
-  date = tuple["created_on"]
-  amount = tuple["amount"].rjust(12)
-  memo = tuple["memo"]
-  puts [id, date, amount, memo].join(" | ")
+  features = [ tuple["id"],
+               tuple["created_on"],
+               tuple["amount"].rjust(12),
+               tuple["memo"] ]
+
+  puts features.join(" | ")
 end
 
 db = PG.connect(dbname: 'expenses')
-result = db.exec("SELECT * FROM expenses;")
+result = db.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
 
 result.each do |tuple|
   format_row(tuple)
