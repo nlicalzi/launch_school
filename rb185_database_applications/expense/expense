@@ -15,16 +15,11 @@ class ExpenseData
   
     puts features.join(" | ")
   end
-
-  def display_expenses(expenses)
-    expenses.each do |tuple|
-      format_row(tuple)
-    end
-  end
   
   def list_expenses
     result = @connection.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
-    display_expenses(result)
+    display_count(result)
+    display_expenses(result) if result.ntuples > 0
   end
 
   def add_expense(amount, memo)
@@ -50,12 +45,35 @@ class ExpenseData
   def search_expenses(term)
     sql = "SELECT * FROM expenses WHERE memo ILIKE $1"
     result = @connection.exec_params(sql, ["%#{term}%"])
-    display_expenses(result)
+    display_count(result)
+    display_expenses(result) if result.ntuples > 0
   end
 
   def delete_all_expenses
     @connection.exec("DELETE FROM expenses")
     puts "All expenses have been deleted."
+  end
+
+  private
+
+  def display_count(expenses)
+    count = expenses.ntuples
+    if count == 0
+      puts "There are no expenses."
+    else
+      puts "There #{ count == 1 ? "is" : "are"} #{count} expense#{"s" if count != 1}."
+    end
+  end
+
+  def display_expenses(expenses)
+    expenses.each do |tuple|
+      format_row(tuple)
+    end
+
+    puts "-" * 45
+    amount_sum = expenses.field_values("amount").map(&:to_f).reduce(:+)
+
+    puts "Total #{amount_sum.to_s.rjust(24)}"
   end
 end
 
