@@ -71,8 +71,6 @@ find . -mtime 1 # find all files modified more than 1 hour ago
 
   
 
-
-
 * `xargs`
 
   ```bash
@@ -82,4 +80,26 @@ find . -mtime 1 # find all files modified more than 1 hour ago
 
 
 
+* Which files in your project are too long and should be split up?
+
+  ```bash
+  find . -name '*.rb' | xargs wc -l | sort -hr
+   # => 
+   # 1467 total
+   # 322 callee/base.py
+   # 261 callee/general.py
+   # 251 callee/collections.py
+  ```
+
+  
+
+* How can I remove all MP3 files that live in `/tmp`?
+
+  ```bash
+  find tmp -maxdepth 1 -name '*.mp3' -maxdepth 1 | xargs rm
+  ```
+
+  
+
 ![10 Example of find command in Unix and Linux](https://1.bp.blogspot.com/-5oneqOIU_Uw/W2Wmt9a9MBI/AAAAAAAAL6o/jcEigaE3Ybko-ADZBT_J0p3xURPkjLcmwCEwYBhgL/s640/find%2Bcommand%2Bexample%2Blinux.jpg)
+
