@@ -11,6 +11,13 @@
 
 #### Summary
 
+* We used the `pg` gem to interact with a PostgreSQL database from Ruby
+  * Creating a new `PG::Connection` object
+  * Executing SQL statements using `#exec` and `#exec_params`
+  * Accessing query results contained in `PG::Result` objects
+* Built a small command-line Ruby application
+* Set up logic to automatically create tables if they do not already exist
+
 #### Notes
 
 * Review of useful commands
@@ -29,8 +36,6 @@
   | `result.column_values(index)`                 | Returns an Array of values for column at `index`, one for each row in `result` |
 
 
-
-* 
 
 #### Vocab
 
