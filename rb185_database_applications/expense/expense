@@ -11,6 +11,8 @@ def format_row(tuple)
 end
 
 def display_records(db)
+  db = PG.connect(dbname: "expenses")
+
   result = db.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
 
   result.each do |tuple|
@@ -18,24 +20,25 @@ def display_records(db)
   end
 end
 
-def describe_program
-  puts "An expense recording system\n\n"
+def display_help
+  puts <<~HELP
+    An expense recording system
 
-  puts "Commands:\n\n"
-  puts "add AMOUNT MEMO [DATE] - record a new expense"
-  puts "clear - delete all expenses"
-  puts "list - list all expenses"
-  puts "delete NUMBER - remove expense with id NUMBER"
-  puts "search QUERY - list expenses with a matching memo field"
+    Commands:
+    
+    add AMOUNT MEMO [DATE] - record a new expense
+    clear - delete all expenses
+    list - list all expenses
+    delete NUMBER - remove expense with id NUMBER
+    search QUERY - list expenses with a matching memo field
+  HELP
 end
 
 input_command, *input_args = ARGV
-
-db = PG.connect(dbname: "expenses")
 
 case input_command
 when nil
   describe_program
 when "list"
-  display_records(db)
+  display_records
 end
