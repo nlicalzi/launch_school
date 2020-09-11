@@ -10,9 +10,32 @@ def format_row(tuple)
   puts features.join(" | ")
 end
 
-db = PG.connect(dbname: 'expenses')
-result = db.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
+def display_records(db)
+  result = db.exec("SELECT * FROM expenses ORDER BY created_on ASC;")
 
-result.each do |tuple|
-  format_row(tuple)
+  result.each do |tuple|
+    format_row(tuple)
+  end
+end
+
+def describe_program
+  puts "An expense recording system\n\n"
+
+  puts "Commands:\n\n"
+  puts "add AMOUNT MEMO [DATE] - record a new expense"
+  puts "clear - delete all expenses"
+  puts "list - list all expenses"
+  puts "delete NUMBER - remove expense with id NUMBER"
+  puts "search QUERY - list expenses with a matching memo field"
+end
+
+input_command, *input_args = ARGV
+
+db = PG.connect(dbname: "expenses")
+
+case input_command
+when nil
+  describe_program
+when "list"
+  display_records(db)
 end
