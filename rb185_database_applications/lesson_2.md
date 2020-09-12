@@ -9,7 +9,15 @@
 
 #### Summary
 
-* 
+In this lesson we've taken a small web application that was using sessions to persist its data and modified it to use a PostgreSQL database instead. we've seen how to:
+
+* Extract the session-specific functionality into the `SessionPersistence` class.
+* Replace our use of `SessionPersistence` with `DatabasePersistence` to store data in a different location without making other changes to the application.
+* Safely handle inserting parameters into SQL statements with `PG::Connection#exec_params`.
+* Use a `configure(:development)` block for environment-specific settings.
+* Reload our code in development using `sinatra/reloader`.
+* Log database queries made by our application.
+* How extracting code into a `SessionPersistence` class exposed an API that defined the functionality of the application.
 
 #### Notes
 
