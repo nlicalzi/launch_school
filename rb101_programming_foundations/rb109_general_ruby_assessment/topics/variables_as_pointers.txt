@@ -1,7 +1,0 @@
-Notes by topic on the LS Study Guide for RB109
-
-# Variables as Pointers
-
-Variables are pointers to physical space in memory.
-  - Reassignment is non mutating, it is re-pointing to a different space in memory
-  - Mutating changes the object at the physical space in memory to which the variable points

@@ -1,10 +1,6 @@
 notes/how_to_talk_about_ls.txt
 *.DS*
 .DS_Store
-rb120_object_oriented_programming/assessment_prep/rb129_assessment.md
-rb130_ruby_foundations_more_topics/assessment_prep/assessment
-ls170_networking_foundations/assessment_prep/ls171_assessment.md
+*/assessment_prep
+*/sql_files
 rb175_networked_applications/cms/data/
-ls180_database_foundations/sql_files/
-ls180_database_foundations/assessment_prep/
-rb185_database_applications/sql_files/
