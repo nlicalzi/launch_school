@@ -96,7 +96,7 @@ find . -mtime 1 # find all files modified more than 1 hour ago
 * How can I remove all MP3 files that live in `/tmp`?
 
   ```bash
-  find tmp -maxdepth 1 -name '*.mp3' -maxdepth 1 | xargs rm
+  find tmp -maxdepth 1 -name '*.mp3' | xargs rm
   ```
 
   
