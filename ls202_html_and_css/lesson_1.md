@@ -57,10 +57,47 @@
 ### Notes
 
 * All HTML documents have a required structure that includes the following declaration and elements: `<!DOCTYPE html>`, `<html>`, `<head>`, and `<body>`.
+
   * `<!DOCTYPE html>` informs web browsers which version of HTML is being used and is placed at the beginning of the HTML document. Using the latest version of HTML means you don't have to specify (only older versions)
   * Inside the `<html>` element come the `<head>` and `<body>` elements. 
   * `<head>` identifies the top of the document, including any metadata.
   * `<body>` contains all of the visible content within the webpage.
+
+* What's the difference between a `<div>` or `<span>` element and a header or `<p>`?
+
+  * `<div>` and `<span>` act solely as containers for styling purposes, and have no semantic meaning or value. Their value comes from their ability to apply targeted styles to a contained set of content, commonly through the use of `class` or `id` attributes.
+
+* How do we use `<div>` and `<span>` differently from each other?
+
+  * `<div>` is a block-level element that is commonly used to identify large groupings of content.
+  * `<span>` is an inline-level element commonly used to identify smaller groupings of text within a block-level element.
+
+* What is the difference between `<strong>` and `<b>`, and when should we rely on each (or, what is the semantic value of each)?
+
+  * `<b>` is meant for *stylistically offset* text, like keywords or typographically emboldened text.
+  * `<strong>` is meant for *strong importance*, more content-focused than typographical.
+
+* What is the difference between `<em>` and `<i>`, and when should we rely on each (or, what is the semantic value of each)?
+
+  * `<i>` is used semantically to convey text in an *alternative voice or tone* (use like `""`)
+  * `<em>` is used semantically to place a *stressed emphasis* on text (use for italicizing).
+
+* What are some of the most important new structurally based elements in HTML5?
+
+  * `<header>`: Used to identify the top of a page, article, section, or other segment of a page. Think of this as distinct from `<h1>`-`<h6>`, as they have separate semantic meanings.
+  * `<nav>`: Used to identify a section of major navigational links on a page.
+  * `<article>`: Used to identify a section of independent, self-contained content that may be independently distributed or reused.
+  * `<section>`: Used to identify a thematic grouping of content, which generally, but not always, includes a heading.
+  * `<aside>`: Used to hold content, such as sidebars, inserts, or brief explanations, that is tangentially related to the content surrounding it.
+  * `<footer>`: Used to identify the closing or end of a page, article, section, or other segment of a page. Content within this element should be relative information and should not diverge from the document or section it is included within.
+
+* How can we decide between using `<article>`, `<section>`, or `<div>` elements?
+
+  * Use `<div>` if the content is being grouped solely for styling purposes and doesn't provide value to the outline of a document.
+  * Use `<article>` if the content adds to the document outline and it can be independently redistributed or syndicated.
+  * Use `<section>` if the content adds to the document outline and represents a thematic group of content.
+
+  
 
 ### Vocab
 
@@ -110,3 +147,12 @@
 
   * A stylesheet that attempts to standardize HTML elements across web browsers, removing sizing/margins/padding/additional styles. Imported at the top of the stylesheets list, so that changes are upstream of subsequent stylesheets.
   * Ex. https://meyerweb.com/eric/tools/css/reset/
+
+* **(HTML) Semantics**
+  * The practice of giving content on the page meaning and structure by using the proper element.
+  * Semantic code describes the *value* of content on a page, regardless of the style or appearance of that content.
+* **Headings**
+  * Block-level elements that exist in six different rankings, from `<h1>` to `<h6>`.
+  * Help to break up content and establish hierarchy, acting as key identifiers for users reading a page.
+  * Also help search engines to index and determine the content on a page.
+* 
