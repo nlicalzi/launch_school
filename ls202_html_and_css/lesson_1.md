@@ -86,7 +86,7 @@
 
   * `<header>`: Used to identify the top of a page, article, section, or other segment of a page. Think of this as distinct from `<h1>`-`<h6>`, as they have separate semantic meanings.
   * `<nav>`: Used to identify a section of major navigational links on a page.
-  * `<article>`: Used to identify a section of independent, self-contained content that may be independently distributed or reused.
+  * `<articleH>`: Used to identify a section of independent, self-contained content that may be independently distributed or reused.
   * `<section>`: Used to identify a thematic grouping of content, which generally, but not always, includes a heading.
   * `<aside>`: Used to hold content, such as sidebars, inserts, or brief explanations, that is tangentially related to the content surrounding it.
   * `<footer>`: Used to identify the closing or end of a page, article, section, or other segment of a page. Content within this element should be relative information and should not diverge from the document or section it is included within.
@@ -96,6 +96,18 @@
   * Use `<div>` if the content is being grouped solely for styling purposes and doesn't provide value to the outline of a document.
   * Use `<article>` if the content adds to the document outline and it can be independently redistributed or syndicated.
   * Use `<section>` if the content adds to the document outline and represents a thematic group of content.
+
+* How can we solve the issue of high specificity weights breaking our cascade?
+
+  * By being as modular as possible, sharing similar styles from element to element. One way of doing tis is to layer on different styles by using multiple classes:
+
+    *  ```html
+      <a class="btn btn-danger"></a>
+      <a class="btn btn-success"></a>
+      <!-- and so on -->
+       ```
+
+* 
 
   
 
@@ -155,4 +167,9 @@
   * Block-level elements that exist in six different rankings, from `<h1>` to `<h6>`.
   * Help to break up content and establish hierarchy, acting as key identifiers for users reading a page.
   * Also help search engines to index and determine the content on a page.
-* 
+* **(CSS) Specificity Weight / Specificity Points**
+  * Every selector in CSS has a specificity weight, which along with a selector's placement in the cascade identifies how its styles will be rendered. The higher the specificity weight of a selector, the more superiority the selector is given when a styling conflict occurs.
+  * The weights are additive, so if you have something like `.hotdog p.mustard {}`, you have two *class* selectors and one *type* selector, for a specificity point value of `0-2-1`.
+    * Type selector (low): `0-0-1`
+    * Class selector (mid): `0-1-0`
+    * ID selector (high): `1-0-0`
