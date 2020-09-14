@@ -153,7 +153,21 @@
 
 * **ID, Class, and Name**
 
-  * .
+  * The `class` attribute identifies a set of page elements that you wish to style consistently.
+    * Any number of elements may belong to the same class
+    * Any element can belong to one or more classes: `class="executive management full-time"`
+    * Prefer semantic classnames: e.g. `teaching-assistant` rather than `yellow-background`
+    * Use CSS class selectors (`.classname`) to select elements by class
+  * The `id` attribute applies a unique identification string to a single element.
+    * Each ID on a page must be unique
+    * Each element can have either one ID or none
+    * Use semantic ID names, they should provide meaning: e.g. `headline` instead of `big-font`
+    * Use CSS ID selectors (`#idname`) to select elements by ID
+  * The `name` attribute ties form elements to data on the server, typically unassociated with styling
+    * Use `name`  to assign a name to a form data element that the server can use to obtain the value
+    * Not all tags accept the `name` attribute; it applies to input controls in forms
+    * Always use a `name` attribute on form elements that accept it
+    * Use descriptive, not semantic `name` values: e.g. `name="last-name"` not `name="input-field"`
 
 * **CSS Reset**
 
