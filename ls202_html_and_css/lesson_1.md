@@ -12,6 +12,9 @@
 * **Suggestion**: steer clear of W3Schools-- frequently outdated/incorrect.
   * Preface searches with `mdn` or `w3c` to avoid returning content from them.
 * HTML5 tag selection flowchart: http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf
+* HTML and CSS style suggestions:
+  * Shay Howe: https://learn.shayhowe.com/html-css/writing-your-best-code/
+  * LS: https://launchschool.com/lessons/4495fbf7/assignments/3ced4082
 
 ### What to Focus On
 
@@ -54,6 +57,35 @@
   * The summary at the end of the lesson will contain the topics and terminology we need to master.
 
 ### Summary
+
+* **HTML**
+  * HTML is an acronym for HyperText Markup Language.
+  * HTML uses markup to *organize* your content and give it *semantic meaning*.
+  * **Elements** are the basic building blocks of HTML.
+  * We use **tags** in HTML to represent elements.
+  * Tags may have **attributes** that add details to the element.
+  * The Document Type Definition (**DTD** or **DOCTYPE**) tells the browser what subset of HTML you intend to use.
+  * All documents require a DOCTYPE.
+  * All documents should have `html`, `head`, `title`, and `body` tags, and should also include a `meta` tag that defines the character set. The standard does not require these tags, but always using them will keep you out of trouble.
+  * HTML attributes `id`, `class`, and `name` assign different kinds of identification information to HTML elements.
+  * Memorize the following tags:
+    * `p`, `a`, `em`, `strong`, and `h1...h6`
+    * `header`, `main`, `section`, `aside`, `div`, and `span`
+  * Understand HTML character entities and how to use them in place of `<`, `>`, and `&` literals.
+* **CSS**
+  * CSS is an acronym for Cascading Style Sheets.
+  * CSS tells your browser how to present content with spacing, colors, sizing, font styles, background images, placement, and much more.
+  * CSS properties have a name and value.
+  * CSS rules have a selector that describes what elements to style and a list of zero or more properties that define how the browser should render them.
+    * CSS tag selectors select HTML elements by element (tag) name, e.g. `h1`
+    * CSS class selectors select HTML elements by class name. The selector consists of a `.` followed by the class name, e.g., `.highlight`
+    * CSS ID selectors select HTML elements by ID name. The selector consists of a `#` followed by the id, e.g. `#intro`
+    * You can concatenate CSS selectors to make them more specific, e.g. `strong.highlight`
+  * CSS has both *specificity* and *inheritance* rules that control the notion of the cascade; together, these rules define how CSS rules with different selectors interact.
+  * CSS font stacks tell the browser which font to use by providing a list of candidate fonts along with an optional "fallback" font family.
+  * Know the difference between serif and sans-serif fonts.
+  * Know the differences, benefits, and problems with inline, internal, and external CSS.
+  * Know how to set text and background colors, font families, and font size.
 
 ### Notes
 
