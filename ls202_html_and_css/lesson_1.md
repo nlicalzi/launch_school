@@ -108,7 +108,11 @@
       <!-- and so on -->
        ```
 
-* 
+* What are the three main ways we can apply CSS to a web page?
+
+  * **Inline**: use the `style` attribute on individual HTML tags
+  * **Internal**: use the `style` element to store all of the CSS in one place in the file
+  * **External**: store the CSS in a file that is separate from the HTML file
 
   
 
