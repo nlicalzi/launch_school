@@ -11,6 +11,7 @@
   * DOM: https://dom.spec.whatwg.org/
 * **Suggestion**: steer clear of W3Schools-- frequently outdated/incorrect.
   * Preface searches with `mdn` or `w3c` to avoid returning content from them.
+* HTML5 tag selection flowchart: http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf
 
 ### What to Focus On
 
@@ -86,7 +87,7 @@
 
   * `<header>`: Used to identify the top of a page, article, section, or other segment of a page. Think of this as distinct from `<h1>`-`<h6>`, as they have separate semantic meanings.
   * `<nav>`: Used to identify a section of major navigational links on a page.
-  * `<articleH>`: Used to identify a section of independent, self-contained content that may be independently distributed or reused.
+  * `<article>`: Used to identify a section of independent, self-contained content that may be independently distributed or reused.
   * `<section>`: Used to identify a thematic grouping of content, which generally, but not always, includes a heading.
   * `<aside>`: Used to hold content, such as sidebars, inserts, or brief explanations, that is tangentially related to the content surrounding it.
   * `<footer>`: Used to identify the closing or end of a page, article, section, or other segment of a page. Content within this element should be relative information and should not diverge from the document or section it is included within.
