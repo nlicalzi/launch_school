@@ -108,7 +108,54 @@
       }
       ```
 
-    * 
+* What is the difference between setting the `box-sizing` property to either `content-box` or `border-box`?
+
+  * With `border-box`, we ignore the padding and border to calculate the actual dimensions.
+  * 
+
+* What is the difference between padding and margins? What do they have in common?
+
+  * Both padding and margins surround elements with whitespace.
+  * Padding lies inside the border, while margins lie outside it.
+  * Padding is part of the visible and clickable bounds of an element, while a margin is spacing between adjacent elements.
+
+* What happens to the margins if two `block` elements are placed one above the other?
+
+  * What is "margin collapse"?
+
+    * Margin collapse occurs only with top/bottom margins, not left/right. Padding does not collapse.
+
+  * Why is the vertical margin between the two `p` elements below `32px`?
+
+    * ```html
+      <style>
+        p {
+          margin-bottom: 15px;
+          margin-top: 32px;
+        }
+      </style>
+      
+      <p>This is the first sentence.</p>
+      <p>This is the second sentence.</p>
+      ```
+
+* When should I use padding vs. margins?
+
+  * For an element:
+    * Margins: for spacing between elements
+    * Padding: to affect the visible or clickable area of an element
+  * Inside a container:
+    * Padding: for horizontal separation between container edges and content
+    * Margins: for vertical distance
+  * LS recommended strategy:
+    * Use margins everywhere except when you need padding
+    * Use padding when:
+      * You want to change the height or width of a border
+      * You want to adjust how much background is visible around an element
+      * You want to alter the amount of clickable area
+      * You want to avoid margin collapse
+      * You want some horizontal spacing to the left or right of an `inline` element
+      * As before, use padding to separate the left and right sides of a container from its content. Use margins for the vertical gap.
 
 ### Vocab
 
@@ -120,7 +167,7 @@
   * Often called **containers**, because most `block` elements group one or more elements into areas of the page (with `body` as the top-level container); ex: `header` elements group elements together into a page header.
   * By default, a `block` element occupies all horizontal space available within its container, with nothing to its right or left. A page that contains 3 `block`s within its `body` would see them stacked vertically.
   * `block` elements use the box properties (`width`, `height`, `padding`, `border`, `margin`) to determine the size of the element.
-  * Though a `block` element takes up an entire row in a container, this *does not* alterthe width of the element. The browser renders the `block` element on a line by itself, but the element has the specified/computed width.
+  * Though a `block` element takes up an entire row in a container, this *does not* alter the width of the element. The browser renders the `block` element on a line by itself, but the element has the specified/computed width.
   * Examples of `block` elements: `section`, `article`, `aside`, `header`, `footer`, `p`, `h1..h6`, `blockquote`, `ul`, `ol`, `dl`, `figure`, `figcaption`, `form`, `fieldset`
   * Any element can be converted to a `block` element by giving it the `display: block` CSS property. 
     * It's common to render links (`a`) and images (`img`) as `block` elements.
@@ -137,7 +184,7 @@
 * **`inline-block` elements**
   * `inline-block` elements are a mixture of both previous types
     * They act like `block` elements, except they do not take up an entire row when the `width` property is less than the available width.
-    * They observe `width` and `height`, like `inline` elements, but have `padding`, `border`, and `margin` properties that work like `block` elements.
+    * They sobserve `width` and `height`, like `inline` elements, but have `padding`, `border`, and `margin` properties that work like `block` elements.
   * Any element can be converted to an `inline-block` element with the `display: inline-block` CSS property. Useful for designing horizontal navigation bars, for example.
     * Different browsers might vary between defaulting to `inline` vs `inline-block` for given element types: Chrome/Safari have `input` and `textarea` defaulting to `inline-block`, while Firefox defaults to `inline`. If inconsistency is an issue, set `display: inline-block` explicity.
   * `inline-block` is a *legacy* model, equivalent to a new model called `inline flow-root`. However, it's not going away anytime soon, because there are too many websites still using it.
