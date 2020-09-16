@@ -86,6 +86,30 @@
 
   * <img src="https://d3jtzah944tvom.cloudfront.net/202/images/lesson_2/the-visual-formatting-model-01.png" align="left" />
 
+* **Box Sizing**
+
+  * The usable `box-sizing` property values are `content-box` and `border-box`. The CSS standard deprecates the `padding-box` setting; **don't use it**.
+
+  * The `content-box` setting is the default setting for the `box-sizing` property for all elements in all modern browsers. In this model, the `width` and `height` properties specify the size of the actual *content* area. You need to add padding and borders to get the size of the visible box.
+
+  * The `border-box` setting causes the browser to interpret the `width` and `height` properties as the *total* width and height of the box exclusing the margins. That is, the width and height include the content area *as well as* the padding and borders.
+
+  * The `border-box` setting is "best" since it simplifies the math a front-end developer must do. For example, if we have a box with a width of 50% and padding of 12px; `border-box` ensures that it's precisely 50% of the container width, not 50% plus 24px.
+
+  * If you want to use border-box pretty much everywhere, you can add the following to your CSS:
+
+    * ```css
+      html {
+        box-sizing: border-box;
+      }
+      
+      *, *::before, *::after {
+        box-sizing: inherit;
+      }
+      ```
+
+    * 
+
 ### Vocab
 
 * **Box model**
