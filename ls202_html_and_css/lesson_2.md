@@ -109,6 +109,11 @@
   * Examples of `inline` elements: `span`, `b`, `i`, `u`, `strong`, `em`, `a`, `sub`, `sup`, `img`
   * Any element can be converted to an `inline` element with the `display: inline` CSS property.
     * The most common reaso to do so is to override a prior declaration.
+  * `block` and `inline-block` elements *cannot* be nested within `inline` elements.
 * **`inline-block` elements**
-  * `inline-block` elements are a mixture of both previous types: they act like `block` elements, except they do not take up an entire row when the `width` property is less than the available width.
+  * `inline-block` elements are a mixture of both previous types
+    * They act like `block` elements, except they do not take up an entire row when the `width` property is less than the available width.
+    * They observe `width` and `height`, like `inline` elements, but have `padding`, `border`, and `margin` properties that work like `block` elements.
+  * Any element can be converted to an `inline-block` element with the `display: inline-block` CSS property. Useful for designing horizontal navigation bars, for example.
+    * Different browsers might vary between defaulting to `inline` vs `inline-block` for given element types: Chrome/Safari have `input` and `textarea` defaulting to `inline-block`, while Firefox defaults to `inline`. If inconsistency is an issue, set `display: inline-block` explicity.
   * `inline-block` is a *legacy* model, equivalent to a new model called `inline flow-root`. However, it's not going away anytime soon, because there are too many websites still using it.
