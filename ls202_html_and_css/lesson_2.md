@@ -105,7 +105,7 @@
 
   * The `content-box` setting is the default setting for the `box-sizing` property for all elements in all modern browsers. In this model, the `width` and `height` properties specify the size of the actual *content* area. You need to add padding and borders to get the size of the visible box.
 
-  * The `border-box` setting causes the browser to interpret the `width` and `height` properties as the *total* width and height of the box exclusing the margins. That is, the width and height include the content area *as well as* the padding and borders.
+  * The `border-box` setting causes the browser to interpret the `width` and `height` properties as the *total* width and height of the box excluding the margins. That is, the width and height include the content area *as well as* the padding and borders.
 
   * The `border-box` setting is "best" since it simplifies the math a front-end developer must do. For example, if we have a box with a width of 50% and padding of 12px; `border-box` ensures that it's precisely 50% of the container width, not 50% plus 24px.
 
@@ -251,7 +251,7 @@
 * **`inline-block` elements**
   * `inline-block` elements are a mixture of both previous types
     * They act like `block` elements, except they do not take up an entire row when the `width` property is less than the available width.
-    * They sobserve `width` and `height`, like `inline` elements, but have `padding`, `border`, and `margin` properties that work like `block` elements.
+    * They observe `width` and `height`, like `inline` elements, but have `padding`, `border`, and `margin` properties that work like `block` elements.
   * Any element can be converted to an `inline-block` element with the `display: inline-block` CSS property. Useful for designing horizontal navigation bars, for example.
     * Different browsers might vary between defaulting to `inline` vs `inline-block` for given element types: Chrome/Safari have `input` and `textarea` defaulting to `inline-block`, while Firefox defaults to `inline`. If inconsistency is an issue, set `display: inline-block` explicity.
   * `inline-block` is a *legacy* model, equivalent to a new model called `inline flow-root`. However, it's not going away anytime soon, because there are too many websites still using it.
