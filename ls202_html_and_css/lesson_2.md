@@ -157,12 +157,43 @@
       * You want some horizontal spacing to the left or right of an `inline` element
       * As before, use padding to separate the left and right sides of a container from its content. Use margins for the vertical gap.
 
+* Absolute Units in CSS
+  * The pixel is the only significant absolute unit in CSS (inches and millimeters, etc. also exist but are rarely used)
+  * We can use pixels by appending the letters `px` to a value.
+* Relative Units in CSS
+  * `em`: proportional to the **calculated** font size (the height of the current font in pixels)
+  * `rem`: proportional to the **root** font size (the height of the base font for the `html` element)
+* The `auto` specifier
+  * As a `width` or `height`, it tells the browser to try to fit the entire element (including its margins) in its container.
+  * As a left or right `margin` value on a block element, it tells the browser to push the element all the way right or left (note the reversal!) inside its container. You can center a block element by setting both left and right margins to `auto`
+  * As a top or bottom `margin` value, `auto` is equivalent to `0`.
+  * Padding does not accept `auto` values.
+  * **NOTE:** using `auto` is not the same as using `100%`.
+    * To evaluate `width: auto`, the browser tries to put the entire element (including margin, borders, and padding) within the container. 
+    * If you use `width: 100%` instead, the browser won't consider the margins when it calculates the required element size.
+* When should we use each different unit?
+  * Use absolute units sparingly, and stick with pixels. Pixels work well for:
+    * the root font size
+    * image widths and heights
+    * top and bottom margins and padding, sometimes useful with left and right margins and padding
+    * width or height of fixed-width/fixed-height containers such as navigation sidebars
+    * border widths
+  * Use relative units liberally:
+    * Use rems for fonts, possibly with a *fallback* to ems or pixels. The root font should use pixels.
+    * If you must use ems instead of rems, try to avoid compounding font sizes.
+    * Use rems, ems, or pixels for left and right margins and padding.
+    * Use `%` for measurements that are proportional to the container element's width or height. Percentages work best for container dimensions and come in handy when you want certain areas of the page to grow and shrink as the width of the browser window changes.
+    * Use `auto` with `width` and `height` to let the browser calculate an appropriate value.
+    * Use `auto` with left and right margins to left, center, or right justify a block element within its container.
+
 ### Vocab
 
 * **Box model**
 
 * **Visual formatting model**
+  
   * Most CSS uses the values `block`, `inline`, and `inline-block`
+  
 * **`block` elements**
   * Often called **containers**, because most `block` elements group one or more elements into areas of the page (with `body` as the top-level container); ex: `header` elements group elements together into a page header.
   * By default, a `block` element occupies all horizontal space available within its container, with nothing to its right or left. A page that contains 3 `block`s within its `body` would see them stacked vertically.
@@ -171,6 +202,7 @@
   * Examples of `block` elements: `section`, `article`, `aside`, `header`, `footer`, `p`, `h1..h6`, `blockquote`, `ul`, `ol`, `dl`, `figure`, `figcaption`, `form`, `fieldset`
   * Any element can be converted to a `block` element by giving it the `display: block` CSS property. 
     * It's common to render links (`a`) and images (`img`) as `block` elements.
+  
 * **`inline` elements**
   * Inline elements provide a bit of semantic meaning to content: browsers use this to alter the way they display small sections of text, which, in turn, helps the reader spot specific items with ease.
   * Browsers handle `left` and `right` margins and padding for `inline` elements the same was as for `block` elements, but other box model properties are processed differently. For `inline` elements, browsers:
@@ -181,6 +213,7 @@
   * Any element can be converted to an `inline` element with the `display: inline` CSS property.
     * The most common reaso to do so is to override a prior declaration.
   * `block` and `inline-block` elements *cannot* be nested within `inline` elements.
+  
 * **`inline-block` elements**
   * `inline-block` elements are a mixture of both previous types
     * They act like `block` elements, except they do not take up an entire row when the `width` property is less than the available width.
@@ -188,3 +221,29 @@
   * Any element can be converted to an `inline-block` element with the `display: inline-block` CSS property. Useful for designing horizontal navigation bars, for example.
     * Different browsers might vary between defaulting to `inline` vs `inline-block` for given element types: Chrome/Safari have `input` and `textarea` defaulting to `inline-block`, while Firefox defaults to `inline`. If inconsistency is an issue, set `display: inline-block` explicity.
   * `inline-block` is a *legacy* model, equivalent to a new model called `inline flow-root`. However, it's not going away anytime soon, because there are too many websites still using it.
+
+* **Measurement / Dimension**
+
+  * Each CSS property that includes a length specificiation (`width`, `height`, `font-size`, etc) can be called a **measurement** or a **dimension**
+
+    * `px`, `rem`, `%`, etc. are known as **(measurement) units**
+
+      * `px`: a pixel! As close to an absolute unit as CSS gets.
+
+      * `em`: proportional to the **calculated** font size (the height of the current font in pixels)
+
+        * Can vary throughout a document, depending on font size
+
+      * `rem`: proportional to the **root** font size (the height of the base font for the `html` element)
+
+        * Consistent throughout a document-- `1.5rem` means the same thing throughout a doc.
+
+        * Use a **fallback** unit if using an older browser that doesn't support `rem`s
+
+          * ```css
+            p {
+              font-size: 20px; font-size: 1.25rem;
+            }
+            ```
+
+      * `%`: Can define a dimension as a fraction of a container's width or height
