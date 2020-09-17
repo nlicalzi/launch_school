@@ -13,6 +13,13 @@ This lesson focuses on images and how Web pages use them. We'll focus on the dif
   * Use figures and captions
   * Use images as links
 
+### Summary
+
+Some suggested topics for further research:
+
+- The technical aspects of images: color depth, image size, compression, etc.
+- Background images: positioning and sizing, gradients
+
 ### Notes
 
 * Image Types
