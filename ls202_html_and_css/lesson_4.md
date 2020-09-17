@@ -50,7 +50,7 @@
 
   * Any type of list can be nested within any other, regardless of types.
 
-* Navigation Menus
+* **Navigation Menus**
 
   * ```html
     <!-- Vertical -->
@@ -110,6 +110,43 @@
     }
     ```
 
-  * 
+* **Table Tags**
+
+  * HTML provides a variety of tags for constructing tables:
+
+    * `<table>` defines a table
+
+    * `<tr>` defines a single row in a table
+
+    * `<td>` defines a single cell of content in a table; rows consist of 0 or more cells
+
+    * `<th>` defines a single heading; first cell in a row or column is typically a heading
+
+      * Can use the `scope` attribute to define the heading as row or column
+
+        * ```html
+          <th scope="col">Color Name</th>
+          <th scope="row">red</th>
+          ```
+
+        * 
+
+    * `<thead>`, `<tbody>`, and `<tfoot>` are used to provide semantic identification of the header, footer, and body groups of rows.
 
 ### Vocab
+
+* **Pseudo-class**
+
+  * A keyword added to a selector that specifies a special state of the selected element(s).
+
+  * For example: `:hover` can be used to change a button's color when the user's pointer hovers over it
+
+    * ```css
+      button:hover {
+        color: blue;
+      }
+      ```
+
+  * Resource: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+
+* 
