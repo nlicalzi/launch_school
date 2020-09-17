@@ -39,6 +39,19 @@
 
 ### Summary
 
+* This lesson discussed the fundamental concepts of CSS: **the box model**, **spacing**, and **dimensional measurements**.
+* **The Box Model**:
+  * Browsers treat everything on a page as a box.
+  * These boxes have properties including `width`, `height`, `padding`, `border`, and `margin` that control the size and spacing of each box.
+  * How the browser flows elements onto the page, and the top three `display` properties that influence this behavior: `block`, `inline`, and `inline-block`.
+  * The `box-sizing` property, specifically `content-box` and `border-box`.
+* **Spacing**:
+  * What are padding and margins
+  * When to use padding vs. margins
+* **Dimensional measurements/units**:
+  * Absolute vs. relative units
+  * When to use each
+
 ### Notes
 
 * What are the broad strokes of the box model (how does the browser calculate the box size for a given element)?
@@ -158,20 +171,41 @@
       * As before, use padding to separate the left and right sides of a container from its content. Use margins for the vertical gap.
 
 * Absolute Units in CSS
+
   * The pixel is the only significant absolute unit in CSS (inches and millimeters, etc. also exist but are rarely used)
   * We can use pixels by appending the letters `px` to a value.
+
 * Relative Units in CSS
+
   * `em`: proportional to the **calculated** font size (the height of the current font in pixels)
   * `rem`: proportional to the **root** font size (the height of the base font for the `html` element)
+
 * The `auto` specifier
+
   * As a `width` or `height`, it tells the browser to try to fit the entire element (including its margins) in its container.
+
   * As a left or right `margin` value on a block element, it tells the browser to push the element all the way right or left (note the reversal!) inside its container. You can center a block element by setting both left and right margins to `auto`
+
   * As a top or bottom `margin` value, `auto` is equivalent to `0`.
+
   * Padding does not accept `auto` values.
+
   * **NOTE:** using `auto` is not the same as using `100%`.
+
     * To evaluate `width: auto`, the browser tries to put the entire element (including margin, borders, and padding) within the container. 
     * If you use `width: 100%` instead, the browser won't consider the margins when it calculates the required element size.
+
+  * Useful for centering horizontally:
+
+    * ```css
+      img {
+      	margin: 0 auto; /* 0: top and bottom margin, auto: left and right */
+        width: 800px;
+      }
+      ```
+
 * When should we use each different unit?
+
   * Use absolute units sparingly, and stick with pixels. Pixels work well for:
     * the root font size
     * image widths and heights
