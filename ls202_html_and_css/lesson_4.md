@@ -18,6 +18,14 @@
 
 ### Summary
 
+* Using lists on Web pages, and, in particular, the three main list types: **unordered**, **ordered**, and **description**.
+* The basic mechanics of assembling lists using HTML and some of the techniques for styling them.
+* How and when to use tables (and when not to use them). Tables present tabular data, don't use them for layout purposes.
+* The basic table HTML (rows, columns, and cells), headings, headers, footers, and bodies, and how a row can span multiple columns or a column can span multiple rows.
+* Pseudo-classes, especially `:hover`, `:focus`, and `:last-of-type`, and how we can use them to apply dynamic effects to elements.
+
+
+
 ### Notes
 
 * HTML provides six tag to implement the three list types: **unordered**, **ordered**, and **description**.
@@ -128,8 +136,6 @@
           <th scope="col">Color Name</th>
           <th scope="row">red</th>
           ```
-
-        * 
 
     * `<thead>`, `<tbody>`, and `<tfoot>` are used to provide semantic identification of the header, footer, and body groups of rows.
 
