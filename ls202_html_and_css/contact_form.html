@@ -91,9 +91,9 @@
             </select>
           </dd>
 
-          <dt><label for="zip_code">Zip Code</label></dt>
+          <dt><label for="zip">Zip Code</label></dt>
           <dd>
-            <input type="number" min="0" max="99999" placeholder="12345" />
+            <input type="text" name="zip" id="zip" pattern="[0-9]{5}" placeholder="12345" />
           </dd>
 
           <dt><label for="color_preference">Which of these colors do you like best?</label></dt>
@@ -130,11 +130,14 @@
             </label>
           </dd>
         
-          <dt><label for="comment">Leave a comment!</label></dt>
+          <dt><label for="comment">Leave a comment below:</label></dt>
           <dd>
-            <textarea rows="6" cols="60"></textarea>
+            <textarea name="comment" id="comment" rows="6" cols="60"></textarea>
           </dd>
+
+          <input name="date" id="date" type="hidden" value="2018-02-17" />
           <input type="submit" />
+          <input type="reset" />
         </dl>
       </fieldset>
     </form>
