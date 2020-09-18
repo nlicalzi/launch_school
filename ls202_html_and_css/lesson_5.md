@@ -249,4 +249,35 @@
 
     * Non-standard HTML, but an attribute presently provided by iOS Mobile Safari
 
+* **`select` and `textarea`**
+
+  * `textarea`: lets the user input multiple lines of text. Unlike `text`-type inputs, which ignore carriage returns, newlines, and other whitespace characters, `textarea` elements retain them and use them to format the text into lines and paragraphs.
+
+    * `textarea` uses the `rows` and `cols` attributes to control the height and width of the text box; `rows` is the height of the box in lines, while `cols` is the width in characters.
+
+  * `select` creates a dropdown list of options from which the user can select zero or more options.
+
+    * `option` defines one of the choices a user can make in a `select` tag. Each `option` represents a possible value for the select, and they use the `value` attribute as the value of the `select` element's name
+
+    * ```html
+      <form action="#" method="post">
+        <fieldset>
+          <label>
+            Colors
+            <select name="color">
+              <option value="" disabled selected>Choose one</option>
+              <option value="#f00">Red</option>
+              <option value="#0f0">Green</option>
+              <option value="#00f">Blue</option>
+            </select>
+          </label>
+        </fieldset>
+      </form>
+      ```
+
+    * It is possible to add the `multiple size="x"` attribute to allow for more than one selection
+
+    * 
+
 ### Vocab
+
