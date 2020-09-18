@@ -19,6 +19,13 @@
 * Use description lists to help format forms
 
 ### Summary
+
+* How to build and style forms.
+* About half of the different controls and the tags most often used.
+* How to change the appearance of the standard input controls.
+* How to use description lists and CSS to lay out forms in a variety of styles.
+* Pseudo-classes: `:required`, `:checked`, `:disabled`, `:enabled`
+
 ### Notes
 
 * Forms are the point where front-end and back-end concerns come together. A form displays information to the user, solicits updates, performs some optional rudimentary validation, and then sends the form data back to the server.
