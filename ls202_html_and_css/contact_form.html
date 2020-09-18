@@ -95,8 +95,47 @@
           <dd>
             <input type="number" min="0" max="99999" placeholder="12345" />
           </dd>
+
+          <dt><label for="color_preference">Which of these colors do you like best?</label></dt>
+          <dd>
+            <select name="colors" id="colors">
+              <option selected>Cyan</option>
+              <option>Magenta</option>
+              <option>Yellow</option>
+              <option>Key</option>
+            </select>
+          </dd>
+
+          <dt><label for="technologies">Which web technologies do you want to learn?</label></dt>
+          <dd>
+            <label>
+              <input type="checkbox" name="choice" value="html" />
+              HTML
+            </label>
+            <label>
+              <input type="checkbox" name="choice" value="css" />
+              CSS
+            </label>
+            <label>
+              <input type="checkbox" name="choice" value="javascript" />
+              JavaScript
+            </label>
+            <label>
+              <input type="checkbox" name="choice" value="ruby" />
+              Ruby
+            </label>
+            <label>
+              <input type="checkbox" name="choice" value="rails" />
+              Rails
+            </label>
+          </dd>
+        
+          <dt><label for="comment">Leave a comment!</label></dt>
+          <dd>
+            <textarea rows="6" cols="60"></textarea>
+          </dd>
+          <input type="submit" />
         </dl>
-        <input type="submit" />
       </fieldset>
     </form>
   </body>
