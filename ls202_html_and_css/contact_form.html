@@ -13,38 +13,28 @@
   <body>
     <form action="#" method="post">
       <fieldset>
+        <dl class="partial one_half left">
+          <dt><label for="first_name">First name</label></dt>
+          <dd><input type="text" name="first_name" id="first_name" required/></dd>
+        </dl><!--
+        --><dl class="partial one_half right">
+          <dt><label for="last_name">Last name</label></dt>
+          <dd><input type="text" name="last_name" id="last_name" required/></dd>
+        </dl>
+        
         <dl>
-          <dt>
-            <label for="first_name">First name</label>
-          </dt>
-          <dd>
-            <input type="text" name="first_name" id="first_name" required/>
-          </dd>
-
-          <dt>
-            <label for="last_name">Last name</label>
-          </dt>
-          <dd>
-            <input type="text" name="last_name" id="last_name" required/>
-          </dd>
-
-          <dt>
-            <label for="email">Email</label>
-          </dt>
+          <dt><label for="email">Email</label></dt>
           <dd>
             <input type="email" name="email" id="email" placeholder="example@domain.com" required />
           </dd>
+        </dl>
 
-          <dt>
-            <label for="city">City</label>
-          </dt>
-          <dd>
-            <input type="text" name="city" id="city" required />
-          </dd>
-
-          <dt>
-            <label for="state">State</label>
-          </dt>
+        <dl class="partial one_half left">
+          <dt><label for="city">City</label></dt>
+          <dd><input type="text" name="city" id="city" required /></dd>
+        </dl><!--
+        --><dl class="partial one_tenth both">
+          <dt><label for="state">State</label></dt>
           <dd>
             <select name="state" id="state">
               <option>AK</option>
@@ -100,14 +90,15 @@
               <option>WY</option>
             </select>
           </dd>
-
-          <dt>
-            <label for="zip">Zip Code</label>
-          </dt>
+        </dl><!--
+        --><dl class="partial four_tenths right">
+          <dt><label for="zip">Zip Code</label></dt>
           <dd>
             <input type="text" name="zip" id="zip" pattern="[0-9]{5}" placeholder="12345" />
           </dd>
+        </dl>
 
+        <dl>
           <dt>
             <label for="color_preference">Which of these colors do you like best?</label>
           </dt>
