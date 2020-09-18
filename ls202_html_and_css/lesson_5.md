@@ -277,7 +277,11 @@
 
     * It is possible to add the `multiple size="x"` attribute to allow for more than one selection
 
-    * 
+* **Form layouts**
+
+  * How are top-to-bottom and horizontal forms styled differently?
+    * Top to bottom forms use `block` elements and manipulate their `width`
+    * Horizontal forms have `inline-block` elements, and manipulate their `width`
 
 ### Vocab
 
