@@ -106,6 +106,104 @@
     </form>
     ```
 
-  * 
+* **Input Types**
+
+  * `type`: start with the `type` attribute when creating an `input` element. The most common types are:
+
+    * Type `text`: creates a simple text entry field 
+
+      * Use the `maxlength` attribute to specify the input's maximum length
+
+    * Type `password`: creates a single-line text field with an obscured value
+
+      * Use the `maxlength` attribute to specify the input's maximum length
+
+    * Type `email`: allows entry of an email address in the form `username@domain`
+
+    * Type `tel`: allows entry of a telephone number
+
+    * Type `checkbox`: lets the user choose one or more items from a series of yes/no-type options.
+
+      * The boolean attribute `checked` marks a box as checked by default.
+
+      * You can select checked elements in CSS with the `:checked` pseudo-class.
+
+      * The browser sends a `name=value` pair for each *selected* checkbox and *no value* for *unselected* ones. The code below will send `google=on` and `recent=on` to the server:
+
+        * ```html
+          <form action="#" method="post">
+            <fieldset>
+              <label>
+                <input type="checkbox" name="choice" value="search" />
+                Sort search results
+              </label>
+              
+              <label>
+                <input type="checkbox" name="choice" value="google" checked />
+                Search on Google
+              </label>
+              
+              <label>
+                <input type="checkbox" name="choice" value="recent" checked />
+                Recent results (within last year)
+              </label>
+            </fieldset>
+          </form>
+          ```
+
+    * Type `radio`: lets the user choose zero or one item from a list of options. 
+
+      * Use the `value` attribute to define the value submitted by this item.
+
+      * Use the `checked` attribute to mark the default radio button.
+
+      * Use the `required` attribute on all buttons to enforce selection if there is no default button
+
+      * ```html
+        <form action="#" method="post">
+          <fieldset>
+            <label>
+              <input type="radio" name="color" value="red" />
+              Red
+            </label>
+        
+            <label>
+              <input type="radio" name="color" value="green" checked />
+              Green
+            </label>
+        
+            <label>
+              <input type="radio" name="color" value="blue" />
+              Blue
+            </label>
+          </fieldset>
+        </form>
+        ```
+
+    * Type `submit`: creates a button that the user can click to submit the contents of a form to the server.
+
+      * The `action` attribute on the `form` tag typically provides the URL of the server
+
+      * ```html
+        <form action="#" method="post">
+          <fieldset>
+            <input type="submit" value="Save" />
+          </fieldset>
+        </form>
+        ```
+
+      * 
+
+    * Type `reset`: creates a button that the user can click to reset the contents of a form to its default values. Clicking a `reset` button does not send a request to the server
+
+      * ```html
+        <form action="#" method="post">
+          <fieldset>
+            <input type="reset" value="Clear Form" />
+          </fieldset>
+        </form>
+        ```
+
+      * 
 
 ### Vocab
