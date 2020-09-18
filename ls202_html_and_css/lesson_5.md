@@ -192,8 +192,6 @@
         </form>
         ```
 
-      * 
-
     * Type `reset`: creates a button that the user can click to reset the contents of a form to its default values. Clicking a `reset` button does not send a request to the server
 
       * ```html
@@ -204,6 +202,51 @@
         </form>
         ```
 
-      * 
+* **Input Attributes**
+
+  * `value`: Most input controls can use the `value` attribute, but the meaning varies with the `type`
+
+    * For text-based types such as `text` and `email`, `value` assigns a default value for the control.
+    * `checkbox` and `radio` use it to set the value that the form submits for the indicated element
+    * Button types like `submit` or `reset` use it for the label that appears on the button
+
+  * `size` and `maxlength`: these apply to most text-based input types
+
+    * `size` lets you control the width of an `input` element (not character count)
+    * `maxlength` limits the upper bound of the character count for that input
+
+  * `placeholder`: lets you display some text when a field is empty to help describe expected input
+
+    * If you are forced to use placeholders, include the labels too but hide them using CSS, so screen readers aren't broken
+
+    * ```html
+      <form action="#" method="post">
+        <fieldset>
+          <label>
+            Phone
+            <input type="tel" name="phone" placeholder="###-###-####"
+          </label>
+        </fieldset>
+      </form>
+      ```
+
+  * `disabled`: lets you disable `input` elements; the browser still renders the elements but won't let the user interact with them.
+
+    * `disabled` turns on the `:disabled` CSS pseudo-class, while non-disabled elements set the `:enabled` pseudo-class.
+    * Most web applications handle the `disabled` attribute programmatically, either at the time the app generates the HTML or dynamically with JavaScript.
+
+  * `required`: marks an `input` as required, preventing the user submitting until the field is completed
+
+    * `requred` also turns on the `:required` CSS pseudo-class
+
+  * `autocomplete`: prevents the browser from storing data for later reuse by the browser's `autocomplete` features if set to `autocomplete="off"`
+
+  * `autocapitalize`: turns autocapitalization on/off for the first letter of words or sentences.
+
+    * browsers that recognize this tag default to `sentences`, other options are `none`, `words`, or `characters`
+
+  * `autocorrect`: turns automatic spelling correction either on or off 
+
+    * Non-standard HTML, but an attribute presently provided by iOS Mobile Safari
 
 ### Vocab
