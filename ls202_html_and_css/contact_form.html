@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
     <title>Contact Form</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href=""> -->
+    <link rel="stylesheet" href="style.css">
 
     <style>
     </style>
@@ -14,27 +14,37 @@
     <form action="#" method="post">
       <fieldset>
         <dl>
-          <dt><label for="first_name">First name</label></dt>
+          <dt>
+            <label for="first_name">First name</label>
+          </dt>
           <dd>
             <input type="text" name="first_name" id="first_name" required/>
           </dd>
 
-          <dt><label for="last_name">Last name</label></dt>
+          <dt>
+            <label for="last_name">Last name</label>
+          </dt>
           <dd>
             <input type="text" name="last_name" id="last_name" required/>
           </dd>
 
-          <dt><label for="email">Email</label></dt>
+          <dt>
+            <label for="email">Email</label>
+          </dt>
           <dd>
             <input type="email" name="email" id="email" placeholder="example@domain.com" required />
           </dd>
 
-          <dt><label for="city">City</label></dt>
+          <dt>
+            <label for="city">City</label>
+          </dt>
           <dd>
             <input type="text" name="city" id="city" required />
           </dd>
 
-          <dt><label for="state">State</label></dt>
+          <dt>
+            <label for="state">State</label>
+          </dt>
           <dd>
             <select name="state" id="state">
               <option>AK</option>
@@ -91,12 +101,16 @@
             </select>
           </dd>
 
-          <dt><label for="zip">Zip Code</label></dt>
+          <dt>
+            <label for="zip">Zip Code</label>
+          </dt>
           <dd>
             <input type="text" name="zip" id="zip" pattern="[0-9]{5}" placeholder="12345" />
           </dd>
 
-          <dt><label for="color_preference">Which of these colors do you like best?</label></dt>
+          <dt>
+            <label for="color_preference">Which of these colors do you like best?</label>
+          </dt>
           <dd>
             <select name="colors" id="colors">
               <option selected>Cyan</option>
@@ -106,37 +120,41 @@
             </select>
           </dd>
 
-          <dt><label for="technologies">Which web technologies do you want to learn?</label></dt>
+          <dt>
+            <label for="technologies">Which web technologies do you want to learn?</label>
+          </dt>
           <dd>
             <label>
-              <input type="checkbox" name="choice" value="html" />
+              <input type="checkbox" name="html" value="HTML" />
               HTML
             </label>
             <label>
-              <input type="checkbox" name="choice" value="css" />
+              <input type="checkbox" name="css" value="CSS" />
               CSS
             </label>
             <label>
-              <input type="checkbox" name="choice" value="javascript" />
+              <input type="checkbox" name="javascript" value="JavaScript" />
               JavaScript
             </label>
             <label>
-              <input type="checkbox" name="choice" value="ruby" />
+              <input type="checkbox" name="ruby" value="Ruby" />
               Ruby
             </label>
             <label>
-              <input type="checkbox" name="choice" value="rails" />
+              <input type="checkbox" name="rails" value="Rails" />
               Rails
             </label>
           </dd>
         
-          <dt><label for="comment">Leave a comment below:</label></dt>
+          <dt>
+            <label for="comments">Leave a comment below:</label>
+          </dt>
           <dd>
-            <textarea name="comment" id="comment" rows="6" cols="60"></textarea>
+            <textarea name="comments" id="comments" rows="6" cols="60"></textarea>
           </dd>
 
-          <input name="date" id="date" type="hidden" value="2018-02-17" />
-          <input type="submit" />
+          <input type="hidden" value="2018-02-17" name="timestamp" />
+          <input type="submit" value="Send"/>
           <input type="reset" />
         </dl>
       </fieldset>
