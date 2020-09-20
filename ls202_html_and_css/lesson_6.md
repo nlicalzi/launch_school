@@ -1,6 +1,14 @@
 ## LS202/Lesson 6: Advanced Layout
 
 ### Resources
+
+* CSS Tricks
+  * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+  * https://css-tricks.com/snippets/css/complete-guide-grid/
+* MDN
+  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
+
 ### What to Focus On
 
 In this lesson, we'll take a whirlwind tour of some layout-related features of CSS: floats, positioning, flex, grid, CSS frameworks, and responsive design. None of these topics are easy; in fact, unlike most of our material here at Launch School, **we don't expect you to master them in this lesson**.
@@ -73,6 +81,78 @@ For now, focus on knowing how to use the following in simple projects:
       * The element does not move if the user scrolls the page (ex. a sticky navigation bar)
 
 * **Flex and Grid**
+
+  * `display: flex` acts as a one-dimensional layout tool for a single row or column
+
+    * How can we center a `div` inside a `body` using `display: flex`?
+
+      * ```css
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        /* OR */
+        
+        body {
+          display: flex;
+        }
+        div {
+          margin: auto;
+        }
+        ```
+
+    * How can we center a nav bar?
+
+      * ```css
+        nav ul {
+          display: flex;
+          flex-direction: row; /* default, alternative is `column` */
+          justify-content: space-around;
+        }
+        ```
+
+    * How can we change the order of elements inside a `flex` box? 
+
+      * By setting the `order` property, ex: `order: -1`
+
+  * `display: grid` is better suited for two-dimensional layouts
+
+    * Allows us to define a grid container using (`display: grid`) then locate elements inside it
+
+    * `grid-template-columns: 2fr 1fr 1fr`: splits grid into `50% 25% 25%` across (`fr` = fraction)
+
+    * `grid-template-rows: 1fr 1fr 1fr`: splits the grid into 3rds vertically
+
+    * Grid items auto-populate grid from top left to bottom right based on HTML source order
+
+    * Can use `grid-[column/row]: start/end` to define start/end lines for an item
+
+      * `grid-template-areas` uses a text-based grid map to apply grid area names to individual cells, making responsive layouts easier to design (instead of tracking numbers)
+
+        * ```css
+          .site {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: auto 1fr 3fr;
+            grid-template-areas:
+              "title title title"
+              "main header header"
+              "main siderbar footer";
+          }
+          .masthead {
+            grid-area: header;
+          }
+          .page-title {
+            grid-area: title;
+          }
+          .main-content {
+            grid-area: main;
+          }
+          ```
+
+    * Nest grids for closer control!
 
 * **CSS Frameworks**
 
