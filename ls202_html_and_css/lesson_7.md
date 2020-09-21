@@ -52,9 +52,31 @@ This final lesson discusses the process of converting a design to a finished web
 ### Summary
 ### Notes
 
-* CSS Resets
 * Working with Design Files
+  * You should be able to do the following in Photoshop to properly utilize a design file:
+    * Use the layers pallette to view the different layers in an image
+    * Use the toolbar that provides access to most of Photoshop's tools
+    * Extract assets from their layers
+    * Use the Move tool to move layers around
+    * Use the Marquee tool to extract and measure images and shapes
+    * Export images
+    * Use the Text tool to determine font characteristics
+    * Use the Eyedropper tool to measure colors
+  * To use a PNG design file:
+    * Open and view PNG files at the intended screen size
+    * Measure sizes, padding, and margins
+      * Draw out rectangular marquees to measure a component
+    * Measure colors with the help of Digital Color Meter (on Macs)
+  * Blink Comparison instructions:
+    1. Create an HTML file that does nothing more than load the PNG design file
+    2. Load the HTML in your browser
+    3. Set the width and height of your browser to precisely match the width/height of the PNG file
+    4. Create your HTML file and load it in a separate tab
+    5. Toggle your browser tabs back and forth between the files
+    6. Observe the differences between the design file and your file. Make the corrections in yours
+    7. Return to step 5 until your files match as well as possible
 * Improving your HTML and CSS
+  * 
 
 ### Vocab
 
