@@ -156,12 +156,52 @@ For now, focus on knowing how to use the following in simple projects:
 
 * **CSS Frameworks**
 
+  * The basic idea behind CSS frameworks: they create a grid system using classes, and your HTML uses those classes to handle the layout part of your site.
+  * Beyond that, they also provide "responsive design" capabilities to your site, which lets your site work well on all devices from the smallest to the largest.
+
 * **Responsive Design**
+
+  * **CSS media queries** typically define styles that change based on the current size of the browser window, letting us customize the look for phones, tablets, laptops, desktops, etc.
+
+    * ```css
+      a {
+        color: #f00;
+      }
+      
+      @media (max-width: 480px) { /* styles inside apply when screen has width 480px*/
+        a {
+          color: #06c;
+        }
+      }
+      ```
+
+    * https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+
+  * Decision to make: do we style the website as "mobile-first" or "desktop-first"?
+
+    * Mobile first starts w/ smallest screen and works up to biggest desktop, & vice-versa
+    * Each size is known as a **breakpoint**
+
+  * We can emulate different devices using Chrome's Inspector.
+
+  * How do we tell mobile devices how to properly apply their version of the CSS styles?
+
+    * ```css
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      ```
+
+    * Search for "meta viewport" on MDN for more information on what `<meta name="viewport" />` does and how to use it.
+
+  * What's the difference between a **fluid layout** and a **liquid layout**?
+
+    * **Liquid** layouts employ percentage values for widths to maintain the same width ratios for content areas as the browser widths change.
+    * **Fluid** layouts expand and collapse like a liquid layout up to a point, then become fixed once the browser width reaches a specific size.
 
 ### Vocab
 
 * **Pseudo-element**
 * **Clearfix**
 * **Block formatting context**
-* 
-
+* **CSS media query**
+* **Fluid layout**
+* **Liquid layout**
