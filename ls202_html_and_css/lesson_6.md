@@ -21,6 +21,13 @@ For now, focus on knowing how to use the following in simple projects:
 * liquid and fluid layouts
 
 ### Summary
+
+* Floated elements
+* Simple positioning
+* Liquid and fluid layouts
+* Media queries
+* How and why you need to clear floats
+
 ### Notes
 
 * **Floats**
