@@ -50,6 +50,9 @@ This final lesson discusses the process of converting a design to a finished web
 * The "blink comparison" method
 
 ### Summary
+
+This lesson covered the basics of converting a design file to a finished web page. We also discussed CSS resets and learned a bit about how to improve your HTML and CSS.
+
 ### Notes
 
 * Working with Design Files
