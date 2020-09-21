@@ -73,10 +73,12 @@ This final lesson discusses the process of converting a design to a finished web
     3. Set the width and height of your browser to precisely match the width/height of the PNG file
     4. Create your HTML file and load it in a separate tab
     5. Toggle your browser tabs back and forth between the files
-    6. Observe the differences between the design file and your file. Make the corrections in yours
+    6. Observe the differences between the design file and your file. Make the corrections in yoursU
     7. Return to step 5 until your files match as well as possible
 * Improving your HTML and CSS
-  * 
+  * Using the `role` attribute as a CSS selector
+    * Doing this allows us to loosen the coupling between our CSS and HTML-- we don't necessarily have to change the HTML or CSS each time we modify the other, since roles can select any HTML node type.
+    * https://stackoverflow.com/questions/10403138/what-is-the-purpose-of-the-role-attribute-in-html/18664038#18664038
 
 ### Vocab
 
