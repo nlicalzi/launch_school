@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  border-radius: 0px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+nav {
+  box-sizing: border-box;
+  flex: 1;
+  background-color: #464f77;
+  color: white;
+  min-width: 500px;
+  max-width: 500px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  width: 100%;
+}
+
+.todo-date {
+  margin: 0;
+  padding: 0;
+}
+
+.completed-date {
+  margin: 0;
+  padding: 0;
+}
+
+nav dd:hover {
+  background-color: rgb(57, 63, 93);
+  color: #b2b5c3;
+  width: 100%;
+}
+
+main {
+  flex: 1;
+  background-color: white;
+  color: #060606;
+  width: 75%;
+}
+
+.todo-item {
+  border-top: #e7e7e7;
+}
+
+input[type=checkbox]:checked + label {
+  color:#b3b3b3;
+  text-decoration: line-through;
+} /*This is the MDN spec for doing this*/
