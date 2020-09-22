@@ -14,7 +14,7 @@ Even though the course is not problem-solving focused, it comes with a rich set 
 
 
 
-### Syllabus
+### wSyllabus
 
 * **JavaScript Basics**
 * **Functions and Variable Scope**
