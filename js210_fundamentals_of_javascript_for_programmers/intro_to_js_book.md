@@ -1,5 +1,40 @@
 ## Launch School's Introduction to JavaScript Book Notes
 
+### Intro
+
+* JavaScript in the browser has two main purposes:
+
+  1. to programmatically alter web pages based on user actions
+     * The DOM (Document Object Model) lets you manipulate the structure and appearance of a web page
+  2. to exchange messages with a server over the network
+     1. The XHR (XMLHttpRequest) interface and the Fetch API let you communicate with a server.
+
+* Style suggestions:
+
+  * Comments start with `//
+
+  * **camelCase** for variable and function names
+
+    * Constructor functions use **PascalCase**
+
+  * `const` values should be represented with uppercase and underscore:
+
+    * ```javascript
+      const INTEREST_RATE = 0.0525;
+      ```
+
+  * All names-- variables and constants as well as functions-- should use alphabetic and numeric characters only (besides constants, which may use underscores)
+
+  * When writing a code block with curly braces, write the opening brace on the same line as the function name or conditional expression.
+
+    * ```javascript
+      function test() {
+        // do something
+      }
+      ```
+
+  * Use semicolons to terminate each logical line of code unless the line ends with `{ } :`
+
 ### The Basics
 
 * Data Types
