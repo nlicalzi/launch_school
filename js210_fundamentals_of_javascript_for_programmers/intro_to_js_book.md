@@ -34,15 +34,104 @@
       ```
 
   * Use semicolons to terminate each logical line of code unless the line ends with `{ } :`
+  
+* Run a `.js ` file from the command line w/ the Node interpreter like this: `$ node example.js`
+
+* Run JavaScript in the browser by including `<script src="example.js"></script>` in the `body` of your HTML file.
+
+  * Or by using the `Console` in Chrome's developer tools (opt + cmd + i)
+
+* Vocab:
+
+  * constructor
+  * instance method (incl. `prototype`): `Constructor.prototype.methodName()`
+  * static method: `Constructor.methodName()`
 
 ### The Basics
 
 * Data Types
+
+  * What **primitive data types** exist in JavaScript?
+
+    * `String`
+
+      * String interpolation is accomplished with backticks and wrapping the code to be evaluated in `${ }`:
+
+        * ```javascript
+          `5 plus 5 equals ${5 + 5}`; # => `5 plus 5 equals 10`
+          ```
+
+    * `Number`
+
+      * JS has a single data type for real numbers (positive, negative, floats, integers)
+
+    * `undefined`
+
+      * When a variable is not defined, its value is given by `undefined` (absence of a value)
+      * `console.log()` returns `undefined`
+
+    * `null`
+
+      * Similar to `undefined`, `null` represents the intentional absence of a value 
+      * Note-- `typeof null` returns `object`, a *mistake* made when the language was written (it is actually a primitive)
+
+    * `Boolean`
+
+  * How can we return the string representation of what data type a particular value has?
+
+    * What does the `typeof` operator return?
+
 * Operations
+
+  * `+ - / *` all behave normally
+  * `%` does remainder division, *not modulo*. Use modulo/remainder only with positives to avoid errors.
+    * Remainder operations return a positive integer when the first operand is positive, and a negative integer when the first operand is negative.
+    * Modulo operations return a positive integer when the second operand is positive, and a negative integer when the second operand is negative.
+  * `NaN` stands for "Not a Number", and `NaN === NaN # => false`
+    * Use `Number.isNaN` or `Object.is` to detect `NaN` values
+  * There is also an `Infinity` value-- such as `1 / 0 # => Infinity`
+  * Equality comparison is performed with three equals signs: `===`
+  * String concatenation is performed with `+`, performing **implicit type coercion**
+
 * Explicit Coercion
+
+  * Numbers: `Number('1')`, `parseFloat('12.f')`, `parseInt(20.44)`
+  * Strings: `String(20)`
+
 * Data Structures
+
+  * Arrays are ordered lists, consisting of square brackets `[ ]` surrounding comma-delimited values
+    * Array elements can be accessed via index `arr[2]`, indices start with `0` then increment up
+    * Attempting to access an element in an array via an index that is out of bounds will return `undefined`, not an error
+  * Objects
+    * A collection of key-value pairs (equivalent to a Python `dict` or Ruby `hash`)
+    * Can be declared using object literals: `{ dog: 'barks' }
+
 * Expressions and Return Values
+
+  * Anything that JavaScript can evaluate to a value is known as an **expression**, almost everything you write in JS is an expression.
+
 * Statements
+
+  * Statements refer to *a syntactic unit of code that expresses an action for the computer to perform.*
+
+  * What's the difference between expressions and statements?
+
+    * Expressions are generally evaluated to *produce a value*.
+
+    * Statements are generally executed to *make something happen*.
+
+    * ```markdown
+      JavaScript distinguishes expressions and statements. An expression produces a value and can be written wherever a value is expected, for example as an argument in a function call. Each of the following lines contains an expression:
+          myvar
+          3 + x
+          myfunc("a", "b")
+      Roughly, a statement performs an action. Loops and if statements are examples of statements. A program is basically a sequence of statements (we’re ignoring declarations here). Wherever JavaScript expects a statement, you can also write an expression. Such a statement is called an expression statement. The reverse does not hold: you cannot write a statement where JavaScript expects an expression. For example, an if statement cannot become the argument of a function. -- https://2ality.com/2012/09/expressions-vs-statements.html
+      ```
+
+  * Statements always evaluate as `undefined`
+
+  * Statements can be used for control flow (`break`, `if..else`, `switch`, `try...catch`), declarations (`var`, `let`, `const`), iteration (`do..while`, `for`, `for each...in`, `while`), etc.
 
 ### Variables
 
