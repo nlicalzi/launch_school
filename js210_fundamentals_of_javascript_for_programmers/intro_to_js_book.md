@@ -136,10 +136,60 @@
 ### Variables
 
 * Variables and Variable Names
+
+  * What does a JavaScript **identifier** refer to?
+    * Variable names declared by `let` and `var`
+    * Constant names declared by `const`
+    * Property names of objects
+    * Function names
+    * Function parameters
+    * Class names
+
 * Declaring and Assigning Variables
+
+  * What do we call a statement that asks the JavaScript engine to reserve space for a variable with a particular name and **initializes** it with a value?
+    * What is variable declaration?
+  * What is the preferred method in modern JavaScript of declaring a variable?
+    * What is the `let` keyword used for?
+
 * Declaring Constants
+
+  * How do we declare and initialize **constant** identifiers?
+    * What is the `const` keyword used for?
+  * What type of variable is used to store values that remain the same throughout the execution of a program, a block within the program, or a function?
+    * What are `constants` used for?
+
 * Variable Scope
+
+  * What scope do variables declared with `let` or `const` have?
+
+    * What variables have **block** scope?
+
+  * What is a **block**?
+
+    * What do we call a related set of JS statements and expressions between a pair of opening and closing curly braces?
+
+    * ```javascript
+      if (expression) { // block starts at {
+        doSomething();  // block body
+      }									// block ends here
+      ```
+
+  * Are variables declared inside a block and having block scope available from outside of that block?
+
+    * No.
+
+    * ```javascript
+      if (1 === 1) {
+        let a = 'foo'
+      }
+      
+      console.log(a); // ReferenceError: a is not defined
+      ```
+
 * A Common Gotcha
+
+  * Always declare your variables, using `let`, `const`, or `var`, because all undeclared variables have global scope. 
 
 ### Input/Output
 
