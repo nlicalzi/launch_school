@@ -216,15 +216,145 @@
 ### Functions
 
 * Using Functions
+
+  * Define a function using `function [name]() {[function_body]}`
+
+  * ```javascript
+    function say() {
+      console.log('Hi!'); // this is known as the function body
+    }
+    ```
+
+  * Arguments are passed into a function, in the spaces held for them by parameters in the function definition (same language as Ruby).
+
 * Return Values
+
+  * All JavaScript function calls/invocations evaluate to a value. By default, that value is `undefined`. 
+  * By using a `return` statement in a function, you can return a specific value that is not `undefined`
+  * Functions that always return a boolean value are called **predicates**
+
 * Default Parameters
+
+  * ```javascript
+    function say(words = 'hello') {
+      console.log(words + '!');
+    }
+    
+    say('Howdy'); // argument -> logs Howdy!
+    say(); 				// no arguments -> logs hello!
+    ```
+
 * Nested Functions
+
+  * ```javascript
+    function foo() {
+      function bar() {
+        console.log("BAR");
+      }
+      
+      bar(); // BAR
+      bar(); // BAR
+    }
+    
+    foo();
+    bar(); // ReferenceError: bar is not defined
+    ```
+
+  * The private function `bar()` gets created and destroyed each time `foo()` runs
+
 * Variable Scope
+
+  * There are two types of variables in JS based on where they're accessible
+    * **local var**: any variable initialized inside a function or block is a local variable
+    * **global var**: everything else is a global variable, and can be reassigned from within functions
+
 * Functions vs. Methods
+
+  * What is the difference between invoking a function and invoking a method?
+    * Functions are called/invoked by themselves: `printUpperCase('xyzzy');`
+    * Methods are called/invoked on variables or values: `'xyzzy'.toUpperCase();`
+
 * Mutating the Caller
+
+  * What does it mean for a method to mutate its caller?
+
+    * What do we call it when a method permanently alters the object that invoked it?
+
+  * ```javascript
+    let name = 'Pete Hanson';
+    console.log(name.toUpperCase()); // logs 'PETE HANSON'
+    console.log(name); // logs 'Pete Hanson', i.e. `toUpperCase()`` is NON-MUTATING
+    
+    let oddNumbers = [1, 3, 5, 7, 9];
+    oddNumbers.pop();
+    console.log(oddNumbers); // logs [1, 3, 5, 7], i.e. `pop()` is MUTATING
+    ```
+
+  * **Primitive values are immutable**
+
+  * **Arrays/objects are mutable**
+
+  * JS, therefore, is pass-by-value for primitives and pass-by-reference for objects and arrays.
+
 * Function Composition
+
+  * What is meant by **function composition**?
+    * What do we call the process by which JS lets us use a function call as an argument to another function?
+  * Most obvious example is passing a function as an arg. to `console.log()`: `console.log(add(5, 5))`
+
 * Three Ways to Define a Function
+
+  * **Function declaration**:
+
+    * ```javascript
+      function functionName(zeroOrMoreArguments...) {
+        // function body
+      }
+      ```
+
+  * **Function expression**:
+
+    * Any function definition that doesn't have the word `function` at the very beginning of a statement is a function expression.
+
+    * ```javascript
+      let greetPeople = function() {
+        console.log('Good Morning');
+      };
+      
+      greetPeople();
+      ```
+
+  * **Arrow function**:
+
+    * Arrow functions are similar to function expressions, but they use a different syntax (and have some other differences to be covered later).
+
+      * ```javascript
+        let greetPeople = () => console.log('Good Morning!');
+        greetPeople();
+        ```
+
+    * Return statements can be omitted only *when the function body contains one expression*
+
+      * ```javascript
+        let add = (a, b) => a + b;
+        ```
+
+    * What are two major differences between a function declaration and a function expression?
+
+    * Functions that are defined using a function expression are saved to a variable. This is possible because JS functions are **first-class functions** (meaning they can be treated like any other value-- assigned to variables, passed to other functions, returned from function calls, etc.)
+
+    * Functions that have been defined with a function declaration can be called before they are declared, while functions that have been defined using a function expression cannot.
+
 * The Call Stack
+
+  * What is **the call stack**?
+    * What do we call a mechanism for an interpreter to keep track of its place in a script that calls multiple functions?
+  * What does the call stack do?
+    * What helps JS keep track of what function is executing, as well as where execution should resume when the function returns?
+  * What is the only item on the call stack when a JS program begins/ends running?
+    * When is `main` the only item on the call stack?
+  * When are items pushed to/popped from the call stack?
+    * Each time a function is invoked it is pushed to the call stack before being popped from the stack once it returns a value.
 
 ### Flow Control
 
