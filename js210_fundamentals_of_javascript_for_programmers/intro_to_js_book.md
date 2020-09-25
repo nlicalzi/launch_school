@@ -194,8 +194,24 @@
 ### Input/Output
 
 * Command Line Output
+
+  * `console.log()` prints to `stdout`
+
 * Command Line Input
+
+  * Node.js has an API called **readline** that lets JS programs read input from the command line
+
+    * `npm install readline-sync --save` installs package to `./node_modules`
+
+    * ```javascript
+      let rlSync = require('readline-sync'); // Treat library as an object
+      let name = rlSync.question("What's your name?\n");
+      console.log(`Good Morning, ${name}!`);
+      ```
+
 * Input in the Browser
+
+  * `prompt()` and popups
 
 ### Functions
 
