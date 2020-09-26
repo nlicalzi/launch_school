@@ -1,3 +1,5 @@
+
+
 ## Launch School's Introduction to JavaScript Book Notes
 
 ### Intro
@@ -359,12 +361,92 @@
 ### Flow Control
 
 * Conditionals
+
+  * Built using a combination of `if/else` statements and comparison/logical operators: 
+
+  * ```javascript
+    if (condition1) {
+      // block x;
+    } else if (condition2) {
+      // block y;
+    } else {
+      // block z;
+    }
+    ```
+
 * Comparisons
+
+  * Comparison operators return a boolean value: `true` or `false`
+
+  * Comparison operators: `< > <= >= == === != !==`
+    * `===`: the **strict equality operator** or the **identity operator**
+      * Returns `true` when the operands have the same type *and* value, else `false`
+      * For strict inequality, use `!==`
+    * `==`: the **non-strict equality operator** or the **loose equality operator** 
+      * If operands have different types, `==` coerces one of the operands to the other's type
+      * For non-strict inequality, use `!=`
+      * Non-strict in/equality operators are *to be avoided*, mostly. 
+
 * Logical Operators
+
+  * `&& (and) || (or) ! (not)`
+  * The double-bang operator can be used to convert something to its boolean value `!!`
+  * The return value of an `&&` or `||` expression is the value of the **operand evaluated last**
+    * `3 && 'foo'` => `'foo'`, while `0 && 'foo'` => `0`
+    * `3 || 'foo'` => `3`, while `0 || 'foo'` => `'foo'`
+
 * Short Circuits
+
+  * Both `&&` and `||` use **short circuit evaluation** to evaluate their operands
+    * If the left operand in a `&&` expression is false, the second expression isn't evaluated
+    * If the left operand in a `||` expression is true, the second expression isn't evaluated
+
 * Truthiness
+
+  * What values are **falsey** (evaluate to false in a boolean context) in JS?
+    * `false`
+    * `0`, `-0`, `0n`
+    * `''` (empty string)
+    * `undefined`
+    * `null`
+    * `NaN`
+
+* Operator Precedence
+
+  * From highest precendence to lowest:
+    * `<= < > >=`: comparison
+    * `=== !==`: equality
+    * `&&`: logical AND
+    * `||`: logical OR
+  * However, we can use parentheses to override the precedence using the usual algebraic order
+
 * The Ternary Operator
+
+  * The structure of a ternary operator is an expression, so it has an advantage over an `if/else` statement because it can be used to return a value
+  * Format: `1 == 1 ? 'this is true' : 'this is not true'`
+
 * Switch Statement
+
+  * `switch` statements use the reserved words `switch`, `case`, `default`, and `break`
+
+  * ```javascript
+    let a = 5;
+    
+    switch (a) {
+      case 5:
+        console.log('a is 5');
+        break; // without this break statement, execution continues to next clause
+      case 6:
+        console.log('a is 6');
+        break; // without this break statement, execution continues to next clause
+      default:
+        console.log('a is neither 5, nor 6');
+        break; // without this break statement, execution continues to next clause
+    }
+    // logs "a is 5" to the console
+    ```
+
+  * 
 
 ### Loops & Iterating
 
