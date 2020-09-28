@@ -446,8 +446,6 @@
     // logs "a is 5" to the console
     ```
 
-  * 
-
 ### Loops & Iterating
 
 * `while` Loops
