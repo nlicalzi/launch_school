@@ -180,6 +180,17 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Implicit Primitive Type Coercions
 
+  * Avoid automatic type coercions as much as possible in your own code.
+  * The unary plus operator converts a value into a number: `+('123')`
+  * The binary plus operator is addition for numbers and concatenation for strings
+    * If an operand is a string the other will be coerced to a string
+    * Otherwise both operands are coerced to numbers
+      * `undefined` to `NaN`, `null` and `false` to `0`, `true` to `1`
+  * The strict in/equality operators only return true if both operands have the same value and type
+    * The loose in/equality operators will coerce operands to the same type, avoid using them
+  * The relational operators `< <= > >=` will perform string comparison if both are strings, otherwise both operands are converted to numbers before being compared
+  * **Always use explicit type conversions and strict equality operators**
+
 * Conditionals
 
 * Looping and Iteration
