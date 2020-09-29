@@ -100,6 +100,23 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Variables
 
+  * When possible, use `let` or `const` to declare a variable instead of `var` for scoping purposes
+
+  * Variables can be initialized without a value or have their declaration combined with an **initializer**
+
+    * ```javascript
+      let number; // variable declared, default value is undefined
+      number = 3; // THIS IS ASSIGNMENT
+      
+      // VERSUS
+      
+      let number = 3; // THIS IS NOT ASSIGNMENT, it's an initializer
+      ```
+
+  * `const` variables must be declared with an initializer, since they can't be reassigned
+
+  * JS is dynamically typed-- variables may refer to any data type and be reassigned to any other
+
 * Operators
 
 * Expressions and Statements
