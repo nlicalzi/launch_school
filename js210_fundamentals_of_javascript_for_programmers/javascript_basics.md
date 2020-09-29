@@ -72,6 +72,30 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * More on Strings
 
+  * Special Characters:
+
+    * | Code | Character       |
+      | :--- | :-------------- |
+      | `\n` | New line        |
+      | `\t` | Tab             |
+      | `\r` | Carriage return |
+      | `\v` | Vertical tab    |
+      | `\b` | Backspace       |
+
+  * String concatenation is performed using  `+`
+
+  * Character Access
+
+    * ```javascript
+      'hello'.charAt(1); // "e"
+      
+      // OR
+      
+      'hello'[1] // "e"
+      ```
+
+    * Note: bracket notation in JS is an operator; not syntactic sugar for a method like in Ruby
+
 * Primitive Values are Immutable
 
 * Variables
