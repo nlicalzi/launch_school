@@ -665,16 +665,136 @@
       fruits.slice(1, 3) // => ['orange', 'banana']
       ```
 
-    * 
-
 ### Objects
 
 * What are Objects?
+
+  * Objects store a collection of key-value pairs (aka properties) (think of a parsed JSON string)
+
+  * An object's keys are strings, but their corresponding values can be any type (even other objects)
+
+  * We can create objects using the **object literal** syntax:
+
+    * ```javascript
+      let person = {
+        name: 'Jane',
+        age: 37,
+        hobbies: ['photography', 'genealogy'],
+      };
+      // OR
+      let person = { name: 'Jane', age: 37, hobbies: ['photography', 'genealogy'] }
+      ```
+
+  * Object values are accessed with dot notation (`person.name`) or bracket notation `person['name']`
+
+    * We can create properties with either: `person.height = '5 ft'`, `person['gender'] = 'female'`
+
+  * What keyword can we use to remove a property from an existing object, returning true if successful?
+
+    * `delete person.age` // `delete person['gender']`
+
+  * Objects can also be declared with `const`, preventing the variable from being reassigned (or pointing) to another location in memory, but allowing the properties to be modified
+
+    * Need to use `Object.freeze` to freeze the properties as well: `const MyObj = Object.freeze({ foo: "bar", qux: "xyz" })`
+
 * Objects vs. Primitives
+
+  * JS has two categories of data types: **primitives** and **objects**
+    * Primitives are *immutable* (or **atomic**) and include: number, string, boolean, null, undefined
+    * Objects are *mutable* and include: simple objects, arrays, date objects, functions
+
 * Prototypes
+
+  * Objects can **inherit** from other objects.
+
+  * If object `a` inherits from object `b`, we say that `b` is the **prototype** of `a`
+
+  * The static method `Object.create` allows us to create a new object (child) inheriting from an existing one (parent)
+
+    * ```javascript
+      let bob = { name: 'Bob', age: 22 };
+      let studentBob = Object.create(bob);
+      studentBob.year = 'Senior';
+      
+      studentBob.name // => 'Bob'
+      ```
+
 * Iteration
+
+  * We are able to iterate over an object's properties in several ways:
+
+    * `for/in` loop
+
+      * ```javascript
+        let person = { name: 'Bob', age: 30, height: '6 ft' };
+        
+        for (let prop in person) {
+          console.log(person[prop]);
+        } // => logs 'Bob', '30', '6 ft'
+        ```
+
+    * `hasOwnProperty` allows us to limit iteration to an object's own properties (i.e. not inherited)
+
+      * ```javascript
+        let obj1 = { a: 1, b: 2 };
+        let obj2 = Object.create(obj1);
+        obj2.c = 3;
+        obj2.d = 4;
+        
+        for (let prop in obj2) {
+          if (obj2.hasOwnProperty(prop)) {
+            console.log(obj2[prop]);
+          }
+        } // => logs '3', '4'
+        ```
+
+    * `Object.keys` returns an object's keys as an array that we can iterate over
+
+      * ```javascript
+        let person = { name: 'Bob', age: 30, height: '6 ft' };
+        
+        let personKeys = Object.keys(person); // returns ['name', 'age', 'height']
+        
+        personKeys.forEach(key => console.log(person[key]));
+        // => 'Bob', '30', '6 ft'
+        ```
+
 * Common Operations
+
+  * `Object.values` extracts the values from every own property in an object to an array
+
+    * ```javascript
+      let person = { name: 'Bob', age: 30, height: '6 ft' };
+      let personValues = Object.values(person);
+      console.log(personValues); // logs ['Bob', 30, '6 ft']
+      ```
+
+  * `Object.entries` returns an array of nested arrays, each containing a single k/v pair
+
+    * ```javascript
+      let person = { name: 'Bob', age: 30, height: '6 ft' };
+      console.log(Object.entries(person));
+      // logs [['name', 'Bob'], ['age', 30], ['height', '6 ft']]
+      ```
+
+  * `Object.assign` merges two or more objects into a single object (mutating the first object passed)
+
+    * ```javascript
+      let objA = { a: 'foo' };
+      let objB = { b: 'bar' };
+      Object.assign({}, objA, objB); 	// => { a: 'foo', b: 'bar' }
+      ```
+
 * Objects vs. Arrays
+
+  * How do we choose between using an object or an array?
+    * Do the individual values have names or labels?
+      * If yes, use an object
+      * If the data doesn't have a natural label, an array should suffice
+    * Does order matter?
+      * If yes, use an array
+    * Do I need a *stack* or *queue* structure?
+      * Arrays are good at mimicking simple "last-in-first-out" stacks and "first-in-first-out" queues
 
 ### More Stuff
 
