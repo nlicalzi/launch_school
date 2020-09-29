@@ -558,12 +558,114 @@
 ### Arrays
 
 * What is an Array?
+
+  * An array is a zero-indexed, ordered list of elements, each having a value of any type (heterogeneity)
+
 * Modifying Arrays
+
+  * It is possible to add and replace elements in an array with `[]` and the assignment operator `=`
+
+  * ```javascript
+    let array = [1, 2, 3];
+    array[1] = 4; // assignment by element index
+    console.log(array); // => [1, 4, 3]
+    ```
+
+  * ```javascript
+    array[array.length] = 10;
+    console.log(array); // => [1, 4, 3, 10]
+    ```
+
+  * The elements in a `const` array can be modified (see: variables as pointers), but `Object.freeze` will make the array immutable (working only one level deep in the array)
+
+  * `Array.push()` adds one or more elements to the end of an array (returns the length of the array)
+
+  * `Array.concat()` is similar to `push`, but it returns a new array (not mutating the caller)
+
+  * `Array.pop` removes and returns the last element of the caller array
+
+  * `Array.splice()` lets you remove one or more elements from anywhere in an array
+
 * Iteration Methods
+
+  * What is a callback function?
+
+    * What do we call a function that you pass to another function as an argument?
+
+  * `Array.forEach()` provides a simple way to iterate over arrays
+
+    * `forEach` is called on an array and requires the passing of a **callback** function as an argument 
+
+    * ```javascript
+      let array = [1, 2, 3];
+      array.forEach(function (num) {
+        console.log(num);
+      }); // => returns undefined, outputs 1 \n 2 \n 3
+      
+      // SAME AS
+      array.forEach(num => console.log(num));
+      // like Ruby arr.each { |num| puts num }
+      ```
+
+  * `Array.map()` transforms an array's elements, returning the new modified array
+
+    * ```javascript
+      let numbers = [1, 2, 3, 4];
+      let squares = numbers.map(num => num * num);
+      console.log(squares) // => [1, 4, 9, 16]
+      ```
+
+  * `Array.filter()` returns a new array including all elements from the calling array for which the callback returns a truthy value.
+
+    * ```javascript
+      let numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+      numbers.filter(num => num > 4) // => [5, 6, 7, 8]
+      ```
+
+  * `Array.reduce()` takes two arguments: a callback function and a value initializing an accumulator
+
+    * ```javascript
+      let arr = [2, 3, 5, 7];
+      arr.reduce((accumulator, element) => accumulator + element, 0) // => 17
+      ```
+
 * Arrays Can Be Odd
+
+  * Array indexes start at `0`
+  * `Array.length` returns an integer that is `1` greater than the highest index position in the array
+  * Arrays are objects
+    * `typeof arr` returns `object`, use the boolean predicate `Array.isArray` instead
+  * If you change an array's `length` to a new, smaller value the *array gets truncated*
+  * If you change an array's `length` property to a new, larger value, the array expands to the new size.
+    * The new elements **do not get initialized**, leading to some potentially strange behavior
+  * Since arrays are objects (like JSON), you can add properties using negative or non-numeric indices
+    * `arr["cat"] = 'Fluffy'` // `arr[-1] = 'negative'`
+    * Only index values count toward array length, but all elements/properties show up as keys
+  * Since arrays are objects, you can use the `Object.keys` method to return an array's keys
+
 * Nested Arrays
+
+  * Arrays can contain anything, even other nested arrays
+
 * Array Equality
+
+  * JS treats two arrays/objects as equal when they occupy the same spot in memory
+    * See: variables as pointers
+
 * Other Array Methods
+
+  * `Array.includes()` determines whether an array includes a given element
+
+  * `Array.sort()` returns a sorted array, opposite of `Array.reverse()`
+
+  * `Array.slice()` extracts and returns a portion of an array
+
+    * ```javascript
+      let fruits = ['mango', 'orange', 'banana', 'pear', 'apple']
+      fruits.slice(1, 3) // => ['orange', 'banana']
+      ```
+
+    * 
 
 ### Objects
 
