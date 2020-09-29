@@ -242,5 +242,47 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Looping and Iteration
 
+  * A `while` loop evaluates a condition and executes the loop body statement if it is is truthy
+
+    * ```javascript
+      let counter = 0;
+      let limit = 10;
+      
+      while (counter < limit) {
+        console.log(counter);
+        counter += 2;
+      }
+      ```
+
+    * The loop will run infinitely if it's not given a condition that can turn falsey
+
+  * `break` statements allow for immediate exiting from a loop
+
+  * `continue` statements skip the current iteration of a loop and return to the top of the loop
+
+  * A `do...while` loop is like a while loop but it is guaranteed to execute at least once (the initial `do`)
+
+  * A `for` loop combines setting the initial state, evaluating a condition, and making a change
+
+    * ```javascript
+      for (initialExpression; condition; incrementExpression) {
+        // statements
+      }
+      ```
+
+    * ```javascript
+      for (let i = 0; i < 10; i += 1) {
+        console.log(i);
+      }
+      ```
+
+    * Execution flow:
+
+      1. Execute the initialization statement (may include variable declarations)
+      2. Evaluate the condition, terminating the loop if the condition is falsy
+      3. Execute the body of the loop
+      4. Execute the increment expression
+      5. Return to step 2
+
 ### Vocab
 
