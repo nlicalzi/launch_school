@@ -22,21 +22,59 @@ This course is an Introduction to JavaScript for those who have already programm
   * Or use a tool like Babel to transpile modern JS to run in older browsers:
     * https://babeljs.io/
   * Chrome generally adopts new features fastest, then Firefox then MSFT.
+  
 * Resources
   * Launch School's [Intro to Programming with JavaScript](https://launchschool.com/books/javascript) book
   * MDN's [JavaScript documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  
 * Running Your Code
+
+  * Use either of the two options below in an HTML file:
+
+    * ```html
+      <body>
+        <script>
+          console.log('I run automatically!');
+        </script>
+      </body>
+      
+      <!-- OR -->
+      
+      <script src="my_javascript.js"></script>
+      
+      ```
+
 * Code Style
+
+  * Variable names should start with a lowercase letter
+  * Variables with multiple words in their name should use camelCase
+  * Constants use SCREAMING_SNAKE_CASE
+  * Function names use camelCase, except constructor functions which use PascalCase
+  * Declare constants at the top of your program to avoid repetition/make changes easier
+    * e.g. declare `const NUMBER_CARDS_IN_HAND = 2;` at the top for a game of Texas Hold'em
+  * Indent with 2 spaces, not tabs
+  * Use one `let` declaration per variable instead of multiple assignment
+
 * Data Types
+
 * More on Strings
+
 * Primitive Values are Immutable
+
 * Variables
+
 * Operators
+
 * Expressions and Statements
+
 * Input and Output
+
 * Explicit Primitive Type Coercions
+
 * Implicit Primitive Type Coercions
+
 * Conditionals
+
 * Looping and Iteration
 
 ### Vocab
