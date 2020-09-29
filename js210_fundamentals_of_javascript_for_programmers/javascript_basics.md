@@ -152,6 +152,16 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Input and Output
 
+  * The `prompt` method can be used to get input text from a user
+
+    * ```javascript
+      let name = prompt('What is your name?');
+      ```
+
+  * `alert` displays a dialog with a message and an `OK` button
+
+  * `console.log` outputs a message to the JS console
+
 * Explicit Primitive Type Coercions
 
 * Implicit Primitive Type Coercions
