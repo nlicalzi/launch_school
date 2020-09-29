@@ -129,6 +129,27 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Expressions and Statements
 
+  * An **expression** is any valid code that resolves to a value.
+
+    * Most common types: arithmetic (evaluate to a number), string (evaluate to a string), or logical (resolves to a boolean)
+
+  * Using `++a / a++` or `--a / a--` doesn't make a difference as a standalone expression
+
+    * ```javascript
+      let a = 1;
+      a++; // 2
+      ++a; // 3
+      ```
+
+  * But results differ if the expression is part of a more complicated one: `b = a++;` vs. `b = ++a;`
+
+    * If the operator appears after the operand, the expression returns the original value
+    * If the operator appears before the operand, the expression returns the modified value
+
+  * JS uses short-circuit evaluation to evaluate expressions containing `&&` or `||`
+
+  * A **statement** evaluated to `undefined`, and typically controls execution of a program
+
 * Input and Output
 
 * Explicit Primitive Type Coercions
