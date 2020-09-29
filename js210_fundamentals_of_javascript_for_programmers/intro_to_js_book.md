@@ -449,10 +449,111 @@
 ### Loops & Iterating
 
 * `while` Loops
+
+  * ```javascript
+    let counter = 1;
+    while (counter <= 10) {
+      console.log(counter);
+      counter++;
+    }
+    ```
+
+  * Made possible by the increment operator (`++`) and decrement operator (`--`)
+
+    * Increment operator can come either before (pre-increment operator: `++x`, returns new value) or after the variable (post-increment operator: `x++`, returns original value
+    * Many developers suggest avoiding these, in favor of `+=` or `-=` instead
+
+  * Looping over arrays with `while`
+
+    * ```javascript
+      let names = ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor'];
+      let upperNames = [];
+      let index = 0;
+      
+      while (index < names.length) {
+        let upperCaseName = names[index].toUpperCase();
+        upperNames.push(upperCaseName);
+        index += 1;
+      }
+      
+      console.log(upperNames); // ['CHRIS', 'KEVIN', etc...]
+      ```
+
+    * Do/`while` loops
+
+      * ```javascript
+        let answer;
+        do {
+          answer = prompt("Do you want to do that again?");
+        } while (answer === 'y');
+        ```
+
 * `for` Loops
+
+  * ```javascript
+    for (initialization; condition; increment) {
+      // loop body
+    }
+    ```
+
+  * ```javascript
+    let names = ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor'];
+    let upperNames = [];
+    
+    for (let index = 0; index < names.length; index +=1) {
+      let upperCaseName = names[index].toUpperCase();
+      upperNames.push(upperCaseName);
+    }
+    
+    console.log(upperNames); // ['CHRIS', 'KEVIN', etc...]
+    ```
+
 * Controlling Loops
+
+  * JS uses the keywords `continue` and `break` to provide more control over loops:
+
+    * `continue` lets you start a new iteration of the loop (skipping the current one)
+
+      * As an alternative to using `continue` in a loop, we can use a negated `if` conditional:
+
+        * ```javascript
+          if (names[index] === 'Naveed') continue;
+          // VERSUS
+          if (names[index] !== 'Naveed') { ... }
+          ```
+
+    * `break` lets you terminate a loop early (skip all remaining iterations)
+
 * Array Iteration
+
+  * `Array.forEach()` is an **array looping abstraction**
+
+    * ```javascript
+      let names = ['Chris', 'Kevin', 'Naveed', 'Pete', 'Victor'];
+      
+      names.forEach(function (name) { // passing an anonymous function to forEach()
+        console.log(name);
+      });
+      
+      // SAME AS
+      names.forEach(name => console.log(name));
+      ```
+
 * Recursion
+
+  * Recursive functions are functions that call themselves.
+
+  * Every recursive function has a **baseline condition** thatmarks the end of the recursion (`number < 2` in our Fibonacci solution below), and some code that recursively calls the function with a new argument.
+
+  * ```javascript
+    function fibonacci(number) {
+      if (number < 2) return number; // 0 if number is 0, 1 if number is 1
+      return fibonacci(number - 1) + fibonacci(number - 2);
+    }
+    
+    console.log(fibonacci(6)); // should log 8
+    console.log(fibonacci(20)); // should log 6765
+    ```
 
 ### Arrays
 
