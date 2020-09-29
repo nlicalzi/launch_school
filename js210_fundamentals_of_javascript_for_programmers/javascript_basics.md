@@ -186,12 +186,59 @@ This course is an Introduction to JavaScript for those who have already programm
     * If an operand is a string the other will be coerced to a string
     * Otherwise both operands are coerced to numbers
       * `undefined` to `NaN`, `null` and `false` to `0`, `true` to `1`
+  * Other arithmetic operators `- * / %` are only defined for numbers, JS will convert operands
   * The strict in/equality operators only return true if both operands have the same value and type
     * The loose in/equality operators will coerce operands to the same type, avoid using them
   * The relational operators `< <= > >=` will perform string comparison if both are strings, otherwise both operands are converted to numbers before being compared
   * **Always use explicit type conversions and strict equality operators**
 
 * Conditionals
+
+  * JS supports two conditional statements: `if...else` and `switch`
+
+    * `if...else`
+
+      * ```javascript
+        if (condition1) {
+          // statements
+        } else if (condition2) {
+          // statements
+        } else {
+          // statements
+        }
+        ```
+
+    * `switch`
+
+      * Use `break` statements to prevent execution "falling through" to subsequent case branches
+
+      * Provide a `default` clause that executes if none of the case branch conditionals are truthy
+
+      * ```javascript
+        let reaction = 'negative';
+        
+        switch (reaction) {
+          case 'positive':
+            console.log('The sentiment of the market is positive');
+            break;
+          case 'negative':
+            console.log('The sentiment of the market is negative');
+            break;
+          default: 
+            console.log('The market has not reacted enough');
+        }
+        ```
+
+  * JS will use the truthiness of an expression in an `if` statement to determine what block to execute
+
+    * What are the falsey values in JS?
+      * `false`, `null`, `undefined`, `0`, `NaN`, `''`
+    * Are empty objects or arrays truthy or false in JS?
+      * Truthy.
+
+  * What is the best way to compare a value with `NaN`?
+
+    * Use `Number.isNaN(value)` or `Object.is(value, NaN)`
 
 * Looping and Iteration
 
