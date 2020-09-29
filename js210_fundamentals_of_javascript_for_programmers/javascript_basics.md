@@ -164,6 +164,20 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Explicit Primitive Type Coercions
 
+  * We can use `Number ` to coerce a string to a number or return `NaN`: `Number('1')`
+    * `parseInt` and `parseFloat` can coerce a string to specific formats of number
+    * Note: `parseInt` takes an optional `radix` argument which sets the base for the number, it's recommended to always specify the parameter for clarity and predictability (use 10)
+  * How can we convert a number to a string?
+    * We can use `String` to coerce a number to its string representation: `String(123);`
+    * We can also call the `toString` method on numbers: `(123).toString();`
+  * How can we convert a boolean to a string?
+    * `String(true);`
+    * `true.toString();`
+  * How can we convert a string to a boolean?
+    * Use comparison: `str === 'true';` or `str === 'false';`
+  * How can we convert values to boolean based on their truthiness?
+    * Use either the double bang `!!` operator or `Boolean(val)`
+
 * Implicit Primitive Type Coercions
 
 * Conditionals
