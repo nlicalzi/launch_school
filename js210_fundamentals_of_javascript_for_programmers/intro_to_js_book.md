@@ -799,10 +799,102 @@
 ### More Stuff
 
 * Variables as Pointers
+
+  * Variables point to/reference objects in memory
+  * Primitives are immutable and passed by value, while objects are mutable and passed by reference
+  * Reassignment is non-mutating, but index-based reassignment in an array is mutating
+
 * Method Chaining
+
+  * Methods can be called on the return value of other methods (comparable to function composition)
+
 * Regex
+
+  * ```javascript
+    /o/.test('bobcat') 			// => true
+    "bobcat".match(/bct/g) 	// => ['b', 'b', 'c', 't']
+    "bobcat".match(/bct/) 	// => [ 'b', index: 0, input: 'bobcat', groups: undefined ]
+    ```
+
+  * The `match` method for strings returns more detailed information than `Regex.test`
+
+    * When called without a flag, `match` returns extra info:
+      *  `index`: the position in string where the match begins
+      *  `input`: the original string
+      * `groups`: used for named groups
+    * the `/g` flag (global match) returns an array containing each instance of a matching substring
+    * `match` returns `null` if a match doesn't occur-- a falsy value well suited for conditionals
+
 * The Math Object
+
+  * `Math.sqrt()`
+  * `Math.PI`
+
 * Dates
+
+  * ```javascript
+    let date = new Date('December 25, 2012')l
+    date.getDay() // => 2 (Tuesday, Sunday is 0)
+    ```
+
 * Exceptions
+
+  * JS **raises an error** or **throws an exception** when an error isn't silent (i.e. returns `NaN`/`null`, etc)
+
+  * We can use `try/catch` for **exception handling**
+
+    * ```javascript
+      try {
+        // operation that may produce an error
+      } catch (exception) {
+        // what to do if error occurs
+        // perhaps log it
+      } finally {
+        // optional: executes even if an exception occurs
+      }
+      ```
+
+    * ```javascript
+      let names = ['bob', 'joe', 'steve', undefined, 'frank'];
+      
+      names.forEach(name => {
+        try {
+          console.log(`${name}'s name has ${name.length} letters in it.`);
+        } catch (exception) {
+          console.og('Something went wrong');
+        }
+      });
+      
+      // Log Output
+      // bob's name has 3 letters in it.
+      // joe's name has 3 letters in it.
+      // steve's name has 5 letters in it.
+      // Something went wrong
+      // frank's name has 5 letters in it.
+      ```
+
+  * We can also raise **custom exceptions** using the `throw` keyword
+
+    * ```javascript
+      function foo(number) {
+        if (typeof number !== "number") {
+          throw new TypeError("expected a number");
+        }
+        
+        // handle case where the argument really is a number
+      }
+      ```
+
+  * `SyntaxError`s occur when the code can't be handled as valid JS, and are detected before execution
+
 * Stack Traces
+
+  * **Stack traces** report the type of error that occured, where it occured, and how it got there.
+
 * ES6 and Beyond
+
+  * Many key features were introduced in **ES6** / **ES2015**
+    * Block Scopes
+    * `let` and `const`
+    * Arrow functions (to solve the **lost execution context**/ **context loss** problem)
+  * Programs like **Babel** let us write modern code then translate it to function in previous versions of JS
