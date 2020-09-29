@@ -57,6 +57,19 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Data Types
 
+  * Primitives:
+    * `number`
+      * All numbers are represented by a floating point systen, use the smallest possible relevant unit instead of fractional numbers to avoid errors (`¢` instead of `$`, `s` instead of `h`)
+      * `Infinity`, `-Infinity`, `NaN` are special number values
+    * `boolean`
+    * `string`
+    * `null` (`typeof null` returns `object` but this is a bug)
+    * `undefined`
+    * `symbols`
+    * `big integers`
+  * Compound data type:
+    * `object` (incl. arrays)
+
 * More on Strings
 
 * Primitive Values are Immutable
