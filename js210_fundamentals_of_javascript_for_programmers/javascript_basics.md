@@ -119,6 +119,14 @@ This course is an Introduction to JavaScript for those who have already programm
 
 * Operators
 
+  * Arithmetic operators: `+ - / * %` (this is a remainder, NOT a modulo)
+  * Assignment operator: `=`
+    * Compound assignment operators: `+= -= *= /= %=`
+  * Comparison operators: `== != === !== > >= < <=`
+    * Default to using `=== !==` (strict in/equality) instead of the other forms (loose in/equality)
+  * String operators: `< <= > >=` for by-character comparison, `+ +=` for concatenation
+  * Logical operators: `&& || !`
+
 * Expressions and Statements
 
 * Input and Output
