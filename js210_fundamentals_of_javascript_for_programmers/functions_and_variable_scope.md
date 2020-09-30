@@ -26,7 +26,12 @@
 
 * Function Invocations and Arguments
 
-  * 
+  * What is the most common/standard way to invoke a function in JS?
+    * By appending `()` to its name: e.g. `startle()`
+  * Function names in JS are just local variables that happen to have a function as a value.
+  * What happens in JS when we call a function with too few arguments?
+    * Calling a function with too few arguments **does not raise an error** in JS.
+    * Within a function, an argument that wasn't provided in the call will have the value `undefined`
 
 * Nested Functions
 
