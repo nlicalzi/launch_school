@@ -35,7 +35,17 @@
 
 * Nested Functions
 
-  * 
+  * You can nest functions inside other functions:
+
+  * ```javascript
+    function circumference(radius) {
+      function double(number) {			// nested function declaration
+        return 2 * number;
+      }
+      
+      return 3.14 * double(radius); // call the nested function
+    }
+    ```
 
 * Functional Scopes and Lexical Scoping
 
