@@ -35,6 +35,8 @@
 
 * Nested Functions
 
+  * 
+
 * Functional Scopes and Lexical Scoping
 
 * Function Declarations and Function Expressions
