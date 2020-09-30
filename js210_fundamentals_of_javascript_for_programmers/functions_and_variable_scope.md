@@ -70,6 +70,54 @@
 
 * Function Declarations and Function Expressions
 
+  * A **function declaration** (aka "function statement") defines a variable whose type is `function` and that obeys general scoping rules for variables by using the keyword `function` before the function name.
+
+    * ```javascript
+      function hello() {
+        return 'hello world!';
+      }
+      ```
+
+  * A **function expression** defines a function as part of a larger expression syntax (like variable assignment), and is typically used with anonymous functions.
+
+    * ```javascript
+      let hello = function () {
+        return 'hello world!';
+      }
+      ```
+
+  * It is possible to name function expressions, making the name available within the function and this is useful for debugging and recursion
+
+    * ```javascript
+      let hello = function foo() {
+        console.log(typeof foo);
+      };
+      
+      hello(); // => logs 'function'
+      foo(); // Uncaught ReferenceError: foo is not defined
+      ```
+
+  * **Arrow functions** are a shorthand way to write function expressions.
+
+    * Arrow functions are useful as **callback functions** (functions passed to other functions).
+
+    * ```javascript
+      // plain arrow function
+      const multiply = (a, b) => a * b;
+      
+      // callback form
+      [1, 2, 3].map(element => 2 * element); // returns [2, 4, 6]
+      ```
+
+  * How can we differentiate between a function declaration and a named function expression?
+
+    * If a statement starts with the keyword `function`, it's a declaration; otherwise it's an expression.
+
+  * When should we use each type of function?
+
+    * Use arrow functions for callbacks.
+    * Pick a primary form between function declarations or function expressions for other functions.
+
 * Hoisting
 
 * Closures
