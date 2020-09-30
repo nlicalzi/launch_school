@@ -49,6 +49,25 @@
 
 * Functional Scopes and Lexical Scoping
 
+  * In JS, every function or block creates a new variable scope.
+  * Types of scope:
+    * **Global Scope**: small JS programs with no functions or blocks exist entirely in the global scope
+    * **Local Scope**: both function and block scope are also called local scopes
+      * **Function Scope**: functions create a new function (inner/local) scope, and the code within an inner scope an access any variables in the same or surrounding outer scopes
+      * **Block Scope**: as with function scope, the code inside a block scope can access any variables declared in the surrounding (outer) scope(s).
+  * JS uses **lexical scoping** to resolve variables: using the structure of the code to determine scope.
+    * Code in a lower scope can **shadow** a variable with the same name in a higher scope.
+  * There are a number of ways to create a variable in the current scope:
+    * Use the `let` or `const` keywords
+    * Use the `var` keyword
+    * Define parameters for a function- each parameter is a local variable
+    * A function declaration creates a variable with the same name as the function
+    * A class declaration creates a variable with the same name as the class
+  * Why do we declare variables using `let` or `const` as opposed to without those keywords?
+    * How do we ensure that new variables we create are properly scoped (don't have global scope)?
+  * What does JS do if it can't find a variable anywhere in the scope hierarchy?
+    * When does JS throw a `ReferenceError` exception?
+
 * Function Declarations and Function Expressions
 
 * Hoisting
