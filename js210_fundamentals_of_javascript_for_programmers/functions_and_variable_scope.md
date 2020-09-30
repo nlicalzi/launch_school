@@ -120,6 +120,80 @@
 
 * Hoisting
 
+  * What are the two main phases in which JS engines operate?
+
+    * A **creation phase** and an **execution phase**.
+
+  * What occurs during the creation phase of a JS engine's operation?
+
+    * The engine finds all of the variable, function, and class *declarations*, **hoisting** them to the top of their respective functions or blocks a.k.a their defined scope. (This is a bit imprecise: what  happens is that they're loaded into memory, the code doesn't actually physically move.)
+
+  * What occurs during the execution phase of a JS engine's operation?
+
+    * The program runs code line by line.
+
+  * What is **hoisting**, in the context of JS?
+
+    * What do we call it when the JS engine finds all of the variable, function, and class declarations in a program and moves them to the top of their defined scope (their respective functions or blocks)?
+
+  * What is the **temporal dead zone** in the context of JS?
+
+    * Where do unset `let` or `const` variables go after hoisting, in the context of JS execution?
+
+  * What are the effects of hoisting on `let`, `const`, and `var` variables?
+
+    * `var` variables are assigned an initial value of `undefined` when they are hoisted.
+    * `let` and `const` variables are left in an "unset" state, or stuck in the "temporal dead zone"
+      * `Uncaught ReferenceError: Cannot access 'foo' before initialization`
+
+  * What are the hoisting rules for function expressions?
+
+    * Since function expressions often involve assigning a function to a declared variable, they follow the hoisting rules for variable declarations.
+
+  * What best practices do we have to avoid hoisting confusion?
+
+    * Whenever possible, use `let` or `const` instead of `var` to avoid confusion
+
+    * If you must use `var`, declare all of your variables at the top of the scope
+
+      * ```javascript
+        function foo() {
+          var a = 1;
+          var b = 'hello';
+          var c;
+          // ...
+        }
+        ```
+
+    * If you can use `let` and `const`, declare them as close to their first usage as possible
+
+      * ```javascript
+        function foo(bar) {
+          console.log("Hello world!");
+          
+          let result;
+          if (bar) {
+            let squaredBar = bar * bar;
+            result = squaredBar + bar;
+          } else {
+            result = "bar hasn't been set";
+          }
+          
+          return result;
+        }
+        
+        console.log(foo(3)); 					// 12
+        console.log(foo(undefined));  // bar hasn't been set
+        ```
+
+    * Declare functions before calling them
+
+      * ```javascript
+        function foo() {
+          return 'hello';
+        }
+        ```
+
 * Closures
 
 ### Vocab
