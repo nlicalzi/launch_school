@@ -194,6 +194,108 @@
         }
         ```
 
+  * **HOISTING PRACTICE PROBLEMS**
+
+    * ```javascript
+      function hello() {
+        a = 'hello';
+        console.log(a);
+        
+        if (false) {
+          var a = 'hello again';
+        }
+      }
+      
+      hello();				// Why does this log 'hello'
+      console.log(a); // Why does this throw an Uncaught ReferenceError: a is not defined?
+      
+      // MORE: https://launchschool.com/lessons/7cd4abf4/assignments/1d43f233
+      ```
+
+    * ```javascript
+      // How is this different from the above code?
+      function hello() {
+        a = 'hello';
+        console.log(a);
+      
+        if (false) {
+          let a = 'hello again';
+        }
+      }
+      
+      hello();				// Why does this log 'hello'?
+      console.log(a); // Why does this log 'hello'?
+      ```
+
 * Closures
+
+  * What is a closure? What is in a closure?
+
+    * What do we call the combination of a function and the lexical environment within which that function was defined?
+    * What do we call a function combined with all of the variables in its lexical scope, including function and class names?
+
+  * When is a closure created? What is the relationship between closures and scope?
+
+    * Closures are created when you define a function or a method, essentially closing over its environment (what's in scope), and bringing along with it the references to those variables.
+
+  * What do we mean when we say that closures are defined lexically?
+
+    * When you invoke a function is unimportant; where you define the function is. A closure includes all the variables that are in scope where you defined the function.
+
+  * What is partial function application?
+
+    * What do we call the creation of a function that can call a second function with fewer arguments than the second function expects by supplying the remaining arguments?
+
+  * When is partial function application useful?
+
+    * What is most useful when you need to pass a function to another function that won't call the passed function with enough arguments, letting you create a function that fills in the gaps by supplying the missing elements?
+
+  * What are some examples of closures in use?
+
+    * ```javascript
+      // Functions that returns functions are very powerful examples of closures
+      function foo() {
+        let name = "Pete";
+        return function() {
+          console.log(name);
+        };
+      }
+      
+      let printPete = foo();
+      printPete(); // Pete
+      ```
+
+    * ```javascript
+      function add(first, second) {
+        return first + second;
+      }
+      
+      function makeAdder(firstNumber) { // PARTIAL FUNCTION APPLICATION
+        return function(secondNumber) {
+          return add(firstNumber, secondNumber);
+        };
+      }
+      
+      let addFive = makeAdder(5);
+      let addTen = makeAdder(10);
+      
+      console.log(addFive(3));  // 8
+      console.log(addFive(55)); // 60
+      console.log(addTen(3)); 	// 13
+      console.log(addTen(55)); 	// 65
+      ```
+
+  * What are closures good for?
+
+    * Callbacks
+    * Partial function application
+    * Creating private data
+    * Currying (a special form of partial function application)
+    * Emulating private methods
+    * Creating functions that can only be executed once
+    * Memoization (avoiding repetitive resource-intensive operations)
+    * Iterators and generators
+    * The module pattern (putting code and data into modules)
+    * Asynchronous operations
 
 ### Vocab
