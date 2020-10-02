@@ -9,7 +9,10 @@ function isPrime(int) {
 }
 
 function checkGoldbach(expectedSum) {
-  if (expectedSum < 4) return null; // Goldbach's Conjecture is for 4 and up
+  if ((expectedSum < 4) || (expectedSum % 2 === 1)) {
+    console.log(null); // Goldbach's Conjecture is for evens > 4
+    return;            // break out of the loop
+  }
 
   for (let min = 2; min <= (expectedSum/2); min++) {
     let max = expectedSum - min;
@@ -44,3 +47,5 @@ checkGoldbach(100);
 // 29 71
 // 41 59
 // 47 53
+
+checkGoldbach(101);
