@@ -39,11 +39,10 @@
       Array.isArray('array'); // false
       ```
 
-  * 
-
 * Array Operations
 
   * `push`, `pop`, `shift`, and `unshift`
+    * 
   * `indexOf` and `lastIndexOf`
   * `slice`, `splice`, `concat`, and `join`
 
