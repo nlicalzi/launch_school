@@ -39,15 +39,32 @@
       Array.isArray('array'); // false
       ```
 
-* Array Operations
+* Array Methods
 
   * `push`, `pop`, `shift`, and `unshift`
   * `indexOf` and `lastIndexOf`
   * `slice`, `splice`, `concat`, and `join`
 
-* Array Methods
-
 * Arrays and Operators
+
+  * In JS, many operators are useless in conjunction with arrays: `+ - * / % > >= < <=` etc.
+
+    * This happens because *those operators coerce arrays to strings implicitly*.
+
+  * The real danger of using operators on arrays isn't that the results are useless, but rather that the operations run without producing a warning (unlike in Ruby, for example).
+
+  * Equality operators check whether two arrays point to *the same object*, not for element equality
+
+    * ```javascript
+      let friends = ['Bob', 'Josie', 'Sam'];
+      let enemies = ['Bob', 'Josie', 'Sam'];
+      friends == enemies;                    // false
+      friends === enemies;                   // false
+      [] == [];                              // false
+      [] === [];                             // false
+      ```
+
+    * When an array is compared with a non-array using the non-strict equality operator, JS implicitly coerces the array into a string before performing comparison. AVOID THIS!!!!
 
 ### Vocab
 
