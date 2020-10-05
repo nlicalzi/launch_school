@@ -39,6 +39,16 @@
       Array.isArray('array'); // false
       ```
 
+  * What happens if we try to insert data into an array at a negative index? Why is that the case?
+
+    * Inserting data at a negative index creates a new K/V pair and property, because arrays are actually objects
+
+    * ```javascript
+      let digits = [4, 8, 15, 16, 23, 42];
+      digits[-1] = 'negative!';
+      console.log(digits); // => [4, 8, 15, 16, 23, 42, -1: "negative!"]
+      ```
+
 * Array Methods
 
   * `push`, `pop`, `shift`, and `unshift`
