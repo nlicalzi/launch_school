@@ -142,6 +142,36 @@
 
 * Stepping through Object Properties
 
+  * ```javascript
+    let nicknames = {
+      joseph: 'Joey',
+      margaret: 'Maggie',
+    }
+    
+    for (let nick in nicknames) { // Using a for..in loop
+      console.log(nick);
+      console.log(nicknames[nick]);
+    }
+    
+    // logs: 
+    // joseph
+    // Joey
+    // margaret
+    // Maggie
+    ```
+
+  * ```javascript
+    let nicknames = {
+      joseph: 'Joey',
+      margaret: 'Maggie',
+    }
+    
+    // use Object.keys(obj) to get names of properties in obj
+    Object.keys(nicknames); // ['joseph', 'margaret']
+    ```
+
+  * 
+
 * Arrays and Objects
 
 * Arrays: What is an Element?
