@@ -130,6 +130,16 @@
 
 * Object Properties
 
+  * Property Names and Values
+    * A property name for an object can be any valid string, and a property value can be any valid expression.
+  * Accessing Property Values
+    * Property values can be accessed either using dot notation or bracket notation
+      * Dot notation: `object.propertyName` (generally preferred)
+      * Bracket notation: `object[propertyName]`
+  * Adding and Updating Properties
+    * Properties can be added and assigned using either dot or bracket notation
+    * The reserved keyword `delete` is used to delete properties: `delete foo.a;`
+
 * Stepping through Object Properties
 
 * Arrays and Objects
