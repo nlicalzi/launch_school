@@ -280,7 +280,14 @@
 
 * Mutability of Values and Objects
 
+  * What is the difference between Objects and Primitive values with respect to mutability?
+    * Primitives (strings, numbers, booleans, `null`, and `undefined`) are immutable.
+      * Operations on primitive values return a new value of the same type.
+    * Objects are mutable-- you can modify them without changing their identity (repointing).
+
 * Pure Functions and Side Effects
+
+  * 
 
 * Working with the Math Object
 
