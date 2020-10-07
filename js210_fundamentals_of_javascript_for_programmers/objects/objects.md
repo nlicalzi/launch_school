@@ -253,6 +253,31 @@
 
 * Arrays: What is an Element?
 
+  * Array Keys
+
+    * All built-in Array methods ignore non-element properties (having a non-negative integer key).
+    * There is no right answer to how to determine whether an array is empty-- do we care only about length? Do we care about properties? Make the decision when writing the code.
+
+  * Sparse Arrays
+
+    * Arrays are "sparse"-- count of elements in an array isn't equal to its length (because of `empty`)
+
+    * Trying to access an `empty` space in an array returns `undefined`
+
+      * However, those values aren't actually `undefined`, they're never even set (just placeholders).
+      * Setting an `empty` space to have value `undefined` suddenly includes it as an element
+
+    * How does the sparse nature of arrays effect what we consider an empty array?
+
+    * ```javascript
+      let arr = [];
+      arr.length = 3;
+      
+      // Is arr empty?
+      console.log(arr.length); 			// 3 -- not empty?
+      console.log(Object.keys(arr)) // [] -- empty?
+      ```
+
 * Mutability of Values and Objects
 
 * Pure Functions and Side Effects
