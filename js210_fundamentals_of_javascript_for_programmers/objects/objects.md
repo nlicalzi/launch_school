@@ -287,7 +287,95 @@
 
 * Pure Functions and Side Effects
 
-  * 
+  * **Side Effects**
+
+    * Functions having unexpected side effects is a major source of bugs.
+
+    * A function call that performs any of the following actions (when used as intended) is said to have side effects:
+
+      * It reassigns any non-local variable.
+      * It mutates the value of any object referenced by a non-local variable.
+      * It reads from or writes to any data entity (files, network connections, etc.) that is non-local to your program.
+      * It raises an exception.
+      * It calls another function that has side effects.
+
+    * Side Effects through Reassignment
+
+      * Occurs when a function reassigns any variable that is not declared inside the function.
+
+      * ```javascript
+        let number = 42;
+        function incrementNumber() {
+          number += 1; // side effect: the number is defined in an outer scope
+        }
+        ```
+
+    * Side Effects through Mutation
+
+      * Occurs when a function mutates any variable not declared inside the function.
+
+      * ```javascript
+        let letters = ['a', 'b', 'c'];
+        function removeLast(array) {
+          array.pop(); // side effect: alters the passed-in array
+        }
+        
+        removeLast(letters);
+        ```
+
+    * Side Effects through Input/Output
+
+      * Anything that causes JS to look outside the program for data to read/write is a side effect.
+
+      * ```javascript
+        let readLine = require("readline-sync");
+        
+        function getName() {
+          let name = readLine.question("Enter your name: ") // side effect: I/O
+          console.log(`Hello, ${name}!`); // side effect: output to console
+        }
+        ```
+
+    * Side Effects through Exceptions
+
+      * A function that can raise an exception without catching and handling it has a side effect.
+
+      * ```javascript
+        function divideBy(numerator, denominator) {
+          if (numerator === 0) {
+            throw new Error("Divide by zero!"); // side effect: raises an exception
+          }
+          
+          return numerator / denominator;
+        }
+        ```
+
+    * Side Effects through Other Functions
+
+      * If a function invokes another function that has a side effect outside of the calling function, however this can be dealt with by using `.slice()` to make a copy of the array in question.
+
+      * ```javascript
+        function insertNumberInOrder(arrayOfNumbers) {
+          arrayOfNumbers = arrayOfNumbers.slice(); // creates a copy of an array
+          arrayOfNumbers.push(arrayOfNumbers); // not a side effect, array was copied
+          arrayOfNumbers.sort((a, b) => a - b); // sort has no side effects in func
+          return arrayOfNumbers; // function has no side effect
+        }
+        ```
+
+  * Mixing Side Effects and Return Values
+
+    * **MOST functions should EITHER return a useful value OR have a side effect, not both.**
+    * There are exceptions to this, like reading or writing something from a database or input, but largely the rule holds true. Use your own discretion!
+
+  * **Pure Functions**
+
+    * Pure functions are functions that:
+      1. Have no side effects
+      2. Always return a value that is solely dependent on the arguments it is passed.
+      3. Given the same set of arguments, the function returns the same value during its **lifetime**.
+    * A function's **lifetime** begins when the function is created, and ends when it is destroyed.
+      * For ex. consider a function nested within an outer function-- it is created each time the outer function is called, and has the lifespan of a single execution of the outer function
 
 * Working with the Math Object
 
