@@ -379,9 +379,13 @@
 
 * Working with the Math Object
 
-  * 
-
 * Working with Dates
+
+  * JS has four ways to create a `Date` object:
+    1. `new Date();`
+    2. `new Date(value);`
+    3. `new Date(dateString);`
+    4. `new Date(year, month[, date[, hours[, minutes[, seconds[, milliseconds]]]]]);`
 
 * Working with Function Arguments
 
