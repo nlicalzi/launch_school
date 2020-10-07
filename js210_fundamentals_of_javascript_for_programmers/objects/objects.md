@@ -389,6 +389,51 @@
 
 * Working with Function Arguments
 
+  * The Traditional Approach
+
+    * Omitted arguments to a function take on the value of `undefined` within the function
+
+    * Functions ignore any excess arguments
+
+    * The `arguments` object is an *Array-like* local variable that is available inside all Functions.
+
+      * It contains the arguments passed to the function, no matter how many were provided.
+
+      * ```javascript
+        function logArgs(a) {
+          console.log(arguments[0]);
+          console.log(arguments[1]);
+          console.log(arguments.length);
+        }
+        
+        locArgs(1, 'a');
+        
+        // logs: 1 a 2
+        ```
+
+    * You can create an array from the `arguments` object with the following code:
+
+      * ```javascript
+        let args = Array.prototype.slice.call(arguments);
+        ```
+
+  * The Modern Approach
+
+    * ES6 introduced a new way to access an arbitrary number of arguments: **rest parameters**
+
+      * ```javascript
+        function logArgs(...args) {
+          console.log(args[0]);
+          console.log(args[1]);
+          console.log(args.length);
+        }
+        
+        logArgs(1, 'a');
+        // logs 1 a 2
+        ```
+
+    * Unlike the `arguments` object, the array in a rest parameter is an actual array (not Array-like)
+
 ### Vocab
 
 ### Review Questions
