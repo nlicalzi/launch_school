@@ -170,9 +170,86 @@
     Object.keys(nicknames); // ['joseph', 'margaret']
     ```
 
-  * 
+  * ```javascript
+    // How can we get the count of words in a sentence with looping?
+    function wordCount(str) {
+      let count = {};
+      let words = str.split(' ');
+      for (let idx in words) {
+        let word = words[idx];
+        count[word] ? count[word] += 1 : count[word] = 1
+      }
+      return count;
+    }
+    
+    console.log(wordCount('box car cat bag box car')); // { box: 2, car: 2, cat: 1, bag: 1 }
+    ```
 
 * Arrays and Objects
+
+  * When should we use an array vs an object to represent our data?
+
+    * Arrays:
+      * Use an array if data is more like a list that contains many items or maintain a specific order.
+      * Most common array interactions: add elements, retrieve elements, modify elements, remove elements, and iterate over elements ("walk the list").
+    * Objects:
+      * Use an object if data is more like an entity, or need to access values based on names.
+      * Most object interactions: "keyed" access-- using a key value to add, retrieve, modify, or delete a specific data item. Can also be called an "associative array".
+
+  * Don't forget, however, that in JS arrays themselves are actually objects!
+
+    * ```javascript
+      let a = ['hello', 'world'];
+      
+      console.log(typeof a); 				// "object"
+      console.log(a['1']);					// "world", using the object bracket notation
+      console.log(Object.keys(a));	// ["0", "1"], the keys of the object!
+      ```
+
+    * ```javascript
+      // the above is equivalent to the below, in terms of logged statements
+      let a = {
+        '0': 'hello',
+        '1': 'world',
+      };
+      
+      console.log(typeof a);        // "object"
+      console.log(a['1']);          // "world", object's bracket notation to access value
+      console.log(Object.keys(a));  // ["0", "1"], the keys of the object!
+      ```
+
+  * Arrays and the Length Property
+
+    * A property name is an array index when it is a non-negative integer. Values that have been assigned to index properties are called **elements** of the array. All other property names and their associated values are NOT considered to be elements of the array.
+
+      * ```javascript
+        let myArray = [];
+        myArray['foo'] = 'bar';
+        myArray[0] = 'baz';
+        myArray[1] = 'qux';
+        
+        console.log(myArray); // logs ['baz', 'qux', foo: 'bar']
+        myArray.length; 			// returns 2 since foo: 'bar' is not an element
+        ```
+
+    * `Array.prototype.indexOf` returns `-1` if the value it is passed is not an element of the array, EVEN IF the value is associated with a non-index property.
+
+    * The value of `length` is entirely dependent on the largest array index (that index + `1`).
+
+    * Logging an array logs all the indexed values and every `key: value` pair that the object contains. It logs only the `value` if it's an element, otherwise it logs the `key: value` pair if it is not an element.
+
+    * To count all of the properties in an Array object, use `Object.keys(arr).length`, DON'T USE `array.length`.
+
+    * Setting the `array.length` property to a value equal to or smaller than the current largest array index results in `array` losing data, while setting it to a value greater than the array index results in "`empty` slots" being added.
+
+      * `empty` slots do not count as elements, because they have not been assigned a value, they are only there to indicate gaps between the actual elements. Though they aren't elements, they are still counted for the purposes of `array.length` because they occupy indexes.
+        * **NOTE:**  `array.length` is not necessarily the same as the number of elements in `array`!
+
+  * Using Object Operations with Arrays
+
+    * Use `Array.prototype.splice()` to remove values from arrays instead of `delete`.
+    * Don't use arithmetic operators with objects, like with arrays. Implicit type coercion causes bugs.
+    * Object equality, like with arrays, depends on the variables referencing the same object.
 
 * Arrays: What is an Element?
 
