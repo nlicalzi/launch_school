@@ -446,3 +446,6 @@
     * Every variable initialized using `var` is initially assigned `undefined` because of hoisting
   * *Assignment* assigns a specified value to the variable
     * Takes palce when the line of code is actually executed
+* How can we use a negative index to access an array value? Why do we have to do this?
+  * `Array.prototype.slice(start, end)` allows us to use a negative index to `start`
+  * `array[-1]` is actually accessing the property named `'-1'` of `array`, since array elements are exclusively non-negative integers and arrays are objects!
