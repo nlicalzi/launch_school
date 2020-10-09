@@ -177,6 +177,30 @@
   * Usually thrown immediately after loading a JS program, before it begins to run.
   * JS detects `SyntaxError`s solely from the text of a program, e.g. `Unexpected token (`
 
+**Preventing Errors**
+
+* Guard Clauses
+
+  * Code that guarantees data meets certain preconditions before it is used
+
+  * ```javascript
+    function lowerInitial(word) {
+      if (word.length === 0) { // guard clause
+        return '-';
+      }
+      
+      return word[0].toLowerCase(); // word is guaranteed to have at least 1 char
+    }
+    ```
+
+* When to use Guard Clauses
+
+  * Guard Clauses are best used when a Function can't trust that its arguments are valid-- perhaps dealing with incorrect types, structures, values, or properties.
+
+* Detecting Edge Cases
+
+  * Consider datatypes that can get input, min/max values, array index errors, `null`/`undefined`, etc.
+
 ### Vocab
 
 * **Pragma**
