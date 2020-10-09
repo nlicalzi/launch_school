@@ -164,6 +164,19 @@
     * Inserting an array into another array
       * `let foo = [1, 2, 3]; let bar = [...foo, 4, 5, 6, ...foo];`
 
+**Errors**
+
+* Terminology
+  * When an Error occurs in a JS program, we say that it *throws an errror*.
+* `ReferenceError`
+  * Occurs when you attempt to use a variable or function that doesn't exist
+* `TypeError`
+  * Occurs when you try to access a property on a value that doesn't have any properties, like `null`
+  * Trying to call something that isn't a Function can also raise a `TypeError`
+* `SyntaxError`
+  * Usually thrown immediately after loading a JS program, before it begins to run.
+  * JS detects `SyntaxError`s solely from the text of a program, e.g. `Unexpected token (`
+
 ### Vocab
 
 * **Pragma**
