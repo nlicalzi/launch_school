@@ -201,6 +201,29 @@
 
   * Consider datatypes that can get input, min/max values, array index errors, `null`/`undefined`, etc.
 
+**Catching Errors**
+
+* Broadly speaking, there are three main categories of errors:
+  * Source code errors
+  * Edge case errors
+  * Uncontrolled input errors
+
+* ```javascript
+  try {
+    // do something that might fail here and throw an error
+  } catch(error) {
+    // code only runs if something in the try clause returns an error
+    // "error" contains the error object
+  } finally { 
+    // always runs no matter what, optional clause
+  }
+  ```
+
+* Only use `try/catch/finally` blocks when BOTH of the following. conditions are true:
+
+  * A built-in JS function or method can throw an Error and you need to handle or prevent that Error
+  * A simple guard clause is impossible or impractical to prevent the Error
+
 ### Vocab
 
 * **Pragma**
