@@ -127,9 +127,23 @@
       * More concise, since the code is shorter
       * More robust, since we use a built-in abstraction (`filter`) instead of writing a new function
 
-  * Declarative Programming
+* **List Processing Abstractions**
 
-    * 
+  * | Abstraction         | Returns       | Array Methods            |
+    | :------------------ | ------------- | ------------------------ |
+    | Iteration           | `undefined`   | `forEach`                |
+    | Filtering/Selection | new Array     | `filter`                 |
+    | Transformation      | new Array     | `map`                    |
+    | Ordering            | sorted Array  | `sort`                   |
+    | Reducing/Folding    | single value  | `reduce` / `reduceRight` |
+    | Interrogation       | boolean value | `every`, `some`          |
+
+  * Each of the above Array methods takes a Function as an argument. Because the methods "call back" the Function, we often refer to this Function as a *callback*
+
+* 
 
 ### Vocab
+
+* Callback
+* Imperative vs. Declarative
 
