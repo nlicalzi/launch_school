@@ -182,6 +182,57 @@
 
 * **Filtering / Selection**
 
+  * ```javascript
+    let count = [1, 2, 3, 4, 5];
+    let filtered = count.filter((number, idx, array) => number % 2 === 0);
+    console.log(filtered); // logs [ 2, 4 ]
+    ```
+
+  * Syntax
+
+    * ```javascript
+      let newArr = arr.filter(callback(currentValue[, index[, [array]]) {
+      	// return element for newArr, if true
+      });
+      ```
+
+    * `callback`: predicate function to test each element of the array, coerces to `true/false`
+
+      * `currentValue`: the current element being processed in the array
+      * `index`: the index of the current element being processed in the array
+      * `array`: the array that `filter` was called upon
+
+  * Return Value
+
+    * `filter` returns a new Array containing the elements for which the callback returned `true`
+
+  * Build It to Understand It
+
+    * ```javascript
+      function myFilter(array, func) {
+        let filteredArr = [];
+        array.forEach(value => {
+          if (func(value)) {
+            filteredArr.push(value);
+          }
+        });
+      
+        return filteredArr;
+      }
+      ```
+
+  * Examples
+
+    * ```javascript
+      function isMultipleOfThreeOrFive(value) {
+        return value % 5 === 0 || value % 3 === 0;
+      }
+      
+      function multiplesOfThreeOrFive(values) {
+        return myFilter(values, isMultipleOfThreeOrFive);
+      }
+      ```
+
 * **Transformation**
 
 * **Reducing**
