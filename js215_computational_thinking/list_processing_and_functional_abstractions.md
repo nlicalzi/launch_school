@@ -140,7 +140,55 @@
 
   * Each of the above Array methods takes a Function as an argument. Because the methods "call back" the Function, we often refer to this Function as a *callback*
 
-* 
+* **Iteration**
+
+  * ```javascript
+    let names = ['Eunice', 'Lucas', 'Mariana'];
+    names.forEach((name, index, array) => console.log(name, index, array[index]));
+    
+    // logs: 
+    // Eunice 0 Eunice
+    // Lucas 1 Lucas
+    // Mariana 2 Mariana
+    ```
+
+  * Syntax
+
+    * ```javascript
+      arr.forEach(callback(currentValue[, index[, array]]) {
+      	// execute something
+      })
+      ```
+
+    * `callback`: function to execute on each element, accepts between 1 and 3 arguments:
+
+      * `currentValue`: the current element being processed in the array
+      * `index`: the index of `currentValue` in the array
+      * `array`: the array that `forEach()` was called upon
+
+  * Return Value
+
+    * `forEach` returns `undefined`, which means that `forEach` must have side effects to be useful
+
+  * Build It to Understand It
+
+    * ```javascript
+      function myForEach(array, func) {
+        for (let idx = 0; idx < array.length; idx += 1) {
+          func(array[idx], idx, array);
+        }
+      }
+      ```
+
+* **Filtering / Selection**
+
+* **Transformation**
+
+* **Reducing**
+
+* **Interrogation**
+
+* **Sort**
 
 ### Vocab
 
