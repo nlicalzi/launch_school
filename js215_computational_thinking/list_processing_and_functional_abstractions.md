@@ -235,6 +235,47 @@
 
 * **Transformation**
 
+  * ```javascript
+    let count = [1, 2, 3, 4, 5];
+    let doubled = count.map((number, index, array) => number * 2); // double each element
+    console.log(doubled); // logs [ 2, 4, 6, 8, 10 ]
+    ```
+
+  * Syntax
+
+    * ```javascript
+      let newArr = arr.map(callback(currentValue[, index[, array]]) {
+      	// return element for newArr, after executing something
+      })
+      ```
+
+    * `callback`
+
+      * `currentValue`: the current element being processed
+      * `index`: the index of the current element in the calling array
+      * `array`: the calling array
+
+  * Return Value
+
+    * `map` returns a new array, with each element being the result of the callback function
+
+  * Build It to Understand It
+
+    * ```javascript
+      function myMap(array, func) {
+        let mappedArray = [];
+        array.forEach(element => mappedArray.push(func(element)));
+        return mappedArray;
+      }
+      ```
+
+  * Examples
+
+    * ```javascript
+      let plusOne = n => n + 1;
+      console.log(myMap([1, 2, 3, 4], plusOne)); // [ 2, 3, 4, 5 ];
+      ```
+
 * **Reducing**
 
 * **Interrogation**
