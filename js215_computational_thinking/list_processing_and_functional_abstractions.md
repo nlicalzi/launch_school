@@ -475,6 +475,77 @@
       });
       ```
 
+* **Functional Abstractions on Objects**
+
+  * JavaScript doesn't have a similar set of built-in higher order functions for Objects as it does for Arrays. What that means is that we use the array returned by `Object.keys(obj)`  to work with objects using higher-level abstractions:
+
+    * **Iteration**
+
+      * ```javascript
+        let myObject = { a: 1, b: 2, c: 3 };
+        Object.keys(myObject).forEach(key => {
+          console.log('key: ' + key + ', value: ' + String(myObject[key]));
+        });
+        
+        // logs: 
+        // key: a, value: 1
+        // key: b, value: 2
+        // key: c, value: 3
+        ```
+
+    * **Working with Keys or Values as Arrays**
+
+      * ```javascript
+        let myObject = { a: 1, b: 2, c: 3 };
+        let keys = Object.keys(myObject);			// ['a', 'b', 'c']
+        let values = Object.values(myObject);	// [1, 2, 3]
+        ```
+
+    * **Map, Reduce, Filter, and More?**
+
+      * We rely on side effects to build up a new data structure when iterating over keys or values.
+
+      * ```javascript
+        // map to a new object with values doubled from myObject
+        function doubleObjectValues(object) {
+          let newObject = {};
+          // forEach has a side effect via mutation below
+          Object.keys(object).forEach(key => newObject[key] = object[key] * 2);
+          return newObject;
+        }
+        
+        doubleObjectValues({ a: 1, b: 2, c: 3 }); // { a: 2, b: 4, c: 6 }
+        ```
+
+      * ```javascript
+        // filter an object to select only values with even numbers
+        function keepEvenValues(object) {
+          let newObject = {};
+          Object.keys(object).forEach(key => {
+            if (object[key] % 2 === 0) {
+              newObject[key] = object[key]; // forEach has a side effect via mutation
+            }
+          });
+          
+          return newObject;
+        }
+        
+        keepEvenValues({ a: 1, b: 2, c: 3 }); // { b: 2 }
+        ```
+
+      * ```javascript
+        // reduce an invoice object
+        function getTotalFromInvoice(invoice) {
+          let total = { total: 0 };
+          // forEach has a side effect via mutation below
+          Object.keys(invoice).forEach(key = total.total. += invoice[key]);
+          return total;
+        }
+        
+        getTotalFromInvoice({ phone: 1000, internet: 8000, tax: 3000 });
+        // returns { total: 21000 }
+        ```
+
 ### Vocab
 
 * Callback
