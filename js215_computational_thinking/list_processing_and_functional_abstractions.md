@@ -140,7 +140,7 @@
 
   * Each of the above Array methods takes a Function as an argument. Because the methods "call back" the Function, we often refer to this Function as a *callback*
 
-* **Iteration**
+* **Iteration**: do something once for each element in an Array.
 
   * ```javascript
     let names = ['Eunice', 'Lucas', 'Mariana'];
@@ -180,7 +180,7 @@
       }
       ```
 
-* **Filtering / Selection**
+* **Filtering / Selection**: create a new Array using a specific subset of an existing array.
 
   * ```javascript
     let count = [1, 2, 3, 4, 5];
@@ -233,7 +233,7 @@
       }
       ```
 
-* **Transformation**
+* **Transformation**: create a new Array using values calculated from values in an original Array.
 
   * ```javascript
     let count = [1, 2, 3, 4, 5];
@@ -276,7 +276,7 @@
       console.log(myMap([1, 2, 3, 4], plusOne)); // [ 2, 3, 4, 5 ];
       ```
 
-* **Reducing**
+* **Reducing**: process a source Array in some order using a callback function to build up a return value.
 
   * ```javascript
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -344,7 +344,63 @@
       }
       ```
 
-* **Interrogation**
+* **Interrogation**: determine how many of a given Array's elements satisfy a condition.
+
+  * ```javascript
+    function odd(number) {
+      return number % 2 === 1;
+    }
+    
+    let count = [1, 2, 3, 4, 5];
+    count.some(odd);   // true: some numbers are odd
+    count.every(odd);  // false, every number is not odd
+    ```
+
+  * Syntax
+
+    * ```javascript
+      arr.every(callback(element[, index[, array]]));
+      arr.some(callback(element[, index[, array]]));
+      ```
+
+    * `callback`: a function to test for each element, taking three arguments
+
+      * `element`: the current element being processed in the array
+      * `index`: the index of the current `element` (optional)
+      * `array`: the calling array (optional)
+
+  * Return Value
+
+    * `Array.prototype.some` returns `true` if the callback evaluates to `true` for at least one element
+    * `Array.prototype.every` returns `true` if the callback evaluates to `true` for all elements
+
+  * Build It to Understand It
+
+    * ```javascript
+      function myOwnEvery(array, func) {
+        for (let i = 0; i < array.length; i += 1) {
+          if (!func(array[i])) return false;
+        }
+      
+        return true;
+      }
+      ```
+
+  * Examples
+
+    * ```javascript
+      function areAllNumbers(array) {
+        return myOwnEvery(array, isANumber);
+      }
+      
+      function isANumber(value) {
+        return typeof value === 'number' && !Number.isNaN(value);
+      }
+      
+      areAllNumbers([1, 5, 6, 7, '1']);		// false
+      areAllNumbers([1, 5, 6, 7, 1]);			// true
+      areAllNumbers([1, 5, 6, 7, NaN]);		// false
+      ```
 
 * **Sort**
 
