@@ -278,6 +278,44 @@
 
 * **Reducing**
 
+  * ```javascript
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    let count = [1, 2, 3, 4, 5];
+    
+    count.reduce(reducer); // 15
+    ```
+
+  * Syntax
+
+    * ```javascript
+      arr.reduce(callback( accumulator, currentValue[, index[, array]]) {
+      	// return result from executing something for accumulator or currentValue
+      }[, initialValue]);
+      ```
+
+    * `callback`
+
+      * `accumulator`: the accumulator accumulates subsequent return values from `callback`
+      * `currentValue`: the current element being processed in the array
+      * `index`: the index of the current element
+      * `array`: the calling array for `reduce()`
+
+    * `initialValue`: a value to use as the first argument for `callback`, otherwise the first element in the array will act as the initial value for `accumulator` and be skipped as `currentValue`
+
+  * Return Value
+
+    * `reduce` returns the value returned by the final callback invocation (final `accumulator`)
+
+  * Build It to Understand It
+
+    * ```javascript
+      
+      ```
+
+    * 
+
+  * Examples
+
 * **Interrogation**
 
 * **Sort**
