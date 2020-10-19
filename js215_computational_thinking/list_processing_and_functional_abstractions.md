@@ -309,12 +309,40 @@
   * Build It to Understand It
 
     * ```javascript
+      function myReduce(array, func, initial) {
+        let copiedArray = array.slice();
       
+        if (initial === undefined) {
+          let initial = copiedArray.shift();
+        }
+      
+        copiedArray.forEach(element => initial = func(initial, element));
+        
+        return initial;
+      }
       ```
 
-    * 
-
   * Examples
+
+    * ```javascript
+      function longestWord(words) {
+        return myReduce(words, longest);
+      }
+      
+      function longest(result, currentWord) {
+        return currentWord.length >= result.length ? currentWord : result;
+      }
+      
+      longestWord(['abc', 'launch', 'targets', '']);
+      
+      // OR USE INLINE STYLE (using a function expression as our callback argument)
+      
+      function longestWord(words) {
+        return myReduce(words, function (result, currentWord) {
+          return currentWord.length >= result.length ? currentWord : result;
+        })
+      }
+      ```
 
 * **Interrogation**
 
