@@ -402,7 +402,78 @@
       areAllNumbers([1, 5, 6, 7, NaN]);		// false
       ```
 
-* **Sort**
+* **Sort**: rearrange Array elements *in-place* based on a desired criteria (lowest -> highest, reversed, etc.)
+
+  * ```javascript
+    function compareScores(score1, score2) {
+      if (score1 < score2) {
+        return -1;
+      } else if (score1 > score2) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+    
+    let scores = [5, 88, 50, 9, 60, 99, 12, 23];
+    scores.sort(compareScores);	// [ 5, 9, 12, 23, 50, 60, 88, 99 ]
+    scores; 										// mutated to [ 5, 9, 12, 23, 50, 60, 88, 99 ]
+    ```
+
+    * Note: if you don't pass a callback function as an argument, `Array.prototype.sort`'s default sort order is according to string Unicode points. The above code would be mutated to `[ 12, 23, 5, 50, 60, 88, 9, 99 ]`
+
+  * Syntax
+
+    * ```javascript
+      arr.sort([compareFunction])
+      ```
+
+    * `compareFunction`: supply an optional function to define the sort order. If this is obmitted, per the note above, the elements are implicitly coerced to strings and compared like that.
+
+    * If `compareFunction(a, b)` returns < 0, sort `a` to a lower index than `b` (e.g. `[a, b]`)
+
+    * If `compareFunction(a, b)` returns > 0, sort `a` to a higher index than `b` (e.g. `[b, a]`)
+
+  * Return Value
+
+    * `sort` mutates the original array and returns a reference to the mutated array.
+    * Thus, we can use `sort ` either for its return value or its side effect.
+
+  * Examples
+
+    * ```javascript
+      let studentGrades = [
+        { name: 'StudentA', grade: 90.1 },
+        { name: 'StudentB', grade: 92 },
+        { name: 'StudentC', grade: 91.8 },
+        { name: 'StudentD', grade: 95.23 },
+        { name: 'StudentE', grade: 91.81 },
+      ];
+      
+      function compareGrades(student1, student2) {
+        if (student1.grade < student2.grade) {
+          return 1;
+        } else if (student1.grade > student2.grade) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
+      
+      studentGrades.sort(compareGrades);
+      
+      // OR USE THE INLINE STYLE (w/ an arrow function)
+      
+      studentGrades.sort((student1, student2) => {
+        if (student1.grade < student2.grade) {
+          return 1;
+        } else if (student1.grade > student2.grade) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      ```
 
 ### Vocab
 
