@@ -106,8 +106,6 @@ function formatGrade(grade) {
   }
 }
 
-
-
 console.log(generateClassRecordSummary(studentScores));
 
 // returns:
