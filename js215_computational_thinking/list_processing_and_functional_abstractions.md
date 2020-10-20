@@ -546,8 +546,37 @@
         // returns { total: 21000 }
         ```
 
-### Vocab
+* **Don't be afraid to use low level abstraction**
+
+  * Implement a function that determines whether a string has any character that appears more than once:
+
+    * ```javascript
+      function isAllUnique(string) {
+        let seen = {};
+        let lowerCasedString = string.toLowerCase();
+        
+        for (let i = 0; i < lowerCasedString.length; i += 1) {
+          if (lowerCasedString[i] === ' ') {	// skip any spaces
+            continue;
+          }
+          
+          if (seen[lowerCasedString[i]]) {		// if obj seen has a matching key
+            return false;											// break and return false
+          } else {
+            seen[lowerCasedString[i]] = true;	// else set seen to true and continue
+          }
+        }
+        
+        return true;
+      }
+      ```
+
+* 
+
+### Vocab/Concepts
 
 * Callback
 * Imperative vs. Declarative
 
+* Why should we use a simple loop instead of a list processing abstraction when we need an early return?
+  * With the exception of `some` and `every`, all JS list processing abstractions traverse the entire list. That's why we might consider using a `for` loop instead of `forEach` on occasion.
