@@ -571,8 +571,6 @@
       }
       ```
 
-* 
-
 ### Vocab/Concepts
 
 * Callback
