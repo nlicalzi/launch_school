@@ -154,14 +154,6 @@
       exclamation.toLowerCase();	// "go team! we're number 1!"
       ```
 
-* **Regular Expressions**
-
-* **Reverse a String**
-
-* **Acronym**
-
-* **Email Validation**
-
 * **Matching Parentheses**
 
 * **Sentiment Analysis**
