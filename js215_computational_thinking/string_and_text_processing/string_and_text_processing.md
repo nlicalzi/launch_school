@@ -66,6 +66,94 @@
 
 * **String Methods**
 
+  * `String.prototype.indexOf()`
+
+    * Return the numeric index of a character or substring of characters within a string.
+
+    * If the search character or substring doesn't exist, return `-1`
+
+    * ```javascript
+      let language = 'JavaScript';
+      
+      language.indexOf('S');		// 4
+      language.indexOf('s');		// -1
+      language.indexOf('ipt');	// 7
+      ```
+
+  * `String.prototype.lastIndexOf()`
+
+    * Return the index of the last occurence of a character or substring.
+
+    * If the search character or substring doesn't exist, return `-1`
+
+    * ```javascript
+      let state = 'Mississippi';
+      
+      state.lastIndexOf('i');		// 10
+      state.lastIndexOf('s');		// 6
+      state.lastIndexOf('sp');	// -1
+      ```
+
+  * `String.prototype.replace()`
+
+    * Perform a substitution operation on the calling string, returning a new string (non-mutating).
+
+    * By default, `replace` substitutes the first occurence of the substring or regex pattern given by the first argument with the value specified by the second argument.
+
+      * ```javascript
+        let state = 'Mississippi';
+        
+        state.replace('s', 'q');	// "Miqsissippi"
+        ```
+
+    * To replace every instance of the matching substring/pattern (the character `s`), we must use a regular expression instead of a String (using the `g` or global flag)
+
+      * ```javascript
+        let state = 'Mississippi';
+        
+        state.replace(/s/g, 'q');	// "Miqqiqqippi"
+        ```
+
+  * `String.prototype.split()`
+
+    * Split the calling string into an array of strings based on a separator.
+
+      * If a string argument is passed, `split` parses the string by breaking it at each occurence of the separator string.
+      * If the seprator string is an empty string, the caller is split into an array of single character strings.
+
+    * ```javascript
+      let state = 'Mississippi';
+      
+      state.split('');	["M", "i", "s", "s", "i", "s", "s", "i", "p", "p", "i"]
+      state.split('s');	["Mi", "", "i", "", "ippi"]
+      '1, 2, 3, 4, 5, 6'.split(', ');	// ["1", "2", "3", "4", "5", "6"]
+      ```
+
+  * `String.prototype.substring()`
+
+    * Extract and return a portion of the calling string that lies in the range specified by the two passed numeric arguments. (start and end index).
+
+      * Note: Order doesn't matter because the extracted string starts with the character at the smaller index of the two arguments and ends just before the character at the larger index.
+
+      * ```javascript
+        string.substring(a, b) === string.substring(b, a);
+        ```
+
+    * ```javascript
+      let state = 'Mississippi';
+      
+      state.substring(6, 3);	// "sis" -- start at state[3], up to (not incl.) state[6]
+      ```
+
+  * `String.prototype.[toLowerCase/toUpperCase]()`
+
+    * ```javascript
+      let exclamation = "Go team! We're number 1!";
+      
+      exclamation.toUpperCase();	// "GO TEAM! WE'RE NUMBER 1!"
+      exclamation.toLowerCase();	// "go team! we're number 1!"
+      ```
+
 * **Regular Expressions**
 
 * **Reverse a String**
