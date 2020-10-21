@@ -170,4 +170,24 @@
 
 * **Longest Sentence**
 
-### Vocab
+### Vocab/Concepts
+
+* What is the difference between `String.prototype.substring()` and `String.prototype.substr()`?
+
+  * `String.prototype.substr()` takes two arguments: a starting index and the number of characters after that index to extend to.
+  * `String.prototype.substring()` takes two arguments: a starting index and the ending index (non-inclusive).
+
+* Why can't we call `toString()` directly on a number primitive?
+
+  * ```javascript
+    let boxNumber = 356.toString();	// Syntax error!
+    console.log(boxNumber);					// exception was already raised
+    
+    // SOLUTION:
+    let boxNumber = (356).toString();	// no error, 
+    console.log(boxNumber);				// "356"
+    ```
+
+  * The JS interpreter reads the period immediately after a number as a decimal point. We can avoid this issue by wrapping the number in parentheses, then calling the method on it.
+
+* 
