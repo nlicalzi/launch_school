@@ -11,11 +11,15 @@
 * The PEDAC Problem Solving Process
   * What are the steps in PEDAC?
     * Understand the **P**roblem
+      * Make any requirements explicit
+      * Convert implicit knowledge to explicit (i.e. "what century is that")
+      * Identify and define important terms and concepts
+      * Ask the interviewer questions to clarify/verify understanding
     * **E**xamples/Test Cases
+      * Help you understand the problem and verify your solution
+      * Edge cases: input type, emptiness, boundary conditions, case, duplication
     * **D**ata Structure and **A**lgorithm
     * **C**ode
-* Understanding the Problem and Writing Test Cases
-  * 
 * Data Structure and Algorithms
 * Understanding the Problem and Requirements
 * FAQ on the First Two Steps of the PEDAC Process
