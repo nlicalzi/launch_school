@@ -19,8 +19,13 @@
       * Help you understand the problem and verify your solution
       * Edge cases: input type, emptiness, boundary conditions, case, duplication
     * **D**ata Structure and **A**lgorithm
+      * Data Structure
+        * What is the datatype of our input data?
+        * What is the outcome required, and how can we manipulate our input?
+      * Algorithm
+        * Describe the algorithm in the language of your chosen data structure
+        * Use: String/Regex, Array, & Hash/Object methods
     * **C**ode
-* Data Structure and Algorithms
 * Understanding the Problem and Requirements
 * FAQ on the First Two Steps of the PEDAC Process
 * Create Examples / Test Cases
