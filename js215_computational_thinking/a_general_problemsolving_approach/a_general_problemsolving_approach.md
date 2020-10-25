@@ -26,8 +26,9 @@
         * Describe the algorithm in the language of your chosen data structure
         * Use: String/Regex, Array, & Hash/Object methods
     * **C**ode
-* Understanding the Problem and Requirements
 * FAQ on the First Two Steps of the PEDAC Process
+  * Steps to Understanding the Problem: *I/O Values*, *Definitions*, *Rules*
+  * Two main types of test cases: generic (typical) cases and edge cases.
 * Create Examples / Test Cases
 * Work with Data Structures and Algorithms
 * Translate Algorithm Steps into Code
