@@ -182,4 +182,12 @@
 
   * The JS interpreter reads the period immediately after a number as a decimal point. We can avoid this issue by wrapping the number in parentheses, then calling the method on it.
 
+* How can we write a function using `RegExp.prototype.test` to return `true` if all alphabetic characters in a string are uppercase, and `false` otherwise?
+
+  * ```javascript
+    function isUppercase(string) {
+      return !/[a-z]/.test(string); // false if any char from a-z is detected
+    }
+    ```
+
 * 
