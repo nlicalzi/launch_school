@@ -40,7 +40,7 @@
 
 function noRepeatElements(characters) {
   let charCount = characters.reduce((count, char) => {
-    count[char] = (count[char] || 0) + 1;
+    count[char] = (count[char] || 0) + 1; // (if the key doesn't exist, set to 0) and/else add 1
     return count;
   }, {});
 
@@ -55,10 +55,7 @@ function eachBlockUsedOnlyOnce(word) {
   ];
 
   for (let idx = 0; idx < BLOCKS.length; idx += 1) {
-    let firstSide = BLOCKS[idx][0];
-    let secondSide = BLOCKS[idx][1];
-
-    // console.log([ firstSide, secondSide ])
+    let [ firstSide, secondSide ] = BLOCKS[idx]; // use array destructuring assignment
     if (word.includes(firstSide) && word.includes(secondSide)) return false;
   }
 
@@ -66,7 +63,7 @@ function eachBlockUsedOnlyOnce(word) {
 }
 
 function isBlockWord(str) {
-  // do we have to check for non-alpha characters? could use a guard clause here
+  // do we have to check for non-alpha characters? could use a guard clause here if so
   let word = str.toUpperCase();
   let chars = word.split('');
 
