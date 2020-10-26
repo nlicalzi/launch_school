@@ -4,3 +4,5 @@ notes/how_to_talk_about_ls.txt
 */assessment_prep
 */sql_files
 rb175_networked_applications/cms/data/
+package-lock.json
+node_modules/
