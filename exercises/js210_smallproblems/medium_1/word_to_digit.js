@@ -5,7 +5,7 @@
 function wordToDigit(sentence) {
   const numWords = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
   numWords.forEach(word => {
-    let regex = new RegExp(word, 'g');
+    let regex = new RegExp('\\b' + word + '\\b', 'g');
     sentence = sentence.replace(regex, numWords.indexOf(word));
   });
   return sentence;
