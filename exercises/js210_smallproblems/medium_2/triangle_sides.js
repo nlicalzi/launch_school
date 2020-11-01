@@ -10,8 +10,12 @@
 
 function triangle(...sides) {
   if (!isValidTriangle(sides)) { return "invalid" }; // guard clause
+  return classifyTriangle(sides);
+}
 
+function classifyTriangle(sides) {
   let uniqueSides = new Set(sides).size;
+
   if (uniqueSides === 1) {
     return "equilateral";
   } else if (uniqueSides === 2) {
