@@ -4,6 +4,10 @@
 
 This course will get into Object Oriented JavaScript programming and introduce a couple of Object Creation patterns. Along the way, we'll take a deeper look at scope, closures, and functions and their execution contexts.
 
+In this course, we will dig deeper into JavaScript and look at some of its more complicated functionality. We'll cover functions and execution context, scope and closures, and object-oriented JavaScript.
+
+After completing this course, you'll be able to build basic applications in JavaScript and be ready to move on to our next course, where you will learn about techniques to create more complex JavaScript projects that interface with the DOM and have user interactivity.
+
 ### Detailed Summary
 
 * **Objects**
