@@ -67,6 +67,9 @@
 
 * **Mutating Objects**
 
+  * While primitives like Number, String, and Boolean are immutable, Objects are mutable.
+  * This is because JS can be considered a "pass by reference value" language-- variables hold references to objects in memory.
+
 * **Functions as Object Factories**
 
 * **Object Orientation**
