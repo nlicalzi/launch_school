@@ -69,9 +69,24 @@
 
   * While primitives like Number, String, and Boolean are immutable, Objects are mutable.
   * This is because JS can be considered a "pass by reference value" language-- variables hold references to objects in memory.
-  * 
 
 * **Functions as Object Factories**
+
+  * An `Object` is a useful organizational tool that collects data and behavior together.
+
+  * The below snippet is an example of the **object factory** pattern:
+
+    * ```javascript
+      function makeCar(rate) {
+          return {
+              speed: 0,
+              rate,
+              accelerate() {
+                  this.speed += this.rate;
+              },
+          };
+      }
+      ```
 
 * **Object Orientation**
 
@@ -102,3 +117,5 @@
 * Stack vs. Heap
 
   * Which datatypes are stored in each?
+
+* Object factory
