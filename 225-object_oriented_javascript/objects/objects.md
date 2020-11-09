@@ -90,6 +90,11 @@
 
 * **Object Orientation**
 
+  * Why do we use OOP?
+    * Objects organize related data and code together (encapsulation).
+    * Objects are useful when a program needs more than one instance of something.
+    * Objects become more useful as the codebase size increases (reduce repetition).
+
 ### Concepts/Vocab
 
 * You can think of methods as "Functions with a receiver"
