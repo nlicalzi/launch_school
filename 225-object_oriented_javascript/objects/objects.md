@@ -2,6 +2,11 @@
 
 ### Summary
 
+* Object-oriented programming is a pattern that uses objects to organize code instead of Functions. Objects can also contain data or state.
+* You can call the property of an object a `method` when the value you assign to it is a function.
+* When you invoke an object's methods, they can access the object to which they belong by using `this`.
+* Objects become more useful as projects become larger and more complicated.
+
 ### Notes
 
 * **Objects and Methods**
