@@ -158,6 +158,8 @@
 
       * `call()` and `apply()` are identical, except apply uses an array and call uses individual args
 
+        * ES6 solution w/ spread operator: `outputList.call(fruitsObj, ...fruitsObj.list)` does away with the need to use `apply()`
+
       * This allows us to 'borrow' a method from a given object to use with another object instead of copying it:
 
         * ```javascript
@@ -190,7 +192,61 @@
 
 * **Hard Binding Functions with Contexts**
 
-  * 
+  * `Function.prototype.bind()` lets us bind a function to a context object permanently (add a new `this` value).
+
+    * Unlike `call` or `apply`, `bind` doesn't execute a function. Instead, it creates and returns a new Function and permanently binds it to a given object. Since the binding is permanent, we can pass the function around without concern that its context will change.
+
+    * ```javascript
+      let object = {
+        a: 'hello',
+        b: 'world',
+        foo() {
+          return this.a + ' ' + this.b;
+        },
+      };
+      
+      let bar = object.foo;
+      bar(); // "undefined undefined", because `this` in foo now references `bar`
+      
+      let baz = object.foo.bind(object); // "hello world", `this` references `object`
+      
+      let object2 = { a: 'hi', b: 'there', };
+      baz.call(object2); // "hello world", `this` is still `object` here
+      ```
+
+  * Example of using `bind` can be for localization purposes:
+
+    * ```javascript
+      let greetings = {
+        morning: 'Good morning, ',
+        afternoon: 'Good afternoon, ',
+        evening: 'Good evening, ',
+        
+        greeting(name) {
+          let currentHour = (new Date()).getHours();
+          
+          if (currentHour < 12) {
+            console.log(this.morning + name);
+          } else if (currentHour < 18) {
+            console.log(this.afternoon + name);
+          } else {
+            console.log(this.evening + name);
+          }
+        },
+      };
+      
+      let spanishWords = {
+        morning: 'Buenos dias, ',
+        afternoon: 'Buenas tardes, ',
+        evening: 'Buenas noches, '
+      };
+      
+      let spanishGreeter = greetings.greeting.bind(spanishWords);
+      // when we call spanishGreeter(), JS will use spanishWords as the `this` value
+      
+      spanishGreeter('Jose');
+      spanishGreeter('Juan');
+      ```
 
 * **Dealing with Context Loss**
 
@@ -209,3 +265,9 @@
 * `Function.prototype.apply()`
   * The `apply()` method calls a function with a given `this` value, and `arguments` provided as an array.
   * **A**pply: **A**rguments as **A**rray
+
+* Variable initialization with `var` vs. `let` and `const`
+  * Global `var` properties create properties on the global object, but `let` and `const` create variables that don't actually belong to any object.
+
+* `Function.prototype.bind()`
+  * Creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
