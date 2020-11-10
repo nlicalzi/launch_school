@@ -470,9 +470,47 @@
           };
           ```
 
-* **The `this` keyword in JavaScript**
+* **Summary: The `this` keyword in JavaScript**
 
-  * 
+  * Source: https://web.archive.org/web/20180209163541/https://dmitripavlutin.com/gentle-explanation-of-this-in-javascript/
+
+  * There are 4 ways to invoke a function in JavaScript, each defining context (`this`) in its own way:
+
+    * Function invocation: `alert('Hello world!')`
+      * `this` is the **global object** in a function invocation, or when used at top-level scope.
+      * In strict mode, `this` is `undefined` in function invocation or top-level scope.
+      * To use `this ` properly in an inner function, one of `call`/`apply`/`bind` is needed.
+    * Method invocation: `console.log('Hello world!')`
+      * `this` is the **object that owns the method** in a method invocation.
+      * If we would like to extract a method from an object into a separated variable, we must create a bound function to retain context: `var alone = myObj.myMethod.bind(myObj)`
+    * Constructor invocation: `new RegExp('\\d')`
+      * Come back to this section later...
+    * Indirect invocation: `alert.call(undefined, 'Hello world!')`
+      * `this` is the *first argument* of `.call()` or `.apply()` in an indirect invocation.
+        * `function.call(thisArg, ...args)`
+        * `function.call.apply(thisArg, argsArray)`
+
+  * What do we mean by the context of an invocation?
+
+    * The value of `this` within the body of the function being invoked.
+
+  * What is a **bound function**?
+
+    * A function connected with an object, usually created from the original function using `.bind()`
+
+      * ```javascript
+        function multiply(number) {
+          'use strict';
+          return this * number;
+        }
+        
+        var double = multiply.bind(2);
+        
+        double(3); // => 6
+        double(5); // => 10
+        ```
+
+    * In a bound function, `this` is the first argument passed to `.bind()`, and the context is permanently linked (even `call` or `apply` cannot change the context).
 
 ### Concepts/Vocab
 
