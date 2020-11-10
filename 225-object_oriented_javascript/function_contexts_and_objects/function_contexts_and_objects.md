@@ -2,7 +2,19 @@
 
 ### Summary
 
-* 
+* Function invocations (e.g. `parseInt(numberString)`) rely upon implicit execution context that resolves to the global object. Method invocations (e.g. `array.forEach(processElement)`) rely upon implicit context that resolves to the object that holds the method.
+* All JavaScript code executes within a context. The top-level context in a web browser is the `window` object. All global methods and Objects (such as `parseInt` or `Math`) are properties of this object. In Node, the top-levle context is called `global`. However, be aware that Node has some peculiarities that cause it to behave differently from some browsers.
+* You can't use `delete` to delete variables and functions declared at the global scope.
+* `this` is the current execution context of a function.
+* The value of `this` changes based on **how you invoke a function**, not **how you define it**.
+* In strict mode, `this` inside functions resolves to `undefined` when referring to the global execution context.
+* JS has **first-class functions** which have the following characteristics:
+  * You can add them to objects and execute them in the respective objects' contexts.
+  * You can remove them from their objects, pass them around, and execute them in entirely different contexts.
+  * They're initially unbound, but dynamically bound to a context object at execution time.
+* `call` and `apply` invoke a function with an explicit execution context.
+* `bind` permanently binds a function to a context and returns a new function.
+* Method invocations can operate on the data of the owning object.
 
 ### Notes
 
