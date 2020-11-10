@@ -192,7 +192,7 @@
 
 * **Hard Binding Functions with Contexts**
 
-  * `Function.prototype.bind()` lets us bind a function to a context object permanently (add a new `this` value).
+  * `Function.prototype.bind()` lets us permanently bind a function to an execution context (read: add a new `this` value).
 
     * Unlike `call` or `apply`, `bind` doesn't execute a function. Instead, it creates and returns a new Function and permanently binds it to a given object. Since the binding is permanent, we can pass the function around without concern that its context will change.
 
@@ -248,7 +248,30 @@
       spanishGreeter('Juan');
       ```
 
+  * Example: Changing Function Context
+
+    * ```javascript
+      let temperatures = [53, 86, 12, 43];
+      
+      function average() {
+        let total = 0;
+        let i;
+        for (i = this.length - 1; i >= 0; i -= 1) {
+          total += this[i];
+        }
+        
+        return total / this.length;
+      }
+      
+      console.log(average.call(temperatures)); // => 48.5, `this` points to average
+      
+      temperatures.average = average; // assign temp's `average` property to average()
+      console.log(temperatures.average()); // => 48.5
+      ```
+
 * **Dealing with Context Loss**
+
+  * 
 
 * **The `this` keyword in JavaScript**
 
@@ -271,3 +294,5 @@
 
 * `Function.prototype.bind()`
   * Creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+  * Can a function bound to a context using `bind()` have its context change later, using `call()` or `apply()`? 
+    * No! Once a function has been bound to an execution context with `bind`, its context can't be changed, even explicitly.
