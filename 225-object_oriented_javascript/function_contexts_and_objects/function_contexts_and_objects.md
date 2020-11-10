@@ -412,6 +412,8 @@
 
       * Solution 1: Use a local variable in the lexical scope to store this
 
+        * `let self = this;` or `let that = this;`
+
         * ```javascript
           let obj = {
             // ...
@@ -426,6 +428,8 @@
 
       * Solution 2: Bind the argument function with the surrounding context
 
+        * Use `bind` explicitly at the end of the function.
+
         * ```javascript
           let obj = {
             // ...
@@ -437,6 +441,8 @@
           ```
 
       * Solution 3: Use the optional thisArg argument
+
+        * Some methods that take function args allow an optional arg that defines the context to use when executing the function. `Array.prototype.forEach` can take a `thisArg`
 
         * ```javascript
           let obj = {
@@ -450,6 +456,8 @@
           ```
 
       * Solution 4: Use arrow function for the callback
+
+        * Arrow functions do not have a `this` binding, instead of `this` depending on the location of function invocation, JS resolves it by looking at the enclosing scopes.
 
         * ```javascript
           let obj = {
