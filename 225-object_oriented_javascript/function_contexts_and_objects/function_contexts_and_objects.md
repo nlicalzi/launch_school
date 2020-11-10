@@ -472,6 +472,8 @@
 
 * **The `this` keyword in JavaScript**
 
+  * 
+
 ### Concepts/Vocab
 
 * First-class Function
