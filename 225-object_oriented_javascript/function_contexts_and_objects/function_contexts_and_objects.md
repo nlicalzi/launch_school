@@ -271,7 +271,196 @@
 
 * **Dealing with Context Loss**
 
-  * 
+  * The most common ways a function can lose its context:
+
+    * **Method Losing Context when Take Out of Object**
+
+      * If you remove a method from its containing object and execute it, it loses its context.
+
+        * ```javascript
+          let john = {
+            firstName: 'John',
+            lastName: 'Doe',
+            greetings() {
+              console.log('hello, ' + this.firstName + ' ' + this.lastName);
+            },
+          };
+          
+          let foo = john.greetings;
+          foo(); // => hello, undefined undefined
+          ```
+
+      * Solution: **hard binding** with `bind` often works:
+
+        * ```javascript
+          function repeatThreeTimes(func) {
+            func();
+            func();
+            func();
+          }
+          
+          function foo() {
+            let john = {
+              firstName: 'John',
+              lastName: 'Doe',
+              greetings() {
+                console.log('hello, ' + this.firstName + ' ' + this.lastName);
+              },
+            };
+            
+            repeatThreeTimes(john.greetings.bind(john)); // hard bind the context
+          }
+          
+          foo(); // 3x => hello, John Doe
+          ```
+
+    * **Internal Function Losing Method Context** (well known issue among developers, JS flaw)
+
+      * ```javascript
+        let obj = {
+          a: 'hello',
+          b: 'world',
+          foo() {
+            function bar() {
+              console.log(this.a + ' ' + this.b);
+            }
+            
+            bar();
+          },
+        };
+        
+        obj.foo(); // => undefined undefined, `this` points to the global object here
+        ```
+
+      * Solution 1: Preserve Context with a Local Variable in the Lexical Scope
+
+        * A.K.A. the `let self = this` or `let that = this` fix.
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              let self = this;
+              function bar() { console.log(self.a + ' ' + self.b); }
+              bar();
+            }
+          };
+          
+          obj.foo(); // => 'hello world'
+          ```
+
+      * Solution 2: Pass the Context to Internal Functions
+
+        * Pass the context object to the function with `call` or `apply`
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              function bar() { console.log(this.a + ' ' + this.b); }
+              bar.call(this);
+            }
+          };
+          ```
+
+      * Solution 3: Bind the Context with a Function Expression
+
+        * Use `bind` when you define the function to provide a permanent context to `bar`. Note: you must call `bind` with a function expression, function declaration throws an error.
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              let bar = function() {
+                console.log(this.a + ' ' + this.b);
+              }.bind(this);
+              bar();
+              bar();
+            }
+          };
+          ```
+
+      * Solution 4: Use an Arrow Function
+
+        * Define `bar` using an arrow function, since the value of `this` when using an arrow function is based on lexical scoping rules.
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              let bar = () => console.log(this.a + ' ' + this.b);
+              bar();
+            }
+          };
+          ```
+
+    * **Function as Argument Losing Surrounding Context**
+
+      * ```javascript
+        let obj = {
+          a: 'hello',
+          b: 'world',
+          foo() {
+            [1, 2, 3].forEach(function(number) {
+            	console.log(String(number) + ' ' + this.a + ' ' + this.b);
+          	});
+          },
+        };
+        
+        obj.foo(); // 3x => 1 undefined undefined, etc.
+        ```
+
+      * Solution 1: Use a local variable in the lexical scope to store this
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              let self = this; // local variable pointing to `this`
+              [1, 2, 3].forEach(function(number) {
+                console.log(String(number) + ' ' + self.a + ' ' + self.b);
+              });
+            },
+          };
+          ```
+
+      * Solution 2: Bind the argument function with the surrounding context
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              [1, 2, 3].forEach(function(number) {
+                console.log(String(number) + ' ' + this.a + ' ' + this.b);
+              }.bind(this)); // bind to `this` explicitly
+          }
+          ```
+
+      * Solution 3: Use the optional thisArg argument
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              [1, 2, 3].forEach(function(number) {
+                console.log(String(number) + ' ' + this.a + ' ' + this.b);
+              }, this); // forEach takes an optional `thisArg`
+            },
+          }//
+          ```
+
+      * Solution 4: Use arrow function for the callback
+
+        * ```javascript
+          let obj = {
+            // ...
+            foo() {
+              [1, 2, 3].forEach((number) => {
+                console.log(String(number) + ' ' + this.a + ' ' + this.b);
+              });
+            },
+          };
+          ```
 
 * **The `this` keyword in JavaScript**
 
@@ -296,3 +485,4 @@
   * Creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
   * Can a function bound to a context using `bind()` have its context change later, using `call()` or `apply()`? 
     * No! Once a function has been bound to an execution context with `bind`, its context can't be changed, even explicitly.
+  * What is **hard binding**?
