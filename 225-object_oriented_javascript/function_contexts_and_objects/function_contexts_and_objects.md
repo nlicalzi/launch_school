@@ -84,9 +84,113 @@
 
 * **Implicit and Explicit Function Execution Contexts**
 
-  * 
+  * Function Execution Context
+
+    * Every time a JS function is invoked, it has access to an object called the **execution context** of that function, accessible through the keyword `this`.
+    * Which object `this` refers to depends on how a given function was invoked.
+    * The rules for `this` binding are entirely different than the rules for determining the scope of a variable. While variable scope is determined at the time of writing the code, `this` gets bound based on how a function is invoked.
+
+  * Implicit Function Execution Context
+
+    * Implicit Function Execution Context (also called an implicit **binding** for functions) is the context for a function that you invoke without supplying an explicit context. JS binds such functions to the global object.
+
+      * ```javascript
+        function foo() {
+          return 'this here is: ' + this;
+        }
+        
+        foo(); // "this here is: [object Window]"
+        ```
+
+    * Binding a function to a context occurs **when you execute the function, not when you define it.**
+
+      * ```javascript
+        let object = {
+          foo() { return 'this here is: ' + this; },
+        }
+        
+        object.foo(); // 'this here is: [object Object]'
+        
+        let bar = object.foo;
+        bar(); 				// 'this here is: [object Window]'
+        ```
+
+    * In strict mode, `this` in the global scope is `undefined`.
+
+  * Implicit Method Execution Context
+
+    * The implicit *method* execution context is the execution context for any method (i.e. function referenced as an object property) invoked without an explicit context provided.
+
+    * JS implicitly binds methods invoked in this manner to the owning or calling object:
+
+      * ```javascript
+        let foo = {
+          bar() { return this; },
+        };
+        
+        foo.bar() === foo; // true
+        ```
+
+      * ```javascript
+        let foo = {
+          bar() { return this; },
+        };
+        
+        let baz = foo.bar;
+        
+        baz() === foo; 		// false
+        baz() === window; // true, context is bound on INVOCATION not definition
+        ```
+
+  * Explicit Function Execution Context
+
+    * JS lets us use the `call` and `apply` methods to change a function's execution context at execution time. This allows us to explicitly bind a function's execution context to an object.
+
+      * ```javascript
+        a = 1;
+        
+        let object = { a: 'hello', b: 'world', };
+        function foo() { return this.a; }
+        
+        foo(); 						// 1 			 (window.a -> context is global object)
+        foo.call(object); // 'hello' (object.a -> context is object)
+        ```
+
+      * `call()` and `apply()` are identical, except apply uses an array and call uses individual args
+
+      * This allows us to 'borrow' a method from a given object to use with another object instead of copying it:
+
+        * ```javascript
+          let strings = {
+            a: 'hello',
+            b: 'world',
+            foo() { return this.a + this.b; },
+          };
+          
+          let numbers = {
+            a: 1,
+            b: 2,
+          };
+          
+          strings.foo.call(numbers) // 3
+          ```
+
+    * ```javascript
+      let iPad 	 = { name: 'iPad',   price: 40000, };
+      let kindle = { name: 'kindle', price: 30000, };
+      
+      function printLine(lineNumber, punctuation) {
+        console.log(lineNumber + ': ' + this.name + ', ' + this.price / 100 +
+                   ' dollars' + punctuation);
+      }
+      
+      printLine.call(iPad, 1, ';'); 	// => 1: iPad, 400 dollars;
+      printLine.call(kindle, 2, '.'); // => 2: kindle, 300 dollars;
+      ```
 
 * **Hard Binding Functions with Contexts**
+
+  * 
 
 * **Dealing with Context Loss**
 
@@ -94,7 +198,14 @@
 
 ### Concepts/Vocab
 
+* First-class Function
 * Global Object
   * Global values
   * Global functions
-* 
+* Execution Context
+* `Function.prototype.call()`
+  * The `call()` method calls a function with a given `this` value and arguments provided individually.
+  * **C**all: **C**ount the **C**ommas (you have to count the number of args to match called function)
+* `Function.prototype.apply()`
+  * The `apply()` method calls a function with a given `this` value, and `arguments` provided as an array.
+  * **A**pply: **A**rguments as **A**rray
