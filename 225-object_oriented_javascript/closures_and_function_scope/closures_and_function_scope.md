@@ -114,6 +114,8 @@
 
 * **Banking with Objects and Closures**
 
+  * 
+
 * **Garbage Collection**
 
 * **How Closures Affect Garbage Collection**
