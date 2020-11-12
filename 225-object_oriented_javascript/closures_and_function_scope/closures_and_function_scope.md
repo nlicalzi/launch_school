@@ -56,6 +56,27 @@
 
 * **Closures and Private Data**
 
+  * Functions *close over* or *enclose* the context at their definition point, so we call them **closures**.
+
+    * They always have access to that context, regardless of when and where the program invokes the function. 
+
+  * ```javascript
+    function makeCounter() {
+      let count = 0;
+      return function() {
+        count += 1;
+        console.log(count);
+      };
+    }
+    
+    let counter = makeCounter();
+    counter(); // => 1
+    counter(); // => 2
+    counter(); // => 3, etc.
+    ```
+
+    * Note that the variable `count` above is private data for (enclosed in) the `makeCounter()` closure, and cannot be accessed outside of it, while the function `counter` can access/update it.
+
 * **Objects and Closures**
 
 * **Banking with Objects and Closures**
@@ -74,3 +95,6 @@
 
 ### Concepts/Vocab
 
+* What is the difference between the concepts of **higher-order functions** and **first-class functions?**
+  * https://stackoverflow.com/questions/10141124/any-difference-between-first-class-function-and-high-order-function
+* 
