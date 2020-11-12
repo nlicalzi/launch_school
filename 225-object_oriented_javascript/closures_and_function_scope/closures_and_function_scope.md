@@ -97,4 +97,5 @@
 
 * What is the difference between the concepts of **higher-order functions** and **first-class functions?**
   * https://stackoverflow.com/questions/10141124/any-difference-between-first-class-function-and-high-order-function
-* 
+* What is **partial application**?
+  * 
