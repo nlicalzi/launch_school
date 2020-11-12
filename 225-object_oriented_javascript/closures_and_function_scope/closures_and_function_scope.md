@@ -79,6 +79,39 @@
 
 * **Objects and Closures**
 
+  * ```javascript
+    function makeList() {
+      let items = [];
+      
+      return {
+        add(item) {
+          let idx = items.indexOf(item);
+          if (idx === -1) {
+            items.push(item);
+            console.log(item + ' added!');
+          }
+        },
+        
+        clear() {
+          items = [];
+          console.log('all items deleted!');
+        },
+        
+        list() {
+          items.forEach(item => console.log(item));
+        },
+        
+        remove(item) {
+          let idx = items.indexOf(item);
+          if (idx !== -1) {
+            items.slice(idx, 1);
+            console.log(item + ' removed!');
+          }
+        },
+      };
+    }
+    ```
+
 * **Banking with Objects and Closures**
 
 * **Garbage Collection**
