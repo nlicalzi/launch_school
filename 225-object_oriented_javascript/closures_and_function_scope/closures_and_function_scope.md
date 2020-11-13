@@ -310,7 +310,61 @@
 
 * **Creating Private Data with an IIFE**
 
-  * 
+  * Using an IIFE to Return a *Function* with Access to Private Data
+
+    * ```javascript
+      let studentId = 0;
+      
+      function generateStudentId() {
+        studentId += 1;
+        return studentId;
+      }
+      ```
+
+      * The above code leaves `studentId` exposed and has the potential for it to be rewritten, which means we can't guarantee unique IDs. The solution then is to move the `studentId` into an IIFE as private data.
+
+    * ```javascript
+      let generateStudentId = (function() {
+        let studentId = 0;
+        
+        return function() {
+          studentId += 1;
+          return studentId;
+        };
+      })();
+      ```
+
+    * Each instance of the `generateStudentId` function will have access to its own internal `studentId` function variable without exposing the IDs to being unintentionally reassigned.
+
+  * Using an IIFE to Return an *Object* with Access to Private Data
+
+    * In the following code we use an IIFE to make the stocklist private, so that it can't be accessed except by the object's `addStock` method:
+
+    * ```javascript
+      let inventory = (function() {
+        let stocks = [];
+        function isValid(newStock) {
+          return stocks.every(function(stock) {
+            return newStock.name !== stock.name;
+          });
+        }
+        
+        return { // return an object with access to the `stocks` private data
+          stockCounts() {
+            stocks.forEach(function(stock) {
+              console.log(stock.name + ': ' + String(stock.count));
+            });
+          },
+          
+          addStock(newStock) {
+            if (isValid(newStock)) { stocks.push(newStock) }
+          },
+        };
+      })(); // invoke immediately to return an object
+      			// this object can access:
+      			// private data `stocks`
+      			// private function `isValid()`
+      ```
 
 ### Concepts/Vocab
 
