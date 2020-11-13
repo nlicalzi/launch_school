@@ -151,9 +151,67 @@
       helloSteve = null; // dereferences the closure, allowing `name` to be GCed
       ```
 
-  * 
-
 * **Partial Function Application**
+
+  * **Partial function application** uses a *generator* function that creates a new *applicator* function to call a third *primary* function, which the *generator* function receives as an argument. (Note: these are not terms that are used outside of this lesson, don't bother memorizing them.)
+
+    * The *generator* receives some of the *primary*'s arguments, while the *applicator* receives the rest upon invocation. The *applicator* then calls the *primary* and passes it all its arguments, both those passed to the *generator* and those passed to the *applicator*.
+
+  * ```javascript
+    function primaryFunction(arg1, arg2) {
+      console.log(arg1);
+      console.log(arg2);
+    }
+    
+    function generatorFunction(primary, arg1) {
+      return function(arg2) { // applicator
+        return primary(arg1, arg2);
+      }
+    }
+    
+    let applicatorFunction = generatorFunction(primaryFunction, 'Hello');
+    applicatorFunction(37.2); // Performs primaryFunction ('Hello', 37.2);
+    // => Hello \n 37.2
+    ```
+
+  * ```javascript
+    function add(first, second) { return first + second; } // primary
+    
+    function makeAddN(addend) { 		// generator
+      // Saves addend as local var via closure; uses addend when function is invoked.
+      return function(number) { 		// applicator that takes a single arg
+        return add(addend, number); // call primary by passing enclosed var and 1 arg
+      }
+    }
+    
+    // assign add1 to the applicator (return val of generator)
+    let add1 = makeAddN(1); // add1 retains enclosed access to 1 (`addend` in makeAddN)
+    add1(1);  // 2
+    add1(41); // 42
+    
+    // assign add9 to the applicator (return val of generator)
+    let add9 = makeAddN(9); // add9 retains enclosed access to 9 (`addend` in makeAddN)
+    add9(1); // 10
+    add9(9); // 18
+    ```
+
+  * How can we use `Function.prototype.bind` for Partial Function Application?
+
+    * We can use `bind` to make a function with pre-specified initial arguments:
+
+    * ```javascript
+      function add(first, second) {
+        return first + second;
+      }
+      
+      let add1 = add.bind(null, 1); // use null since the function doesn't need `this`
+      add1(2); // => 3
+      
+      let addOneAndTwo = add.bind(null, 1, 2); // bind both args in add
+      addOndAndTwo(); // => 3
+      ```
+
+    * 
 
 * **Immediately Invoked Function Expressions (IIFEs)**
 
