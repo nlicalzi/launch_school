@@ -129,6 +129,30 @@
 
 * **How Closures Affect Garbage Collection**
 
+  * When you create a closure it stores a reference to all variables it can access, each referencing a different object or primitive value. As long as the closures exist, those variables remain in existence, which means the objects/values they reference continue to exist as well.
+
+    * Therefore, in theory, JS can't garbage collect any objects or values referenced in closures.
+      * More reading: https://stackoverflow.com/questions/24468713/javascript-closures-concerning-unreferenced-variables
+
+  * How can we remove a closure or other reference explicitly? 
+
+    * One way is to reassign the variable to `null`.
+
+    * ```javascript
+      function makeHello(name) {
+        return function() {
+          console.log('Hello, ' + name + '!');
+        };
+      }
+      
+      let helloSteve = makeHello('Steve'); // `name` (Steve) is closed-over
+      helloSteve();	// => 'Hello, Steve!' we can still access the 'Steve' primitive
+      
+      helloSteve = null; // dereferences the closure, allowing `name` to be GCed
+      ```
+
+  * 
+
 * **Partial Function Application**
 
 * **Immediately Invoked Function Expressions (IIFEs)**
