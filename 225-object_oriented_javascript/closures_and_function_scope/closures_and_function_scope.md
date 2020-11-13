@@ -112,11 +112,20 @@
     }
     ```
 
-* **Banking with Objects and Closures**
-
-  * 
-
 * **Garbage Collection**
+
+  * **Garbage collection (GC)** is the runtime process responsible for freeing up memory in JS. Values are allocated memory when they are created, and eventually freed up by garbage collection when they are no longer in use.
+    * An object or value is considered no longer in use when there are no variables, objects, or closures that maintain a reference to that object or value; JS then marks that memory as eligible for GC. 
+  * JavaScript (and most programming languages) divides memory into two principal regions: the **stack** and the **heap**. 
+    * JS stores most primitive values, as well as references (or pointers), on the stack. 
+      * **Most primitive values do not get involved in garbage collection**: `undefined`, `Boolean`, `Number`, `Symbol`, `null` all go on the stack. 
+    * Everything else goes on the heap. This includes `String` and `BigInt`.
+  * When a function or block begins executing in a JS program, JS allocates memory on the **stack** for the variables defined in that block or function. 
+    * Since the items on the stack have fixed size, JS can allocate the amount of memory it needs during the creation phase of execution (hoisting) without knowing their specific values.
+    * When the block or function is done running, allocated stack memory is automatically returned.
+  * New values are added to the **heap** *when they are created*, since they can be of variable sizes that aren't determined ahead of time.
+    * The heap relies on garbage collection to detect when a value's reference count reaches 0.
+  * Note: GC doesn't happen when a variable goes out of scope. A variable can go out of scope but there still exist persistent references to it inside closures, other objects, etc.
 
 * **How Closures Affect Garbage Collection**
 
