@@ -242,6 +242,29 @@
 
 * **Immediately Invoked Function Expressions (IIFEs)**
 
+  * An **immediately invoked function expression (IIFE)** is a function we define and invoke simultanously.
+
+    * ```javascript
+      (function() { console.log('hello'); })();
+      // form: (definition)(); => () is invocation
+      ```
+
+  * We are able to invoke the function immediately because of the `()` wrapper around the function, using the grouping operator to control evaluation (parse function definition as expression).
+
+  * We can omit the parentheses when the function definition is an expression that doesn't occur at the beginning of a line:
+
+    * ```javascript
+      let foo = function() {
+        return function() {
+          return 10;
+        }();
+      }();
+      
+      console.log(foo); // => 10
+      ```
+
+    * 
+
 * **Creating a Private Scope with an IIFE**
 
 * **Creating Private Data with an IIFE**
