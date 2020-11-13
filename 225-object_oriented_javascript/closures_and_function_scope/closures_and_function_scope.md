@@ -211,8 +211,6 @@
       addOndAndTwo(); // => 3
       ```
 
-    * 
-
 * **Immediately Invoked Function Expressions (IIFEs)**
 
 * **Creating a Private Scope with an IIFE**
