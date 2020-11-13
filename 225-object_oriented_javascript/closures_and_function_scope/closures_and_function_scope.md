@@ -211,6 +211,35 @@
       addOndAndTwo(); // => 3
       ```
 
+  * As concise as possible:
+
+    * ```javascript
+      function subtract(a, b) { return a - b; } 				// primary
+      function makeSubN(n) { 														// generator
+        return function(a) { return subtract(a, n); }; 	// applicator
+      }
+      
+      let sub5 = makeSubN(5);
+      sub5(10); // => 5
+      ```
+
+    * ```javascript
+      function makePartialFunc(func, b) {
+        return function(a) {
+          return func(a, b);
+        };
+      }
+      
+      function multiply(a, b) { return a * b; }
+      let multiplyBy5 = makePartialFunc(multiply, 5);
+      
+      function add(a, b) { return a + b; };
+      let add5 = makePartialFunc(add, 5);
+      
+      multiplyBy5(100); // 500
+      add5(100); 105
+      ```
+
 * **Immediately Invoked Function Expressions (IIFEs)**
 
 * **Creating a Private Scope with an IIFE**
