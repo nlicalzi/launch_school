@@ -263,11 +263,54 @@
       console.log(foo); // => 10
       ```
 
-    * 
-
 * **Creating a Private Scope with an IIFE**
 
+  * Consider the case where we're trying to test code in a long and messy codebase:
+
+    * ```javaScript
+      // code
+      let myPet = { type: 'Dog', name: 'Spot', };
+      console.log(`I have pet ${myPet.type} named ${myPet.name}`);
+      // code
+      ```
+
+      *  What if `myPet` already exists in this scope? It'll be inaccessible.
+
+    * ```javascript
+      // code
+      function createAndLogPet() {
+      	let myPet = { type: 'Dog', name: 'Spot', };
+      	console.log(`I have pet ${myPet.type} named ${myPet.name}`);
+      }
+      createAndLogPet();
+      // code
+      ```
+
+      * What if function `createAndLogPet` already exists in the global scope? It'll be inaccessible.
+
+  * What we can do is use an IIFE to create a private scope  for `myPet` and test there:
+
+    * ```javaScript
+      // code
+      (function() {
+        let myPet = { type: 'Dog', name: 'Spot', };
+        console.log(`I have pet ${myPet.type} named ${myPet.name}`);
+      })(); // immediately call the function definition in (): (function)();
+      // code
+      ```
+
+    * ```javascript
+      // code
+      (function(type, name) {
+        let myPet = { type, name };
+        console.log(`I have pet ${myPet.type} named ${myPet.name}`);
+      })('Dog', 'Spot'); // pass values into the IIFE as arguments during invocation
+      // code
+      ```
+
 * **Creating Private Data with an IIFE**
+
+  * 
 
 ### Concepts/Vocab
 
