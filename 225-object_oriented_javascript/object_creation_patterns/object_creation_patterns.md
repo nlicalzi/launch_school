@@ -1,5 +1,7 @@
 ## JS225/Lesson 4: Object Creation Patterns
 
+
+
 ### Summary
 
 ### Notes
