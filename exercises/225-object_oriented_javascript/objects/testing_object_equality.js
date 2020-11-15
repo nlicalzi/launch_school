@@ -10,6 +10,6 @@ function objectsEqual(first, second) {
 }
 
 console.log(objectsEqual({a: 'foo'}, {a: 'foo'}) === true);
-console.log(objectsEqual({a: 'foo', b: 'bar'}, {a: 'foo'}) === false);
+console.log(objectsEqual({a: 'foo', b: 'bar'}, {a: 'baz'}) === false);
 console.log(objectsEqual({}, {}) === true);
 console.log(objectsEqual({a: 'foo', b: undefined}, {a: 'foo', c: 1}) === false);
