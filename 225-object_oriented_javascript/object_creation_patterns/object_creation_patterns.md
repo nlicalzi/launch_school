@@ -7,6 +7,8 @@
 ### Notes
 
 * Introduction
+  * JavaScript uses the object prototype to implement the sharing of properties.
+    * Many other languages instead implement behavior sharing using class-based inheritance.
 * Factory Functions
 * Constructor Pattern
 * Objects and Prototypes
