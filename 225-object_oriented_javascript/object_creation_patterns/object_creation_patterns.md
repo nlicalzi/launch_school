@@ -50,6 +50,35 @@
 
 * Factory Functions
 
+  * We can use functions as object factories / factory functions / the **Factory Object Creation Pattern**
+
+    * ```javascript
+      function createPerson(firstName, lastName) {
+        return { // return an object literal
+          firstName,
+          lastName,
+          fullName() {
+            return (this.firstName + ' ' + this.lastName).trim();
+          },
+        };
+      }
+      
+      let john = createPerson('John', 'Doe');
+      let jane = createPerson('Jane');
+      
+      john.fullName(); // 'John Doe'
+      jane.fullName(); // 'Jane'
+      ```
+
+  * What is the advantage of using a factory function?
+
+    * A factory function allows us to create the multiple objects easily with a pre-defined template.
+
+  * What are the disadvantages of using a factory function?
+
+    * Every object created with a factory function has a full copy of all the methods (poss. redundant)
+    * There isn't a way for us to inspect an object and know whether we created it from a factory function, making it difficult to know whether an object is of a specific 'type'.
+
 * Constructor Pattern
 
 * Objects and Prototypes
