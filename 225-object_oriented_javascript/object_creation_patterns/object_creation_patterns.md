@@ -81,6 +81,49 @@
 
 * Constructor Pattern
 
+  * A constructor function is **intended to be called with the `new` operator**:
+
+    * ```javascript
+      function Person(firstName, lastName = '') { // capitalize function by convention
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullName = function() {
+          return (this.firstName + ' ' + this.lastName).trim();
+        };
+      }
+      
+      let john = new Person('John', 'Doe');
+      let jane = new Person('Jane');
+      
+      john.constructor; // function Person(..)
+      jane.constructor; // function Person(..)
+      
+      john instanceof Person; // true
+      jane instanceof Person; // true
+      ```
+
+  * If we call a construtor function without the `new` operator, `this` points to the global object and will result in some weirdness:
+
+    * ```javascript
+      function Person(firstName, lastName = '') {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullName = function () {
+          return (this.firstName + ' ' + this.lastName).trim();
+        };
+      }
+      
+      Person('John', 'Doe');
+      window.fullName(); // 'John Doe'
+      ```
+
+  * When we call a function with the `new` operator, the following happens:
+
+    1. A new object is created
+    2. `this` in the function is set to point to the new object
+    3. The code in the function is executed
+    4. `this` is returned if the constructor doesn't explicitly return an object
+
 * Objects and Prototypes
 
 * Prototypal Inheritance and Behavior Delegation
