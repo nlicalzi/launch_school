@@ -102,7 +102,7 @@
       jane instanceof Person; // true
       ```
 
-  * If we call a construtor function without the `new` operator, `this` points to the global object and will result in some weirdness:
+  * If we call a constructor function without the `new` operator, `this` points to the global object and will result in some weirdness:
 
     * ```javascript
       function Person(firstName, lastName = '') {
@@ -116,6 +116,10 @@
       Person('John', 'Doe');
       window.fullName(); // 'John Doe'
       ```
+
+    * What happens if we assign a variable to the result of calling a constructor function (that doesn't explicitly returning a value) without the `new` operator?
+
+      * The variable will point to `undefined`
 
   * When we call a function with the `new` operator, the following happens:
 
@@ -147,6 +151,56 @@
     * `this` is the ***newly created object*** in a constructor invocation.
 
 * Objects and Prototypes
+
+  * Objects' Prototypes
+
+    * Every JS Object has a hidden property called `[[Prototype]]`
+
+      * We can retrieve this property's value with `Object.getPrototypeOf(obj)`
+      * We can set this property's value with `Object.setPrototypeOf(obj)`
+        * Not recommended b/c of slowness, use `Object.create` to set prototype instead
+      * We can use `Object.prototype.isPrototypeOf(obj)` to determine whether an object has a given value for its `[[Prototype]]` property.
+        * `foo.isPrototypeOf(qux)`
+
+    * When we use `Object.create` to create an object, it sets the `[[Prototype]]` property of the created object to the passed-in object:
+
+      * ```javascript
+        let foo = {};
+        let qux = Object.create(foo);
+        console.log(Object.getPrototypeOf(qux) === foo); // true
+        
+        // obj assigned to foo is the prototype object of obj assigned to qux
+        // created the object `qux` with object `foo` as its prototype
+        ```
+
+  * The `__proto__` property
+
+    * Many older programs use  `__proto__`/**dunder proto**, a deprecated version of `[[Prototype]]`
+
+  * Prototype Chain and the `Object.prototype` Object
+
+    * Using `Object.create` to create objects forms a prototype chain with `Object.prototype` at the end of the prototype for all JS objects:
+
+      * ```javascript
+        let foo = { a: 1, };
+        Object.getPrototypeOf(foo) === Object.prototype); // true, prototype chain
+        Object.prototype.isPrototypeOf(foo); // true, next level obj in chain
+        ```
+
+      * ```javascript
+        let foo = { a: 1, };
+        let bar = Object.create(foo);
+        let baz = Object.create(bar);
+        let qux = Object.create(baz);
+        
+        Object.getPrototypeOf(qux) === baz; // true
+        Object.getPrototypeOf(baz) === bar; // true
+        Object.getPrototypeOf(bar) === foo; // true
+        
+        foo.isPrototypeOf(qux); // true, because foo is in qux's prototype chain
+        ```
+
+      * 
 
 * Prototypal Inheritance and Behavior Delegation
 
