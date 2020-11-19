@@ -268,7 +268,55 @@
 
 * **Function Prototypes and Object Prototypes**
 
-  * 
+  * What are the two ways JS uses the term "prototype"?
+
+    * Object prototype: The next object in the lookup for property access
+    * Function prototype: A property of functions
+
+  * Every function in JS has a **function prototype**.
+
+    * It is by default assigned an object that instances created by the constructor can delegate to.
+
+    * All objects a constructor function constructs have this object set as their prototype.
+
+    * ```javascript
+      let Foo = function() {};
+      let obj = Foo.prototype;
+      
+      let bar = new Foo();
+      let baz = new Foo();
+      
+      Object.getPrototypeOf(bar) === obj; // true
+      Object.getPrototypeOf(baz) === obj; // true
+      
+      bar.constructor === Foo; 	// true, bar is created from Foo
+      bar instaceof Foo; 				// true, bar is an instance of Foo
+      
+      baz.constructor === Foo; 	// true, baz is created from Foo
+      baz instaceof Foo; 				// true, baz is an instance of Foo
+      ```
+
+    * Both objects in the above code (`bar` and `baz`) delegate to (have their prototype set to) the object `obj` that is assigned to the `prototype` property of `Foo`.
+
+    * ![Delegation in action](https://d3905n0khyu9wc.cloudfront.net/images/constructor_prototypes_1.png)
+
+  * What is an example of using the **Prototype Pattern** of object creation?
+
+    * ```javascript
+      let Dog = function() {};
+      
+      Dog.prototype.say = function() { console.log(this.name + ' says woof!'); }
+      Dog.prototype.run = function() { console.log(this.name + ' runs away.'); }
+      
+      let fido = new Dog();
+      fido.name = 'Fido';
+      fido.say(); // delegates to Dog.prototype and logs Fido says woof!
+      fido.run(); // delegates to Dog.prototype and logs Fido runs away.
+      ```
+
+  * What is a brief way of describing the prototype pattern of object creation?
+
+    * Defining shared behaviors on the constructor's `prototype` property.
 
 * **Constructors, Prototypes, and the Prototype Chain**
 
