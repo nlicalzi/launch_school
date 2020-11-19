@@ -6,7 +6,7 @@
 
 ### Notes
 
-* Introduction
+* **Introduction**
 
   * JavaScript uses the object prototype to implement the sharing of properties.
 
@@ -48,7 +48,7 @@
       user.constructor === UserCreator; // constructor property of user
       ```
 
-* Factory Functions
+* **Factory Functions**
 
   * We can use functions as object factories / factory functions / the **Factory Object Creation Pattern**
 
@@ -79,7 +79,7 @@
     * Every object created with a factory function has a full copy of all the methods (poss. redundant)
     * There isn't a way for us to inspect an object and know whether we created it from a factory function, making it difficult to know whether an object is of a specific 'type'.
 
-* Constructor Pattern
+* **Constructor Pattern**
 
   * A constructor function is **intended to be called with the `new` operator**:
 
@@ -150,7 +150,7 @@
 
     * `this` is the ***newly created object*** in a constructor invocation.
 
-* Objects and Prototypes
+* **Objects and Prototypes**
 
   * Objects' Prototypes
 
@@ -200,25 +200,89 @@
         foo.isPrototypeOf(qux); // true, because foo is in qux's prototype chain
         ```
 
-      * 
+* **Prototypal Inheritance and Behavior Delegation**
 
-* Prototypal Inheritance and Behavior Delegation
+  * Prototype Chain Lookup for Property Access
 
-* Function Prototypes and Object Prototypes
+    * When we try to access a property or method on an object, JS searches in the object itself first, then goes up the prototype chain until it finds the property or reaches `Object.prototype`.
 
-* Constructors, Prototypes, and the Prototype Chain
+    * ```javascript
+      let foo = { a: 1, };
+      let bar = Object.create(foo);
+      let baz = Object.create(bar);
+      
+      bar.a; // 1
+      baz.a; // 1
+      baz.c; // undefined
+      ```
 
-* Static and Instance Properties and Methods
+    * ```javascript
+      let foo = {
+        hello() {
+          return 'hello ' + this.name;
+        },
+      };
+      
+      let bar = Object.create(foo);
+      bar.name = 'world';
+      bar.hello(); // returns 'hello world', thanks to the hello property of foo
+      ```
 
-* The Pseudo-classical Pattern and the OLOO Pattern
+  * Prototypal Inheritance and Behavior Delegation
 
-* The Class Syntactic Sugar
+    * Prototype chain lookup for properties gives us the ability to store an object's data and behaviors not just in the object itself, but anywhere on its prototype chain.
 
-* More Methods on the Object Constructor
+      * This can be considered JS's implementation of (top-down) **Prototypal Inheritance**, since it doesn't have true classes but we can share behaviors. This design pattern is also called **Behavior Delegation** (lower objects on the inheritance chain "delegate" requests to upstream objects).
 
-* Modules
+      * ```javascript
+        let dog = {
+          say() { console.log(this.name + ' says Woof!'); },
+        };
+        
+        let fido = Object.create(dog);
+        fido.name = 'Fido';
+        fido.say(); // 'Fido says Woof!'
+        
+        let spot = Object.create(dog);
+        spot.name = 'Spot';
+        spot.say(); // 'Spot says Woof!'
+        ```
 
-* Douglas Crockford Lecture- JavaScript: The Good Parts
+  * Overriding Default Behavior
+
+    * Objects created from prototypes override shared behaviors by re-defining the same methods.
+
+  * `Object.getOwnPropertyNames` and `object.hasOwnProperty`
+
+    * When using behavior delegation, we can no longer rely on `obj.prop !== undefined` to test if a property is defined on an object or not-- that checks `prop` anywhere on the prototype chain.
+      * `object.hasOwnProperty(prop)`: tests if `prop` is defined on `object` itself
+      * `Object.getOwnPropertyNames(obj)`: returns array of object's own property names
+
+  * Methods on `Object.prototype`
+
+    * Since `Object.prototype` is in all JS objects' prototype chains, any obj can use its methods:
+      * `Object.prototype.toString()`: returns a string representation of the object
+      * `Object.prototype.isPrototypeOf(obj)`: tests if obj is in another object's property chain
+      * `Object.prototype.hasOwnProperty('prop')`: tests if property is defined on the object itself
+    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+* **Function Prototypes and Object Prototypes**
+
+  * 
+
+* **Constructors, Prototypes, and the Prototype Chain**
+
+* **Static and Instance Properties and Methods**
+
+* **The Pseudo-classical Pattern and the OLOO Pattern**
+
+* **The Class Syntactic Sugar**
+
+* **More Methods on the Object Constructor**
+
+* **Modules**
+
+* **Douglas Crockford Lecture- JavaScript: The Good Parts**
 
 ### Concepts/Vocab
 
