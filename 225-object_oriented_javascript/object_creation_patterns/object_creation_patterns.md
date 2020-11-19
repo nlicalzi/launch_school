@@ -124,6 +124,28 @@
     3. The code in the function is executed
     4. `this` is returned if the constructor doesn't explicitly return an object
 
+  * What is **constructor invocation**?
+
+    * Constructor invocation is performed when the `new` keyword is followed by an expresion that evaluates to a function object and `(args)`, like so: `new RegExp('\\d')`
+
+    * ```javascript
+      function Country(name, traveled) { // Constructor function caps by convention
+        this.name = name ? name : 'United Kingdom';
+        this.traveled = Boolean(traveled);
+      }
+      
+      Country.prototype.travel = function() {
+        this.traveled = true;
+      };
+      
+      var france = new Country('France', false); 	// constructor invocation
+      var unitedKingdom = new Country; 						// constructor invocation
+      ```
+
+  * What does `this` refer to in constructor invocation?
+
+    * `this` is the ***newly created object*** in a constructor invocation.
+
 * Objects and Prototypes
 
 * Prototypal Inheritance and Behavior Delegation
