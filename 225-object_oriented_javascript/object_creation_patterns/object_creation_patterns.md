@@ -320,6 +320,106 @@
 
 * **Constructors, Prototypes, and the Prototype Chain**
 
+  * What is the main reason we would prefer to use constructor functions over object factories? Consider the following code:
+
+    * ```javascript
+      function Dog(name, weight) {
+        this.name = name;
+        this.weight = weight;
+        this.bark = function() { console.log(this.weight > 20 ? 'Woof!' : 'Yip!'); };
+      }
+      
+      let maxi   = new Dog('Maxi', 32);
+      let dexter = new Dog('Dexter', 50);
+      
+      maxi.bark === dexter.bark; // false
+      ```
+
+    * Each time we create a new `Dog` object, we create a new `bark` method so we can add it to the object, and the methods are distinct from one another which is why the last line returns `false`.
+
+    * We would prefer to create the `bark` method once rather than once for each copy of `Dog`.
+
+  * Method Delegation to Prototypes
+
+    * We can use prototypes in conjunction with constructors to let objects delegate method calls:
+
+      * ```javascript
+        function Dog(name, weight) {
+          Object.setPrototypeOf(this, Dog.myPrototype);
+          this.name = name;
+          this.weight = weight;
+          // no need to include a `bark` property and method, b/c of prototype obj
+        }
+        
+        Dog.myPrototype = {
+          bark() { console.log(this.weight > 20 ? 'Woof!' : 'Yip!'); }
+        };
+        
+        let maxi = new Dog('Maxi', 32);
+        maxi.bark(); // Woof!
+        
+        maxi.hasOwnProperty('bark'); // false
+        Object.getPrototypeOf(maxi).bark === DogPrototype.bark; // true
+        ```
+
+      * In the code above, the `bark` method is defined not on the individual objs but on the object referenced by their `[[Prototype]]` property, `DogPrototype`
+
+  * The Constructor `prototype` Property
+
+    * Every JS function has a `prototype` property, but JS only uses it when the function is called as a constructor (paired with the `new` keyword):
+
+    * ```javascript
+      function Dog(name, weight) {
+        this.name = name;
+        this.weight = weight;
+      }
+      
+      Dog.prototype.bark = function() { // assign Dog.prototype's `bark` property
+        console.log(this.weight > 20 ? 'Woof!' : 'Yip!');
+      };
+      
+      let maxi = new Dog('Maxi', 32); // constructor, uses the prototype & inherts bark
+      maxi.bark(); // 'Woof!'
+      
+      let biggie = new Dog('Biggie', 9);
+      biggie.bark(); // 'Yip!'
+      ```
+
+    * ![Diagram](https://dbdwvr6p7sskw.cloudfront.net/images/js120/constructor-prototype-map.png)
+
+    * Therefore, we can update our earlier understanding of what happens when `new` is used. For a given constructor function `Foo`, when we call it with `new`:
+
+      1. JS creates an entirely new object.
+      2. It sets `Foo.prototype` as the prototype for the new object. That is, the new object inherits from the object referenced by `Foo.prototype`.
+      3. It sets the execution context (`this`) for the function to point to the new object.
+      4. It invokes the function.
+      5. It returns the new object *unless* the function returns another **object**.
+
+    * As with `instanceof`, the `constructor` property lets us determine the type of an object:
+
+      * ```javascript
+        let maxi = new Dog('Maxi', 32);
+        maxi.constructor === Dog;
+        ```
+
+      * Keep in mind, the `constructor` property can be reassigned so be careful!
+
+  * Overriding the Prototype
+
+    * ```javascript
+      let maxi = new Dog('Maxi', 32);
+      let dexter = new Dog('Dexter', 50);
+      
+      dexter.bark = function() {
+        console.log('WOOF!')
+      }
+      
+      maxi.bark(); 		// Woof!
+      dexter.bark(); 	// WOOF!, overriding the `bark` method from `Dog.prototype`
+      ```
+
+    * Because JS finds a `bark` property on `dexter` it can call the method that it points to, unlike in `maxi` where it has to go back to the prototype object to find `bark`.
+
 * **Static and Instance Properties and Methods**
 
 * **The Pseudo-classical Pattern and the OLOO Pattern**
