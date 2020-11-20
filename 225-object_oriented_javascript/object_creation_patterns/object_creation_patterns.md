@@ -712,7 +712,22 @@
 
 * **Douglas Crockford Lecture- JavaScript: The Good Parts**
 
-  * 
+  * **Differential Inheritance**: thanks to delegation, an object can contain only what makes it different from another object, allowing objects to be smaller.
+
+  * Closures: functions retain access to the in-scope environment when they were created
+
+    * ```javascript
+      let digit_name = function () {
+        // save names in a closure, only called once
+        var names = ['zero', 'one', 'two', 'three', 'four', 'five',
+                     'six', 'seven', 'eight', 'nine', 'ten']
+        
+        return function(n) {
+          return names[n];
+        };
+      }();
+      digit_name(3); // 'three'
+      ```
 
 ### Concepts/Vocab
 
