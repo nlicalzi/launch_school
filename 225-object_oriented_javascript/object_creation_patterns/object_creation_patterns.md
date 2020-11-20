@@ -422,6 +422,46 @@
 
 * **Static and Instance Properties and Methods**
 
+  * What is an **instance** in OOP?
+
+    * An instance is an individual object of a specific data type. For example, `maxi` and `dexter` in the above code are instance objects created from the `Dog` constructor.
+
+  * Instance Properties / Instance Methods
+
+    * Instance properties are properties that belong to a specific instance of some type-- attempting to access properties with those names on the constructor won't work.
+    * Instance methods typically shouldn't be created/stored directly in instances, but rather in the instance's prototype in order to avoid unncessarily repeated computation at runtime.
+      * We usually refer to methods in the prototype as instance methods as well, because of this.
+
+    * *Any* *method* defined in *any* *prototype* in the prototype chain of an object is considered to be an instance method of that object.
+
+  * Static Properties
+
+    * **Static properties** are defined & accessed directly on the constructor, not instance/prototype.
+
+    * ```javascript
+      function Dog(name, breed) {
+        this.name = name;
+        this.breed = breed;
+        Dog.allDogs.push(this); // push newly created instance to Dog.allDogs
+      }
+      
+      Dog.allDogs = []; // static property tracking all instances of constructor
+      ```
+
+  * Static Methods
+
+    * We can also have static properties that reference methods:
+
+      * Ex. `Object.assign`, `Array.isArray`, `Date.now` are all static methods on constructors
+
+    * ```javascript
+      Dog.showSpecies = function() {
+        console.log(`Dogs belong to the species ${Dog.species}`);
+      };
+      
+      Dog.showSpecies();
+      ```
+
 * **The Pseudo-classical Pattern and the OLOO Pattern**
 
 * **The Class Syntactic Sugar**
@@ -434,3 +474,5 @@
 
 ### Concepts/Vocab
 
+* Scope-safe constructor
+* 
