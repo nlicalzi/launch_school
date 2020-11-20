@@ -464,6 +464,31 @@
 
 * **The Pseudo-classical Pattern and the OLOO Pattern**
 
+  * Having learned about factory functions, constructors, and prototypes, we can now get into two best-practice patterns for object creation in JS: the **Pseudo-classical pattern** and the **OLOO (Object Linking to Other Object) pattern**
+
+  * The Pseudo-classical Pattern
+
+    * Solves the factory pattern's type determination problem by replacing the factory function with a *constructor function* (relying on the keyword `new`) to create new objects.
+
+    * ```javascript
+      let pointA = new Point(30, 40);
+      ```
+
+  * The OLOO (Objects Linked to Other Objects) Pattern
+
+    * Create objects directly from other objects instead of using constructor functions, and using explicit (`init`) initialization with a method rather than implicit initialization (with `new`).
+
+    * ```javascript
+      let pointA = Object.create(Point).init(30, 40);
+      ```
+
+  * Further Reading:
+
+    * [Comparison of different object-oriented JavaScript patterns](https://john-dugan.com/object-oriented-javascript-pattern-comparison/)
+    * Recap and mental model of two of our students on the JavaScript design patterns we covered:
+      - [JavaScript Design Patterns: Building a Mental Model](https://medium.com/launch-school/javascript-design-patterns-building-a-mental-model-68c2d4356538)
+      - [JavaScript Weekly: Fundamental Object Design Patterns](https://medium.com/launch-school/javascript-weekly-fundamental-object-design-patterns-31453f68427f)
+
 * **The Class Syntactic Sugar**
 
 * **More Methods on the Object Constructor**
