@@ -504,7 +504,87 @@
 
 * **More Methods on the Object Constructor**
 
-  * 
+  * `Object.create` and `Object.getPrototypeOf`
+
+    * We can create a prototype chain that mimics classical inheritance by using `Object`'s  `getPrototypeOf` method in conjunction with its `create` method.
+
+    * The code below will add a method to the `ExtendedArray` object, which is otherwise identical to `Array`, so `ExtendedArray` will be able to delegate all normal array Array methods to `Array.prototype` while also having the special ability to respond to `first` properly:
+
+    * ```javascript
+      Object.getPrototypeOf([]) === Array.prototype; // true
+      
+      function ExtendedArray() {}
+      ExtendedArray.prototype = Object.create(Object.getPrototypeOf([]));
+      
+      ExtendedArray.prototype.first = function() {
+        return this[0];
+      };
+      
+      let enhancedArr = new ExtendedArray();
+      let oldArr 			= new Array();
+      
+      enhancedArr.push(5);
+      oldArr.push(5);
+      
+      console.log(enhancedArr.first()); // 5
+      console.log(oldArr.first()); // undefined
+      ```
+
+  * `Object.defineProperties`
+
+    * We can use the `defineProperties` method on `Object` to provide properties and values and set whether each property can be changed or not.
+
+    * We use this to create a read only property on an object in the code below:
+
+    * ```javascript
+      let obj = { name: 'Obj', };
+      
+      Object.defineProperties(obj, {
+        age: {
+          value: 30,
+          writable: false, 	// the `age` property of `obj` is now read-only
+        },
+      });
+      
+      console.log(obj.age); // 30
+      obj.age = 32;					// this won't have any effect
+      console.log(obj.age); // 30, the line above didn't manage to reset the property
+      ```
+
+    * ```javascript
+      function newPerson(name) {
+        return Object.defineProperties({ name: name}, {
+          log: { 																	// add property `log` that points to
+            value() { console.log(this.name); }, 	// this function
+            writable: false												// and set it to be read-only
+          },
+        });
+      }
+      ```
+
+  * `Object.freeze`
+
+    * We can use the `freeze` method on `Object` to ensure that all property values (that aren't objects, since the object references will be frozen but the references within those objects are still mutable) are immutable. (Note: objects cannot be unfrozen once frozen.)
+
+    * ```javascript
+      let frozen = {
+        integer: 4,
+        string: 'String',
+        array: [1, 2, 3],
+        object: { foo: 'bar', },
+      }
+      
+      Object.freeze(frozen); 		// occurs in-place
+      
+      frozen.integer = 8; 			// doesn't work
+      console.log(frozen.integer);      // => 4
+      
+      frozen.string = 'Number';	// doesn't work
+      console.log(frozen.string);       // => String
+      
+      frozen.array.pop(); 			// does work, array elements are mutable
+      console.log(frozen.array);        // => [1, 2]
+      ```
 
 * **Modules**
 
