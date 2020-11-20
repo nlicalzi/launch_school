@@ -588,9 +588,136 @@
 
 * **Modules**
 
+  * Benefits of Modules
+
+    * Modules allow us to split up large programs into smaller, atomic pieces that are easier to comprehend individually and as a system.
+    * Modules also facilitate the reusability of code, separation of concerns, and the use of private data and encapsulation.
+
+  * CommonJS Modules (aka Node modules)
+
+    * Using CommonJS Modules
+
+      * When using Node, we can **require/import** code from modules like `readline-sync` into a given program using the **CommonJS module syntax**:
+
+        * ```javascript
+          const readline = require('readline-sync');
+          let choice = readline.question("Run this program? (y/n)");
+          ```
+
+      * CommonJS modules aren't supported in browsers because they are loaded *synchronously*, and therefore take too long to load to be applicable for the browser environment.
+
+        * Transpilers like [Babel](https://babeljs.io/) can transpile code using CommonJS modules into a browser compatible format.
+
+    * Creating CommonJS Modules
+
+      * To create a module, we just have to add some extra code to export our items for use:
+
+        * ```javascript
+          function logIt(string) { console.log(string); }
+          module.exports = logIt; // this is what gets exported/imported
+          
+          const logIt = require('./logit'); // use in a new file, specifying path
+          logIt('You rock!'); // => 'You rock!'
+          ```
+
+      * We can export any values in whatever amount we'd like:
+
+        * ```javascript
+          let prefix = '>> ';
+          
+          function logIt(str) { console.log(`${prefix}${str}`); }
+          function setPrefix(newPrefix) { prefix = newPrefix; }
+          
+          module.exports = {
+            logIt, 			// export function logIt
+            setPrefix,	// export function setPrefix
+          };
+          
+          // unpack our imports in a new file using object destructuring
+          const { logIt, setPrefix } = require('./logit');
+          logIt('You rock!'); // >> You rock!
+          setPrefix('++ ');
+          logIt('You rock!'); // ++ You rock!
+          ```
+
+    * CommonJS Variables
+
+      * In Node, all code is part of a CommonJS module, including your main program.
+      * Each module provides variables you can use in your code:
+        * `module`: an object that represents the current module
+        * `exports`: the name(s) exported by the module (same as `module.exports`)
+        * `require(moduleName)`: the function that loads a module
+        * `__dirname`: the absolute pathname of the directory that contains the module
+        * `__filename`: the absolute pathname of the file that contains the module
+
+  * JS Modules (aka ES modules or ECMAScript modules)
+
+    * Some History
+
+      * Loading modules synchronously in the browser would result in a full request/response cycle of loadtime: request the resource, wait for server's response, convert the body, then load the module into JS.
+      * Early workarounds to this included RequireJS and Browserify, which allowed for the pre-downloading and bundling of JS files. 
+      * However, ES6 has added native module support for JS using `export` and `import`, so these workarounds are no longer necessary.
+        * Note: if it's important to support older browers, it's recommended to use tools like Babel or Webpack these days.
+          * **Babel**: transpiles ES6 code to ES5 code.
+          * **Webpack**: consolidates all of the modules you need into a single file.
+
+    * Using JS Modules
+
+      * Exporting is as simple as preceding each declaration with the word `export`.
+
+      * Consider an example codebase that uses the three following files:
+
+        * ```javascript
+          // bar.js
+          export let items = [];
+          export let counter = 0;
+          
+          export function bar() {
+            counter += 1;
+            items.push(`item ${counter}`);
+          }
+          
+          export function getCounter() { return counter; }
+          ```
+
+        * ```javascript
+          // foo.js
+          import { bar } from './bar';
+          
+          let xyz = 1
+          
+          export function foo() {
+            console.log(xyz);
+            xyz += 1;
+            bar();
+          }
+          ```
+
+        * ```javascript
+          // main.js
+          
+          import { foo } from './foo';
+          import { bar, getCounter, items, counter } from './bar';
+          
+          foo();
+          console.log(items); 				// ['item 1']
+          console.log(getCounter()); 	// 1
+          console.log(counter);				// 1
+          
+          bar();
+          console.log(items); 				// ['item 1', 'item 2']
+          console.log(getCounter()); 	// 2
+          console.log(counter);				// 2
+          ```
+
 * **Douglas Crockford Lecture- JavaScript: The Good Parts**
+
+  * 
 
 ### Concepts/Vocab
 
 * Scope-safe constructor
-* 
+* Ryan Schaul's JS OOP Vid:
+  * https://www.youtube.com/watch?v=-N9tBvlO9Bo
+* A shallow dive into the constructor property in JS:
+  * https://medium.com/@patel.aneeesh/a-shallow-dive-into-the-constructor-property-in-javascript-b0a89747058b
