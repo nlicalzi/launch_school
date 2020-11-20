@@ -491,7 +491,20 @@
 
 * **The Class Syntactic Sugar**
 
+  * ES6 introduced the `class` keyword, which is really just syntactic sugar that wraps around the pseudo-classical pattern:
+    * ![img](https://d3905n0khyu9wc.cloudfront.net/images/class_vs_pseudo_classical.png)
+  * The main differences between using `class` and the base pseudo-classical pattern are:
+    1. The use of the keyword `class` instead of `function`.
+    2. Parameters are defined and states are set within the explicit `constructor` function, which automatically runs whenever an object is created.
+    3. All methods defined within the `class` definition are defined on the prototype object automatically rather than added later, with the exception of `constructor`.
+  * A Couple of Caveats:
+    1. All code in `class` executes in strict mode.
+    2. Class declarations are not hoisted (unlike function declarations).
+    3. Invoking the class constructor without using the `new` keyword raises an error.
+
 * **More Methods on the Object Constructor**
+
+  * 
 
 * **Modules**
 
