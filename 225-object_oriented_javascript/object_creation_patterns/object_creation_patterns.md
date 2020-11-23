@@ -548,6 +548,15 @@
     * Solves the factory pattern's type determination problem by replacing the factory function with a *constructor function* (relying on the keyword `new`) to create new objects.
 
     * ```javascript
+      let Point = function(x = 0, y = 0) {
+        this.x = x;
+        this.y = y;
+      }
+      
+      Point.prototype.onXAxis = function() {};
+      Point.prototype.onYAxis = function() {};
+      Point.prototype.distanceToOrigin = function() {};
+      
       let pointA = new Point(30, 40);
       ```
 
@@ -556,6 +565,18 @@
     * Create objects directly from other objects instead of using constructor functions, and using explicit (`init`) initialization with a method rather than implicit initialization (with `new`).
 
     * ```javascript
+      let Point = {
+        onXAxis() {},
+        onYAxis() {},
+        distanceToOrigin() {},
+      
+        init(x, y) { // optional init method to set states
+          this.x = x;
+          this.y = y;
+          return this;
+        },
+      };
+      
       let pointA = Object.create(Point).init(30, 40);
       ```
 
