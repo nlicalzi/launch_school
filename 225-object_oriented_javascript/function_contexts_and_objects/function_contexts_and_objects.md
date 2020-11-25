@@ -3,7 +3,7 @@
 ### Summary
 
 * Function invocations (e.g. `parseInt(numberString)`) rely upon implicit execution context that resolves to the global object. Method invocations (e.g. `array.forEach(processElement)`) rely upon implicit context that resolves to the object that holds the method.
-* All JavaScript code executes within a context. The top-level context in a web browser is the `window` object. All global methods and Objects (such as `parseInt` or `Math`) are properties of this object. In Node, the top-levle context is called `global`. However, be aware that Node has some peculiarities that cause it to behave differently from some browsers.
+* All JavaScript code executes within a context. The top-level context in a web browser is the `window` object. All global methods and Objects (such as `parseInt` or `Math`) are properties of this object. In Node, the top-level context is called `global`. However, be aware that Node has some peculiarities that cause it to behave differently from some browsers.
 * You can't use `delete` to delete variables and functions declared at the global scope.
 * `this` is the current execution context of a function.
 * The value of `this` changes based on **how you invoke a function**, not **how you define it**.
@@ -199,7 +199,7 @@
       }
       
       printLine.call(iPad, 1, ';'); 	// => 1: iPad, 400 dollars;
-      printLine.call(kindle, 2, '.'); // => 2: kindle, 300 dollars;
+      printLine.call(kindle, 2, '.'); // => 2: kindle, 300 dollars.
       ```
 
 * **Hard Binding Functions with Contexts**
@@ -285,7 +285,7 @@
 
   * The most common ways a function can lose its context:
 
-    * **Method Losing Context when Take Out of Object**
+    * **Method Losing Context when Taken Out of Object**
 
       * If you remove a method from its containing object and execute it, it loses its context.
 
@@ -422,7 +422,7 @@
         obj.foo(); // 3x => 1 undefined undefined, etc.
         ```
 
-      * Solution 1: Use a local variable in the lexical scope to store this
+      * Solution 1: Use a local variable in the lexical scope to store `this`
 
         * `let self = this;` or `let that = this;`
 
@@ -500,7 +500,7 @@
     * Indirect invocation: `alert.call(undefined, 'Hello world!')`
       * `this` is the *first argument* of `.call()` or `.apply()` in an indirect invocation.
         * `function.call(thisArg, ...args)`
-        * `function.call.apply(thisArg, argsArray)`
+        * `function.apply(thisArg, argsArray)`
 
   * What do we mean by the context of an invocation?
 
