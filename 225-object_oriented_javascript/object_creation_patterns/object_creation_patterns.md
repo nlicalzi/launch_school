@@ -53,7 +53,7 @@
   * `Object.create` returns a new object with the argument object as its prototype.
   * `Object.getPrototypeOf` can be used to retrieve the prototype object for an object.
   * `Object.setPrototypeOf` can be used to replace an object's prototype object with another object.
-  * `Object.isPrototypeOf` can be used to check for prototype relationships between objects.
+  * `object.isPrototypeOf` can be used to check for prototype relationships between objects.
 
 * The prototype chain property lookup is the basis for "**prototypal inheritance**", or property sharing through the prototype chain. Downstream objects "inherit" properties and behaviors from upstream objects // downstream objects can "delegate" properties or behaviors upstream.
 
