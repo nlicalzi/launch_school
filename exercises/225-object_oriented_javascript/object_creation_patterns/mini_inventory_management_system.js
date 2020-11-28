@@ -9,3 +9,15 @@
 
 // Reports for specific items are generated from report objects created from the report
 // manager. The report manager is responsible for reports for all items.
+
+function ItemCreator() {
+  
+}
+
+function ItemManager() {
+
+}
+
+function ReportManager() {
+
+}
