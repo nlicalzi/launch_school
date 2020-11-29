@@ -65,13 +65,13 @@ test("without retains the elements that aren't remove", function() {
 });
 
 test("range is defined", function() {
-  return typeof _.range === "function";
+  return typeof _().range === "function";
 });
 test("range returns an array of values starting at 0 when one argument supplied", function() {
-  return _.range(10)[0] === 0 && _.range(10).length === 10;
+  return _().range(10)[0] === 0 && _().range(10).length === 10;
 });
 test("range returns an array of values starting with the first value when two arguments supplied", function() {
-  return _.range(1, 10)[0] === 1 && _.range(1, 10).length === 9;
+  return _().range(1, 10)[0] === 1 && _().range(1, 10).length === 9;
 });
 
 test("lastIndexOf is defined", function() {

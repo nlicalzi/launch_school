@@ -4,32 +4,105 @@
 (function() {
   const _ = function(element) {
     u = { // internal object, add methods here
+      // Array methods
       first: function() { return element[0]; },
       last: function() { return element[element.length - 1]; },
       without: function() {
+        // return array without argument elements
         let args = Array.prototype.slice.call(arguments);
         let new_arr = [];
         element.forEach(function(el) {
-          if (args.indexOf(el) === -1) { new_arr.push(el); }
+          if (args.indexOf(el) === -1) {
+            new_arr.push(el);
+          }
         });
         
         return new_arr;
       },
-      range: function() {
-        // if one arg is supplied, return array of values from 0 to arg
-        // if two args supplied, return array starting from first up to second minus 1
+      range: function(startVal, endVal) {
+        // return array form of either 0..el or first..second
+        let args = Array.prototype.slice.call(arguments);
+        if (args.length === 1) {
+          startVal = 0;
+          endVal = args[0];
+        }
+
+        let results = [];
+        for (let val = startVal; val < endVal; val += 1) {
+          results.push(val);
+        }
+        return results;
       },
-      lastIndexOf: function() {
+      lastIndexOf: function(val) {
         // return last index of supplied value (or -1 if not present)
+        let lastIdx = -1;
+        element.forEach((el, idx) => {
+          if (el === val) { lastIdx = idx; }
+        });
+        return lastIdx;
       },
-      sample: function() {
-        // if no arg is passed, return a single random value from an array
-        // otherwise return an array of X random unique elements 
-      }
+      sample: function(picks) {
+        picks ||= 1;
+        if (picks === 1) {
+          // if no arg is passed, return a single random value from an array
+          let randIdx = Math.floor(Math.random() * Math.floor(element.length))
+          return element[randIdx];
+        } else {
+          // otherwise return an array of X random unique elements 
+          let results = [];
+          for (let i = 0; i < picks; i += 1) {
+            let randIdx = Math.floor(Math.random() * Math.floor(element.length));
+            results.push(element[randIdx]);
+          }
+
+          return results;
+        }
+      },
+
+      // Object/object collection methods
+      findWhere: function(props) {
+        let match;
+
+        element.some(function(obj) {
+          let all_match = true;
+
+          for (let prop in props) {
+            if (!(prop in obj) || obj[prop] !== props[prop]) {
+              all_match = false;
+            }
+          }
+
+          if (all_match) {
+            match = obj;
+            return true;
+          }
+        });
+        // if no objects match all supplied properties, return undefined
+        return match;        
+      },
+      where: function(props) {
+        // return an array of all objects with properties that match supplied object
+        let matchingObjs = [];
+        element.forEach(obj => {
+          let all_match = true;
+          for (let prop in props) {
+            if (obj[prop] !== props[prop]) { all_match = false; }
+          }
+          if (all_match) { matchingObjs.push(obj); }
+        });
+        return matchingObjs;
+      },
+      pluck: function() {},
+      keys: function() {},
+      values: function() {},
+      extend: function() {},
+      pick: function() {},
+      omit: function() {},
+      has: function() {},
     };
 
     return u; // return internal object with methods
   };
 
   window._ = _; // attach underscore var as a property of the window object
-})();           // invoke immediately (IIFE)
+})();           // invoke immediately (IIFE), no need to return anything
