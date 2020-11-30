@@ -132,8 +132,34 @@
       },
     };
 
+    (["isElement", "isArray", "isObject", "isFunction",
+      "isBoolean", "isString", "isNumber"]).forEach(function(method) {
+        u[method] = function() { _[method].call(u, element); };
+      });
+
     return u; // return internal object with methods
   };
+
+  // // Utility Methods
+  // // These should work with either syntax: _.isElement(obj) or _(obj).isElement()
+  _.isElement = function(obj) {
+    return obj && obj.nodeType === 1;
+  };
+  _.isArray = Array.isArray || function(obj) {
+    return toString.call(obj) === "[object Array]";
+  };
+  _.isObject = function(obj) {
+    var type = typeof obj;
+    return type === "function" || type === "object" && !!obj;
+  };
+  _.isFunction = function(obj) {
+    return typeof obj === "function";
+  };
+  (["Boolean", "String", "Number"]).forEach(function(method) {
+    _["is" + method] = function(obj) {
+      return toString.call(obj) === "[object " + method + "]";
+    };
+  });
 
   window._ = _; // attach underscore var as a property of the window object
 })();           // invoke immediately (IIFE), no need to return anything
