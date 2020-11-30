@@ -102,7 +102,10 @@
       keys: function() {
         return Object.getOwnPropertyNames(element);
       },
-      values: function() {},
+      values: function() {
+        let keys = Object.getOwnPropertyNames(element);
+        return keys.map(key => element[key]);
+      },
       extend: function() {},
       pick: function() {},
       omit: function() {},
