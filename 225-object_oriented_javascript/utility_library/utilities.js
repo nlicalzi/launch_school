@@ -92,7 +92,20 @@
         });
         return matchingObjs;
       },
-      pluck: function() {},
+      pluck: function(prop) {
+        // create an output array
+        let result = [];
+        // iterate through each object in element
+        element.forEach(obj => {
+          // if object has property matching arg
+          if (obj[prop]) {
+            // push to output array
+            result.push(obj[prop]);
+          }
+        });
+        // return output
+        return result;
+      },
       keys: function() {},
       values: function() {},
       extend: function() {},
