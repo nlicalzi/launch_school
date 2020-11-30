@@ -118,8 +118,18 @@
         props.forEach(prop => { newObj[prop] = element[prop]; });
         return newObj;
       },
-      omit: function() {},
-      has: function() {},
+      omit: function(...props) {
+        let newObj = {};
+        Object.assign(newObj, element);
+        props.forEach(prop => {
+          delete newObj[prop];
+        });
+        return newObj;
+      },
+      has: function(prop) {
+        let keys = Object.getOwnPropertyNames(element);
+        return keys.includes(prop);
+      },
     };
 
     return u; // return internal object with methods
