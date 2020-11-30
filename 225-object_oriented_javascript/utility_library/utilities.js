@@ -113,8 +113,10 @@
         });
         return target;
       },
-      pick: function() {
-        
+      pick: function(...props) {
+        let newObj = {};
+        props.forEach(prop => { newObj[prop] = element[prop]; });
+        return newObj;
       },
       omit: function() {},
       has: function() {},
