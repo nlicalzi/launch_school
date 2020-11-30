@@ -106,8 +106,16 @@
         let keys = Object.getOwnPropertyNames(element);
         return keys.map(key => element[key]);
       },
-      extend: function() {},
-      pick: function() {},
+      extend: function(target, ...objs) {
+        objs.forEach(obj => {
+          Object.getOwnPropertyNames(obj)
+                .forEach(key => { target[key] = obj[key]; });
+        });
+        return target;
+      },
+      pick: function() {
+        
+      },
       omit: function() {},
       has: function() {},
     };
