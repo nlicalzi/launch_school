@@ -10,34 +10,123 @@
 // Reports for specific items are generated from report objects created from the report
 // manager. The report manager is responsible for reports for all items.
 
-function ItemCreator() {
-  // PROPERTIES
-    // SKU code (UID/str):
-      // first 3 letters of item name (trim spaces), first 2 letters of category
-    // Item Name (str):
-      // min 5 non-space characters
-    // Category (str):
-      // min 5 chars, no spaces allowed
-    // Quantity (num):
-      // required value, assume valid number provided
+class Item {
+  constructor(itemName, category, quantity) {
+    if (!this.#validName(itemName) ||
+        !this.#validCategory(category) ||
+        !this.#validQuantity(quantity)) {
+      return {
+        notValid: true,
+      };
+    } else {
+      this.itemName = itemName;
+      this.category = category;
+      this.quantity = quantity;
+      this.SKU = (itemName.replace(/\s/g, '').substring(0, 3) +
+                 category.substring(0, 2)).toUpperCase();
+    }
+  }
+
+  // PRIVATE VALIDATION METHODS (prefixed with #)
+  #validName(str) {
+    return str.replace(/\s/g, '').length > 5;
+  }
+  #validCategory(str) {
+    return str.length > 5 && str.indexOf(' ') === -1;
+  }
+  #validQuantity(num) {
+    return num >= 0;
+  }
 }
 
-function ItemManager() {
-  // METHODS
-    // create(), creates a new item (returns false if creation not successful)
-    // update(SKU, obj), updates any of the info on an item (assume valid values)
-    // delete(SKU), deletes the item from the list (assume valid SKU)
-    // items(), return all items
-    // inStock(), return all items with quantity > 0
-    // itemsInCategory(category), list all items for given category
+class ItemManager {
+  constructor() {
+    this.inventory = [];
+  }
+
+  create(itemName, category, quantity) {
+    let item = new Item(itemName, category, quantity)
+    if (!item.notValid) {
+      this.inventory.push(item);
+      return item;
+    } else {
+      return false;
+    }
+  }
+  getItem(SKUCode) {
+    return this.inventory.filter(item => item.SKU === SKUCode)[0];
+  }
+  items() {
+    return this.inventory;
+  }
+  update(targetSKU, obj) {
+    this.inventory.forEach(item => {
+      if (item.SKU === targetSKU) {
+        for (let prop in obj) { item[prop] = obj[prop]; }
+      }
+    });
+  }
+  delete(targetSKU) {
+    this.inventory = this.inventory.filter(item => item.SKU !== targetSKU);
+  }
+  inStock() {
+    return this.inventory.filter(item => item.quantity > 0);
+  }
+  itemsInCategory(targetCategory) {
+    return this.inventory.filter(item => item.category === targetCategory);
+  }
 }
 
-function ReportManager() {
-  // PROPERTIES
-    // items, should reference an itemManager object
-  // METHODS
-    // init(itemManager), assigns itemManager to `items` property
-    // createReporter(SKU), returns an object having:
-      // method itemInfo(), log all properties of obj as k:v pairs, one per line
-    // reportInStock(), log all items in stock as comma separated values
+class ReportManager {
+  constructor(itemManager) {
+    this.items = itemManager;
+  }
+
+  createReporter(targetSKU) {
+    return (() => {
+      const item = this.items.getItem(targetSKU);
+      return {
+        itemInfo() {
+          Object.keys(item).forEach(key => {
+            console.log(`${key}: ${item[key]}`);
+          });
+        },
+      };
+    })();
+  }
+
+  reportInStock() {
+    console.log(this.items.inventory.filter(item => item.quantity > 0)
+                                    .map(item => item.itemName)
+                                    .join(', '));
+  }
 }
+
+let manager = new ItemManager();
+
+manager.create('basket ball', 'sports', 0);           // valid item
+manager.create('asd', 'sports', 0);
+manager.create('soccer ball', 'sports', 5);           // valid item
+manager.create('football', 'sports');
+manager.create('football', 'sports', 3);              // valid item
+manager.create('kitchen pot', 'cooking items', 0);
+manager.create('kitchen pot', 'cooking', 3);          // valid item
+
+console.log(manager.items());
+
+let reportManager = new ReportManager(manager);
+reportManager.reportInStock();
+
+manager.update('SOCSP', { quantity: 0 });
+console.log(manager.inStock());
+reportManager.reportInStock();
+
+console.log(manager.itemsInCategory('sports'));
+manager.delete('SOCSP');
+console.log(manager.items());
+
+const kitchenPotReporter = reportManager.createReporter('KITCO');
+kitchenPotReporter.itemInfo();
+
+manager.update('KITCO', { quantity: 10 });
+kitchenPotReporter.itemInfo();
