@@ -74,8 +74,6 @@ ________
 
 _____
 
-
-
 * **Node Properties**
 
   * The `document` node represents the entire HTML document (`document.toString() === '[object HTMLDocument]'`), and can be used in conjunction with `querySelector` to get a reference to the first node in the DOM that matches the specified CSS selector like so:
@@ -117,27 +115,96 @@ _____
       * Since we know Element nodes have a `nodeValue` of null, we use `textContent` instead to get the text content of the individual nodes inside the Element.
       * `textContent` joins the `nodeValue` of all child Text Nodes together, including any empty Nodes which can lead to excess whitespace. Deal with it by using String/RegExp methods.
 
-      
-
-  ____________
-
-  
+_____
 
 * **Determining the Type of a Node**
 
+  * Nodes and Elements
+
+    * All DOM objects are Nodes.
+    * All DOM objects have a type that inherits from Node, which means they all have properties and methods that they inherit from Node.
+    * The most common DOM object types you will use are **Element** and **Text**.
+      * Elements include more specific specialized Element types. While the DOM node that represents a `<p>` HTML tag has type `HTMLParagraphElement`, the Element that represents a `<div>` tag is `HTMLDivElement`.
+    * <img src="https://d3905n0khyu9wc.cloudfront.net/images/node_venn.png" alt="Node type diagram" style="zoom: 50%;float:left;" />
+
+  * Inheritance in the DOM
+
+    * `EventTarget` provides the event-handling behavior that supports interactive web applications.
+    * `Node` provides common behavior to *all* nodes.
+    * `Text` and `Element` are the chief subtypes of `Node`.
+      * `Text` nodes hold text.
+      * `Element` nodes represent HTML tags.
+    * Most HTML tags map to specific element subtypes that inherit from `HTMLElement`.
+    * Other element types exist, such as `SVGElement` and its subtypes.
+
+  * Determining the Node Type
+
+    * JS provides two main useful ways to determine a node type:
+
+      * In the console use the `toString` method or the `String` constructor method on the node and read the name from display.
+
+        * ```javascript
+          p.toString();
+          // => "[object HTMLParagraphElement]"
+          
+          document.querySelector('a').constructor; // Chrome
+          // => function HTMLAnchorElement() { [native code] }
+          
+          document.querySelector('a').constructor.name; // Firefox
+          // => "HTMLAnchorElement"
+          ```
+
+      * If you're writing a program, use the `instanceof` function or `tagName` property:
+
+        * ```javascript
+          let p = document.querySelector('p');
+          p instanceof HTMLParagraphElement;
+          // => true
+          p instanceof HTMLAnchorElement;
+          // => false
+          p instanceof Element;
+          // => true
+          ```
+
+        * ```javascript
+          p.tagName;
+          // => "P"
+          ```
+
+_________
+
 * **Inheritance and Finding Documentation**
+  * .
+
+__________
 
 * **Traversing Nodes**
+  * .
+
+__________
 
 * **Element Attributes**
+  * .
+
+_________
 
 * **Finding DOM Nodes**
+  * .
+
+_________
 
 * **Traversing Elements**
+  * .
+
+_________
 
 * **Creating and Moving DOM Nodes**
+  * .
+
+_________
 
 * **The Browser Object Model (BOM)**
+  * .
 
 ### Concepts/Vocab
 
