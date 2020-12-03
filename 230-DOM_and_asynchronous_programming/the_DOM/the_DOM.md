@@ -171,15 +171,49 @@ _____
           // => "P"
           ```
 
-_________
-
-* **Inheritance and Finding Documentation**
-  * .
-
 __________
 
 * **Traversing Nodes**
-  * .
+
+  * DOM nodes connect with other DOM nodes via a set of properties that point from one node to another with defined relationships.
+
+    * Parent nodes:
+
+      * | Parent Node Properties | Value                                         |
+        | :--------------------- | :-------------------------------------------- |
+        | `firstChild`           | `childNodes[0]` or `null`                     |
+        | `lastChild`            | `childNodes[childNodes.length - 1]` or `null` |
+        | `childNodes`           | *Live collection* of all child nodes          |
+
+    * Child nodes:
+
+      * | Child Node Properties | Value                                    |
+        | :-------------------- | :--------------------------------------- |
+        | `nextSibling`         | `parentNode.childNodes[n + 1]` or `null` |
+        | `previousSibling`     | `parentNode.childNodes[n - 1]` or `null` |
+        | `parentNode`          | Immediate parent of this node            |
+
+  * All DOM nodes that represent elements have **both** parent and child nodes. Whether a node has a non-null *value* for a given property, however, depends on the DOM that contains the node. The last hild of a node has a `null` value for `nextSibling`, while all others have non-null values.
+
+    * <img src="https://d3905n0khyu9wc.cloudfront.net/images/node_hierarchy.png" alt="Connections between nodes in the DOM" style="zoom:50%;" />
+
+  * **Walking the Tree**
+
+    * Walking the tree refers to the process of visiting every node that has a child, grandchild, etc. relationship with a given node and doing something using each of them with recursion.
+
+    * ```javascript
+      // walk() calls the function 'callback' once for each node
+      function walk(node, callback) {
+        callback(node);																					// perform callback
+        for (let i = 0; i < node.childNodes.length; i += 1) {		// for each child node
+          walk(node.childNodes[i], callback);										// recurse on walk()
+        }
+      }
+      
+      walk (document.body, node => { // log nodeName of every node
+        console.log(node.nodeName);
+      }); // sort of like Array.prototype.forEach, but for the DOM & not Arrays
+      ```
 
 __________
 
