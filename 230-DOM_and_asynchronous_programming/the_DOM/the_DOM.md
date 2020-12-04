@@ -218,7 +218,68 @@ __________
 __________
 
 * **Element Attributes**
-  * .
+
+  * Getting and Setting Attributes
+
+    * We can access the attributes of an elements using the following methods:
+
+      * | Method                         | Description                                 | Returns                      |
+        | :----------------------------- | :------------------------------------------ | :--------------------------- |
+        | `getAttribute(name)`           | Retrieve value of attribute `name`          | Value of attribute as string |
+        | `setAttribute(name, newValue)` | Set value of attribute `name` to `newValue` | `undefined`                  |
+        | `hasAttribute(name)`           | Check whether element has attribute `name`  | `true` or `false`            |
+
+    * ```javascript
+      p.hasAttribute('class'); 	// true
+      p.getAttribute('class'); 	// 'intro'
+      p.getAttribute('id'); 		// 'simple'
+      p.setAttribute('id', 'complex');
+      p; // <p class='intro' id='complex'> </p>
+      ```
+
+      * It is suggested to access or modify the current value by using its properties rather than `setAttribute`: `Element.value = [...]`
+
+  * Attribute Properties
+
+    * While `getAttribute` and `setAttribute` work for all attributes, some can be accessed in a different way, as properties of the Element: `id`, `name`, `title`, `value`. You can fetch or set the value for these properties using standard property access/assignment operators.
+      * Doesn't work for every element type, only some elements have valid `name`/`value` attrs
+    * You can access the `class` attribute for some attributes by using `className`, since `class` is a reserved word in JS: `p.className`, etc.
+
+  * `classList`
+
+    * Using the `class` attribute via `className` can be clumsy when elements have more than one class, consider the case: `<button class = btn btn-lg btn-primary">Proceed</button>`
+      * `button.className` here will return `"btn btn-lg btn-primary"`
+    * We can instead use the `classList` property to return a special array-like object (`DOMTokenList`) that has the following methods and properties:
+      * `add(name)`: add class `name` to element
+      * `remove(name)`: remove class `name` from element
+      * `toggle(name)`: add class `name` to element if it doesn't exist, remove if it does
+      * `contains(name)`: return `true` or `false` depending on whether element has class `name`
+      * `length`: the number of classes to which the element belongs
+
+  * `style`
+
+    * Element nodes have a `style` attribute that references a `CSSStyleDeclaration` object:
+
+      * ```javascript
+        let h1 = document.querySelector('h1');
+        h1.style;
+        /* =>
+        CSSStyleDeclaration {
+          alignContent: "",
+          alignItems: "",
+          alignSelf: "",
+          alignmentBaseline: "",
+          all: "",
+          ...
+        }
+        */
+        
+        h1.style.color = 'red';				// set color to red
+        h1.style.color = null; 				// set color to null
+        h1.style.lineHeight = '3em'; 	// change line height to 3em
+        ```
+
+      * 
 
 _________
 
