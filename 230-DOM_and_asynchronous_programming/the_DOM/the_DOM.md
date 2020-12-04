@@ -284,7 +284,128 @@ __________
 _________
 
 * **Finding DOM Nodes**
-  * .
+
+  * Finding an Element by ID
+
+    * Use the built-in method `document.getElementById(id)` to get a single element by `id`:
+
+      * ```html
+        <!doctype html>
+        <html lang="en-US">
+          <head>
+            <title>On the River</title>
+          </head>
+          <body>
+            <p id="content">The sun is low</p>
+            <style>
+              document.getElementById('content'); // RETRIEVES THE <p> TAG ELEMENT
+            </style>
+          </body>
+        </html>
+        ```
+
+  * Finding More Than One Element (the hard way)
+
+    * ```javascript
+      // CUSTOM IMPLEMENTATION
+      function walk(node, callback) {
+        callback(node);
+      
+        for (let i = 0; i < node.childNodes.length; i += 1) {
+          walk(node.childNodes[i], callback);
+        }
+      }
+      
+      function getElementsByTagName(tagName) {
+        let matches = [];
+      
+        walk(document.body, node => {
+          if (node.nodeName.toLowerCase() === tagName) { matches.push(node); }
+        });
+      
+        return matches;
+      }
+      
+      getElementsByTagName('p').forEach(paragraph => {
+        paragraph.classList.add('article-text');
+      });
+      ```
+
+  * Built-In Functions
+
+    * We can use built-in methods on `document` to perform the same functions as above. The type of the return value of these methods depends on the browser (returning either `HTMLCollection` or `NodeList`)
+
+      * `getElementsByTagName(tagName)`: returns `HTMLCollection` or `NodeList` of matches
+      * `getElementsByClassName(className)`: returns `HTMLCollection` or `NodeList` of matches
+
+    * What is an `HTMLCollection` or `NodeList`?
+
+      * They are both array-like objects, which means that they are non-negative integer indexed collections, but do not have access to many of our standard JS `Array` methods.
+
+      * To loop through an `HTMLCollection` or a `NodeList`, we have to either forego the use of `Array.forEach` or convert the collection to an `Array` before proceeding:
+
+        * ```javascript
+          let paragraphs = document.getElementsByTagName('p');
+          
+          paragraphs.length; 	// returns a Number
+          paragraphs[0]; 			// returns first element in collection
+          
+          // The following will fail: 'forEach' not available in some browsers
+          paragraphs.forEach(paragraph => console.log(paragraph.textContent));
+          
+          // One fix
+          let paragraphsArray = Array.prototype.slice.call(paragraphs);
+          paragraphsArray.forEach(/* etc. */);
+          
+          // Alt fix
+          for (let i = 0; i < paragraphs.length; i += 1) {
+            let paragraph = paragraphs[i];
+            console.log(paragraph.textContent);
+          }
+          ```
+
+    * **NOTE:** Some DOM-querying methods return collections called **live collections**, which automatically update to reflect changes in the DOM:
+
+      * `getElementsByClassName()` is an `HTMLCollection` and is live.
+      * `getElementsByTagName()` is an `HTMLCollection` and is live.
+      * `getElementsByName()` is a `NodeList` and is live.
+      * `querySelectorAll()` is a `NodeList` and is **not** live.
+
+  * **Using CSS Selectors**
+
+    * **Walking the tree becomes more complex as elements are nested deeper and deeper in the DOM. Because of this, alternate methods of finding and selecting given subsets of elements have been developed:**
+
+      * `document.querySelector(selectors)`: returns first matching element or `null`
+      * `document.querySelectorAll(selectors)`: returns `NodeList` of matching elements
+
+    * Both `querySelector` and `querySelectorAll` take a string argument of one or more comma-separated css selectors:
+
+      * ```html
+        <html>
+          <body>
+           	<div id="divOne"></div> 
+           	<div id="divTwo"></div> 
+           	<script>
+              document.querySelector('#divTwo, #divOne');
+              	// => <div id="divOne"></div>
+              document.querySelectorAll('#divTwo, #divOne');
+              	// => NodeList(2) [div#divOne, div#divTwo]
+           	</script>
+          </body>
+        </html>
+        ```
+
+    * Putting it all together below:
+
+      * ```javascript
+        // get all elements with CSS selectors '.intro' and 'p'
+        let paragraphs = document.querySelectorAll('.intro p');
+        
+        // add the class 'article-text' to them
+        for (let i = 0; i < paragraphs.length; i += 1) {
+          paragraphs[i].classList.add('article-text');
+        }
+        ```
 
 _________
 
