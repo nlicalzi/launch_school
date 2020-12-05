@@ -410,7 +410,53 @@ _________
 _________
 
 * **Traversing Elements**
-  * .
+
+  * We can simplify our node traversal by getting a list of just Elements, rather than having `Text` and other nodes mixed in, through using the following methods:
+
+    * | Parent Element Properties | Value                                     |
+      | :------------------------ | :---------------------------------------- |
+      | `children`                | *Live collection* of all child elements   |
+      | `firstElementChild`       | `children[0]` or `null`                   |
+      | `lastElementChild`        | `children[children.length - 1]` or `null` |
+      | `childElementCount`       | `children.length`                         |
+
+      | Child Element Properties | Value                                  |
+      | :----------------------- | :------------------------------------- |
+      | `nextElementSibling`     | `parentNode.children[n + 1]` or `null` |
+      | `previousElementSibling` | `parentNode.children[n - 1]` or `null` |
+
+  * `textContent`
+
+    * When using the above DOM properties, we can access the `Text` nodes by using the `textContent` property:
+
+      * ```javascript
+        document.querySelector('a').textContent; // access
+        document.querySelector('a').textContent = 'step backward'; // reassign
+        ```
+
+    * When creating text that we will have to update, make sure to place it within an element. Setting `textContent` removes all child nodesfrom the element in question and replaces them with a single text node. We can wrap the text in a bare `<span>` or `<div>` and assign an id or class to it in order to access it:
+
+      * ```html
+        <!doctype html>
+        <html lang="en-US">
+          <head>
+            <title>My Site</title>
+          </head>
+          <body>
+            <div>
+              Welcome to the site!<br>
+              The time is <span class="time">9:15 am</span>.<br>
+              You are logged in as <a href="/account">Kabu</a>.
+            </div>
+          </body>
+          <script>
+            // access the first element with class 'time' and update
+            document.querySelector('.time').textContent = '9:16 am';
+          </script>
+        </html>
+        ```
+
+      * 
 
 _________
 
