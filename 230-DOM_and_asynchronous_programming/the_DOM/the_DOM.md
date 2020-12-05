@@ -279,8 +279,6 @@ __________
         h1.style.lineHeight = '3em'; 	// change line height to 3em
         ```
 
-      * 
-
 _________
 
 * **Finding DOM Nodes**
@@ -461,7 +459,73 @@ _________
 _________
 
 * **Creating and Moving DOM Nodes**
-  * .
+
+  * Now that we know how to modify existing nodes in the DOM, it's time to learn how to add new ones and manipulate them:
+
+    * ```html
+      <!doctype html>
+      <html lang="en-US">
+        <head>
+          <title>Empty Page</title>
+        </head>
+      	<body>
+          <script>
+            // first new paragraph (empty)
+            let paragraph = document.createElement('p');
+            paragraph.textContent = 'This is a text.';
+            document.body.appendChild(paragraph);
+            
+            // second new paragraph (incl. text)
+            let text = document.createTextNode('This is a test.');
+            let paragraph = document.createElement('p');
+            paragraph.appendChild(text);
+            document.body.appendChild(paragraph);
+          </script>
+        </body>
+      </html>
+      ```
+
+  * Creating New Nodes
+
+    * There are two main ways of creating new nodes:
+
+      * Creating new empty nodes
+
+        * `document.createElement(tagName)` returns a new Element node of type `tagName`
+        * `document.createTextNode(text)` returns a new Text node containing `text`
+
+      * Cloning an existing node hierarchy
+
+        * `node.cloneNode(deepClone)` returns a copy of `node`
+
+          * ```javascript
+            paragraph;
+            // => <p>This is a test.</p>
+            
+            let paragraph2 = paragraph.cloneNode(true);
+            document.body.appendChild(paragraph2);
+            ```
+
+  * Adding Nodes to the DOM
+
+    * We can **append, insert, and replace nodes** by using methods on the node's parent:
+      * `parent.appendChild(node)`: appends `node` to the end of `parent.childNodes`
+      * `parent.insertBefore(node, targetNode)`: inserts `node` into `parent.childNodes` before `targetNode`
+      * `parent.replaceChild(node, targetNode)`: removes `targetNode` from `parent.childNodes` and insert `node` in its place
+    * **Note: no Node may appear twice in the DOM.** If you try to add a node that already exists somewhere else in the DOM, that original one will be moved to the place of attempted insertion. Use one of the following methods for this:
+      * `element.insertAdjacentElement(position, newElement)`: inserts `newElement` at `position` relative to `element`.
+      * `element.insertAdjacentText(position, text)`: inserts Text node that contains `text` at `position` relative to `element`.
+      * The `position` in the above two methods has to have one of the following String values:
+        * `"beforebegin"`: before the element
+        * `"afterbegin"`: before the first child of the element
+        * `"beforeend"`: after the last child of the element
+        * `"afterend"`: after the element
+
+  * Removing Nodes
+
+    * Removing a node from the DOM makes it eligible for garbage collection unless you keep a reference to it in a variable. **Remove nodes using these methods**:
+      * `node.remove()`: removes `node` from the DOM
+      * `parent.removeChild(node)`: removes `node` from `parent.childNodes`
 
 _________
 
