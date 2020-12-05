@@ -530,7 +530,10 @@ _________
 _________
 
 * **The Browser Object Model (BOM)**
-  * .
+  * It is important to realize that while we have only discussed the DOM so far, there is also a **Browser Object Model** that is accessible with JS beyond page contents. The BOM includes:
+    * The windows used to display web pages
+    * The browser's history
+    * Sensors, including location.
 
 ### Concepts/Vocab
 
