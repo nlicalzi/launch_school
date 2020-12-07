@@ -57,6 +57,13 @@
 
 * User Interfaces and Events
 
+  * An **event** is an object that represents some occurrence, containing information about what happened and where it happened.
+    * The browser can trigger events as the page loads, when the user interacts with the page, and when the browser performs some action required by the program.
+  * The code that the browser runs in response to a given event is the **event listener**.
+  * Since a lot of web apps consist mainly of a user interface, the code within them has two main tasks:
+    * Set up the user interface and display it
+    * Handle events resulting from user or browser actions
+
 * A Simple Exchange
 
 * Page Lifecycle Events
