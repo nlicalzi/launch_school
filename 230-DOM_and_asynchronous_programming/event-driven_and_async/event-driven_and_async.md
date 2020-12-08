@@ -117,6 +117,14 @@
 
 * User Events
 
+  * What are some examples of user events we might need to listen to based on device?
+    * Keyboard: `keydown`, `keyup`, `keypress`
+    * Mouse: `mouseenter`, `mouseleave`, `mousedown`, `mouseup`, `click`
+    * Touch: `touchdown`, `touchup`, `touchmove`
+    * Window: `scroll`, `resize`
+    * Form: `submit`
+  * Full list of events can be found here: https://developer.mozilla.org/en-US/docs/Web/Events
+
 * Adding Event Listeners
 
 * The `Event` Object
