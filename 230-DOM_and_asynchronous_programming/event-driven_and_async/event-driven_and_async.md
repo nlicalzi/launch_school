@@ -66,6 +66,44 @@
 
 * A Simple Exchange
 
+  * The code snippet below displays a string representation of a number and a button labeled "Add One", each time the button is clicked the number increments by one.
+
+    1. When the browser loads the page, the JS within the `script` tag is evaluated, adding an event listener for when `DOMContentLoaded` fires (i.e. the browser fully loads the HTML on the page below the `script` and uses it to build the DOM then **fire** the `DOMContentLoaded` event on `document`.
+    2. This executes the code in the callback passed to `addEventListener` (the **event handler**), which gets references to 2 DOM elements (`addButton` and `output`), as well as initializing the variable `count` and adding an event listener for `click` events on `addButton`.
+    3. The browser then goes back into the event loop, waiting for an event to fire.
+    4. When the user clicks the button, the `click` event fires and the browser runs the handler (increasing the value of `count` and updating the `textContent` of the `#output` `span`)
+    5. The browser goes back to waiting for an event to fire, etc.
+
+  * ```html
+    <!doctype html>
+    <html lang="en-US">
+      <head>
+        <title>title</title>
+        <meta charset="UTF-8">
+        <script>
+          document.addEventListener('DOMContentLoaded', event => {
+            let addButton = document.getElementById('add');
+            let output = document.getElementById('output');
+            let count = 0;
+            
+            addButton.addEventListener('click', event => {
+              count += 1;
+              output.textContent = String(count);
+            });
+          });
+        </script>
+        <body>
+          <p>
+            <span id="output">0</span>
+            <button id="add">Add One</button>
+          </p>
+        </body>
+      </head>
+    </html>
+    ```
+
+  * 
+
 * Page Lifecycle Events
 
 * User Events
