@@ -85,26 +85,35 @@
             let addButton = document.getElementById('add');
             let output = document.getElementById('output');
             let count = 0;
-            
+    
             addButton.addEventListener('click', event => {
               count += 1;
               output.textContent = String(count);
             });
           });
         </script>
-        <body>
-          <p>
-            <span id="output">0</span>
-            <button id="add">Add One</button>
-          </p>
-        </body>
       </head>
+    
+      <body>
+        <p>
+          <span id="output">0</span>
+          <button id="add">Add One</button>
+        </p>
+      </body>
     </html>
     ```
 
-  * 
-
 * Page Lifecycle Events
+
+  * What steps does a browser go through to display a website? (**MENTAL MODEL**)
+    * HTML code received from server.
+    * HTML parsed and JavaScript evaluated.
+    * DOM constructed from parsed HTML.
+    * **`DOMContentLoaded`** event fires on **document**.
+      * We usually use this event when we have JS code that must access the DOM.
+    * Page displayed on screen.
+    * Embedded assets are loaded.
+    * **load** event fires on **window**.
 
 * User Events
 
