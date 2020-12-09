@@ -236,9 +236,60 @@
       });
       ```
 
-    * 
-
 * Capturing and Bubbling
+
+  * What are the drawbacks of working with events by adding handlers to elements that maybe the source of events?
+
+    * You can't add an event listener to an element until the DOM is ready, which means you must wait until the `DOMContentLoaded` event fires.
+    * You must add event handlers manually when you add new elements to the page after `DOMContentLoaded` fires.
+    * Adding handlers to many elements can be slow, and can lead to complicated, difficult to maintain code.
+
+  * How can we solve the above issues?
+
+    * Through a process called **event delegation**, which we can discuss after we learn a bit more about **capturing** and **bubbling**
+
+  * **Capturing** and **Bubbling**
+
+    * The number of elements that you can interact with is equal to the element the event listener was added to, plus the number of **"nested"** inner elements.
+
+    * `target` vs `currentTarget`
+
+      * `target` refers to the element on which the element occurred (possibly a nested element), while `currentTarget` refers to the element to which an event listener is added.
+
+    * The value of `this` within the handler when using a function expression is the element that the listener was added to (`currentTarget`):
+
+      * ```javascript
+        // the following code snippets are equivalent
+        
+        // using a function expression for the callback
+        elem2.addEventListener('click', function(event) {
+          alert(event.currentTarget.id);
+        });
+        
+        elem2.addEventListener('click', function(event) {
+          alert(this.id);
+        });
+        ```
+
+    * **Capturing** and **bubbling** are phases that an event goes through after it initially fires. 
+
+      * The event first gets dispatched to the global `window` object, then to the `document` object, all the way down to the target element, which is the element on which the event was originally fired.
+
+      * At this point, the dispatch process referses and from the `target` element works its way back up through containing elements until it reaches the `window` object.
+
+      * <img src="https://d3905n0khyu9wc.cloudfront.net/images/event_phases_v4.png" alt="Event capturing and bubbling" style="zoom:50%;float:left" />
+
+        * There is only one `click` event firing in the above image, but it is depicted moving through the capturing and bubbling phases and checks each DOM object it passes through for listeners.
+
+        * The event gets dispatched to each element in the tree twice-- once during capturing and once during bubbling. The actual listener only gets called/fired in one phase: during bubbling:
+
+          * ```javascript
+            // add an optional third arg to tell the event listener to listen
+            // through the capturing phase (the useCapture param defaults to false)
+            elem1.addEventListener('click', callbackFunc, true);
+            ```
+
+      * We are able to interact with child elements even though an event listener is only attached to their parent because when we click on a child element, the `click` event bubbles up (from `target`) and passes the parent object that has a listener for it.
 
 * Event Delegation
 
