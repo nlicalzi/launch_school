@@ -127,6 +127,28 @@
 
 * Adding Event Listeners
 
+  * **Event listeners** / **event handlers** are functions that the JS runtime calls when a particular event occurs.
+
+  * There are four steps needed to set up an event handler:
+
+    1. Identify the event that you need to handle: user actions, the page lifecycle, etc. can fire events
+    2. Identify the element that will receive the event: a button, input field, etc.
+    3. Define a function to call when this event occurs: function should take a single Event arg.
+    4. Register the function as an event listener: tie the first 3 steps together
+
+  * The `GlobalEventHandlers` mixin provides an alternative way to register a function as an event listener for an element.
+
+    * Rather than adding a `click` handler with `button.addEventListener`, we can assign the listener to the `onclick` property of the button itself
+
+      * ```javascript
+        document.addEventListener('DOMContentLoaded', () => {
+          let button = document.getElementById('alert');
+          button.onclick = displayAlert;
+        });
+        ```
+
+      * Other useful features of `GlobalEventHandlers` include `onsubmit` and `onkeypress`
+
 * The `Event` Object
 
 * Capturing and Bubbling
