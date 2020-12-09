@@ -341,6 +341,34 @@ _____
 
 * Event Delegation
 
+  * What are some issues with adding an event listener on `DOMContentLoaded`?
+
+    * We must wait for the DOM to finish loading before adding event handlers, potentially introducing problems if we have other code that must wait before running.
+    * Modern web pages often add new elements after the page finishes loading. If we add event listeners to elements that exist when the page finishes loading, any later elements that are added won't have those listeners and we'll have to explicitly add them as they are created.
+    * Adding many listeners to a document has a cost in performance and memory. 
+
+  * **Event delegation** takes advantage of event propagation to address the above problems. Consider the following code snippet:
+
+    * ```javascript
+      document.addEventListener('click', event => {
+        let tag = event.target.tagName;
+        // do something if target is a button
+        if (tag === 'BUTTON') {
+          let message = document.getElementById('message');
+          message.textContent = `${event.target.textContent} was clicked!`;
+        } else if (tag === 'A') {
+          // prevent browser from doing anything if target is an A tag
+          event.preventDefault();
+        }
+      });
+      ```
+
+  * *When should we use event delegation?*
+
+    * When a project is new and small, we should start by binding event handlers directly to elements.
+    * As a project grows in size and complexity, delegation makes sense to reduce the number of event handlers that are required.
+      * Note: we don't need to use `document` as the delegator-- we can delegate events to any parent element of the elements that we want to monitor (and even have more than one element handling delegated events if required).
+
 * What is the Event Loop?
 
 * Promises
