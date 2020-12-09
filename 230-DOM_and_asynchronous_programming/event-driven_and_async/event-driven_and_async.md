@@ -32,6 +32,8 @@
 
     * Note: `setTimeout` is not part of the JS specification, but most environments (modern browsers and Node) have schedulers that make it available.
 
+______
+
 * Repeating Execution with `setInterval`
 
   * `setInterval` behaves similarly to `setTimeout`, except it will repeatedly invoke the passed callback at the specified time interval until explicitly stopped. (Also not part of the JS specification, but implemented in runtimes.)
@@ -55,14 +57,17 @@
       }
       ```
 
-* User Interfaces and Events
+______
 
+* User Interfaces and Events
   * An **event** is an object that represents some occurrence, containing information about what happened and where it happened.
     * The browser can trigger events as the page loads, when the user interacts with the page, and when the browser performs some action required by the program.
   * The code that the browser runs in response to a given event is the **event listener**.
   * Since a lot of web apps consist mainly of a user interface, the code within them has two main tasks:
     * Set up the user interface and display it
     * Handle events resulting from user or browser actions
+
+_____
 
 * A Simple Exchange
 
@@ -103,8 +108,9 @@
     </html>
     ```
 
-* Page Lifecycle Events
+_____
 
+* Page Lifecycle Events
   * What steps does a browser go through to display a website? (**MENTAL MODEL**)
     * HTML code received from server.
     * HTML parsed and JavaScript evaluated.
@@ -115,8 +121,9 @@
     * Embedded assets are loaded.
     * **load** event fires on **window**.
 
-* User Events
+_____
 
+* User Events
   * What are some examples of user events we might need to listen to based on device?
     * Keyboard: `keydown`, `keyup`, `keypress`
     * Mouse: `mouseenter`, `mouseleave`, `mousedown`, `mouseup`, `click`
@@ -124,6 +131,8 @@
     * Window: `scroll`, `resize`
     * Form: `submit`
   * Full list of events can be found here: https://developer.mozilla.org/en-US/docs/Web/Events
+
+_____
 
 * Adding Event Listeners
 
@@ -148,6 +157,8 @@
         ```
 
       * Other useful features of `GlobalEventHandlers` include `onsubmit` and `onkeypress`
+
+_____
 
 * The `Event` Object
 
@@ -236,6 +247,8 @@
       });
       ```
 
+_____
+
 * Capturing and Bubbling
 
   * What are the drawbacks of working with events by adding handlers to elements that maybe the source of events?
@@ -277,7 +290,7 @@
 
       * At this point, the dispatch process referses and from the `target` element works its way back up through containing elements until it reaches the `window` object.
 
-      * <img src="https://d3905n0khyu9wc.cloudfront.net/images/event_phases_v4.png" alt="Event capturing and bubbling" style="zoom:50%;float:left" />
+      * <img src="https://d3905n0khyu9wc.cloudfront.net/images/event_phases_v4.png" alt="Event capturing and bubbling" style="zoom: 25%; float: left;" />
 
         * There is only one `click` event firing in the above image, but it is depicted moving through the capturing and bubbling phases and checks each DOM object it passes through for listeners.
 
@@ -290,6 +303,41 @@
             ```
 
       * We are able to interact with child elements even though an event listener is only attached to their parent because when we click on a child element, the `click` event bubbles up (from `target`) and passes the parent object that has a listener for it.
+
+  * Capturing and Bubbling (2)
+
+    * Adding an event listener of the same type (`click`) to the same element doesn't overwrite the first one that was added. 
+    * Event objects pass through the capturing phase before the bubbling phase, and passing an optional third arg (which defaults to false as `useCapture`) to `addEventListener` will result in the listener getting fired in the capturing phase instead of the bubbling phase.
+    * Events queue, and the oldest one gets processed first regardless of the type of the event (this is due to the **event loop**).
+
+_____
+
+* Preventing Propagation and Default Behaviors
+
+  * Stopping Propagation with `event.stopPropagation`
+
+    * `event.stopPropagation` stops the `event` object from continuing its path along the capturing and bubbling phases.
+
+    * ```javascript
+      function turnRed(event) {
+        event.stopPropagation();
+        event.currentTarget.style.background = 'red';
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        // this code fires during the capturing phase and then stops
+        document.querySelector('.outer').addEventListener('click', turnRed, true);
+        // this bottom code never fires due to the `stopPropagation` call
+        document.querySelector('.inner').addEventListener('click', turnRed);
+      });
+      ```
+
+  * Preventing Default Behaviors with `event.preventDefault`
+
+    * The `preventDefault` method on `Event` objects tells the browser that it shouldn't perform any actions that it might otherwise perform in response to a user's action.
+    * The default behavior isn't for the element that the event listener is attached to, but rather for the `event` object.
+    * The browser waits for the event object to go through the propagation phases (capturing and bubbling) before it performs the default action of the event. If there's an event handler with a `preventDefault` call somewhere in the propagation path, the default behavior is skipped.
+    * It's good practice to call `preventDefault` or `stopPropagation` as soon as possible in an event handler, thereby emphasizing the presence of those methods to people reading the code and ensuring that the methods are run before any errors occur.
 
 * Event Delegation
 
