@@ -357,8 +357,10 @@ _____
           let message = document.getElementById('message');
           message.textContent = `${event.target.textContent} was clicked!`;
         } else if (tag === 'A') {
-          // prevent browser from doing anything if target is an A tag
+          // prevent browser from taking default action if target is an A tag
+          // i.e. opening a new window
           event.preventDefault();
+         	event.target.classList.toggle('highlight');
         }
       });
       ```
@@ -369,10 +371,98 @@ _____
     * As a project grows in size and complexity, delegation makes sense to reduce the number of event handlers that are required.
       * Note: we don't need to use `document` as the delegator-- we can delegate events to any parent element of the elements that we want to monitor (and even have more than one element handling delegated events if required).
 
-* What is the Event Loop?
+* What is the Event Loop? (https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+
+  * Add'l reading: https://blog.bitsrc.io/understanding-asynchronous-javascript-the-event-loop-74cd408419ff
+
+  * JS is single-threaded, we just have the one call stack in the runtime (which tracks our execution context and function/method calls).
+
+    * However, when we're running code in the browser we have access to capacity that isn't reliant on the run time (WebAPIs that aren't in the JS runtime like the `DOM`, `XMLHttpRequest`/AJAX, `setTimeout`)
+
+      * <img src="/Users/nicholaslicalzi/Library/Application Support/typora-user-images/Screen Shot 2020-12-09 at 3.32.28 PM.png" alt="Screen Shot 2020-12-09 at 3.32.28 PM" style="zoom:50%;float:left" />
+
+    * When some code from a WebAPI has finished executing, it moves the code to the **task queue**. 
+
+    * The **event loop** looks at the stack and the task queue: if the stack is empty, it takes the first thing on the queue and pushes it onto the stack (then it runs).
+
+      * ```javascript
+        console.log('Hi');
+        
+        // this goes to the task queue and doesn't execute until the stack is clear
+        setTimeout(() => { // setTimeout is browser code, not standard JS runtime code
+          console.log('there');
+        }, 0);
+        
+        console.log('JSConfEU');
+        
+        // This code logs:
+        // Hi
+        // JSConfEU
+        // There
+        ```
+
+      * ```javascript
+        console.log('Hi');
+        
+        // JQuery implements .get in a non-blocking manner
+        // kicking its execution to the task queue
+        $.get('url', function cb(data) {
+          console.log(data);
+        });
+        
+        console.log('JSConfEU');
+        
+        // this code logs:
+        // Hi
+        // JSConfEU
+        // { some: 'json' }
+        ```
+
+  * What is **blocking behavior** / a blocking function?
+
+  * How do we handle blocking?
+
+    * **Asynchronous callbacks** like using `setTimeout(callback, timeMS)` let us avoid putting slow functions on the stack and slowing down/blocking execution, instead putting them on the **message/task/callback queue**, which the event loop will pull from and put onto the stack when the stack is empty. 
 
 * Promises
 
 * Douglas Crockford: An Inconvenient API
 
 ### Concepts and Vocab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
