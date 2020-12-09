@@ -151,6 +151,93 @@
 
 * The `Event` Object
 
+  * The argument object passed to the event handler in `addEventListener` provides extra information about the event (beyond just that it occurred):
+
+    * ```javascript
+      document.body.addEventListener('click', event => { // event is an Event object
+        let elementClicked = event.target;
+        let elementAttached = event.currentTarget;
+        let p = document.getElementById('message');
+        p.textContent = elementClicked.tagName;
+        let p2 = document.getElementById('message2');
+        p2.textContent = elementAttached.tagName;
+      });
+      ```
+
+  * Some useful properties that appear in `Event` objects include:
+
+    * `type`: the name of the event (e.g. 'click')
+    * `currentTarget`: the current object that the event is on (that has the event listener attached)
+    * `target`: The initial object to receive notification of the event (e.g. the element that was clicked)
+
+  * Mouse Events
+
+    * `button`: read-only property that indicates which button was pressed
+
+    * `clientX` / `clientY`: mouse position (in visible area of page, from upper-left) on event occuring
+
+    * ```javascript
+      // move the element having class selector '.x' on mouse move
+      
+      document.addEventListener('mousemove', event => {
+        let x = document.querySelector('.x');
+        x.style.left = String(event.clientX) + 'px';
+        x.style.top = String(event.clientY) + 'px';
+      });
+      ```
+
+  * Keyboard Events
+
+    * `key`: the string value of the pressed key (older browsers do not support this property)
+
+    * `shiftKey` / `altKey` / `ctrlKey`: bool that indicates whether the specified key was also pressed
+
+      * Modified keys (shift, ctrl, etc.) don't fire `keypress`, only `keyup` and `keydown`
+
+    * ```javascript
+      // change color of the x based on key presses
+      document.addEventListener('keyup', event => {
+        let key = event.key;
+        let color;
+      
+        if (key === 'r') {
+          color = 'red';
+        } else if (key === 'g') {
+          color = 'green';
+        } else if (key === 'b') {
+          color = 'blue';
+        }
+      
+        if (color) {
+          let x = document.querySelector('.x');
+          // convert x.children to an array to map both .horizontal and .vertical
+          [...x.children].map(child => {
+            return child.style.background = color;
+          });
+        }
+      });
+      ```
+
+    * ```javascript
+      // Updating a textarea and reporting text based on character length
+      let text;
+      let maxLen = 140;
+      
+      document.addEventListener('keyup', event => {
+        text = document.getElementsByTagName('textarea')[0].value;
+        
+        let charsRemaining = maxLen - text.length;
+        let reportCharLength = String(charsRemaining) + ' characters remaining.';
+        let reporter = document.querySelector('.reporter');
+        
+        reporter.innerText = reportCharLength;
+        
+        if (charsRemaining < 0) { document.getElementsByTagName('textarea')[0].style.color = 'red'; }
+      });
+      ```
+
+    * 
+
 * Capturing and Bubbling
 
 * Event Delegation
