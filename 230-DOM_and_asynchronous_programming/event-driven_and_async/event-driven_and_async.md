@@ -2,6 +2,38 @@
 
 ### Summary
 
+* `setTimeout(callback, delay)` invokes a function after the specified number of milliseconds.
+
+* `setInterval(callback, delay)` invokes a function repeatedly in intervals of some specified number of milliseconds. `clearInterval` clears the interval and prevents future invocations of the Function.
+
+  * ```javascript
+    let interval = setInterval(callback, delay);
+    clearInterval(interval);
+    ```
+
+* An **event** is an object that represents some occurrence and contains a variaety of information about what happened and where it happened.
+
+  * The browser triggers some events as it loads a page and when it accomplishes some actions directed by an application.
+  * The user also triggers events when they interact with the page.
+
+* Code that accesses the DOM should be invoked after the `DOMContentLoaded` event fires on `document`
+
+* User events drive most user interfaces and can result from a user interacting with the keyboard, mouse, touchscreen, window, or other devices. Examples of these user events are `click`, `mouseover`, `keydown`, and `scroll`.
+
+* **Event listeners** are callbacks that the browser will invoke when a matching event occurs.
+
+* `element.addEventListener` registers and event listener. You can also use specific `GlobalEventHandlers` like `element.onclick` to register an event handler.
+
+* The `Event` object provides the useful properties `type`, `target`, and `currentTarget`.
+
+* Keyboard events have properties like `key` (and others) that describe the keys the user pressed. Mouse events similarly provide `button`, `clientX`, `clientY`, and others.
+
+* Events propagate in three phases: **capturing**, **target**, and **bubbling**.
+
+* `event.preventDefault` prevents default browser behavior in response to an event. `event.stopPropagation` stops the current capturing or bubbling phase, which prevents the event from firing on containing or contained elements.
+
+* **Event delegation** is a technique used to handle events triggered by multiple elements using a single event handler.
+
 ### Notes
 
 * Asynchronous Execution with `setTimeout`
@@ -339,6 +371,8 @@ _____
     * The browser waits for the event object to go through the propagation phases (capturing and bubbling) before it performs the default action of the event. If there's an event handler with a `preventDefault` call somewhere in the propagation path, the default behavior is skipped.
     * It's good practice to call `preventDefault` or `stopPropagation` as soon as possible in an event handler, thereby emphasizing the presence of those methods to people reading the code and ensuring that the methods are run before any errors occur.
 
+_____
+
 * Event Delegation
 
   * What are some issues with adding an event listener on `DOMContentLoaded`?
@@ -370,6 +404,8 @@ _____
     * When a project is new and small, we should start by binding event handlers directly to elements.
     * As a project grows in size and complexity, delegation makes sense to reduce the number of event handlers that are required.
       * Note: we don't need to use `document` as the delegator-- we can delegate events to any parent element of the elements that we want to monitor (and even have more than one element handling delegated events if required).
+
+______
 
 * What is the Event Loop? (https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
@@ -424,9 +460,51 @@ _____
 
     * **Asynchronous callbacks** like using `setTimeout(callback, timeMS)` let us avoid putting slow functions on the stack and slowing down/blocking execution, instead putting them on the **message/task/callback queue**, which the event loop will pull from and put onto the stack when the stack is empty. 
 
-* Promises
+______
 
-* Douglas Crockford: An Inconvenient API
+* Promises and `async` / `await` (note: not covered in the assessment)
+
+  * Events work well for things that can happen multiple times on the same object, like clicks or keypresses. However, what should we do when we care about what happens before we attach the listener to an element?
+
+    * Use a promise:
+
+    * ```javascript
+      var promise = new Promise(function(resolve, reject) {
+        // do a thing, possibly async, then...
+        if (/* everything turned out fine */) {
+      		resolve("Stuff worked!");
+      	}
+      	else {
+      		reject(Error("It broke"));
+      	}
+      });
+      
+      promise.then(function(result) {
+        console.log(result); // Stuff worked!
+      }, function(err) {
+        console.log(err); // Error: It broke
+      });
+      ```
+
+  * What is a promise?
+
+    * The `Promise` object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+    * A `Promise` is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. 
+    * This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a *promise* to supply the value at some point in the future.
+    * ![img](https://mdn.mozillademos.org/files/15911/promises.png)
+
+  * What states can a promise have?
+
+    * Promises have three possible mutually exclusive states: fulfilled, rejected, and pending:
+      * A promise is *fulfilled* if `promise.then(f)` will call `f` "as soon as possible".
+      * A promise is *rejected* if `promise.then(undefined, r)` will call `r` "as soon as possible".
+      * A promise is *pending* if it is neither fulfilled nor rejected.
+
+  * What fates can a promise have?
+
+    * Promises have two possible mutually exclusive fates: resolved and unresolved:
+      * A promise is *resolved* if trying to resolve or reject it has no effect, i.e. the promise has been "locked in" to either follow another promise or has been fulfilled/rejected.
+      * A promise is *unresolved* if it is not resolved, i.e. if trying to resolve or reject it will have an impact on the promise.
 
 ### Concepts and Vocab
 
