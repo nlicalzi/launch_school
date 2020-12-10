@@ -6,18 +6,17 @@
 
 ### Getting Started
 
-* Introduction
-  * What this book covers
-  * Who this book is for
-  * How to read the book
-  * Examples
 * Preparations
-  * Installing HTTPie
-  * Installing Postan
+  * [HTTPie](https://github.com/httpie/httpie) (cmd line app`http --help`)
+  * [Postman](https://www.postman.com/)
 * Using Postman
   * Making a Request
+    * <img src="https://d186loudes4jlv.cloudfront.net/api/images/tealeaf-postman-intro.png" alt="img" style="zoom:45%;float:left" />
   * Checking the weather
+    * <img src="https://d186loudes4jlv.cloudfront.net/api/images/tealeaf-postman-weather-portland-default.png" alt="img" style="zoom:45%;float:left" />
   * Summary
+    * Postman makes it easy to make HTTP Requests from a web browser
+    * Postman has few dependencies and is easy to install, since it runs in a web browser
 
 ### API Basics
 
