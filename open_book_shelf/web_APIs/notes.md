@@ -61,33 +61,27 @@ ________
 ### Working with an API
 
 * **Fetching Resources**
-  * Server Setup
-  * Fetching a Resource
-  * What is a Resource?
-  * Fetching a Collection
-  * Elements and Collections
-  * Summary
+  * APIs provide access to single resources (**elements**) or groups of resources (**collections**).
+  * The path for an element is usually the path for its collection, plus an identifier for that resource.
 * **Requests in Depth**
-  * GET and POST
-  * Parts of a Request
-  * Summary
+  * HTTP requests include a path, method, headers, and body.
+  * The **Accept** header tells the provider what media types can be used to respond to the request.
 * **Creating Resources**
-  * HTTP Request side effects
-  * Creating a Resource
-  * Handling errors
-  * Summary
+  * Resources can be created with **POST** requests.
+  * Requests should include all required parameters and use the proper media type.
+  * Responses to failed requests will often contain information about the cause of the failure.
 * **More HTTP Methods**
-  * Updating a Resource
-  * Deleting a Resource
+  * Use HTTP method **PUT** to update resources.
+  * Use HTTP method **DELETE** to delete resources.
 
 ________
 
 ### Reference
 
-* **HTTP Response Headers**
-  * `Access-Control-Allow-Origin`
-  * `Allow`
-  * `Content-Length`
+* **HTTP Response Headers** ([full list](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Response_fields))
+  * `Access-Control-Allow-Origin`: Lists what domains can access this resource using CORS.
+  * `Allow`: Used with a `405 Method Not Allowed` response ot a request w/ invalid HTTP method.
+  * `Content-Length`: The length of the response body in bytes.
   * `Content-Type`
   * `ETag`
   * `Last-Modified`
