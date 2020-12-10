@@ -88,11 +88,29 @@ ________
     | `responseText` | No       | `null`        | Raw text of the response's body.                             |
     | `response`     | No       | `null`        | Parsed content of response, *not meaningful in all situations* |
 
-  * Debugging `XMLHttpRequests` in Chrome
+  * Problems
+
+    * ```javascript
+      var request = new XMLHttpRequest();
+      request.open('GET', 'https://api.github.com/repos/rails/rails');
+      request.send();
+      
+      request.responseText; // response body
+      ```
 
 _________
 
 * `XMLHttpRequest` Events
+  * Two main events fire during an `XMLHttpRequest` cycle: 
+    * `loadstart`: request sent to server
+    * `loadend`: response done loading and all other events have fired (last event to fire)
+  * Before `loadend` fires, an event will fire based on whether the request was successful:
+    * `load`: a complete response loaded
+    * `abort`: the request was interrupted before it could complete
+    * `error`: an error occured
+    * `timeout`: a response wasn't received before the timeout period ended
+    * <img src="https://d3905n0khyu9wc.cloudfront.net/images/220_xhr_main_events.png" alt="XMLHttpRequest lifecycle events" style="zoom:40%;float: left;" />
+  * The application code itself is responsible for determining whether a `request` was successful by inspecting the response within a `load` event handler.
 
 _________
 
