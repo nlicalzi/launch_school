@@ -82,8 +82,8 @@ ________
   * `Access-Control-Allow-Origin`: Lists what domains can access this resource using CORS.
   * `Allow`: Used with a `405 Method Not Allowed` response ot a request w/ invalid HTTP method.
   * `Content-Length`: The length of the response body in bytes.
-  * `Content-Type`
-  * `ETag`
-  * `Last-Modified`
-  * `WWW-Authenticate`
-  * `X-*` Headers
+  * `Content-Type`: Describes the *media type* or format of the body. Ex. `application/json`
+  * `ETag`: Use to identify a specific version of a resource.
+  * `Last-Modified`: The last time the requested resource was modified.
+  * `WWW-Authenticate`: Indicates what type of authentication is required to access a resource.
+  * `X-*` Headers: A convention for headers that aren't standardized (read: API-specific)
