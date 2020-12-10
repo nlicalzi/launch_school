@@ -32,11 +32,67 @@ ________
 
 ________
 
-* Making a Request with `XMLHttpRequest`
+* Making a Request with `XMLHttpRequest` (XHR)
+
+  * We use the `XMLHttpRequest` object to send an HTTP request with JavaScript.
+
+    * This is provided as part of the browser API, not the JS language.
+
+    * ```javascript
+      let request = new XMLHttpRequest(); // Instantiate new XHR object
+      request.open('GET', '/path');				// Set HTTP method and URL on request
+      request.send();											// Send request
+      
+      // Before the request completes:
+      request.responseText; // => ""
+      request.status; 			// => 0
+      request.statusText; 	// => ""
+      
+      // After the request completes:
+      request.responseText; // body of response
+      request.status; 			// status code of response
+      request.statusText;		// status text of response
+      request.getResponseHeader('Content-Type'); // response header
+      ```
+
+    * `request.send` is asynchronous, so code execution continues while it executes in background.
+
+      * ```javascript
+        // wait for response by listening for the `load` event
+        request.addEventListener('load', event => {
+          var request = event.target; 	// the XMLHttpRequest object
+          
+          request.responseText;
+          request.status;
+          request.statusText;
+          
+          request.getResponseHeader('Content-Type');
+          request.readyState;
+        });
+        ```
+
+  * An Overview of `XMLHttpRequest` Methods
+
+    * `open(method, url)`: open a connection to `url` using `method`
+    * `send(data)`: send the request, optionally sending along `data`
+    * `setRequestHeader(header, value)`: set HTTP `header` to `value`
+    * `abort()`: cancel an active request
+    * `getResponseHeader(header)`: return the response's value for `header`
+
+  * Particularly Useful `XMLHttpRequest` Properties
+
+    | Property       | Writable | Default Value | Description                                                  |
+    | :------------- | :------- | :------------ | :----------------------------------------------------------- |
+    | `timeout`      | Yes      | `0`           | Maximum time a request can take to complete (in milliseconds) |
+    | `readyState`   | No       |               | What state the request is in (see below)                     |
+    | `responseText` | No       | `null`        | Raw text of the response's body.                             |
+    | `response`     | No       | `null`        | Parsed content of response, *not meaningful in all situations* |
+
+  * Debugging `XMLHttpRequests` in Chrome
 
 _________
 
-* XMLHttpRequest` Events
+* `XMLHttpRequest` Events
 
 _________
 
