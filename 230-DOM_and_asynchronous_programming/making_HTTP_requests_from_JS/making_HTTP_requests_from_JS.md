@@ -483,6 +483,47 @@ ________
 
 * **Cross-Domain `XMLHttpRequests` with CORS**
 
+  * Cross-Origin Requests
+
+    * The scheme, hostname, and port of a web page's URL define its origin. A **cross-origin request** occurs when the page tries to access a resource from a different origin.
+    * Consider the web page at `http://myside.com/doc1` navigating to each of the following pages:
+      * `https://myside.com/doc1`: different scheme/protocol
+      * `http://myside.com:4000/doc1`: different port
+      * `http://anotherside.com/doc1`: different host
+
+  * Cross-Origin requests with XHR
+
+    * By default, an `XHR` object **cannot send cross-origin requests** because of security vulnerabilities like *XRR* and *CSRF* inherent in cross-domain requests.
+    * To circumvent that inability, APIs typically use **Cross-Origin Resource Sharing** (**CORS**)
+
+  * CORS
+
+    * Cross-Origin Resource Sharing is a W3C specification that defines how the browser and server must communicate when accessing resources across origins.
+
+      * CORS lets the two systems know enough about each other to determine whether the response should succeed or fail; applications use custom HTTP request and response headers to implement CORS.
+
+    * Every `XHR` sent by the browser must have an `Origin` header that contains the origin of the requesting page, the server uses this header to determine whether it should send a corresponding header in the response.
+
+      * ```http
+        Origin: http://localhost:8080
+        ```
+
+    * When a server receives a request with an `Origin` header, it determins whether the request came from an origin that is allowed to see the response. If it is, it sends the response back with an `Access-Control-Allow-Origin` header that contains the same origin.
+
+      * ```http
+        Access-Control-Allow-Origin: http://localhost:8080
+        ```
+
+    * If the server wants to make a resource available to everyone, it uses the same header w/ `*`:
+
+      * ```http
+        Access-Control-Allow-Origin: *
+        ```
+
+  * Conclusion
+
+    * The Cross-Origin Resource Sharing specification fulfills the need for legitimate cross-origin requests. It gives us a standard way to access resources from different origins without the security problems associated with cross-origin requests.
+
 ### Concepts/Vocab
 
 
