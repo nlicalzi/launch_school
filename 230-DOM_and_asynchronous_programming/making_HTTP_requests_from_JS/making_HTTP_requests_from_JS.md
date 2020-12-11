@@ -418,6 +418,67 @@ ________
 
 * **Example: Sending JSON via XHR**
 
+  * Sending JSON to the server is similar to submitting a form:
+
+    1. Serialize the data into valid JSON
+    2. Send response using `XMLHttpRequest`; `Content-Type: application/json; charset=utf-8`
+    3. Handle the response
+
+  * Serializing Data to JSON
+
+    * To serialize and send JSON, we update our data to create a valid JSON string:
+
+      * ```javascript
+        let request = new XMLHttpRequest();
+        request.open('POST', 'https://ls-230-book-catalog.herokuapp.com/books');
+        
+        let data = { title: 'Eloquent Javascript', author: 'Marijn Haverbeke'};
+        let json = JSON.stringify(data);
+        
+        request.send(json);
+        ```
+
+  * Setting the `Content-Type` Header
+
+    * Tell server to expect JSON: `Content-Type` should be `application/json; charset=utf-8`
+
+      * ```javascript
+        let request = new XMLHttpRequest();
+        request.open('POST', 'https://ls-230-book-catalog.herokuapp.com/books');
+        
+        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        
+        let data = { title: 'Eloquent JavaScript', author: 'Marijn Haverbeke' };
+        let json = JSON.stringify(data);
+        
+        request.send(json);
+        ```
+
+  * Exercise
+
+    * ```javascript
+      function createProduct(productData) {
+        let json = JSON.stringify(productData);
+        let request = new XMLHttpRequest();
+      
+        request.open('POST', 'https://ls-230-web-store-demo.herokuapp.com/v1/products');
+        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        request.setRequestHeader('Authorization', 'token AUTH_TOKEN');
+      
+        request.addEventListener('load', () => {
+          console.log(`This product was added: ${request.responseText}`);
+        });
+      
+        request.send(json);
+      }
+      
+      createProduct({
+        name: 'HB pencil',
+        sku: 'hbp100',
+        price: 50,
+      });
+      ```
+
 ________
 
 * **Cross-Domain `XMLHttpRequests` with CORS**
