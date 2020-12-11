@@ -2,6 +2,35 @@
 
 ### Summary
 
+* **AJAX** is a technique used to exchange data between a browser and a server without causing a page reload.
+* Modern browsers provide an API called the **`XMLHttpRequest`** to send AJAX requests.
+* Some modern applications rely exclusively on JavaScript and `XMLHttpRequest` to communicate with the server and build up the DOM. Such applications are called **single page applications**.
+* Sending requests through `XMLHttpRequest` mainly involves the following steps:
+  * Create a new `XMLHttpRequest` object.
+  * Use the `open` method on the XHR object to specify the method and URL for the request.
+  * Use the `setRequestHeader` method on the XHR object to set headers you'd like to send with the request. Most of the headers will be added by the browser automatically.
+  * Use the `send` method on the XHR object to trigger the whole action and on POST request we can also pass serialized data as an argument.
+  * Attach an event handler for the `load` event to the XHR object to handle the response.
+  * Attach an event handler for the `error` event to the XHR object to handle any connection errors. This is not required but it's a good practice.
+* XHR objects send asynchronous requests by default, meaning that the rest of the code continues to execute without waiting for the request to complete.
+* Important properties on an XHR object are: `responseText`, `response`, `status`, and `statusText`.
+* The data sent along with requests, if any, must be serialized into a widely supported format.
+* The three request serialization formats in widespread use are:
+  1. **Query string / url encoding**
+  2. **Multi-part form data**
+  3. **JSON**
+* It's a good practice to send a `Content-Type` header with XHR. This helps the server parse the request data.
+* Three popular response formats are: **HTML**, **JSON**, and **XML**.
+* The single most popular serialization format currently in use is JSON.
+* To submit a form via XHR, an instance of `FormData` can be used to conveniently serialize the form into multi-part data format.
+* One useful property on an XHR object is `responseType`. It's particularly useful when the response is expected to be JSON. When its value is set to `"json"`, the XHR object's response property gives us parsed JSON.
+* One major constraint on XHR is the browser's same-origin policy that limits communication to the same domain, the same port, and the same protocol. Any attempt to communicate outside these limits result in a security error.
+* The standard solution for cross-origin restrictions is a W3C specification called **Cross-Origin Resource Sharing** (**CORS**). CORS recommends using an `Origin` header on the request and an `Access-Control-Allow-Origin` header on the response for cross-origin communications.
+
+
+
+______
+
 ### Notes
 
 * **What to Focus On**
@@ -523,6 +552,11 @@ ________
   * Conclusion
 
     * The Cross-Origin Resource Sharing specification fulfills the need for legitimate cross-origin requests. It gives us a standard way to access resources from different origins without the security problems associated with cross-origin requests.
+
+_____
+
+* Project: Search Autocomplete
+  * Many JS libraries provide a `debounce` function, which takes a callback and a delay in milliseconds as arguments and returns a new function that calls the callback after the specified delay elapses in order to provide **throttling** capability to avoid overloading servers with XHR requests.
 
 ### Concepts/Vocab
 
