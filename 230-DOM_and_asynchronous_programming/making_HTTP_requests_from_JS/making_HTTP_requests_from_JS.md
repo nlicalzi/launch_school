@@ -236,6 +236,140 @@ ________
 
 * **Example: Submitting a Form via XHR**
 
+  * URL-encoding POST Parameters
+
+    * ```javascript
+      let request = new XMLHttpRequest();
+      request.open('POST', 'https://ls-230-book-catalog.herokuapp.com/books');
+      
+      request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      
+      let data = 'title=Effective%20JavaScript&author=David%20Herman';
+      
+      request.addEventListener('load', () => {
+        if (request.status === 201) {
+          console.log(`This book was added to the catalog: ${request.responseText}`);
+        }
+      });
+      
+      request.send(data);
+      ```
+
+    * ```http
+      POST /books HTTP/1.1
+      Host: ls-230-book-catalog.herokuapp.com
+      Content-Length: 50
+      Content-type: application/x-www-form-urlencoded
+      Accept: */*
+      
+      title=Effective%20JavaScript&author=David%20Herman
+      ```
+
+  * Submitting a Form (use `HTMLFormElement.elements`)
+
+    * ```html
+      <form id="form">
+        <p><label>Title: <input type="text" name="title"></label></p>
+        <p><label>Author: <input type="text" name="author"></label></p>
+        <p><button type="submit">Submit</button></p>
+      </form>
+      ```
+
+    * ```javascript
+      let form = document.getElementById('form');
+      
+      // Bind to the form's submit event to handle the submit button
+      // being clicked, enter being pressed within an input, etc.
+      form.addEventListener('submit', event => {
+        // prevent the browser from submitting the form
+        event.preventDefault();
+        
+        // access the inputs using form.elements and serialize into a string
+        let keysAndValues = [];
+        
+        for (let idx = 0; idx < form.elements.length; idx += 1) {
+          let element = form.elements[idx];
+          let key;
+          let value;
+          
+          if (element.type !== 'submit') {
+            key = encodeURIComponent(element.name);
+            value = encodeURIComponent(element.value);
+            keysAndValues.push(`${key}=${value}`);
+          }
+          
+          let data = keysAndValues.join('&');
+          
+          // submit the data
+          let request = new XMLHttpRequest();
+          request.open('POST', 'https://ls-230-book-catalog.herokuapp.com/books');
+          request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          
+          request.addEventListener('load', () => {
+            if (request.status === 201) {
+              console.log(`This book was added to the catalog: ${request.responseText}`);
+            }
+          });
+        }
+      });
+      ```
+
+    * ```http
+      POST /books HTTP/1.1
+      Host: ls-230-book-catalog.herokuapp.com
+      Content-Length: 50
+      Content-type: application/x-www-form-urlencoded
+      Accept: */*
+      
+      title=Effective%20JavaScript&author=David%20Herman
+      ```
+
+  * Submitting a Form with `FormData`
+
+    * Browsers provide the [`FormData` API](https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects#Retrieving_a_FormData_object_from_an_HTML_form) to assist in multi-part serializing a form's data.
+
+    * ```javascript
+      let form = document.getElementById('form');
+      
+      form.addEventListener('submit', event => {
+        // prevent the browser from submitting the form and redirecting
+        event.preventDefault();
+        
+        // AS EASY AS DOING THIS LINE HERE
+        let data = new FormData(form);
+        // AS EASY AS DOING THIS LINE HERE
+        
+        let request = new XMLHttpRequest();
+        request.open('POST', 'https://ls-230-book-catalog.herokuapp.com/books');
+        
+        request.addEventListener('load', () => {
+          if (request.status === 201) {
+            console.log(`This book was added to the catalog: ${request.responseText}`);
+          }
+        });
+        
+        request.send(data);
+      });
+      ```
+
+    * ```http
+      POST /books HTTP/1.1
+      Host: ls-230-book-catalog.herokuapp.com
+      Content-Length: 234
+      Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryf0PCniJK0bw0lb4e
+      Accept: */*
+      
+      ------WebKitFormBoundaryf0PCniJK0bw0lb4e
+      Content-Disposition: form-data; name="title"
+      
+      Effective JavaScript
+      ------WebKitFormBoundaryf0PCniJK0bw0lb4e
+      Content-Disposition: form-data; name="author"
+      
+      David Herman
+      ------WebKitFormBoundaryf0PCniJK0bw0lb4e--
+      ```
+
 ________
 
 * **Example: Loading JSON via XHR**
