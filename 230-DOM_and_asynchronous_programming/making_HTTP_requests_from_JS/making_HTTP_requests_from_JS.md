@@ -4,7 +4,7 @@
 
 ### Notes
 
-* What to Focus On
+* **What to Focus On**
   * **Think HTTP**
     * HTTP is the protocol used by the network operations we cover in this lesson. You must be familiar with the request-response cycle, the components of each part, and how you can access these values from JS.
   * **Be Familiar with `XMLHttpRequest`**
@@ -19,12 +19,12 @@
 
 ________
 
-* Book: Working with Web APIs
+* **Book: Working with Web APIs**
   * See notes in `launch_school/open_book_shelf`
 
 ________
 
-* Network Programming in JavaScript
+* **Network Programming in JavaScript**
   * **AJAX** / **A**synchronoux **J**avaScript **A**nd **X**ML enables developers to fetch data (typically HTML or XML) and update specific parts of a page. 
     * "An AJAX request" or "via AJAX" refers to an HTTP request from a browser that *does not perform a full page load*.
   * Single Page Applications
@@ -32,7 +32,7 @@ ________
 
 ________
 
-* Making a Request with `XMLHttpRequest` (XHR)
+* **Making a Request with `XMLHttpRequest` (XHR)**
 
   * We use the `XMLHttpRequest` object to send an HTTP request with JavaScript.
 
@@ -100,7 +100,7 @@ ________
 
 _________
 
-* `XMLHttpRequest` Events
+* **`XMLHttpRequest` Events**
   * Two main events fire during an `XMLHttpRequest` cycle: 
     * `loadstart`: request sent to server
     * `loadend`: response done loading and all other events have fired (last event to fire)
@@ -114,11 +114,111 @@ _________
 
 _________
 
-* Data Serialization
+* **Data Serialization**
+
+  * Request Serialization Formats
+
+    * JS applications that run in a web browser must **serialize** data when sending/receiving data.
+    * Applications can use any **data serialization format** that both client/server can read/write in.
+
+  * Query String / URL Encoding
+
+    * A query string consists of one or more `name=value` pairs separated by the `&` character (spaces can be represented either by `%20` or `+`)
+
+      * JS provides a built-in function `encodeURIComponent` that lets you encode a string:
+
+        * ```javascript
+          let uri = "title=Do Androids Dream of Electric Sheep?&year=1968";
+          console.log(encodeURIComponent(uri));
+          // => title=Do%20Androids%20Dream%20of%20Electric%20Sheep%3F&year=1968
+          ```
+
+    * ```http
+      GET /path?title=Do%20Androids%20Dream%20of%20Electric%20Sheep%3F&year=1968 HTTP/1.1
+      Host: example.test
+      Accept: */*
+      ```
+
+    * ```http
+      //POST requests need a Content-Type header of application/x-www-form-urlencoded
+      POST /path HTTP/1.1
+      Host: example.test
+      Content-Length: 54
+      Content-Type: application/x-www-form-urlencoded; charset=utf-8
+      Accept: */*
+      
+      title=Do%20Androids%20Dream%20of%20Electric%20Sheep%3F&year=1968
+      ```
+
+  * Multipart Forms
+
+    * POST requests use multipart form formats for forms that include file uploads or that use `FormData` objects to collect data.
+
+    * This format isn't strictly an encoding format since we don't encode anything, instead placing each name-value pair in a separate section of the request body, separated by a **boundary delimiter** that's defined in the `Content-Type` request header:
+
+      * ```http
+        POST /path HTTP/1.1
+        Host: example.test
+        Content-Length: 267
+        Content-Type: multipart/form-data; boundary=----WebKitFormBoundarywDbHM6i57QWyAWro
+        Accept: */*
+        
+        ------WebKitFormBoundarywDbHM6i57QWyAWro
+        Content-Disposition: form-data; name="title"
+        
+        Do Androids Dream of Electric Sheep?
+        ------WebKitFormBoundarywDbHM6i57QWyAWro
+        Content-Disposition: form-data; name="year"
+        
+        1968
+        ------WebKitFormBoundarywDbHM6i57QWyAWro--
+        ```
+
+      * The final delimiter has `--` appended, signaling the end of the multipart content.
+
+  * JSON Serialization
+
+    * **JSON** (**JavaScript Object Notation**) is a popular data serialization format used by APIs.
+
+    * A `GET` request can return JSON, but we must use `POST` to send JSON data to the server.
+
+    * ```http
+      POST /path HTTP/1.1
+      Host: example.test
+      Content-Length: 62
+      Content-Type: application/json; charset=utf-8
+      Accept: */*
+      
+      {"title":"Do Androids Dream of Electric Sheep?","year":"1968"}
+      ```
+
+      * Note that `Content-Type` has a value of `application/json; charset=utf-8`
+
+  * `Content-Type` and `charset`
+
+    * Note: `charset` is optional, but it's best practice to include it except when using multipart form format. Providing the `charset` ensures that the server interprets the data with the correct incoding, and we can use `charset=utf-8` in most cases.
 
 ________
 
-* Cross-Domain `XMLHttpRequests` with CORS
+* **Cross-Domain `XMLHttpRequests` with CORS**
 
 ### Concepts/Vocab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
