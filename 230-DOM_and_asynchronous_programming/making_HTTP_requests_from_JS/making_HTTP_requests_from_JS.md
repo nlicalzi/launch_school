@@ -374,6 +374,46 @@ ________
 
 * **Example: Loading JSON via XHR**
 
+  * Sometimes it makes more sense to load data in a primitive data structure and render it with the client-side code rather than to retrieve HTML fragments from a server (server-side rendering) and insert them into a page.
+
+  * Modern browsers facilitate this process by providing native support for fetching JSON data using the `responseType` property (valid values: `text`, `json`, `arraybuffer`, `blob`, `document`).
+
+  * ```javascript
+    let request = new XMLHttpRequest();
+    request.open('GET', 'https://api.github.com/repos/rails/rails');
+    request.responseType = 'json'; // specify the desired responseType
+    
+    request.addEventListener('load', event => {
+      // request.response will be the result of parsing the JSON
+      // response body or null if the body couldn't be parsed
+      // or another error occurred
+      
+      let data = request.response;
+    });
+    
+    request.send();
+    ```
+
+  * ```javascript
+    let request = new XMLHttpRequest();
+    request.open('GET', 'https://api.github.com/repos/rails/rails');
+    request.responseType = 'json';
+    
+    request.addEventListener('load', event => {
+        let data = request.response;
+    });
+    
+    request.addEventListener('error', event => {
+        console.log('The request could not be completed!');
+    });
+    
+    request.send();
+    
+    // after
+    console.log(request.status);
+    console.log(request.response.open_issues);
+    ```
+
 ________
 
 * **Example: Sending JSON via XHR**
