@@ -200,6 +200,52 @@ _________
 
 ________
 
+* **Example: Loading HTML via XHR**
+
+  * We can use an `XMLHttpRequest` object to fetch content in an existing web page without a full page reload.
+
+  * We can attach event listeners to content embedded in the page to circumvent the browser's default behavior and create custom interactions.
+
+  * ```javascript
+    document.addEventListener('DOMContentLoaded', () => {
+      let store = document.getElementById('store');
+      
+      let request = new XMLHttpRequest();
+      request.open('GET', 'https://ls-230-web-store-demo.herokuapp.com/products');
+      
+      request.addEventListener('load', event => store.innerHTML = request.response);
+      request.send();
+      
+      store.addEventListener('click', event => {
+        let target = event.target;
+        if (target.tagName !== 'A') { return; }
+        
+        event.preventDefault();
+        
+        let request = new XMLHttpRequest();
+        request.open('GET', 'https://ls-230-web-store-demo.herokuapp.com' +
+                    				target.getAttrubute('href'));
+        
+        request.addEventListener('load', event => store.innerHTML = request.response);
+        request.send();
+      });
+    });
+    ```
+
+________
+
+* **Example: Submitting a Form via XHR**
+
+________
+
+* **Example: Loading JSON via XHR**
+
+________
+
+* **Example: Sending JSON via XHR**
+
+________
+
 * **Cross-Domain `XMLHttpRequests` with CORS**
 
 ### Concepts/Vocab
