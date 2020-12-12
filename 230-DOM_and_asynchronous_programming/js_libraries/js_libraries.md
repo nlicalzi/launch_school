@@ -109,6 +109,62 @@
 
 * jQuery DOM Traversal
 
+  * Looking Outwards from an Object (`parent`, `parents`, `closest`)
+
+    * ```javascript
+      // to get the parent element of a paragraph
+      var $p = $('p');
+      $p.parent().css('color', 'blue');
+      ```
+
+    * ```javascript
+      // to get only the parent elements of 'p' that have class `highlight`
+      var $p = $('p');
+      $p.parent('.highlight').css('color', 'blue');
+      ```
+
+    * The `closest` method is useful for finding the first ancesor element that matches a criteria:
+
+      * ```javascript
+        $('#javascript').closest('ul').addClass('categories');
+        ```
+
+  * Looking Inwards from an Object
+
+    * You can call `find` on `$` to traverse one of its child elements using a CSS-like selector:
+
+      * ```javascript
+        $('ul#navigation').find(li);
+        ```
+
+    * You can use `children` to get immediate children elements that match the specification:
+
+      * ```javascript
+        $('#navigation').children();
+        ```
+
+  * Finding Sibling Elements
+
+    * `nextAll` will return all siblings after the current one, with an optional selector passed in:
+
+      * ```javascript
+        // find all list items after the CSS list item and hide them
+        var $css = $('css').closest('li');
+        $css.nextAll().hide();
+        
+        // find all list items before the CSS list item and hide them
+        $css.prevAll().hide();
+        
+        // find all sibling lis and show them
+        $css.siblings().show();
+        ```
+
+    * `next()` and `prev()` get a single sibling element each.
+
+  * Futher Reading
+
+    * [jQuery documentation on Traversing](https://api.jquery.com/category/traversing/)
+
 * Using jQuery Selectors
 
 * jQuery Events
