@@ -392,9 +392,50 @@ _________
 
   * [A Beginner's Guide to Handlebars](https://www.sitepoint.com/a-beginners-guide-to-handlebars/)
 
-* Handlebars Basics
+________
 
-* AJAX Requests
+* **AJAX Requests** (alternatives to using `XMLHttpRequest`)
+
+  * [jQuery AJAX](https://learn.jquery.com/ajax/)
+
+    * jQuery's `ajax()` method sought to simplify `XMLHttpRequest`'s API & fix compatibility issues
+
+    * `ajax()` uses a **configuration object** to specify the various parameters of a request
+
+      * Required properties: `url`, request `type`, and `dataType` for the request.
+
+    * Responses are handled **using a callback** passed to a method chained to the `ajax()` call
+
+      * ```javascript
+        $.ajax({ // this is the config object
+          url: '/my-blog-post',
+          type: 'GET',
+          dataType: 'json'
+        }).done(function(json) { // this is the callback
+          // do something with the returned data
+        });
+        ```
+
+      * The above code uses the `done()` method to chain to `ajax()`, but we can also use `fail()` and/or `always()`, depending on what we'd like to accomplish.
+
+  * [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (web API like `XMLHttpRequest`) ([overview](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch))
+
+    * Leverages Promise syntax to provide a simpler interface than bare `XMLHttpRequest`
+
+      * ```javascript
+        fetch ('/my-blog-post', { method: 'GET' }).then((response) => {
+          // do something with the response
+        });
+        ```
+
+    * Key differences to jQuery AJAX:
+
+      * The Promise that `fetch()` returns won't reject if the response `status` is an HTTP error status code (4xx-5xx)
+      * By default, `fetch()` won't send cookies. There is a `credentials` parameter that must be set to either `include` or `same-origin` in order to do so.
+
+  * Which to Use-- `XMLHttpRequest`, `fetch()`, or `$.ajax()`?
+
+    * It depends! `XMLHttpRequest` may be sufficient for simple requests, `fetch()` has a very simple interface but may have some browser incompatibility, `$.ajax()` is great if you're already using jQuery but many new projects are avoiding the use of jQuery.
 
 ### Concepts/Vocab
 
