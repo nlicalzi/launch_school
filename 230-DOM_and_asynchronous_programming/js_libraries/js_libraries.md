@@ -178,6 +178,123 @@
 
 * jQuery Events
 
+  * A Simple Click Handler
+
+    * ```html
+      <ul>
+        <li><a href="#">Apples</a></li>
+        <li><a href="#">Bananas</a></li>
+        <li><a href="#">Oranges</a></li>
+      </ul>
+      
+      <p>Choose your favorite fruit!</p>
+      ```
+
+    * ```javascript
+      $(function() { // syntax for executing after DOM loads
+        $('a').on('click', function(event) { // when any A link is clicked
+          event.preventDefault(); // don't load the link/reload page
+        });
+      });
+      ```
+
+  * Do Something With The Click
+
+    * Since in the above code, we've bound the click event to every anchor tag on the page, how do we know which one the user clicked?
+
+      * Use the `target` or `currentTarget` attribute on the event object (same val. in this case)
+      * Use the value of `this` within the callback.
+
+    * ```javascript
+      var $p = $('p'); // get the paragram element
+      
+      $('a').on('click', function(event) {
+        event.preventDefault();
+        var $anchor = $(this); // `this` is a DOM element, so we pass thru jQuery func
+        $p.text('Your favorite fruit is ' + $anchor.text()); // fill p tag w/ choice
+      });
+      ```
+
+  * Adding More Fruits Dynamically
+
+    * ```html
+      <ul>
+        <li><a href="#">Apples</a></li>
+        <li><a href="#">Bananas</a></li>
+        <li><a href="#">Oranges</a></li>
+      </ul>
+      
+      <form action="#" method="post">
+        <fieldset>
+          <input type="text">
+          <input type="submit" value="Choose">
+        </fieldset>
+      </form>
+      
+      <p>Choose your favorite fruit!</p>
+      ```
+
+    * ```javascript
+      $('form').on('submit', function(event) { // listen for form submissions
+          event.preventDefault(); // prevent a reload
+          let $input = $(this).find('input[type=text]'); // grab submitted form input
+          $p.text(OUTPUT + $input.val()); // modify p element's text
+      });
+      ```
+
+  * Refactoring / Convenience Methods
+
+    * ```javascript
+      $(function() { // on DOM load
+        let $p = $('p'); // select paragraph element
+        const OUTPUT = 'Your favorite fruit is ';
+        
+        $('a').click(function(e) { // use the click method
+          e.preventDefault(); // prevent new page load
+          let $anchor = $(this);	// get clicked anchor tag & pass thru jQuery func
+          $p.text(OUTPUT + $anchor.text()); // modify p element's text
+        });
+        
+        $('form').submit(function(e) { // use submit method to listen on form submit
+          e.preventDefault(); // prevent a reload
+          let $input = $(this).find('input[type=text]'); // grab submitted form input
+          $p.text(OUTPUT + $input.val()); // modify p element's text
+        });
+      });
+      ```
+
+  * jQuery Event Delegation
+
+    * When an event handler is bound to a large number of elements in the same container, it's more performant to delegate event handling to the parent element.
+
+      * ```html
+        <ul>
+          <li>
+            <p>Bananas</p>
+            <a href="#">Remove</a>
+          </li>
+          <!-- 29 more list items, each with a remove anchor -->
+        </ul>
+        ```
+
+      * ```javascript
+        // WRONG WAY TO DO IT (bind to each anchor)
+        $('a').click(function(e) {
+          e.preventDefault();
+          $(this).closest('li').remove();
+        });
+        
+        // RIGHT WAY TO DO IT (bind to ul, the parent element)
+        $('ul').on('click', 'a', function(e) {
+          e.preventDefault();
+          $(e.target).closest('li').remove();
+        });
+        ```
+
+  * Further Reading
+
+    * [Event Binding in jQuery](https://medium.com/@sak1986/event-binding-in-jquery-daf902be7c58)
+
 * HTML Templating with JavaScript
 
 * Handlebars Basics
