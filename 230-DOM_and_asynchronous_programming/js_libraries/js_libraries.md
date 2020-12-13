@@ -2,6 +2,15 @@
 
 ### Summary
 
+Key takeaway: a high level understanding of the capabilities of each of these libraries and their roles.
+
+* Use documentation efficiently to ramp up quickly on a new library or API when you need to use it for a particular project.
+* Use Developer Tools built in to the browser as part of your work-flow to test and debug your front-end code.
+* At its core, jQuery is a function that wraps a collection of DOM elements and some convenience methods into an object.
+* jQuery provides methods for many aspects of front-end development, such as interacting with the DOM, managing browser events, and making AJAX calls.
+* Handlebars is a minimal templating library which allows you to easily add and update sections of a web page.
+* The Fetch API and jQuery's `ajax()` are alternatives to `XMLHttpRequest` for making Ajax calls. At a high level they all do the same thing: make an HTTP request and process the response once received.
+
 ### Notes
 
 * Introduction
