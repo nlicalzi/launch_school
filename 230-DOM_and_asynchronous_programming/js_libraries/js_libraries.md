@@ -5,13 +5,13 @@
 ### Notes
 
 * Introduction
-
   * Historically, lack of cross-browser support/differences in the implementation of some of the APIs we have used made it difficult to ensure that the same front-end code worked across browsers.
   * jQuery was developed in response to these browser compatibility issues, and abstracted away the complexities of working around the inconsistencies, providing an API for DOM manipulations, event handling, AJAX, and other things.
-
 * [Douglas Crockford Lecture: The Metamorphosis of Ajax](https://www.youtube.com/watch?v=Fv9qT9joc0M)
 
-* jQuery
+___________
+
+* **jQuery**
 
   * **jQuery** is a JavaScript library that provides a convenient API to manipulate elements, handle events, make AJAX requests, and more. It works consistently across browsers and platforms.
 
@@ -107,7 +107,9 @@
     * [jQuery API reference](https://api.jquery.com/)
     * Focus: [the jQuery Object](https://learn.jquery.com/using-jquery-core/jquery-object/)
 
-* jQuery DOM Traversal
+______
+
+* **jQuery DOM Traversal**
 
   * Looking Outwards from an Object (`parent`, `parents`, `closest`)
 
@@ -165,8 +167,9 @@
 
     * [jQuery documentation on Traversing](https://api.jquery.com/category/traversing/)
 
-* Using jQuery Selectors
+_______
 
+* **Using jQuery Selectors**
   * Element selectors: `$('element')`
     * Element at index 3: `$('element:eq(3)')`
     * Last element: `$('table td').last()`
@@ -176,7 +179,9 @@
   * Descendent selectors: `$('ancestor descendent')`
   * Even/odd index selector: `$('li:even')` / `$('li:odd')`
 
-* jQuery Events
+________
+
+* **jQuery Events**
 
   * A Simple Click Handler
 
@@ -295,10 +300,127 @@
 
     * [Event Binding in jQuery](https://medium.com/@sak1986/event-binding-in-jquery-daf902be7c58)
 
-* HTML Templating with JavaScript
+_________
+
+* **HTML Templating with JavaScript**
+
+  * With the popularity of using AJAX to retrieve data in real-time and changing the page without reloading it, there was a need for a way to add and rewrite sections of HTML using the new data.
+
+    * The solution is to use a **client-side templating library** like [Mustache](http://mustache.github.io/)/[Underscore](http://underscorejs.org/#template)/[Handlebars](https://handlebarsjs.com/)
+
+  * Handlebars templates allow you to have property names surrounded by `{{ prop }}`:
+
+    * ```html
+      <li>
+        <h3>{{name}}</h3>
+        <dl>
+          <dt>Quantity:</dt>
+          <dd>{{quantity}}</dd>
+          <dt>Price:</dt>
+          <dd>${{price}}</dd>
+        </dl>
+      </li>
+      ```
+
+  * Handlebars also implements the use of conditional helpers like `#if ... /if`:
+
+    * ```html
+      <li>
+        <h3>{{name}}</h3>
+        <dl>
+          <dt>Quantity:</dt>
+          <dd>{{quantity}}</dd>
+          <dt>Price:</dt>
+          <dd>
+            ${{price}}
+            {{#if on_sale}}
+            <strong>SALE!</strong>
+            {{/if}}
+        </dl>
+      </li>
+      ```
+
+  * To access the Handlebars template code from JS, wrap it in a script tag w/ a findable `id`. We can also use a partial template with a `>`:
+
+    * ```html
+      <script id='productTemplate' type='text/x-handlebars'>
+        <li>
+          <h3>{{name}}</h3>
+          <dl>
+            <dt>Quantity:</dt>
+            <dd>{{quantity}}</dd>
+            <dt>Price:</dt>
+            <dd>
+              ${{price}}
+              {{#if on_sale}}
+              <strong>SALE!</strong>
+              {{/if}}
+            </dd>
+          </dl>
+        </li>
+      </script>
+      
+      <script id='productsList' type='text/x-handlebars'>
+        {{#each items}}
+        {{> productTemplate}} // this is a partial that renders a single instance
+        {{/each}}
+      </script>
+      ```
+
+    * ```javascript
+      // Compile both templates for use later
+      let productsList = Handlebars.compile($('#productsList').html());
+      let productTemplate = Handlebars.compile($('#productTemplate').html());
+      let $list = $('ul');
+      
+      // Also register the product template as a partial
+      Handlebars.registerPartial('productTemplate', $('#productTemplate').html());
+      
+      // Write the current list to the page
+      $list.html(productsList({ items: products }));
+      
+      // Create a new product
+      let newProduct = {
+        name: 'Soup',
+        quantity: 1,
+        price: 1.29
+      };
+      
+      // Render the new product with the product template
+      $list.append(productTemplate(newProduct));
+      ```
+
+  * [A Beginner's Guide to Handlebars](https://www.sitepoint.com/a-beginners-guide-to-handlebars/)
 
 * Handlebars Basics
 
 * AJAX Requests
 
 ### Concepts/Vocab
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
