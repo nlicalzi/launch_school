@@ -167,6 +167,15 @@
 
 * Using jQuery Selectors
 
+  * Element selectors: `$('element')`
+    * Element at index 3: `$('element:eq(3)')`
+    * Last element: `$('table td').last()`
+  * ID selectors: `$('#id')`
+  * Class selector: `$('.class')`
+    * Negative class selector: `$('td').not(".protected")`
+  * Descendent selectors: `$('ancestor descendent')`
+  * Even/odd index selector: `$('li:even')` / `$('li:odd')`
+
 * jQuery Events
 
 * HTML Templating with JavaScript
