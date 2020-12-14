@@ -4,11 +4,23 @@
 
 ### Notes
 
-* Introduction
-
-______
-
-* Chrome Debugging Tools for Front End Development
+* **Chrome Debugging Tools for Front End Development**
+  * Good to use `console.log({pets})` instead of `console.log(pets)` -- **object shorthand syntax**
+    * Difference between logging `(3) [{...}, {...}, {...}]` and `{pets: Array(3)}`
+    * `console.table(pets)` will print a properly formatted table of your object/values
+  * Learn to debug with the `Sources` panel
+    * Better suited for tricky bugs
+    * Keeping track of code execution order
+      * Code stepping
+      * Call stack
+      * Code Folding
+    * Keeping track of values
+      * Values printed inline after a line of code executes
+      * Scope pane
+      * Run JS contextually in the Drawer
+      * [Live Expressions](https://developers.google.com/web/tools/chrome-devtools/console/live-expressions)
+      * [Logpoints](https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints): `DOM`, `XHR`, `Event-listener`, `Function`, all in addition to normal `line-of-code`
+      * Storing the output of Logpoints as global variables
 
 ______
 
