@@ -28,13 +28,22 @@ document.addEventListener('DOMContentLoaded', event => {
       if (!this.word) { this.displayMessage("Sorry, I've run out of words!")};
       this.targetLetters = this.word.toUpperCase().split('');
 
+      this.resetGameState();
+      this.resetDisplay();
+    }
+
+    resetGameState() {
       this.correctGuesses = 0;
       this.incorrectGuesses = 0;
       this.guessedLetters = [];
-      this.guesses = 6;
+    }
+
+    resetDisplay() {
       this.createBlankSpaces();
       this.hideReplayLink();
       this.clearGuessList();
+      this.displayMessage('');
+      apples.classList.remove(...apples.classList);
     }
 
     displayMessage(text) {
