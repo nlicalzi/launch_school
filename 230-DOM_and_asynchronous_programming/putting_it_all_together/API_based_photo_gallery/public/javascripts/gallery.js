@@ -69,6 +69,49 @@ document.addEventListener('DOMContentLoaded', event => {
       slideshow = new Slideshow;
     });
 
+  document.querySelector('section > header').addEventListener('click', function(e) {
+    e.preventDefault();
+    let button = e.target;
+    let buttonType = button.getAttribute('data-property');
+    if (buttonType) {
+      let href = button.getAttribute('href');
+      let dataId = button.getAttribute('data-id');
+      let text = button.textContent;
+
+      fetch(href, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+        body: 'photo_id=' + dataId
+      })
+      .then(response => response.json())
+      .then(json => {
+        button.textContent = text.replace(/\d+/, json.total);
+      });
+    }
+  });
+
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let form = e.target;
+    let href = form.getAttribute('action');
+    let method = form.getAttribute('method');
+    let data = new FormData(form);
+    let currentSlideId = slideshow.currentSlide.getAttribute('data-id');
+    data.set('photo_id', currentSlideId);
+
+    fetch(href, {
+      method: method,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      body: new URLSearchParams([...data])
+    })
+      .then(response => response.json())
+      .then(json => {
+        let commentsList = document.querySelector('#comments ul');
+        commentsList.innerHTML = template.photo_comment(json);
+        form.reset();
+      });
+  });
+
   function renderPhotos() {
     let slides = document.getElementById('slides');
     // slides.insertAdjacentHTML('beforeend', templates.photos({ photos: photos }));
