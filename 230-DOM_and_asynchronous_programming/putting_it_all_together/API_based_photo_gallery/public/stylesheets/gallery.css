@@ -58,6 +58,16 @@ a.favorite {
   height: 784px;
 }
 
+#slides .hide {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+#slides .show {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
 #slides figure {
   position: absolute;
   top: 0;
@@ -69,7 +79,7 @@ a.favorite {
 }
 
 #slides figure + figure {
-  display: none;
+  opacity: 0;
 }
 
 #slides img {
