@@ -70,23 +70,21 @@ ______
         console.log($a.data('block'));			// changed to 'silver'
         ```
 
-      * 
-
     * the `.data` method
 
       * Use this to set and retrieve custom data on an element after page rendering
-      * As a setter, `data` stores the value on a node, but doesn't update HTML markup
-
+  * As a setter, `data` stores the value on a node, but doesn't update HTML markup
+    
   * A DOM element containing a custom data attribute will have a property called `dataset` that represents a specialized object of key-value pairs: keys as attribute names/vals as vals:
 
     * ```html
-      <div id="gold" data-block="gold">
+    <div id="gold" data-block="gold">
         <h1>Gold Sponsors</h1>
       </div>
       ```
-
+  
     * ```javascript
-      var gold = document.getElementById('gold');
+    var gold = document.getElementById('gold');
       
       console.log(gold.dataset); // { block: "gold" }
       
@@ -101,35 +99,10 @@ ______
 
 _____
 
-* Assignment: Arithmetic Calculator
-
-_____
-
-* Assignment: Grocery List
-
-_____
-
-* Assignment: Team Member Profile Modals
-
-_____
-
-* Assignment: Photo Gallery Slideshow
-
-_____
-
-* Assignment: Refactoring
-
-_____
-
-* Project: Guess a Word
-
-_____
-
-* Project: Photo Gallery
-
-_____
-
-* More Exercises
+* Readings:
+  * [Moving from jQuery to Vanilla JS](https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/) 
+  * [Removing jQuery from Github frontend](https://github.blog/2018-09-06-removing-jquery-from-github-frontend/)
+  * 
 
 ### Concepts/Vocab
 

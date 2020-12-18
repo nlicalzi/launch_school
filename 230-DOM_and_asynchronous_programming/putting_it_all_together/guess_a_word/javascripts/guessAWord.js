@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', event => {
       this.hideReplayLink();
       this.clearGuessList();
       this.displayMessage('');
+      document.body.classList.remove(...document.body.classList);
       apples.classList.remove(...apples.classList);
     }
 
@@ -126,12 +127,14 @@ document.addEventListener('DOMContentLoaded', event => {
       this.displayMessage("Congratulations, you guessed the word correctly!")
       this.showReplayLink();
       this.unbindGuessProcessor();
+      document.body.classList.add('win');
     }
 
     loseGame() {
       this.displayMessage("Sorry, you've run out of guesses and lost!")
       this.showReplayLink();
       this.unbindGuessProcessor();
+      document.body.classList.add('lose');
     }
 
     correctGuess(letter) {
