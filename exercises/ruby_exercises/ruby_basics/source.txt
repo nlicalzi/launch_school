@@ -1,1 +1,0 @@
-# Exercises from https://launchschool.com/exercises#ruby_basics
