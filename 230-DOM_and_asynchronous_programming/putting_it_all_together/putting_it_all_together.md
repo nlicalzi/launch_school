@@ -102,7 +102,6 @@ _____
 * Readings:
   * [Moving from jQuery to Vanilla JS](https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/) 
   * [Removing jQuery from Github frontend](https://github.blog/2018-09-06-removing-jquery-from-github-frontend/)
-  * 
 
 ### Concepts/Vocab
 
