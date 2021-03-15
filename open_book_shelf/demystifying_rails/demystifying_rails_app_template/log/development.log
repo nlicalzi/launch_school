@@ -230,3 +230,2804 @@ Processing by ApplicationController#hello_world as HTML
 Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
 
 
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for ::1 at 2021-03-12 16:24:57 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello_world" for ::1 at 2021-03-12 16:25:00 -0500
+Processing by ApplicationController#hello_world as HTML
+  Rendering application/hello_world.html.erb
+  Rendered application/hello_world.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello_world?name=Nick" for ::1 at 2021-03-12 16:25:05 -0500
+Processing by ApplicationController#hello_world as HTML
+  Parameters: {"name"=>"Nick"}
+  Rendering application/hello_world.html.erb
+  Rendered application/hello_world.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello_world?name=Nick" for ::1 at 2021-03-12 16:31:04 -0500
+Processing by ApplicationController#hello_world as HTML
+  Parameters: {"name"=>"Nick"}
+  Rendering application/hello_world.html.erb
+  Rendered application/hello_world.html.erb (0.2ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello/nick" for ::1 at 2021-03-12 16:31:11 -0500
+Processing by ApplicationController#hello_world as HTML
+  Parameters: {"name"=>"nick"}
+  Rendering application/hello_world.html.erb
+  Rendered application/hello_world.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-12 17:59:27 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.9ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-12 18:09:43 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello_world?name=Nick" for ::1 at 2021-03-13 10:12:36 -0500
+Processing by ApplicationController#hello_world as HTML
+  Parameters: {"name"=>"Nick"}
+  Rendering application/hello_world.html.erb
+  Rendered application/hello_world.html.erb (1.1ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 10:12:37 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (1.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 10:12:37 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 10:12:39 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 10:12:40 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 10:12:41 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 10:12:42 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/3" for ::1 at 2021-03-13 10:12:43 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"3"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 10:12:44 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 10:12:47 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 10:12:55 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 10:14:19 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 10:14:28 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 10:14:31 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 10:28:41 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 10:28:41 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 10:58:52 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 11:16:27 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 11:16:28 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 11:16:29 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/hello_world?name=Nick" for ::1 at 2021-03-13 11:16:29 -0500
+Processing by ApplicationController#hello_world as HTML
+  Parameters: {"name"=>"Nick"}
+  Rendering application/hello_world.html.erb
+  Rendered application/hello_world.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:16:36 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 11:16:40 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 11:16:50 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"test", "body"=>"hw", "author"=>"nlicalzi"}
+Redirected to http://localhost:3000/list_posts
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:16:50 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:16:51 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 11:17:26 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 11:17:30 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:17:31 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/4" for ::1 at 2021-03-13 11:17:33 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"4"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:17:34 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 11:17:35 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 13ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:17:36 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:20:33 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 11:20:34 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 11:20:35 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post" for ::1 at 2021-03-13 11:29:03 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/edit_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/edit_post/1" for ::1 at 2021-03-13 11:29:04 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.7ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/2" for ::1 at 2021-03-13 11:29:07 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:34:31 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/2" for ::1 at 2021-03-13 11:34:32 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/3" for ::1 at 2021-03-13 11:34:34 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"3"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/3" for ::1 at 2021-03-13 11:34:35 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"3"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:34:36 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/4" for ::1 at 2021-03-13 11:34:37 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"4"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:34:37 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 11:34:38 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:34:39 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:40:55 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/delete_post/4" for ::1 at 2021-03-13 11:41:47 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/delete_post/4"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/list_posts" for ::1 at 2021-03-13 11:41:49 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/delete_post/4" for ::1 at 2021-03-13 11:41:50 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/delete_post/4"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/list_posts" for ::1 at 2021-03-13 11:42:10 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/delete_post/4" for ::1 at 2021-03-13 11:42:10 -0500
+Processing by ApplicationController#delete_post as HTML
+  Parameters: {"id"=>"4"}
+Redirected to http://localhost:3000/list_posts
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:42:10 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:42:11 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:42:11 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:42:12 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 11:42:12 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:30:00 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:30:01 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.8ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:30:02 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.8ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/3" for ::1 at 2021-03-13 12:30:02 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (Unable to autoload constant POST, expected /Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/models/post.rb to define it):
+  
+app/models/post.rb:14:in `find'
+app/controllers/application_controller.rb:14:in `show_post'
+Started GET "/show_post/3" for ::1 at 2021-03-13 12:30:35 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"3"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.8ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for #<Post:0x00007fb596e125c8>):
+     6: 
+     7:     <div class="post">
+     8:       <h2 class="title">
+     9:         <%= post['title'] %>
+    10:       </h2>
+    11: 
+    12:       <small class="meta">
+  
+app/views/application/show_post.html.erb:9:in `_app_views_application_show_post_html_erb___4016257908240665491_70208948591420'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/show_post/3" for ::1 at 2021-03-13 12:30:35 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"3"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.9ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `[]' for #<Post:0x00007fb5a70f29e0>):
+     6: 
+     7:     <div class="post">
+     8:       <h2 class="title">
+     9:         <%= post['title'] %>
+    10:       </h2>
+    11: 
+    12:       <small class="meta">
+  
+app/views/application/show_post.html.erb:9:in `_app_views_application_show_post_html_erb___4016257908240665491_70209084294040'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/show_post/3" for ::1 at 2021-03-13 12:30:49 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"3"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.6ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:30:50 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 12:30:51 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:30:52 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 12:30:53 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:30:54 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/1" for ::1 at 2021-03-13 12:30:55 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:30:56 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:37:03 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 12:37:04 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:37:05 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.7ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/1" for ::1 at 2021-03-13 12:37:06 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:37:08 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.7ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 12:37:09 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 12:37:14 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"hwwww", "body"=>"HH WW", "author"=>"ndndndnd"}
+Redirected to http://localhost:3000/list_posts
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:37:14 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-13 12:37:16 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/5" for ::1 at 2021-03-13 12:37:18 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/update_post/5" for ::1 at 2021-03-13 12:37:20 -0500
+Processing by ApplicationController#update_post as HTML
+  Parameters: {"title"=>"hwwww", "body"=>"HH WW", "author"=>"nick!", "id"=>"5"}
+Redirected to http://localhost:3000/list_posts
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:37:20 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:41:29 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 12:41:30 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:41:31 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 12:48:03 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 12:49:44 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/" for ::1 at 2021-03-13 16:55:19 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for ::1 at 2021-03-13 16:55:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/list_posts" for ::1 at 2021-03-13 16:55:47 -0500
+Processing by ApplicationController#list_posts as HTML
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `post' for Post:Class):
+  
+app/models/post.rb:11:in `all'
+app/controllers/application_controller.rb:8:in `list_posts'
+Started GET "/list_posts" for ::1 at 2021-03-13 16:56:07 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 16:56:08 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-13 16:56:12 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:01:39 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 17:01:40 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (14.0ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007ff91f0f49a0>:0x00007ff8ced8cb50>):
+    4:     <form method="post" action="/create_post">
+    5: 
+    6:       <label for="title">Title</label>
+    7:       <input id="title" name="title" type="text" value="<%= post.title %>"/>
+    8:       <br /> <br />
+    9: 
+   10:       <label for="body">Body</label>
+  
+app/views/application/new_post.html.erb:7:in `_app_views_application_new_post_html_erb___3018715926015254300_70353299487880'
+app/controllers/application_controller.rb:20:in `new_post'
+Started GET "/new_post" for ::1 at 2021-03-13 17:02:23 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:27 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"qweqwe", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:28 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"qweqwe", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:28 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"qweqwe", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:28 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"qweqwe", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:29 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"qweqwe", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:29 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"qweqwe", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:31 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:31 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:31 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:31 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"eeee", "body"=>"", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:02:35 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"1", "body"=>"2", "author"=>"3"}
+Redirected to http://localhost:3000/list_posts
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:02:35 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:02:36 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/6" for ::1 at 2021-03-13 17:02:37 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"6"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/6" for ::1 at 2021-03-13 17:02:38 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:02:40 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:04:20 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/6" for ::1 at 2021-03-13 17:04:21 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/update_post/6" for ::1 at 2021-03-13 17:04:23 -0500
+Processing by ApplicationController#update_post as HTML
+  Parameters: {"title"=>"1", "body"=>"", "author"=>"3", "id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/update_post/6" for ::1 at 2021-03-13 17:04:23 -0500
+Processing by ApplicationController#update_post as HTML
+  Parameters: {"title"=>"1", "body"=>"", "author"=>"3", "id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/update_post/6" for ::1 at 2021-03-13 17:04:24 -0500
+Processing by ApplicationController#update_post as HTML
+  Parameters: {"title"=>"1", "body"=>"", "author"=>"3", "id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/update_post/6" for ::1 at 2021-03-13 17:04:24 -0500
+Processing by ApplicationController#update_post as HTML
+  Parameters: {"title"=>"1", "body"=>"", "author"=>"3", "id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/update_post/6" for ::1 at 2021-03-13 17:04:25 -0500
+Processing by ApplicationController#update_post as HTML
+  Parameters: {"title"=>"1", "body"=>"eeeee", "author"=>"3", "id"=>"6"}
+Redirected to http://localhost:3000/list_posts
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:04:25 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:04:26 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/6" for ::1 at 2021-03-13 17:04:27 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"6"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 17:09:23 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (2.1ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Post:0x00007ff8ced94648>):
+    2:   <body>
+    3: 
+    4:     <div class="errors">
+    5:       <% post.errors.each do |attribute, error| %>
+    6:         <p class="error" style="color: orange">
+    7:           <%= attribute %>: <%= error %>
+    8:         </p>
+  
+app/views/application/new_post.html.erb:5:in `_app_views_application_new_post_html_erb___3018715926015254300_70353299519960'
+app/controllers/application_controller.rb:22:in `new_post'
+Started GET "/new_post" for ::1 at 2021-03-13 17:09:59 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (1.7ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Post:0x00007ff92a180b48>):
+    2:   <body>
+    3: 
+    4:     <div class="errors">
+    5:       <% post.errors.each do |attribute, error| %>
+    6:         <p class="error" style="color: orange">
+    7:           <%= attribute %>: <%= error %>
+    8:         </p>
+  
+app/views/application/new_post.html.erb:5:in `_app_views_application_new_post_html_erb___3018715926015254300_70354064921760'
+app/controllers/application_controller.rb:22:in `new_post'
+Started GET "/list_posts" for ::1 at 2021-03-13 17:10:01 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:10:02 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-13 17:10:03 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (1.7ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Post:0x00007ff91f0b4828>):
+    2:   <body>
+    3: 
+    4:     <div class="errors">
+    5:       <% post.errors.each do |attribute, error| %>
+    6:         <p class="error" style="color: orange">
+    7:           <%= attribute %>: <%= error %>
+    8:         </p>
+  
+app/views/application/new_post.html.erb:5:in `_app_views_application_new_post_html_erb___3018715926015254300_70353972247040'
+app/controllers/application_controller.rb:22:in `new_post'
+Started GET "/new_post" for ::1 at 2021-03-13 17:10:14 -0500
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:10:16 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"dddd", "body"=>"", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:10:18 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"dddd", "body"=>"dddd", "author"=>""}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_post" for ::1 at 2021-03-13 17:10:22 -0500
+Processing by ApplicationController#create_post as HTML
+  Parameters: {"title"=>"", "body"=>"dddd", "author"=>"zzzz"}
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:10:23 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/edit_post/6" for ::1 at 2021-03-13 17:10:44 -0500
+Processing by ApplicationController#edit_post as HTML
+  Parameters: {"id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/update_post/6" for ::1 at 2021-03-13 17:10:47 -0500
+Processing by ApplicationController#update_post as HTML
+  Parameters: {"title"=>"1", "body"=>"", "author"=>"3", "id"=>"6"}
+  Rendering application/edit_post.html.erb
+  Rendered application/edit_post.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:10:48 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:10:49 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:17:38 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-13 17:17:39 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (118.7ms)
+Completed 500 Internal Server Error in 121ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:26: syntax error, unexpected '>'
+...r.append=( comment['author']% > -</span>
+...                              ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:27: unmatched close parenthesis: /span>
+            <em class="comment_created_at"><%= comment['created_at'] );@output_buffer.safe_append='</m
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:28: syntax error, unexpected '<'
+          </small>
+          ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:29: unknown regexp option - p
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:30: syntax error, unexpected '<'
+        </div>
+        ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:35: syntax error, unexpected '<'
+    <a href="/list_posts">Back to ...
+    ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:35: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+...  <a href="/list_posts">Back to posts</a>
+...                             ^~
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:37: unknown regexp options - bdy
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:39: syntax error, unexpected '<'
+</html>'.freeze;
+^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:43: unterminated regexp meets end of file
+          end
+              ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:43: syntax error, unexpected end-of-input, expecting ')'):
+  
+app/views/application/show_post.html.erb:26: syntax error, unexpected '>'
+app/views/application/show_post.html.erb:27: unmatched close parenthesis: /span>
+app/views/application/show_post.html.erb:28: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:29: unknown regexp option - p
+app/views/application/show_post.html.erb:30: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:35: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:35: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/application/show_post.html.erb:37: unknown regexp options - bdy
+app/views/application/show_post.html.erb:39: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:43: unterminated regexp meets end of file
+app/views/application/show_post.html.erb:43: syntax error, unexpected end-of-input, expecting ')'
+app/controllers/application_controller.rb:17:in `show_post'
+Started GET "/show_post/1" for ::1 at 2021-03-13 17:17:55 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-13 17:17:57 -0500
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-13 17:17:58 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/3" for ::1 at 2021-03-13 17:17:59 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"3"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-13 17:18:01 -0500
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-14 13:19:19 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.5ms)
+Completed 200 OK in 9ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-14 13:19:20 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 13:19:21 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 13:19:21 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 13:19:22 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.9ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 13:19:25 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/new_post" for ::1 at 2021-03-14 13:19:27 -0400
+Processing by ApplicationController#new_post as HTML
+  Rendering application/new_post.html.erb
+  Rendered application/new_post.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 13:19:28 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+DEPRECATION WARNING: Leaving `ActiveRecord::ConnectionAdapters::SQLite3Adapter.represent_boolean_as_integer`
+set to false is deprecated. SQLite databases have used 't' and 'f' to serialize
+boolean values and must have old data converted to 1 and 0 (its native boolean
+serialization) before setting this flag to true. Conversion can be accomplished
+by setting up a rake task which runs
+
+  ExampleModel.where("boolean_column = 't'").update_all(boolean_column: 1)
+  ExampleModel.where("boolean_column = 'f'").update_all(boolean_column: 0)
+
+for all models and all boolean columns, after which the flag must be set to
+true by adding the following to your application.rb file:
+
+  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+ (called from instance_eval at /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2/lib/active_support/lazy_load_hooks.rb:71)
+Started GET "/list_posts" for ::1 at 2021-03-14 13:26:07 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (1.1ms)
+Completed 200 OK in 16ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 16:14:22 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 16:14:22 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.9ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:16:49 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (6.6ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:41: syntax error, unexpected '<'
+          <br /> <br />
+                 ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:43: unknown regexp options - labl
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:44: syntax error, unexpected '<'
+          <input id="author" name="autho...
+          ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:44: syntax error, unexpected tIDENTIFIER, expecting ')'
+...        <input id="author" name="author" type="text" value="...
+...                           ^~~~
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:44: syntax error, unexpected tIDENTIFIER, expecting ')'
+... id="author" name="author" type="text" value="<%= comment.au...
+...                           ^~~~
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:44: syntax error, unexpected tIDENTIFIER, expecting ')'
+...name="author" type="text" value="<%= comment.author );@outpu...
+...                          ^~~~~
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:44: syntax error, unexpected '>'
+...@output_buffer.safe_append='"/>
+...                              ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:47: syntax error, unexpected '<'
+          <input type="submit" value="Ad...
+          ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:47: syntax error, unexpected tIDENTIFIER, expecting ')'
+...     <input type="submit" value="Add Comment" />
+...                          ^~~~~
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:47: syntax error, unexpected '>'
+..."submit" value="Add Comment" />
+...                              ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:49: unknown regexp options - dv
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:50: syntax error, unexpected '<'
+    </div>
+    ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:53: syntax error, unexpected '<'
+    <a href="/list_posts">Back to ...
+    ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:53: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+...  <a href="/list_posts">Back to posts</a>
+...                             ^~
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:55: unknown regexp options - bdy
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:57: syntax error, unexpected '<'
+</html>'.freeze;
+^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:61: unterminated regexp meets end of file
+          end
+              ^
+/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views/application/show_post.html.erb:61: syntax error, unexpected end-of-input, expecting ')'):
+  
+app/views/application/show_post.html.erb:41: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:43: unknown regexp options - labl
+app/views/application/show_post.html.erb:44: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:44: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/application/show_post.html.erb:44: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/application/show_post.html.erb:44: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/application/show_post.html.erb:44: syntax error, unexpected '>'
+app/views/application/show_post.html.erb:47: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:47: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/application/show_post.html.erb:47: syntax error, unexpected '>'
+app/views/application/show_post.html.erb:49: unknown regexp options - dv
+app/views/application/show_post.html.erb:50: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:53: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:53: syntax error, unexpected tIDENTIFIER, expecting do or '{' or '('
+app/views/application/show_post.html.erb:55: unknown regexp options - bdy
+app/views/application/show_post.html.erb:57: syntax error, unexpected '<'
+app/views/application/show_post.html.erb:61: unterminated regexp meets end of file
+app/views/application/show_post.html.erb:61: syntax error, unexpected end-of-input, expecting ')'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:17:01 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (16.1ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007f7f6e1fe358>:0x00007f7f2b943278>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084351020'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:17:02 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (17.2ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007f7f6e1fe358>:0x00007f7f6b9eab00>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092621564980'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:17:03 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (15.9ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007f7f6e1fe358>:0x00007f7f1d1aac90>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70091962948380'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/" for ::1 at 2021-03-14 19:17:08 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:17:11 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (17.3ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007f7f6e1fe358>:0x00007f7f1d1cbad0>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084105720'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/show_posts" for ::1 at 2021-03-14 19:17:12 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_posts"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/list_posts" for ::1 at 2021-03-14 19:17:14 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 19:17:15 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:17:16 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (17.0ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007f7f6e1fe358>:0x00007f7f5b97b580>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092487119280'
+app/controllers/application_controller.rb:16:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:00 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.4ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f1d2de0d0>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70091963572940'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:01 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.2ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f5b9a10a0>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092487218100'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:02 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.6ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f1d286600>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70091963398080'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:20 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.9ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f2b9f8b50>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084745700'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:21 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.9ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f2b9db6e0>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084661400'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:21 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (3.2ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f2b9ca548>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084627120'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:21 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.9ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f2b9bbb10>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084595720'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:21 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.6ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f2b9cb768>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084628060'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:22 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (3.9ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f2ba089b0>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092084812400'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:22 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.6ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f5b978588>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092487132360'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:22 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.4ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Array:0x00007f7f1d2c5558>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comments.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70091963530560'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/2" for ::1 at 2021-03-14 19:18:31 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"2"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.3ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f1d3574d0>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70091963803680'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/list_posts" for ::1 at 2021-03-14 19:18:36 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:18:37 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.3ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f1d3ed638>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70091964135600'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:18:53 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (11.1ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f1d436b30>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70091964282620'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:18:54 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.1ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f4bdb5250>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092355202180'
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:18:54 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (2.5ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for #<Comment:0x00007f7f4bfe5bd8>):
+    28:         <% end %>
+    29: 
+    30:         <div class="errors">
+    31:           <% comment.errors.each do |attribute, error| %>
+    32:             <p class="error" style="color: orange">
+    33:               <%= attribute %>: <%= error %>
+    34:             </p>
+  
+app/views/application/show_post.html.erb:31:in `_app_views_application_show_post_html_erb___4313362148975326519_70092356283860'
+app/controllers/application_controller.rb:18:in `show_post'
+Started PUT "/__web_console/repl_sessions/8ab22ae156ae1b0f2a8beefac6d90d64" for ::1 at 2021-03-14 19:19:05 -0400
+Started PUT "/__web_console/repl_sessions/8ab22ae156ae1b0f2a8beefac6d90d64" for ::1 at 2021-03-14 19:19:05 -0400
+Started PUT "/__web_console/repl_sessions/8ab22ae156ae1b0f2a8beefac6d90d64" for ::1 at 2021-03-14 19:19:08 -0400
+Started PUT "/__web_console/repl_sessions/8ab22ae156ae1b0f2a8beefac6d90d64" for ::1 at 2021-03-14 19:19:08 -0400
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:19:16 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.4ms)
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:19:17 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.2ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:20 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"qweqwe ", "author"=>"", "post_id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.2ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:22 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"", "author"=>"ee", "post_id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:23 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>" ", "author"=>"ee", "post_id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.4ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:23 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"  ", "author"=>"ee", "post_id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.5ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:24 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"   eee", "author"=>"ee", "post_id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Comment::SQLitre3):
+  
+app/models/comment.rb:48:in `connection'
+app/models/comment.rb:54:in `connection'
+app/models/comment.rb:40:in `insert'
+app/models/comment.rb:28:in `save'
+app/controllers/application_controller.rb:71:in `create_comment'
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:30 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"  ", "author"=>"ee", "post_id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:32 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"  ", "author"=>"ee", "post_id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:33 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"   qweqwe", "author"=>"ee", "post_id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Comment::SQLitre3):
+  
+app/models/comment.rb:48:in `connection'
+app/models/comment.rb:54:in `connection'
+app/models/comment.rb:40:in `insert'
+app/models/comment.rb:28:in `save'
+app/controllers/application_controller.rb:71:in `create_comment'
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:48 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"   qweqwe", "author"=>"ee", "post_id"=>"1"}
+Redirected to http://localhost:3000/show_post/
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/" for ::1 at 2021-03-14 19:19:48 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/list_posts" for ::1 at 2021-03-14 19:19:53 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.7ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:19:54 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.9ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:19:58 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>"qweqweqw ", "author"=>"eqsssssssss", "post_id"=>"1"}
+Redirected to http://localhost:3000/show_post/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/" for ::1 at 2021-03-14 19:19:58 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:20:58 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:21:37 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing template /show_post with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views"
+):
+  
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:21:38 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing template /show_post with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/nicholaslicalzi/code/launch_school/open_book_shelf/demystifying_rails/demystifying_rails_app_template/app/views"
+):
+  
+app/controllers/application_controller.rb:18:in `show_post'
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:22:04 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.1ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:22:05 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (10.1ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:22:06 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:22:08 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>" eeee", "author"=>"qqqq", "post_id"=>"1"}
+Redirected to http://localhost:3000/show_post/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:08 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:22:33 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/1" for ::1 at 2021-03-14 19:22:36 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>" eee", "author"=>"22222", "post_id"=>"1"}
+Redirected to http://localhost:3000/show_post/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:36 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:49 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/" for ::1 at 2021-03-14 19:22:50 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/show_post"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/list_posts" for ::1 at 2021-03-14 19:22:52 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (9.6ms)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:22:53 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/5" for ::1 at 2021-03-14 19:22:56 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>" 2222", "author"=>"1111", "post_id"=>"5"}
+Redirected to http://localhost:3000/show_post/5
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:22:56 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (0.9ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/5" for ::1 at 2021-03-14 19:22:58 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>" qweqweqwe", "author"=>"", "post_id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/create_comment_for_post/5" for ::1 at 2021-03-14 19:23:00 -0400
+Processing by ApplicationController#create_comment as HTML
+  Parameters: {"body"=>" qweqweqwe ", "author"=>"e", "post_id"=>"5"}
+Redirected to http://localhost:3000/show_post/5
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:23:00 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 19:23:00 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.6ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:23:02 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/list_posts" for ::1 at 2021-03-14 19:25:15 -0400
+Processing by ApplicationController#list_posts as HTML
+  Rendering application/list_posts.html.erb
+  Rendered application/list_posts.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/1" for ::1 at 2021-03-14 19:25:16 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"1"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/list_posts/1/delete_comment/1" for ::1 at 2021-03-14 19:25:19 -0400
+  
+AbstractController::ActionNotFound (The action 'delete_comment' could not be found for ApplicationController):
+  
+actionpack (5.2.2) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.2) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.2) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.2) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.2) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.6) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+actionpack (5.2.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.6) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.6) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.2) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+rack (2.0.6) lib/rack/handler/webrick.rb:86:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/nicholaslicalzi/.rbenv/versions/2.6.0/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:25:22 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:27:47 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/list_posts/5/delete_comment/15" for ::1 at 2021-03-14 19:27:48 -0400
+Processing by ApplicationController#delete_comment as HTML
+  Parameters: {"post_id"=>"5", "comment_id"=>"15"}
+Redirected to http://localhost:3000/show_post/5
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:27:48 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.2ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/show_post/5" for ::1 at 2021-03-14 19:27:48 -0400
+Processing by ApplicationController#show_post as HTML
+  Parameters: {"id"=>"5"}
+  Rendering application/show_post.html.erb
+  Rendered application/show_post.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
